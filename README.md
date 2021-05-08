@@ -28,7 +28,7 @@ The *fastverse* consists of 6 core packages that provide broad based data manipu
 
 ### Core fastverse
 
-- **data.table**: Enhanced data frame class with concise data manipulation framework offering powerful split-apply-combine computing, reshaping, joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as transposition of data. 
+- **data.table**: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, split-apply-combine computing, reshaping, joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as transposition of data. 
 
 - **collapse**: Advanced (grouped, weighted) statistical computations, time series and panel data transformations, list-processing (recursive operations), flexible grouping, data manipulation functions, summary statistics and various utilities such as support for variable labels. Class-agnostic applicability to vectors, matrices, data frames and related classes including *xts*, *data.table*, *tibble*, *pdata.frame*.
 
@@ -55,6 +55,8 @@ The *fastverse* consists of 6 core packages that provide broad based data manipu
 - **lubridate**: Comprehensive and fast library to deal with dates and times.
 
 - **fasttime**: Fast parsing of strings to 'POSIXct'.
+
+# cron??
 
   *Integration Notes*: Both *data.table* and *collapse* can compute on common R date and time classes. *data.table* additionally offers an efficient integer based date class 'IDate' with some supporting functionality.
 
@@ -87,6 +89,8 @@ The *fastverse* consists of 6 core packages that provide broad based data manipu
   *Note*: some highly efficient statistical functions can also be found scattered across various other packages, notable to mention here are *Hmisc* and *DescTools*. 
 
 #### Tidyverse-like data manipulation built on *data.table*
+
+#dtplyr?
 
 - **tidytable**: Quite comprehensive implementation of *dplyr*, *tidyr* and *purr* functions based on *data.table* backend. Function names appended with a `.` e.g. `mutate.()`. The `dt()` helper further makes *data.table* syntax pipable. 
 
