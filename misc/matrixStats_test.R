@@ -48,6 +48,25 @@ rowSums2. <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x),
   res
 }
 
+# Note: this is a joke, the function actually uses plain R !!
+colProds(m, cols = 1:3)
+colProds. <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, method = c("direct", "expSumLog"), ...) {
+  cn <- dimnames(x)[[2L]]
+  res <- colProds(x, rows, cols, na.rm, method, ...)
+  if(length(cn)) names(res) <- if(length(cols)) cn[cols] else cn 
+  res
+}
+
+# Note: this is a joke, the function actually uses plain R !!
+rowProds(m, rows = 1:3)
+rowProds. <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, method = c("direct", "expSumLog"), ...) {
+  rn <- dimnames(x)[[1L]]
+  res <- rowProds(x, rows, cols, na.rm, method, ...)
+  if(length(rn)) names(res) <- if(length(rows)) rn[rows] else rn 
+  res
+}
+
+
 colMedians(m, cols = 1:3)
 colMedians. <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -200,6 +219,21 @@ rowMaxs. <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), 
   res
 }
 
+colOrderStats(m, cols = 1:3, which = 5)
+colOrderStats. <- function(x, rows = NULL, cols = NULL, which, dim. = dim(x), ...) {
+  cn <- dimnames(x)[[2L]]
+  res <- colOrderStats(x, rows, cols, which, dim., ...)
+  if(length(cn)) names(res) <- if(length(cols)) cn[cols] else cn 
+  res
+}
+
+rowOrderStats(m, rows = 1:3, which = 5)
+rowOrderStats. <- function(x, rows = NULL, cols = NULL, which, dim. = dim(x), ...) {
+  rn <- dimnames(x)[[1L]]
+  res <- rowOrderStats(x, rows, cols, which, dim., ...)
+  if(length(rn)) names(res) <- if(length(rows)) rn[rows] else rn 
+  res
+}
 
 colAnyMissings(m, cols = 1:3)
 colAnyMissings. <- function(x, rows = NULL, cols = NULL, ...) {
@@ -284,48 +318,32 @@ rowCounts. <- function(x, rows = NULL, cols = NULL, value = TRUE, na.rm = FALSE,
 
 colCumsums(m, cols = 1:3)
 colCumsums. <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
-  ax <- attributes(x)
+  dn <- dimnames(x)
   res <- colCumsums(x, rows, cols, dim., ...)
-  if(length(ax) > 1L) { # more than just "dim"
-    if(length(cols)) { 
-      if(length(rows)) {
-        dn <- ax[["dimnames"]]
-        if(length(dn)) ax[["dimnames"]] <- list(dn[[1L]][rows], dn[[2L]][cols])
-      } else {
-        cn <- ax[["dimnames"]][[2L]]      
-        if(length(cn)) ax[["dimnames"]][[2L]] <- cn[cols]
-      }
-      ax[["dim"]] <- dim(res)
-    } else if(length(rows)) {
-      rn <- ax[["dimnames"]][[1L]]      
-      if(length(rn)) ax[["dimnames"]][[1L]] <- rn[rows]
-      ax[["dim"]] <- dim(res)
-    }
-    attributes(res) <- ax # faster for matrices than collapse::setAttrib
+  if(length(dn)) {
+    if(length(rows)) {
+      if(!is.object(x)) .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]][rows], if(length(cols)) dn[[2L]][cols] else dn[[2L]])
+    } else if(length(cols)) {
+      .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]], dn[[2L]][cols])
+    } else .Call(C_DUPLICATE_ATTRIB, res, x)
   }
   res
 }
 
 rowCumsums.(m, rows = 1:3)
 rowCumsums. <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
-  ax <- attributes(x)
+  dn <- dimnames(x)
   res <- rowCumsums(x, rows, cols, dim., ...)
-  if(length(ax) > 1L) { # more than just "dim"
-    if(length(cols)) { 
-      if(length(rows)) {
-        dn <- ax[["dimnames"]]
-        if(length(dn)) ax[["dimnames"]] <- list(dn[[1L]][rows], dn[[2L]][cols])
-      } else {
-        cn <- ax[["dimnames"]][[2L]]      
-        if(length(cn)) ax[["dimnames"]][[2L]] <- cn[cols]
-      }
-      ax[["dim"]] <- dim(res)
-    } else if(length(rows)) {
-      rn <- ax[["dimnames"]][[1L]]      
-      if(length(rn)) ax[["dimnames"]][[1L]] <- rn[rows]
-      ax[["dim"]] <- dim(res)
-    }
-    attributes(res) <- ax # faster for matrices than collapse::setAttrib
+  if(length(dn)) {
+    if(length(rows)) {
+      if(!is.object(x)) .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]][rows], if(length(cols)) dn[[2L]][cols] else dn[[2L]])
+    } else if(length(cols)) {
+      .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]], dn[[2L]][cols])
+    } else .Call(C_DUPLICATE_ATTRIB, res, x)
   }
   res
 }
@@ -333,48 +351,32 @@ rowCumsums. <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
 
 colCumprods(m, cols = 1:3)
 colCumprods. <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
-  ax <- attributes(x)
+  dn <- dimnames(x)
   res <- colCumprods(x, rows, cols, dim., ...)
-  if(length(ax) > 1L) { # more than just "dim"
-    if(length(cols)) { 
-      if(length(rows)) {
-        dn <- ax[["dimnames"]]
-        if(length(dn)) ax[["dimnames"]] <- list(dn[[1L]][rows], dn[[2L]][cols])
-      } else {
-        cn <- ax[["dimnames"]][[2L]]      
-        if(length(cn)) ax[["dimnames"]][[2L]] <- cn[cols]
-      }
-      ax[["dim"]] <- dim(res)
-    } else if(length(rows)) {
-      rn <- ax[["dimnames"]][[1L]]      
-      if(length(rn)) ax[["dimnames"]][[1L]] <- rn[rows]
-      ax[["dim"]] <- dim(res)
-    }
-    attributes(res) <- ax # faster for matrices than collapse::setAttrib
+  if(length(dn)) {
+    if(length(rows)) {
+      if(!is.object(x)) .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]][rows], if(length(cols)) dn[[2L]][cols] else dn[[2L]])
+    } else if(length(cols)) {
+      .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]], dn[[2L]][cols])
+    } else .Call(C_DUPLICATE_ATTRIB, res, x)
   }
   res
 }
 
 rowCumprods(m, rows = 1:3)
 rowCumprods. <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
-  ax <- attributes(x)
+  dn <- dimnames(x)
   res <- rowCumprods(x, rows, cols, dim., ...)
-  if(length(ax) > 1L) { # more than just "dim"
-    if(length(cols)) { 
-      if(length(rows)) {
-        dn <- ax[["dimnames"]]
-        if(length(dn)) ax[["dimnames"]] <- list(dn[[1L]][rows], dn[[2L]][cols])
-      } else {
-        cn <- ax[["dimnames"]][[2L]]      
-        if(length(cn)) ax[["dimnames"]][[2L]] <- cn[cols]
-      }
-      ax[["dim"]] <- dim(res)
-    } else if(length(rows)) {
-      rn <- ax[["dimnames"]][[1L]]      
-      if(length(rn)) ax[["dimnames"]][[1L]] <- rn[rows]
-      ax[["dim"]] <- dim(res)
-    }
-    attributes(res) <- ax # faster for matrices than collapse::setAttrib
+  if(length(dn)) {
+    if(length(rows)) {
+      if(!is.object(x)) .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]][rows], if(length(cols)) dn[[2L]][cols] else dn[[2L]])
+    } else if(length(cols)) {
+      .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]], dn[[2L]][cols])
+    } else .Call(C_DUPLICATE_ATTRIB, res, x)
   }
   res
 }
@@ -382,48 +384,32 @@ rowCumprods. <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
 
 colCummins(m, cols = 1:3)
 colCummins. <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
-  ax <- attributes(x)
+  dn <- dimnames(x)
   res <- colCummins(x, rows, cols, dim., ...)
-  if(length(ax) > 1L) { # more than just "dim"
-    if(length(cols)) { 
-      if(length(rows)) {
-        dn <- ax[["dimnames"]]
-        if(length(dn)) ax[["dimnames"]] <- list(dn[[1L]][rows], dn[[2L]][cols])
-      } else {
-        cn <- ax[["dimnames"]][[2L]]      
-        if(length(cn)) ax[["dimnames"]][[2L]] <- cn[cols]
-      }
-      ax[["dim"]] <- dim(res)
-    } else if(length(rows)) {
-      rn <- ax[["dimnames"]][[1L]]      
-      if(length(rn)) ax[["dimnames"]][[1L]] <- rn[rows]
-      ax[["dim"]] <- dim(res)
-    }
-    attributes(res) <- ax # faster for matrices than collapse::setAttrib
+  if(length(dn)) {
+    if(length(rows)) {
+      if(!is.object(x)) .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]][rows], if(length(cols)) dn[[2L]][cols] else dn[[2L]])
+    } else if(length(cols)) {
+      .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]], dn[[2L]][cols])
+    } else .Call(C_DUPLICATE_ATTRIB, res, x)
   }
   res
 }
 
 rowCummins(m, rows = 1:3)
 rowCummins. <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
-  ax <- attributes(x)
+  dn <- dimnames(x)
   res <- rowCummins(x, rows, cols, dim., ...)
-  if(length(ax) > 1L) { # more than just "dim"
-    if(length(cols)) { 
-      if(length(rows)) {
-        dn <- ax[["dimnames"]]
-        if(length(dn)) ax[["dimnames"]] <- list(dn[[1L]][rows], dn[[2L]][cols])
-      } else {
-        cn <- ax[["dimnames"]][[2L]]      
-        if(length(cn)) ax[["dimnames"]][[2L]] <- cn[cols]
-      }
-      ax[["dim"]] <- dim(res)
-    } else if(length(rows)) {
-      rn <- ax[["dimnames"]][[1L]]      
-      if(length(rn)) ax[["dimnames"]][[1L]] <- rn[rows]
-      ax[["dim"]] <- dim(res)
-    }
-    attributes(res) <- ax # faster for matrices than collapse::setAttrib
+  if(length(dn)) {
+    if(length(rows)) {
+      if(!is.object(x)) .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]][rows], if(length(cols)) dn[[2L]][cols] else dn[[2L]])
+    } else if(length(cols)) {
+      .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]], dn[[2L]][cols])
+    } else .Call(C_DUPLICATE_ATTRIB, res, x)
   }
   res
 }
@@ -431,51 +417,78 @@ rowCummins. <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
 
 colCummaxs(m, cols = 1:3)
 colCummaxs. <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
-  ax <- attributes(x)
+  dn <- dimnames(x)
   res <- colCummaxs(x, rows, cols, dim., ...)
-  if(length(ax) > 1L) { # more than just "dim"
-    if(length(cols)) { 
-      if(length(rows)) {
-        dn <- ax[["dimnames"]]
-        if(length(dn)) ax[["dimnames"]] <- list(dn[[1L]][rows], dn[[2L]][cols])
-      } else {
-        cn <- ax[["dimnames"]][[2L]]      
-        if(length(cn)) ax[["dimnames"]][[2L]] <- cn[cols]
-      }
-      ax[["dim"]] <- dim(res)
-    } else if(length(rows)) {
-      rn <- ax[["dimnames"]][[1L]]      
-      if(length(rn)) ax[["dimnames"]][[1L]] <- rn[rows]
-      ax[["dim"]] <- dim(res)
-    }
-    attributes(res) <- ax # faster for matrices than collapse::setAttrib
+  if(length(dn)) {
+    if(length(rows)) {
+      if(!is.object(x)) .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]][rows], if(length(cols)) dn[[2L]][cols] else dn[[2L]])
+    } else if(length(cols)) {
+      .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]], dn[[2L]][cols])
+    } else .Call(C_DUPLICATE_ATTRIB, res, x)
   }
   res
 }
 
 rowCummaxs(m, rows = 1:3)
 rowCummaxs. <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
-  ax <- attributes(x)
+  dn <- dimnames(x)
   res <- rowCummaxs(x, rows, cols, dim., ...)
-  if(length(ax) > 1L) { # more than just "dim"
-    if(length(cols)) { 
-      if(length(rows)) {
-        dn <- ax[["dimnames"]]
-        if(length(dn)) ax[["dimnames"]] <- list(dn[[1L]][rows], dn[[2L]][cols])
-      } else {
-        cn <- ax[["dimnames"]][[2L]]      
-        if(length(cn)) ax[["dimnames"]][[2L]] <- cn[cols]
-      }
-      ax[["dim"]] <- dim(res)
-    } else if(length(rows)) {
-      rn <- ax[["dimnames"]][[1L]]      
-      if(length(rn)) ax[["dimnames"]][[1L]] <- rn[rows]
-      ax[["dim"]] <- dim(res)
-    }
-    attributes(res) <- ax # faster for matrices than collapse::setAttrib
+  if(length(dn)) {
+    if(length(rows)) {
+      if(!is.object(x)) .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]][rows], if(length(cols)) dn[[2L]][cols] else dn[[2L]])
+    } else if(length(cols)) {
+      .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]], dn[[2L]][cols])
+    } else .Call(C_DUPLICATE_ATTRIB, res, x)
   }
   res
 }
+
+
+colRanks(m, cols = 1:3, preserveShape = TRUE)
+colRanks. <- function(x, rows = NULL, cols = NULL, 
+                      ties.method = c("max", "average", "first", "last", "random", "max", "min", "dense"),
+                      dim. = dim(x), preserveShape = FALSE, ...) {
+  dn <- dimnames(x)
+  res <- colRanks(x, rows, cols, ties.method, dim., preserveShape, ...)
+  if(length(dn)) {
+    if(length(rows)) {
+      if(!is.object(x)) .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- if(preserveShape) 
+        list(dn[[1L]][rows], if(length(cols)) dn[[2L]][cols] else dn[[2L]]) else 
+        list(if(length(cols)) dn[[2L]][cols] else dn[[2L]], dn[[1L]][rows])
+    } else if(length(cols)) {
+      .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- if(preserveShape) list(dn[[1L]], dn[[2L]][cols]) else list(dn[[2L]][cols], dn[[1L]])
+    } else {
+      .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- if(preserveShape) dn else dn[2:1]
+    }
+  }
+  res
+}
+
+rowRanks(m, rows = 1:3)
+rowRanks. <- function(x, rows = NULL, cols = NULL, 
+                      ties.method = c("max", "average", "first", "last", "random", "max", "min", "dense"), 
+                      dim. = dim(x), ...) {
+  dn <- dimnames(x)
+  res <- rowRanks(x, rows, cols, ties.method, dim., ...)
+  if(length(dn)) {
+    if(length(rows)) {
+      if(!is.object(x)) .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]][rows], if(length(cols)) dn[[2L]][cols] else dn[[2L]])
+    } else if(length(cols)) {
+      .Call(C_copyMostAttrib, res, x)
+      dimnames(res) <- list(dn[[1L]], dn[[2L]][cols])
+    } else .Call(C_DUPLICATE_ATTRIB, res, x)
+  }
+  res
+}
+
 
 colDiffs(m, cols = 1:3)
 colDiffs. <- function(x, rows = NULL, cols = NULL, lag = 1L, differences = 1L, dim. = dim(x), ...) {
