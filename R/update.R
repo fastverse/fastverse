@@ -57,6 +57,14 @@ fastverse_sitrep <- function() {
   cat("\n", packages[!deps$package %in% .core_pck])
 }
 
+packageVersion2 <- function(pkg) {
+  if (requireNamespace(pkg, quietly = TRUE)) {
+    utils::packageVersion(pkg)
+  } else {
+    0
+  }
+}
+
 #' List all fastverse dependencies
 #'
 #' @param recursive If \code{TRUE}, will also list all dependencies of
@@ -81,7 +89,7 @@ fastverse_deps <- function(recursive = FALSE, repos = getOption("repos")) {
   # pkg_deps <- setdiff(pkg_deps, tool_pkgs)
   
   cran_version <- lapply(pkgs[pkg_deps, "Version"], base::package_version)
-  local_version <- lapply(pkg_deps, packageVersion)
+  local_version <- lapply(pkg_deps, packageVersion2)
   
   behind <- mapply(`>`, cran_version, local_version)
   
@@ -93,10 +101,3 @@ fastverse_deps <- function(recursive = FALSE, repos = getOption("repos")) {
   )
 }
 
-packageVersion <- function(pkg) {
-  if (requireNamespace(pkg, quietly = TRUE)) {
-    utils::packageVersion(pkg)
-  } else {
-    0
-  }
-}
