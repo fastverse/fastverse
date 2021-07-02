@@ -13,7 +13,7 @@ fastverse_extend(..., topics = NULL, install = FALSE, permanent = FALSE)
 
 \item{install}{logical. Install packages not available?}
 
-\item{permanent}{logical. Should extensions be saved and included when \code{library(fastverse)} is called next time.}
+\item{permanent}{logical. Should extensions be saved and included when \code{library(fastverse)} is called next time. This is implemented via a config file saved to the package directory.}
 }
 \description{
 Loads additional packages as part of the fastverse.

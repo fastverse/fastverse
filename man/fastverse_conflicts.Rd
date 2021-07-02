@@ -4,7 +4,10 @@
 \alias{fastverse_conflicts}
 \title{Conflicts between the fastverse and other packages}
 \usage{
-fastverse_conflicts(pck = fastverse_packages(FALSE))
+fastverse_conflicts(pck = fastverse_packages(include.self = FALSE))
+}
+\arguments{
+\item{pck}{character. A string of packages to check conflicts for. The default is all fastverse packages.}
 }
 \description{
 This function lists all the conflicts between packages in the fastverse
