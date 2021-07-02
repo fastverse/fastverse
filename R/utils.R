@@ -1,3 +1,6 @@
+#' @importFrom  stats setNames
+#' @importFrom  utils packageVersion packageDescription
+
 msg <- function(..., startup = FALSE) {
   if (startup) {
     if (!isTRUE(getOption("fastverse.quiet"))) {
@@ -11,29 +14,30 @@ msg <- function(..., startup = FALSE) {
 
 #' List all packages in the fastverse
 #'
-#' @param include_self Include fastverse in the list?
+#' @param extended logical. Include extension packages to the core fastverse. 
+#' @param include.self logical. Include the fastverse package in the list?
 #' @export
 #' @examples
 #' fastverse_packages()
-fastverse_packages <- function(include_self = TRUE) {
-  raw <- utils::packageDescription("fastverse")$Imports
-  imports <- strsplit(raw, ",")[[1]]
-  parsed <- gsub("^\\s+|\\s+$", "", imports)
-  names <- vapply(strsplit(parsed, "\\s+"), "[[", 1, FUN.VALUE = character(1))
-  
-  if (include_self) {
-    names <- c(names, "fastverse")
+fastverse_packages <- function(extended = TRUE, include.self = TRUE) {
+  pck <- .core_pck
+  if(extended) {
+    raw <- packageDescription("fastverse")$Suggests
+    imports <- strsplit(raw, ",")[[1]]
+    parsed <- gsub("^\\s+|\\s+$", "", imports)
+    names <- vapply(strsplit(parsed, "\\s+"), "[[", 1, FUN.VALUE = character(1))
+    pck <- c(pck, names)
   }
-  
-  names
+  if(include.self) pck <- c(pck, "fastverse")
+  pck
 }
+
 
 invert <- function(x) {
   if (length(x) == 0) return()
   stacked <- utils::stack(x)
   tapply(as.character(stacked$ind), stacked$values, list)
 }
-
 
 package_version <- function(x) paste(unclass(packageVersion(x))[[1]], collapse = ".")
 
