@@ -1,0 +1,6 @@
+misc
+crandb.rda
+LICENSE
+^R/update\.R$
+^.*\.Rproj$
+^\.Rproj\.user$
