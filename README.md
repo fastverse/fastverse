@@ -7,30 +7,29 @@
 [![Codecov test coverage](https://codecov.io/gh/SebKrantz/fastverse/branch/master/graph/badge.svg)](https://codecov.io/gh/SebKrantz/fastverse?branch=master)
 [![minimal R version](https://img.shields.io/badge/R%3E%3D-2.10-6666ff.svg)](https://cran.r-project.org/)
 [![status](https://tinyverse.netlify.com/badge/fastverse)](https://CRAN.R-project.org/package=fastverse)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.fastverse.org/lifecycle/#maturing)
 ![downloads per month](http://cranlogs.r-pkg.org/badges/fastverse?color=blue)
 ![downloads](http://cranlogs.r-pkg.org/badges/grand-total/fastverse?color=blue)
  badges: end -->
 
 
-The *fastverse* package integrates and provides utilities for easy installation, loading and management of a complimentary set of high-performance R packages for statistical computing and data manipulation. *fastverse* packages work well together and all individually share the following properties:
+The *fastverse* package integrates and provides utilities for easy installation, loading and management of a complimentary set of high-performance R packages for statistical computing and data manipulation. *fastverse* packages work well together and provide:
 
-- Among the fastest available in R, benchmarked from the perspective of a typical academic R user owning a 2-core 8Gb RAM Mac or Windows laptop. Many packages also offer multi-threading. All critical codes in *fastverse* packages are written in a compiled language such as C, C++ or Fortran. 
+- Fast R code - especially for limited personal computing resources. All critical codes in *fastverse* packages are written in a compiled language such as C, C++ or Fortran. Many packages additionally offer multi-threading. 
 
 - High code quality and above average levels of maintenance, thorough documentation and seamless application to the designated R objects, minding all the typical properties of real world data such as missing values. 
 
 - A minimal set of dependencies. Most *fastverse* packages only depend on packages providing C++ API's in R, if any. 
 
-
 ## Packages
 
-The *fastverse* consists of 6 core packages that provide broad based data manipulation functionality and have a carefully managed API. These packages are installed and attached along with the `fastverse` package. In addition the user has the option to flexibly install and attach extension packages offering more specific functionality. 
+The *fastverse* consists of 6 core packages (7 dependencies in total) that provide broad based data manipulation functionality and have a carefully managed API. These packages are installed and attached along with the `fastverse` package. In addition the user has the option (via the `fastverse_entend()` function) to freely and flexibly install and attach extension packages offering more specific functionality. 
 
 ### Core fastverse
 
-- **data.table**: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, split-apply-combine computing, reshaping, joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as transposition of data. 
+- **data.table**: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, extremely flexible split-apply-combine computing, reshaping, joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as transposition of data. 
 
-- **collapse**: Advanced (grouped, weighted) statistical computations, time series and panel data transformations, list-processing (recursive operations), flexible grouping, data manipulation functions, summary statistics and various utilities such as support for variable labels. Class-agnostic applicability to vectors, matrices, data frames and related classes including *xts*, *data.table*, *tibble*, *pdata.frame*.
+- **collapse**: Fast grouped & weighted statistical computations, time series and panel data transformations, list-processing, data manipulation functions, summary statistics and various utilities such as support for variable labels. Class-agnostic framework designed to work with vectors, matrices, data frames and related classes including *xts*, *data.table*, *tibble*, *pdata.frame*, *sf*.  <!-- *tsibble*, *tibbletime* -->
 
 - **matrixStats**: Efficient row-and column-wise statistics on matrices (and vectors), including computations on subsets of rows and columns. 
 
@@ -44,6 +43,8 @@ The *fastverse* consists of 6 core packages that provide broad based data manipu
 
 ### Extended fastverse
 
+
+
 #### Time Series
 - **xts** and **zoo**: A fast and reliable matrix-based time series class providing fully identified ordered observations and various utilities for plotting and computations.
 
@@ -54,9 +55,9 @@ The *fastverse* consists of 6 core packages that provide broad based data manipu
 #### Dates and Times 
 - **lubridate**: Comprehensive and fast library to deal with dates and times.
 
-- **fasttime**: Fast parsing of strings to 'POSIXct'.
+- **clock**: Comprehensive and fast library to deal with dates and times.
 
-# cron??
+- **fasttime**: Fast parsing of strings to 'POSIXct'.
 
   *Integration Notes*: Both *data.table* and *collapse* can compute on common R date and time classes. *data.table* additionally offers an efficient integer based date class 'IDate' with some supporting functionality.
 
@@ -88,7 +89,7 @@ The *fastverse* consists of 6 core packages that provide broad based data manipu
 
   *Note*: some highly efficient statistical functions can also be found scattered across various other packages, notable to mention here are *Hmisc* and *DescTools*. 
 
-#### Tidyverse-like data manipulation built on *data.table*
+#### fastverse-like data manipulation built on *data.table*
 
 #dtplyr?
 
