@@ -7,11 +7,13 @@
 #' If both packages are unloaded, \code{collapse} is loaded before \code{kit}. In general the 
 #' \code{collapse} version is often faster on data frames whereas the \code{kit} version is generally
 #' faster for vectors and also supports matrices. 
+#' 
+#' @param pck character. A string of packages to check conflicts for. The default is all fastverse packages.
 #'
 #' @export
 #' @examples
 #' fastverse_conflicts()
-fastverse_conflicts <- function(pck = fastverse_packages(FALSE)) {
+fastverse_conflicts <- function(pck = fastverse_packages(include.self = FALSE)) {
   envs <- grep("^package:", search(), value = TRUE)
   envs <- setNames(envs, envs)
   objs <- invert(lapply(envs, ls_env))
