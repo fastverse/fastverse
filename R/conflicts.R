@@ -11,14 +11,14 @@
 #' @export
 #' @examples
 #' fastverse_conflicts()
-fastverse_conflicts <- function() {
+fastverse_conflicts <- function(pck = fastverse_packages(FALSE)) {
   envs <- grep("^package:", search(), value = TRUE)
   envs <- setNames(envs, envs)
   objs <- invert(lapply(envs, ls_env))
   
   conflicts <- objs[lengths(objs) > 1L]
   
-  tidy_names <- paste0("package:", fastverse_packages())
+  tidy_names <- paste0("package:", pck)
   conflicts <- conflicts[vapply(conflicts, function(x) any(x %in% tidy_names), TRUE)]
   
   conflict_funs <- Map(confirm_conflict, conflicts, names(conflicts))
