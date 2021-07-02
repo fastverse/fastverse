@@ -559,19 +559,21 @@ rowDiffs <- function(x, rows = NULL, cols = NULL, lag = 1L, differences = 1L, di
   res
 }
 
+ms <- getNamespace("matrixStats")
 
-ms_replaced <- grep("^row|^col", ls(), value = TRUE)
+ms_replaced <- grep("^row|^col", setdiff(ls(ms), c(ms_handles_attr, ms_difficult)), value = TRUE)
+
 # https://stackoverflow.com/questions/24331690/modify-package-function?noredirect=1&lq=1
 # https://stackoverflow.com/questions/3094232/add-objects-to-package-namespace
-replace_matrixStats <- function(ms = getNamespace("matrixStats")) {
+replace_matrixStats <- function() {
   for(i in ms_replaced) {
-    if(!endsWith(i, "_ms")) {
+    # if(!endsWith(i, "_ms")) {
       unlockBinding(as.name(i), env = ms)
       assign(i, get(i), envir = ms)
-    } else {
-      eval(substitute(environment(j) <- ms, list(j = as.name(i))))
-      # assignInNamespace(i, get(i), ms) # doesn't work...
-    }
+    # } else {
+      # eval(substitute(environment(j) <- ms, list(j = as.name(i))))
+      # # assignInNamespace(i, get(i), ms) # doesn't work...
+    # }
   }
   environment(C_copyMostAttrib) <- ms
   environment(C_DUPLICATE_ATTRIB) <- ms
