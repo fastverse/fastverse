@@ -1,5 +1,5 @@
 #' @importFrom  stats setNames
-#' @importFrom  utils packageVersion packageDescription
+#' @importFrom  utils packageVersion packageDescription install.packages installed.packages
 
 msg <- function(..., startup = FALSE) {
   if (startup) {
@@ -14,7 +14,8 @@ msg <- function(..., startup = FALSE) {
 
 #' List all packages in the fastverse
 #'
-#' @param extended logical. Include extension packages to the core fastverse. 
+#' @param extended logical. \code{TRUE} return all packages currently loaded with \code{library(fastverse)}. \code{FALSE} only returns the core fastverse packages.
+#' For a list of suggested packages to add to your fastverse see the README page. 
 #' @param include.self logical. Include the fastverse package in the list?
 #' @export
 #' @examples
@@ -22,17 +23,18 @@ msg <- function(..., startup = FALSE) {
 fastverse_packages <- function(extended = TRUE, include.self = TRUE) {
   pck <- .core_pck
   if(extended) {
-    raw <- packageDescription("fastverse")$Suggests
-    imports <- strsplit(raw, ",")[[1]]
-    parsed <- gsub("^\\s+|\\s+$", "", imports)
-    names <- vapply(strsplit(parsed, "\\s+"), "[[", 1, FUN.VALUE = character(1))
-    pck <- c(pck, names)
+    ext_pck_file <- paste(system.file(package = 'fastverse'), 'fastverse_ext_pck.txt', sep = '/')
+    if(file.exists(ext_pck_file)) {
+      fileConn <- file(ext_pck_file)
+      pck <- readLines(fileConn)
+      close(fileConn)
+    }
   }
   if(include.self) pck <- c(pck, "fastverse")
   pck
 }
 
-
+# TODO: Speed up
 invert <- function(x) {
   if (length(x) == 0) return()
   stacked <- utils::stack(x)
