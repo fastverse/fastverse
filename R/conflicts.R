@@ -1,25 +1,61 @@
+# Conflict exceptions...
+ls_env <- function(env) {
+  x <- ls(pos = env)
+  switch(env, 
+         `package:kit` = setdiff(x, c("funique", "count")),
+         `package:collapse` = setdiff(x, "D"),
+         x)
+}
+
+# Significantly faster than what was previously there
+invert_simplify <- function(x) {
+  if (length(x) == 0) return()
+  stacked <- unclass(utils::stack(x))
+  dup <- stacked$values[duplicated(stacked$values)]
+  if(!length(dup)) return()
+  dup <- which(stacked$values %in% dup)
+  stacked <- lapply(stacked, `[`, dup)
+  split(as.character(stacked$ind), stacked$values)
+}
+
+confirm_conflict <- function(packages, name) { # packages <- conflicts[[3]]; name <- names(conflicts[3])
+  # Only look at functions
+  objs <- lapply(packages, get, x = name) 
+  objs <- objs[vapply(objs, is.function, TRUE)]
+  if (length(objs) <= 1L) return()
+  # Remove identical functions
+  if (sum(!duplicated(objs)) == 1L) return()
+  packages[!duplicated(packages)]
+}
+
+
 #' Conflicts between the fastverse and other packages
 #'
-#' This function lists all the conflicts between packages in the fastverse
+#' This function lists all the conflicts between packages in the \emph{fastverse}
 #' and other packages that you have loaded.
 #'
-#' There is an internal conflict between \code{collapse::funique} and \code{kit::funique}. 
-#' If both packages are unloaded, \code{collapse} is loaded before \code{kit}. In general the 
-#' \code{collapse} version is often faster on data frames whereas the \code{kit} version is generally
+#' There are 2 internal conflict in the core \emph{fastverse} which are not displayed by \code{fastverse_conflicts()}:
+#' \itemize{
+#' \item \code{collapse::funique} maks \code{kit::funique}. If both packages are unloaded, \emph{collapse} is loaded after \emph{kit}. In general the 
+#' \emph{collapse} version is faster on data frames and supports unique rows on selected columns, whereas the \emph{kit} version is generally
 #' faster for vectors and also supports matrices. 
 #' 
-#' @param pck character. A string of packages to check conflicts for. The default is all fastverse packages.
+#' \item \code{matrixStats::count} masks \code{kit::count}. The \emph{matrixStats} version is more flexible, supporting restricted search and missing value removal. The \emph{kit} version is nearly twice as fast. 
+#' }
+#' @param pck character. A vector of packages to check conflicts for. The default is all fastverse packages.
 #'
 #' @export
 #' @examples
+#' # Check conflicts between fastverse packages and all attached packages
 #' fastverse_conflicts()
+#' 
+#' # Check conflicts among all attached packages
+#' fastverse_conflicts(rm_stub(search()[-1], "package:"))
 fastverse_conflicts <- function(pck = fastverse_packages(include.self = FALSE)) {
   envs <- grep("^package:", search(), value = TRUE)
-  envs <- setNames(envs, envs)
-  objs <- invert(lapply(envs, ls_env))
-  
-  conflicts <- objs[lengths(objs) > 1L]
-  
+  names(envs) <- envs
+  conflicts <- invert_simplify(lapply(envs, ls_env)) # formerly objs
+  # conflicts <- objs[as.logical(lengths(objs))] # Redundant: if envs is non empty, objs will also be
   tidy_names <- paste0("package:", pck)
   conflicts <- conflicts[vapply(conflicts, function(x) any(x %in% tidy_names), TRUE)]
   
@@ -52,23 +88,4 @@ print.fastverse_conflicts <- function(x, ..., startup = FALSE) {
   cat_line(fastverse_conflict_message(x))
 }
 
-confirm_conflict <- function(packages, name) { # packages <- conflicts[[3]]; name <- names(conflicts[3])
-  # Only look at functions
-  objs <- lapply(packages, get, x = name) 
-  objs <- objs[vapply(objs, is.function, TRUE)]
-  if (length(objs) <= 1L) return()
-  # Remove identical functions
-  if (sum(!duplicated(objs)) == 1L) return()
-  packages[!duplicated(packages)]
-}
 
-# Conflict exceptions...
-ls_env <- function(env) {
-  x <- ls(pos = env)
-  if (identical(env, "package:kit")) {
-    x <- setdiff(x, c("funique", "count"))
-  } else if(identical(env, "package:collapse")) {
-    x <- setdiff(x, "D")
-  }
-  x
-}

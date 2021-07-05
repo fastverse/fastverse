@@ -8,7 +8,7 @@
   fastverse_attach(needed, onattach = TRUE)
   
   if(!"package:conflicted" %in% search()) {
-    x <- fastverse_conflicts() # TODO: Speed up.
+    x <- fastverse_conflicts() 
     msg(fastverse_conflict_message(x), startup = TRUE)
   }
   
