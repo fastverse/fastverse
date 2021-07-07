@@ -2,22 +2,52 @@
 % Please edit documentation in R/attach.R
 \name{fastverse_extend}
 \alias{fastverse_extend}
-\title{Extend the fastverse with packages}
+\title{Extend the \emph{fastverse}}
 \usage{
-fastverse_extend(..., topics = NULL, install = FALSE, permanent = FALSE)
+fastverse_extend(
+  ...,
+  topics = NULL,
+  install = FALSE,
+  permanent = FALSE,
+  check.conflicts = TRUE
+)
 }
 \arguments{
-\item{\dots}{comma-separated package names.}
+\item{\dots}{comma-separated package names, quoted or unquoted, or vectors of package names. The code simply captures the \code{\dots} expression, evaluates it inside \code{\link{tryCatch}}, and if it fails coerces it to character.}
 
-\item{topics}{character. Short-keys to attach groups of related packages:}
+\item{topics}{integer or character. Short-keys to attach groups of related packages (not case sensitive if character). Packages that are not available are not attached unless \code{install = TRUE}.
+\enumerate{
+\item \code{"TS"}: Time Series. Attaches \emph{xts}, \emph{zoo} and \emph{roll}. 
+\item \code{"DT"}: Dates and Times. Attaches \emph{lubridate}, \emph{clock}, \emph{timechange}, \emph{fasttime} and \emph{nanotime}.
+\item \code{"ST"}: Strings. Attaches \emph{stringr}, \emph{sringi} and \emph{snakecase}.
+\item \code{"SC"}: Statistics and Computing. Attaches \emph{Rfast}, \emph{Rfast2}, \emph{fastDummies}, \emph{parallelDist} and \emph{coop}.
+\item \code{"SP"}: Spatial. Attaches \emph{sf}, \emph{stars} and \emph{terra}.
+\item \code{"VI"}: Visualization. Attaches \emph{dygraphs}, \emph{lattice}, \emph{latticeExtra}, \emph{grid}, \emph{gridExtra}, \emph{ggplot2}, \emph{scales}, \emph{RColorBrewer} and \emph{viridis}.
+\item \code{"TV"}: Tidyverse-Like. Attaches \emph{dtplyr}, \emph{tidytable}, \emph{tidyfst}, \emph{tidyft}, \emph{tidyfast}, \emph{table.express} and \emph{maditr}.
+}}
 
 \item{install}{logical. Install packages not available?}
 
-\item{permanent}{logical. Should extensions be saved and included when \code{library(fastverse)} is called next time. This is implemented via a config file saved to the package directory.}
+\item{permanent}{logical. Should extensions be saved and included when \code{library(fastverse)} is called next time. This is implemented via a config file saved to the package directory. The config file will be removed if the \emph{fastverse} is reinstalled. Packages can be removed from the config file using \code{\link[=fastverse_detach]{fastverse_detach(..., permanent = TRUE)}}.}
+
+\item{check.conflicts}{logical. Should conflicts between extension packages and loaded packages be checked?}
 }
 \description{
-Loads additional packages as part of the fastverse.
+Loads additional packages as part of the \emph{fastverse}, either for the current session or permanently.
+}
+\details{
+The \emph{fastverse} can be extended using a free choice of packages, packages listed under \code{topics}, or a combination of both. If \code{install = FALSE}, only packages 
+among the \code{topics} groups that are available are considered, others are disregarded. 
+
+When the \emph{fastverse} is extended calling \code{fastverse_extend(...)}, the packages that are not attached are attached and conflicts are checked for the newly attached packages. 
+If \code{permanent = FALSE}, an \code{option("fastverse_extend")} is set which stores these extension packages, regardless of whether they were already attached or not. When calling 
+\code{\link{fastverse_packages}}, \code{\link{fastverse_deps}}, \code{\link{fastverse_conflicts}}, \code{\link{fastverse_update}} or \code{\link{fastverse_detach}}, these packages are included as part of the fastverse. 
+This is also the case if \code{permanent = TRUE}, with the only difference that instead of an option, a file is saved to the package directory such that the extended packages are also loaded
+when calling \code{library(fastverse)} in the next session. To extend the \emph{fastverse} for the current session when it is not yet loaded, users can also set \code{options(fastverse_extend = c(...))}, where \code{c(...)}
+is a character vector of packages, before calling \code{library(fastverse)}.
 }
 \examples{
-fastverse_extend(xts, roll)
+fastverse_extend(Rfast, sf, ggplot2)
+fastverse_extend(dygraphs, topics = "ts")
+fastverse_extend(topics = c("sp", "dt"))
 }

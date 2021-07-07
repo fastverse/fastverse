@@ -7,18 +7,26 @@
 fastverse_conflicts(pck = fastverse_packages(include.self = FALSE))
 }
 \arguments{
-\item{pck}{character. A string of packages to check conflicts for. The default is all fastverse packages.}
+\item{pck}{character. A vector of packages to check conflicts for. The default is all fastverse packages.}
 }
 \description{
-This function lists all the conflicts between packages in the fastverse
+This function lists all the conflicts between packages in the \emph{fastverse}
 and other packages that you have loaded.
 }
 \details{
-There is an internal conflict between \code{collapse::funique} and \code{kit::funique}. 
-If both packages are unloaded, \code{collapse} is loaded before \code{kit}. In general the 
-\code{collapse} version is often faster on data frames whereas the \code{kit} version is generally
-faster for vectors and also supports matrices.
+There are 2 internal conflict in the core \emph{fastverse} which are not displayed by \code{fastverse_conflicts()}:
+\itemize{
+\item \code{collapse::funique} maks \code{kit::funique}. If both packages are unloaded, \emph{collapse} is loaded after \emph{kit}. In general the 
+\emph{collapse} version is faster on data frames and supports unique rows on selected columns, whereas the \emph{kit} version is generally
+faster for vectors and also supports matrices. 
+
+\item \code{matrixStats::count} masks \code{kit::count}. The \emph{matrixStats} version is more flexible, supporting restricted search and missing value removal. The \emph{kit} version is nearly twice as fast. 
+}
 }
 \examples{
+# Check conflicts between fastverse packages and all attached packages
 fastverse_conflicts()
+
+# Check conflicts among all attached packages
+fastverse_conflicts(rm_stub(search()[-1], "package:"))
 }

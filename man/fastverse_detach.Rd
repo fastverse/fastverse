@@ -2,30 +2,30 @@
 % Please edit documentation in R/attach.R
 \name{fastverse_detach}
 \alias{fastverse_detach}
-\title{Detach fastverse packages}
+\title{Detach \emph{fastverse} packages}
 \usage{
 fastverse_detach(
   ...,
-  unload = TRUE,
+  unload = FALSE,
   force = FALSE,
   include.self = TRUE,
   permanent = FALSE
 )
 }
 \arguments{
-\item{\dots}{comma-separated package names.}
+\item{\dots}{comma-separated package names, quoted or unquoted, or vectors of package names. The code simply captures the \code{\dots} expression, evaluates it inside \code{\link{tryCatch}}, and if it fails coerces it to character. If left empty, all packages returned by \code{\link{fastverse_packages}} are detached.}
 
-\item{unload}{logical. \code{TRUE} also unloads the package using \code{\link[=detach]{detach(name, unload = TRUE)}}.}
+\item{unload}{logical. \code{TRUE} also unloads the packages using \code{\link[=detach]{detach(name, unload = TRUE)}}.}
 
-\item{force}{logical. should a fastverse package be detached even though other attached packages depend on it?}
+\item{force}{logical. should a fastverse package be detached / unloaded even though other attached packages depend on it?}
 
 \item{include.self}{logical. \code{TRUE} also includes the fastverse package.}
 
 \item{permanent}{logical. if \code{\dots} are used to detach certain packages, \code{permament = TRUE} will disable them being loaded the next time the fastverse is loaded. 
-This is implemented via a config file saved to the package directory. Core fastverse packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}.}
+This is implemented via a config file saved to the package directory. Core \emph{fastverse} packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}.}
 }
 \description{
-Detaches fastverse packages (removing them from the \code{\link{search}} path).
+Detaches \emph{fastverse} packages (removing them from the \code{\link{search}} path).
 }
 \examples{
 fastverse_detach()

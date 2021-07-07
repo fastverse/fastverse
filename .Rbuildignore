@@ -1,6 +1,5 @@
 misc
 crandb.rda
-LICENSE
-^R/update\.R$
+^LICENSE$
 ^.*\.Rproj$
 ^\.Rproj\.user$

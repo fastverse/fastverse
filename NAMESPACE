@@ -2,9 +2,12 @@
 
 S3method(print,fastverse_conflicts)
 export(fastverse_conflicts)
+export(fastverse_deps)
 export(fastverse_detach)
 export(fastverse_extend)
 export(fastverse_packages)
+export(fastverse_sitrep)
+export(fastverse_update)
 importFrom(stats,setNames)
 importFrom(utils,install.packages)
 importFrom(utils,installed.packages)

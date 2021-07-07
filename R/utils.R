@@ -3,7 +3,7 @@
 
 msg <- function(..., startup = FALSE) {
   if (startup) {
-    if (!isTRUE(getOption("fastverse.quiet"))) {
+    if (!isTRUE(getOption("fastverse_quiet"))) {
       packageStartupMessage(...)
     }
   } else {
@@ -11,12 +11,16 @@ msg <- function(..., startup = FALSE) {
   }
 }
 
+#' \emph{Fastverse} Options
+#' 
+#' Setting \code{options(fastverse_quiet = TRUE)} will not print any messages to the console when calling \code{library(fastverse)}.
+
 
 #' List all packages in the fastverse
 #'
 #' @param extended logical. \code{TRUE} return all packages currently loaded with \code{library(fastverse)}. \code{FALSE} only returns the core fastverse packages.
-#' For a list of suggested packages to add to your fastverse see the README page. 
-#' @param include.self logical. Include the fastverse package in the list?
+#' For a list of suggested packages to extend \emph{fastverse} see \code{\link{fastverse_extend}} or the README page. 
+#' @param include.self logical. Include the \emph{fastverse} package in the list?
 #' @export
 #' @examples
 #' fastverse_packages()
@@ -29,17 +33,21 @@ fastverse_packages <- function(extended = TRUE, include.self = TRUE) {
       pck <- readLines(fileConn)
       close(fileConn)
     }
+    if(length(ex <- options("fastverse_extend")[[1L]])) {
+      pck <- unique(c(pck, ex))
+    }
   }
   if(include.self) pck <- c(pck, "fastverse")
   pck
 }
 
-# TODO: Speed up
-invert <- function(x) {
-  if (length(x) == 0) return()
-  stacked <- utils::stack(x)
-  tapply(as.character(stacked$ind), stacked$values, list)
-}
+# Not needed anymore
+# invert <- function(x) {
+#   if (length(x) == 0) return()
+#   stacked <- unclass(utils::stack(x))
+#   ### tapply(as.character(stacked$ind), stacked$values, list) # Old
+#   split(as.character(stacked$ind), stacked$values) # Faster
+# }
 
 package_version <- function(x) paste(unclass(packageVersion(x))[[1]], collapse = ".")
 

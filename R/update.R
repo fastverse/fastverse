@@ -65,16 +65,18 @@ packageVersion2 <- function(pkg) {
   }
 }
 
-#' List all fastverse dependencies
+#' List all \emph{fastverse} dependencies
 #'
-#' @param recursive If \code{TRUE}, will also list all dependencies of
-#'   fastverse packages.
-#' @param repos The repositories to use to check for updates.
+#' @param recursive if \code{TRUE}, will also list all dependencies of
+#'   \emph{fastverse} packages.
+#' @param repos the repositories to use to check for updates.
 #'   Defaults to \code{getOptions("repos")}.
 #' @export
 fastverse_deps <- function(recursive = FALSE, repos = getOption("repos")) {
   pkgs <- utils::available.packages(repos = repos)
-  deps <- tools::package_dependencies("tidyverse", pkgs, recursive = recursive)
+  pck <- fastverse_packages(include.self = FALSE)
+  # if(identical(pck, .core_pck)) pck <- "fastverse"
+  deps <- tools::package_dependencies(pck, pkgs, recursive = recursive)
   
   pkg_deps <- unique(sort(unlist(deps)))
   
@@ -95,8 +97,8 @@ fastverse_deps <- function(recursive = FALSE, repos = getOption("repos")) {
   
   data.frame(
     package = pkg_deps,
-    cran = cran_version %>% sapply(as.character),
-    local = local_version %>% sapply(as.character),
+    cran = sapply(cran_version, as.character),
+    local = sapply(local_version, as.character),
     behind = behind
   )
 }
