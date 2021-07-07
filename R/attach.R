@@ -158,8 +158,8 @@ topics_selector <- function(x) {
 #' 
 #' @export
 #' @examples 
-#' fastverse_extend(Rfast, sf, ggplot2)
-#' fastverse_extend(dygraphs, topics = "TS")
+#' fastverse_extend(Rfast, xts, stringi)
+#' fastverse_extend(clock, topics = "TS")
 #' fastverse_extend(topics = c("SP", "DT"))
 fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FALSE, 
                              check.conflicts = TRUE) {
