@@ -3,7 +3,9 @@
 <!-- badges: start 
 [![CRAN status](https://www.r-pkg.org/badges/version/fastverse)](https://cran.r-project.org/package=fastverse) 
 [![cran checks](https://cranchecks.info/badges/worst/fastverse)](https://cran.r-project.org/web/checks/check_results_fastverse.html)
-[![Travis build status](https://travis-ci.com/SebKrantz/fastverse.svg?branch=master)](https://travis-ci.com/SebKrantz/fastverse)
+[![Travis build status](https://travis-ci.com/SebKrantz/fastverse.svg?branch=master)](https://travis-ci.com/SebKrantz/fastverse) -->
+[![R build status](https://github.com/SebKrantz/fastverse/workflows/R-CMD-check/badge.svg)](https://github.com/SebKrantz/fastverse/actions)
+<!--
 [![Codecov test coverage](https://codecov.io/gh/SebKrantz/fastverse/branch/master/graph/badge.svg)](https://codecov.io/gh/SebKrantz/fastverse?branch=master)
 [![minimal R version](https://img.shields.io/badge/R%3E%3D-2.10-6666ff.svg)](https://cran.r-project.org/)
 [![status](https://tinyverse.netlify.com/badge/fastverse)](https://CRAN.R-project.org/package=fastverse)
