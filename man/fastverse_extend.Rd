@@ -48,6 +48,6 @@ is a character vector of packages, before calling \code{library(fastverse)}.
 }
 \examples{
 fastverse_extend(Rfast, sf, ggplot2)
-fastverse_extend(dygraphs, topics = "ts")
-fastverse_extend(topics = c("sp", "dt"))
+fastverse_extend(dygraphs, topics = "TS")
+fastverse_extend(topics = c("SP", "DT"))
 }

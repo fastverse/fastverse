@@ -28,5 +28,7 @@ This is implemented via a config file saved to the package directory. Core \emph
 Detaches \emph{fastverse} packages (removing them from the \code{\link{search}} path).
 }
 \examples{
+\dontrun{
 fastverse_detach()
+}
 }

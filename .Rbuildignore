@@ -3,3 +3,4 @@ crandb.rda
 ^LICENSE$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.github$
