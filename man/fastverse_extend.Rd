@@ -49,5 +49,4 @@ is a character vector of packages, before calling \code{library(fastverse)}.
 \examples{
 fastverse_extend(Rfast, xts, stringi)
 fastverse_extend(clock, topics = "TS")
-fastverse_extend(topics = c("SP", "DT"))
 }
