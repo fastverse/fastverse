@@ -47,7 +47,7 @@ when calling \code{library(fastverse)} in the next session. To extend the \emph{
 is a character vector of packages, before calling \code{library(fastverse)}.
 }
 \examples{
-fastverse_extend(Rfast, sf, ggplot2)
-fastverse_extend(dygraphs, topics = "TS")
+fastverse_extend(Rfast, xts, stringi)
+fastverse_extend(clock, topics = "TS")
 fastverse_extend(topics = c("SP", "DT"))
 }
