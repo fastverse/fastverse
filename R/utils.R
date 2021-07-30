@@ -1,13 +1,7 @@
-#' @importFrom  stats setNames
-#' @importFrom  utils packageVersion packageDescription install.packages installed.packages
 
 msg <- function(..., startup = FALSE) {
-  if (startup) {
-    if (!isTRUE(getOption("fastverse_quiet"))) {
-      packageStartupMessage(...)
-    }
-  } else {
-    message(...)
+  if(!isTRUE(getOption("fastverse_quiet"))) {
+      if(startup) packageStartupMessage(...) else message(...)
   }
 }
 
@@ -18,25 +12,20 @@ msg <- function(..., startup = FALSE) {
 
 #' List all packages in the fastverse
 #'
-#' @param extended logical. \code{TRUE} return all packages currently loaded with \code{library(fastverse)}. \code{FALSE} only returns the core fastverse packages.
-#' For a list of suggested packages to extend \emph{fastverse} see \code{\link{fastverse_extend}} or the README page. 
+#' @param extended logical. \code{TRUE} return all packages currently loaded either with \code{library(fastverse)} or \code{\link{fastverse_extend}}. 
+#' \code{FALSE} only returns the core fastverse packages and any packages added using \code{\link[=fastverse_extend]{fastverse_extend(..., permanent = TRUE)}}.
 #' @param include.self logical. Include the \emph{fastverse} package in the list?
 #' @export
 #' @examples
 #' fastverse_packages()
 fastverse_packages <- function(extended = TRUE, include.self = TRUE) {
-  pck <- .core_pck
-  if(extended) {
-    ext_pck_file <- paste(system.file(package = 'fastverse'), 'fastverse_ext_pck.txt', sep = '/')
-    if(file.exists(ext_pck_file)) {
-      fileConn <- file(ext_pck_file)
-      pck <- readLines(fileConn)
-      close(fileConn)
-    }
-    if(length(ex <- options("fastverse_extend")[[1L]])) {
-      pck <- unique(c(pck, ex))
-    }
-  }
+  ext_pck_file <- paste(system.file(package = 'fastverse'), 'fastverse_ext_pck.txt', sep = '/')
+  if(file.exists(ext_pck_file)) {
+    fileConn <- file(ext_pck_file)
+    pck <- readLines(fileConn)
+    close(fileConn)
+  } else pck <- .core_pck
+  if(extended && length(ex <- options("fastverse_extend")[[1L]])) pck <- unique(c(pck, ex))
   if(include.self) pck <- c(pck, "fastverse")
   pck
 }
@@ -64,15 +53,15 @@ red <- function(x) paste0("\033[31m", x, "\033[39m")
 yellow <- function(x) paste0("\033[33m", x, "\033[39m")
 bold <- function(x) paste0("\033[1m", x, "\033[22m")
 
-rule <- function(left, right = NULL) {
+rule <- function(left, right = NULL, style.left = identity, style.right = identity) {
   n <- .Options$width
   left <- as.character(left)
   if(length(right)) {
     right <- as.character(right)
     w <- n - nchar(left) - nchar(right) - 8L
-    cat("-- ", left, " ", rep("-", w), " ", right, " --", sep = "")
+    cat("-- ", style.left(left), " ", rep("-", w), " ", style.right(right), " --", sep = "")
   } else {
     w <- n - nchar(left) - 4L
-    cat("-- ", left, " ", rep("-", w), sep = "")
+    cat("-- ", style.left(left), " ", rep("-", w), sep = "")
   }
 }

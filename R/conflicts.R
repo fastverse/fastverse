@@ -68,15 +68,15 @@ fastverse_conflicts <- function(pck = fastverse_packages(include.self = FALSE)) 
 fastverse_conflict_message <- function(x) {
   if (length(x) == 0L) return("")
   
-  header <- rule(left = bold("Conflicts"), right = "fastverse_conflicts()")
+  header <- rule(left = "Conflicts", style.left = bold, right = "fastverse_conflicts()")
   
   pkgs <- lapply(x, gsub, pattern = "^package:", replacement = "")
   others <- lapply(pkgs, `[`, -1L)
-  other_calls <- mapply(function(x, y) paste0(blue(x), "::", y, "()", collapse = ", "), others, names(others))
+  other_calls <- mapply(function(x, y) paste0(blue(x), grey09(paste0("::", y, "()")), collapse = ", "), others, names(others))
 
   winner <- vapply(pkgs, `[`, character(1), 1L)
-  funs <- format(paste0(blue(winner), "::", green(paste0(names(x), "()"))))
-  bullets <- paste0(red("x"), " ", funs, " masks ", other_calls, collapse = "\n")
+  funs <- format(paste0(blue(winner), grey09("::"), green(paste0(names(x), "()"))))
+  bullets <- paste0(red("x"), " ", funs, grey09(" masks "), other_calls, collapse = "\n")
   
   paste0(header, "\n", bullets)
 }
@@ -85,7 +85,8 @@ cat_line <- function(x) cat(x, "\n", sep = "", file = stdout(), append = TRUE)
 
 #' @export
 print.fastverse_conflicts <- function(x, ..., startup = FALSE) {
-  cat_line(fastverse_conflict_message(x))
+  if(length(x)) cat_line(fastverse_conflict_message(x))
+  # fastverse_conflict_message(x) why cat_line ??
 }
 
 

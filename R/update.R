@@ -58,11 +58,7 @@ fastverse_sitrep <- function() {
 }
 
 packageVersion2 <- function(pkg) {
-  if (requireNamespace(pkg, quietly = TRUE)) {
-    utils::packageVersion(pkg)
-  } else {
-    0
-  }
+  if (requireNamespace(pkg, quietly = TRUE)) utils::packageVersion(pkg) else 0
 }
 
 #' List all \emph{fastverse} dependencies

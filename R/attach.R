@@ -11,13 +11,13 @@ ckeck_attached <- function(needed = TRUE) {
 }
 
 # Attach the package from the same package library it was
-# loaded from before. https://github.com/fastverse/fastverse/issues/171
+# loaded from before. https://github.com/tidyverse/tidyverse/issues/171
 same_library <- function(pkg) {
   loc <- if (pkg %in% loadedNamespaces()) dirname(getNamespaceInfo(pkg, "path"))
   do.call("library", list(pkg, lib.loc = loc, character.only = TRUE, warn.conflicts = FALSE))
 }
 
-tick <- "v" # "\\U2713" # Heavy: \U2714 # cli::symbol$tick # Load from RDA file...
+tick <- "v" # "\\U2713" # Heavy: \U2714 # cli::symbol$tick
 
 # col_align <- function(x) {
 #   ncx <- nchar(x)
@@ -29,9 +29,10 @@ tick <- "v" # "\\U2713" # Heavy: \U2714 # cli::symbol$tick # Load from RDA file.
 fastverse_attach <- function(to_load, txt = "Attaching core packages", onattach = FALSE) {
   if(length(to_load) == 0L) return(invisible())
   
-  msg(rule(left = bold(txt),
-           right = paste0(kingsblue("fastverse "), package_version("fastverse"))), 
-      startup = TRUE)
+  msg(rule(left = txt, style.left = bold,
+           right = paste("fastverse", package_version("fastverse")), 
+           style.right = function(x) sub("fastverse", kingsblue("fastverse"), x, fixed = TRUE)), 
+      startup = onattach)
   
   versions <- vapply(to_load, package_version, character(1))
   packages <- paste0(kingsblue(tick), " ", magenta2(format(to_load)), " ", grey09(format(versions)))
@@ -41,7 +42,7 @@ fastverse_attach <- function(to_load, txt = "Attaching core packages", onattach 
   col1 <- seq_len(length(packages) / 2)
   info <- paste0(packages[col1], "     ", packages[-col1])
   
-  msg(paste(info, collapse = "\n"), startup = TRUE) # cat(paste(info, collapse = "\n"))
+  msg(paste(info, collapse = "\n"), startup = onattach) # cat(paste(info, collapse = "\n"))
   
   oldopts <- options(warn = -1)
   on.exit(options(oldopts))
@@ -63,13 +64,30 @@ fastverse_attach <- function(to_load, txt = "Attaching core packages", onattach 
   invisible()
 }
 
+
+.onAttach <- function(libname, pkgname) {
+  
+  needed <- ckeck_attached()
+  
+  if(length(needed) == 0L) return()
+  
+  fastverse_attach(needed, onattach = TRUE)
+  
+  if(!"package:conflicted" %in% search()) {
+    x <- fastverse_conflicts() 
+    if(length(x)) msg(fastverse_conflict_message(x), startup = TRUE)
+  }
+  
+}
+
+
 #' Detach \emph{fastverse} packages
 #' 
 #' Detaches \emph{fastverse} packages (removing them from the \code{\link{search}} path).
 #' 
 #' @param \dots comma-separated package names, quoted or unquoted, or vectors of package names. The code simply captures the \code{\dots} expression, evaluates it inside \code{\link{tryCatch}}, and if it fails coerces it to character. If left empty, all packages returned by \code{\link{fastverse_packages}} are detached. 
 #' @param unload logical. \code{TRUE} also unloads the packages using \code{\link[=detach]{detach(name, unload = TRUE)}}.
-#' @param include.self logical. \code{TRUE} also includes the fastverse package. 
+#' @param include.self logical. \code{TRUE} also includes the fastverse package - only applicable if \code{\dots} is left empty.  
 #' @param force logical. should a fastverse package be detached / unloaded even though other attached packages depend on it?
 #' @param permanent logical. if \code{\dots} are used to detach certain packages, \code{permament = TRUE} will disable them being loaded the next time the fastverse is loaded. 
 #' This is implemented via a config file saved to the package directory. Core \emph{fastverse} packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}.
@@ -86,6 +104,7 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
   } else {
     ex <- substitute(c(...))
     pck <- tryCatch(eval(ex), error = function(e) as.character(ex[-1L]))
+    if(!is.character(pck)) pck <- as.character(ex[-1L])
     loaded <- pck[is_attached(pck)] # Include self? -> nope, not sensible...
   }
   
@@ -114,16 +133,17 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
 }
 
 
-
+# Here make sure the order is such that they can be sequentially be detached by fastverse_detach() !!
 topics_selector <- function(x) {
   switch(if(is.character(x)) toupper(x) else x, 
          TS = c("xts", "zoo", "roll"), 
          DT = c("lubridate", "clock", "timechange", "fasttime", "nanotime"),
-         ST = c("stringr", "stringi", "snakecase"),
+         ST = c("snakecase", "stringr", "stringi"),
          SC = c("Rfast", "Rfast2", "fastDummies", "parallelDist", "coop"), # "fastmatch", "fastmap", 
-         SP = c("sf", "stars", "terra"), # "sp" "rgdal" "raster"
-         VI = c("dygraphs", "lattice", "latticeExtra", "grid", "gridExtra", "ggplot2", "scales", "RColorBrewer", "viridis"), # "gridtext", "plotly"
-         TV = c("dtplyr", "tidytable", "tidyfst", "tidyft", "tidyfast", "table.express", "maditr"))
+         SP = c("stars", "terra", "sf"), # "sp" "rgdal" "raster"
+         VI = c("dygraphs", "latticeExtra", "lattice", "gridExtra", "grid", "ggplot2", "scales", "RColorBrewer", "viridis"), # "gridtext", "plotly"
+         TV = c("dtplyr", "tidytable", "tidyfst", "tidyft", "tidyfast", "table.express", "maditr"), 
+         stop("Unknown topic:", x))
 }
 
 #' Extend the \emph{fastverse}
@@ -131,7 +151,7 @@ topics_selector <- function(x) {
 #' Loads additional packages as part of the \emph{fastverse}, either for the current session or permanently.
 #' 
 #' @param \dots comma-separated package names, quoted or unquoted, or vectors of package names. The code simply captures the \code{\dots} expression, evaluates it inside \code{\link{tryCatch}}, and if it fails coerces it to character.  
-#' @param topics integer or character. Short-keys to attach groups of related packages (not case sensitive if character). Packages that are not available are not attached unless \code{install = TRUE}.  
+#' @param topics integer or character. Short-keys to attach groups of related and packages suggested as extensions to the \emph{fastverse} (not case sensitive if character). Packages that are not available are not attached unless \code{install = TRUE}.  
 #' \enumerate{
 #' \item \code{"TS"}: Time Series. Attaches \emph{xts}, \emph{zoo} and \emph{roll}. 
 #' \item \code{"DT"}: Dates and Times. Attaches \emph{lubridate}, \emph{clock}, \emph{timechange}, \emph{fasttime} and \emph{nanotime}.
@@ -166,11 +186,12 @@ fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FA
   if(!missing(...)) {
     ex <- substitute(c(...))
     epck <- tryCatch(eval(ex), error = function(e) as.character(ex[-1L]))
+    if(!is.character(epck)) epck <- as.character(ex[-1L])
   }
   if(length(topics) || install) inst_pck <- installed.packages()[, "Package"]
   
   if(length(topics)) {
-    tpck <- sapply(topics, topics_selector)
+    tpck <- unlist(lapply(topics, topics_selector)) # needed, don't use sapply
     if(!install) tpck <- tpck[tpck %in% inst_pck]
     epck <- if(missing(...)) tpck else unique(c(epck, tpck))
   }
@@ -206,6 +227,8 @@ fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FA
 
   if(check.conflicts && !"package:conflicted" %in% search()) {
     x <- fastverse_conflicts(epck)
-    msg(fastverse_conflict_message(x), startup = TRUE)
+    if(length(x)) msg(fastverse_conflict_message(x))
   }
 }
+
+
