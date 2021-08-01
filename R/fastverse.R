@@ -26,7 +26,7 @@
 #'
 #' \code{\link[=fastverse_extend]{fastverse_extend()}}\cr
 #' \code{\link[=fastverse_detach]{fastverse_detach()}}\cr
-#' \code{\link[=fastverse_detach]{fastverse_reset()}}
+#' \code{\link[=fastverse_reset]{fastverse_reset()}}
 #' 
 #' Function to display conflicts between \emph{fastverse} packages
 #'
