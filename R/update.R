@@ -2,20 +2,14 @@ packageVersion2 <- function(pkg) {
   if (requireNamespace(pkg, quietly = TRUE)) utils::packageVersion(pkg) else 0
 }
 
-#' List all fastverse dependencies
-#'
-#' @param recursive if \code{TRUE}, will also list all dependencies of
-#'   \emph{fastverse} packages.
-#' @param repos the repositories to use to check for updates.
-#'   Defaults to \code{getOptions("repos")}.
-#' @export
-fastverse_deps <- function(recursive = FALSE, repos = getOption("repos")) {
-  pkgs <- utils::available.packages(repos = repos)
-  pck <- fastverse_packages(include.self = FALSE)
-  # if(identical(pck, .core_pck)) pck <- "fastverse"
-  deps <- tools::package_dependencies(pck, pkgs, recursive = recursive)
+# need dots to swallow include.self argument if passed
+deps_core <- function(pck, recursive = FALSE, repos = getOption("repos"), ..., check.deps = TRUE) {  
   
-  pkg_deps <- unique(sort(c(pck, unlist(deps))))
+  pkgs <- utils::available.packages(repos = repos)
+  if(check.deps) {
+    deps <- tools::package_dependencies(pck, pkgs, recursive = recursive)
+    pkg_deps <- unique(sort(c(pck, unlist(deps))))
+  } else pkg_deps <- pck
   
   base_pkgs <- c(
     "base", "compiler", "datasets", "graphics", "grDevices", "grid",
@@ -41,6 +35,22 @@ fastverse_deps <- function(recursive = FALSE, repos = getOption("repos")) {
   )
 }
 
+#' List all fastverse dependencies
+#'
+#' @param recursive \code{TRUE} recursively determines all packages required to operate the current set of \emph{fastverse} packages.
+#' \code{FALSE} will only list the \emph{fastverse} packages and direct dependencies of those packages. 
+#' @param repos the repositories to use to check for updates. Defaults to \code{getOptions("repos")}.
+#' @param include.self logical. \code{TRUE} also includes the fastverse package and checks against CRAN updates.  
+#' 
+#' @returns A data frame giving the package names, the CRAN and local version, and a logical variable stating whether the local version is behind the CRAN version. 
+#' @seealso \code{\link{fastverse_sitrep}}, \code{\link{fastverse}}
+#' @export
+fastverse_deps <- function(recursive = FALSE, repos = getOption("repos"), include.self = FALSE) {
+  pck <- fastverse_packages(include.self = include.self)
+  # if(identical(pck, .core_pck)) pck <- "fastverse"
+  deps_core(pck, recursive, repos)
+}
+
 
 #' Update fastverse packages
 #'
@@ -48,18 +58,28 @@ fastverse_deps <- function(recursive = FALSE, repos = getOption("repos")) {
 #' dependencies) are up-to-date, and will install after an interactive
 #' confirmation.
 #'
-#' @inheritParams fastverse_deps
+#' @param ckeck.deps logical. \code{TRUE} also checks for updates in dependencies of \emph{fastverse} packages. 
+#' @param \dots arguments passed to \code{\link{fastverse_deps}}.
+#' 
 #' @export
+#' @seealso \code{\link{fastverse_deps}}, \code{\link{fastverse}}
 #' @examples
 #' \dontrun{
 #' fastverse_update()
 #' }
-fastverse_update <- function(recursive = FALSE, repos = getOption("repos")) {
+fastverse_update <- function(check.deps = TRUE, ...) {
   
-  deps <- fastverse_deps(recursive, repos)
+  if(check.deps) {
+    deps <- fastverse_deps(...) 
+  } else {
+    include.self <- if(!missing(...) && any(isl <- ...names() == "include.self")) ...elt(which(isl)) else FALSE 
+    pck <- fastverse_packages(include.self = include.self)
+    deps <- deps_core(pck, ..., check.deps = FALSE)
+  }
+  
   behind <- subset(deps, behind)
   
-  if (nrow(behind) == 0) {
+  if (nrow(behind) == 0L) {
     cat("All fastverse packages up-to-date\n")
     return(invisible())
   }
@@ -77,19 +97,25 @@ fastverse_update <- function(recursive = FALSE, repos = getOption("repos")) {
 
 #' Get a situation report on the fastverse
 #'
-#' This function gives a quick overview of the versions of R and RStudio as
-#' well as all fastverse packages. It's primarily designed to help you get
+#' This function gives a quick overview of the version of R and all 
+#' \emph{fastverse} packages. It is primarily designed to help you get
 #' a quick idea of what's going on when you're helping someone else debug
 #' a problem.
-#'
+#' 
+#' @inheritParams fastverse_update
+#' 
+#' @seealso \code{\link{fastverse_deps}}, \code{\link{fastverse}}
 #' @export
-fastverse_sitrep <- function() {
-  #kingsblue()
+fastverse_sitrep <- function(check.deps = TRUE, ...) {
+
   rule(paste0("fastverse ", package_version("fastverse"), ": Core packages"), 
        paste("R", getRversion()), 
        style.left = function(x) sub("fastverse", kingsblue("fastverse"), x, fixed = TRUE))
 
-  deps <- fastverse_deps()
+  include.self <- if(!missing(...) && any(isl <- ...names() == "include.self")) ...elt(which(isl)) else FALSE 
+  pck <- fastverse_packages(include.self = include.self)
+  deps <- deps_core(pck, ..., check.deps = check.deps)  
+
   package_pad <- format(deps$package)
   packages <- ifelse(
     deps$behind,
@@ -97,9 +123,21 @@ fastverse_sitrep <- function() {
     paste0("* ", magenta2(package_pad), " (", deps$cran, ")\n")
   )
   
-  cat("\n", packages[deps$package %in% .core_pck])
-  rule("Non-core packages")
-  cat("\n", packages[!deps$package %in% .core_pck])
+  deps <- deps$package
+  
+  ex <- getOption("fastverse_extend")
+  if(length(ex)) pck <- setdiff(pck, ex)
+  
+  cat("\n", packages[deps %in% pck])
+  if(length(ex)) {
+    rule("Extension packages")
+    cat("\n", packages[deps %in% ex])
+    pck <- c(pck, ex)
+  }
+  if(check.deps) {
+    rule("Dependencies")
+    cat("\n", packages[!deps %in% pck])
+  }
 }
 
 
