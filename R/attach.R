@@ -26,7 +26,7 @@ tick <- "v" # "\\U2713" # Heavy: \U2714 # cli::symbol$tick
 #   paste0(x, spaces)
 # }
 
-fastverse_attach <- function(to_load, txt = "Attaching core packages", onattach = FALSE) {
+fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FALSE) {
   if(length(to_load) == 0L) return(invisible())
   
   msg(rule(left = txt, style.left = bold,
@@ -34,7 +34,7 @@ fastverse_attach <- function(to_load, txt = "Attaching core packages", onattach 
            style.right = function(x) sub("fastverse", kingsblue("fastverse"), x, fixed = TRUE)), 
       startup = onattach)
   
-  versions <- vapply(to_load, package_version, character(1))
+  versions <- vapply(to_load, package_version, character(1L))
   packages <- paste0(kingsblue(tick), " ", magenta2(format(to_load)), " ", grey09(format(versions)))
   
   if(length(packages) %% 2L == 1L) packages <- append(packages, "")
@@ -42,7 +42,7 @@ fastverse_attach <- function(to_load, txt = "Attaching core packages", onattach 
   col1 <- seq_len(length(packages) / 2L)
   info <- paste0(packages[col1], "     ", packages[-col1])
   
-  oldopts <- options(warn = -1)
+  oldopts <- options(warn = -1L)
   on.exit(options(oldopts))
   
   suppressPackageStartupMessages({
@@ -92,6 +92,8 @@ fastverse_attach <- function(to_load, txt = "Attaching core packages", onattach 
 #' @param session logical. \code{TRUE} also removes the packages from \code{options("fastverse_extend")}, so they will not be loaded again with \code{library(fastverse)} in the current session. If \code{\dots} is left empty (i.e. all packages are detached), this will also clear \code{options("fastverse_quiet")}. 
 #' @param permanent logical. if \code{\dots} are used to detach certain packages, \code{permament = TRUE} will disable them being loaded the next time the fastverse is loaded. 
 #' This is implemented via a config file saved to the package directory. Core \emph{fastverse} packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}.
+#' 
+#' @seealso \code{\link{fastverse_extend}}, \code{\link{fastverse}}
 #' @export
 #' @examples 
 #' \dontrun{
@@ -162,9 +164,9 @@ topics_selector <- function(x) {
 #' \item \code{"TS"}: Time Series. Attaches \emph{xts}, \emph{zoo} and \emph{roll}. 
 #' \item \code{"DT"}: Dates and Times. Attaches \emph{lubridate}, \emph{clock}, \emph{timechange}, \emph{fasttime} and \emph{nanotime}.
 #' \item \code{"ST"}: Strings. Attaches \emph{stringr}, \emph{sringi} and \emph{snakecase}.
-#' \item \code{"SC"}: Statistics and Computing. Attaches \emph{Rfast}, \emph{Rfast2}, \emph{fastDummies}, \emph{parallelDist} and \emph{coop}.
+#' \item \code{"SC"}: Statistics and Computing. Attaches \emph{Rfast}, \emph{Rfast2}, \emph{parallelDist} and \emph{coop}. % \emph{fastDummies}, 
 #' \item \code{"SP"}: Spatial. Attaches \emph{sf}, \emph{stars} and \emph{terra}.
-#' \item \code{"VI"}: Visualization. Attaches \emph{dygraphs}, \emph{lattice}, \emph{grid}, \emph{ggplot2}, \emph{scales}, \emph{RColorBrewer} and \emph{viridis}.
+#' \item \code{"VI"}: Visualization. Attaches \emph{dygraphs}, \emph{lattice}, \emph{grid}, \emph{ggplot2} and \emph{scales}. % \emph{RColorBrewer} and \emph{viridis}.
 #' \item \code{"TV"}: Tidyverse-Like. Attaches \emph{tidytable}, \emph{tidyfast}, \emph{tidyfst}, \emph{tidyft} and \emph{maditr}. % , \emph{table.express} and \emph{dtplyr}, import dplyr
 #' }
 #' @param install logical. Install packages not available?
@@ -182,6 +184,7 @@ topics_selector <- function(x) {
 #' when calling \code{library(fastverse)} in the next session. To extend the \emph{fastverse} for the current session when it is not yet loaded, users can also set \code{options(fastverse_extend = c(...))}, where \code{c(...)}
 #' is a character vector of packages, before calling \code{library(fastverse)}. 
 #' 
+#' @seealso \code{\link{fastverse_detach}}, \code{\link{fastverse}}
 #' @export
 #' @examples 
 #' fastverse_extend(Rfast, xts, stringi)
@@ -203,8 +206,8 @@ fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FA
   }
   
   if(missing(...) && is.null(topics)) stop("Need to either supply package names to ... or use the 'topics' argument to load groups of related packages")
-  
-  pck <- fastverse_packages(include.self = FALSE)
+  # Need to be able to first temporarily and then permanently extend fastverse. It cannot be that packages from a first temporary extension get added here if permanent = TRUE
+  pck <- fastverse_packages(extended = !permanent, include.self = FALSE)
   
   if(permanent) {
     ext_pck_file <- paste(system.file(package = 'fastverse'), 'fastverse_extend.txt', sep = '/')

@@ -9,7 +9,7 @@ ls_env <- function(env) {
 
 # Significantly faster than what was previously there
 invert_simplify <- function(x) {
-  if (length(x) == 0) return()
+  if (length(x) == 0L) return()
   stacked <- unclass(utils::stack(x))
   dup <- stacked$values[duplicated(stacked$values)]
   if(!length(dup)) return()
@@ -32,7 +32,7 @@ confirm_conflict <- function(packages, name) { # packages <- conflicts[[3]]; nam
 #' Conflicts between the fastverse and other packages
 #'
 #' This function lists all the conflicts between packages in the \emph{fastverse}
-#' and other packages that you have loaded.
+#' and other packages that you have attached.
 #'
 #' There are 2 internal conflict in the core \emph{fastverse} which are not displayed by \code{fastverse_conflicts()}:
 #' \itemize{
@@ -44,6 +44,7 @@ confirm_conflict <- function(packages, name) { # packages <- conflicts[[3]]; nam
 #' }
 #' @param pck character. A vector of packages to check conflicts for. The default is all fastverse packages.
 #'
+#' @seealso \code{\link{fastverse}}
 #' @export
 #' @examples
 #' # Check conflicts between fastverse packages and all attached packages
@@ -60,7 +61,7 @@ fastverse_conflicts <- function(pck = fastverse_packages(include.self = FALSE)) 
   conflicts <- conflicts[vapply(conflicts, function(x) any(x %in% tidy_names), TRUE)]
   
   conflict_funs <- Map(confirm_conflict, conflicts, names(conflicts))
-  conflict_funs <- conflict_funs[lengths(conflict_funs) > 0]
+  conflict_funs <- conflict_funs[lengths(conflict_funs) > 0L]
   
   structure(conflict_funs, class = "fastverse_conflicts")
 }
@@ -74,7 +75,7 @@ fastverse_conflict_message <- function(x) {
   others <- lapply(pkgs, `[`, -1L)
   other_calls <- mapply(function(x, y) paste0(blue(x), grey09(paste0("::", y, "()")), collapse = ", "), others, names(others))
 
-  winner <- vapply(pkgs, `[`, character(1), 1L)
+  winner <- vapply(pkgs, `[`, character(1L), 1L)
   funs <- format(paste0(blue(winner), grey09("::"), green(paste0(names(x), "()"))))
   bullets <- paste0(red("x"), " ", funs, grey09(" masks "), other_calls, collapse = "\n")
   

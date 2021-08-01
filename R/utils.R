@@ -5,10 +5,6 @@ msg <- function(..., startup = FALSE) {
   }
 }
 
-# #' \emph{Fastverse} Options
-# #' 
-# #' Setting \code{options(fastverse_quiet = TRUE)} will not print any messages to the console when calling \code{library(fastverse)}.
-
 project_packages <- function() {
   fileConn <- file(".fastverse")
   pck <- readLines(fileConn, warn = FALSE, skipNul = TRUE)
@@ -23,6 +19,7 @@ project_packages <- function() {
 #' \code{FALSE} only returns the core fastverse packages and any packages added using \code{\link[=fastverse_extend]{fastverse_extend(..., permanent = TRUE)}}.
 #' @param include.self logical. Include the \emph{fastverse} package in the list?
 #' @export
+#' @seealso \code{\link{fastverse}}
 #' @examples
 #' fastverse_packages()
 fastverse_packages <- function(extended = TRUE, include.self = TRUE) {
@@ -43,9 +40,11 @@ fastverse_packages <- function(extended = TRUE, include.self = TRUE) {
 
 #' Reset the fastverse to defaults
 #' 
-#' Calling this function will remove any permanent package extensions and (default) clear all package options. Packages loaded will not be unloaded. 
+#' Calling this function will remove any permanent package extensions and (default) clear all package options. 
+#' Packages loaded will not be unloaded, and configuration files for projects (as discussed in the vignette) will not be removed. 
 #'
 #' @param options logical. \code{TRUE} also clears all \emph{fastverse} options. 
+#' @seealso \code{\link{fastverse_extend}}, \code{\link{fastverse}}
 #' @export
 fastverse_reset <- function(options = TRUE) {
   if(options) options(fastverse_extend = NULL, fastverse_quiet = NULL)
@@ -62,7 +61,7 @@ fastverse_reset <- function(options = TRUE) {
 #   split(as.character(stacked$ind), stacked$values) # Faster
 # }
 
-package_version <- function(x) paste(unclass(packageVersion(x))[[1]], collapse = ".")
+package_version <- function(x) paste(unclass(packageVersion(x))[[1L]], collapse = ".")
 
 green <- function(x) paste0("\033[32m", x, "\033[39m")
 blue <- function(x) paste0("\033[34m", x, "\033[39m")

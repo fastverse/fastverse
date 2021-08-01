@@ -22,11 +22,12 @@
 #' @details NULL
 #' @section Functions in the \emph{fastverse} Package:
 #' 
-#' Functions to extend or reduce the number of packages in the \emph{fastverse}, either for the session or permanently:
+#' Functions to extend or reduce the number of packages in the \emph{fastverse} - either for the session or permanently - and to restore defaults. 
 #'
 #' \code{\link[=fastverse_extend]{fastverse_extend()}}\cr
-#' \code{\link[=fastverse_detach]{fastverse_detach()}}
-#'
+#' \code{\link[=fastverse_detach]{fastverse_detach()}}\cr
+#' \code{\link[=fastverse_detach]{fastverse_reset()}}
+#' 
 #' Function to display conflicts between \emph{fastverse} packages
 #'
 #' \code{\link[=fastverse_conflicts]{fastverse_conflicts()}}
@@ -38,8 +39,8 @@
 #' Utilities to retrieve the names of \emph{fastverse} packages (and dependencies), and their update status.
 #' 
 #' \code{\link[=fastverse_packages]{fastverse_packages()}}\cr
-#' \code{\link[=fastverse_packages]{fastverse_deps()}}\cr
-#' \code{\link[=fastverse_packages]{fastverse_sitrep()}}
+#' \code{\link[=fastverse_deps]{fastverse_deps()}}\cr
+#' \code{\link[=fastverse_sitrep]{fastverse_sitrep()}}
 #'
 #' @section \emph{fastverse} Options:
 #' \itemize{
