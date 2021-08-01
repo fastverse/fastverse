@@ -5,10 +5,17 @@ msg <- function(..., startup = FALSE) {
   }
 }
 
-#' \emph{Fastverse} Options
-#' 
-#' Setting \code{options(fastverse_quiet = TRUE)} will not print any messages to the console when calling \code{library(fastverse)}.
+# #' \emph{Fastverse} Options
+# #' 
+# #' Setting \code{options(fastverse_quiet = TRUE)} will not print any messages to the console when calling \code{library(fastverse)}.
 
+project_packages <- function() {
+  fileConn <- file(".fastverse")
+  pck <- readLines(fileConn, warn = FALSE, skipNul = TRUE)
+  close(fileConn)
+  pck <- unlist(strsplit(pck, c(" ", ",")), use.names = FALSE)
+  pck[nzchar(pck)]
+}
 
 #' List all packages in the fastverse
 #'
@@ -19,15 +26,32 @@ msg <- function(..., startup = FALSE) {
 #' @examples
 #' fastverse_packages()
 fastverse_packages <- function(extended = TRUE, include.self = TRUE) {
-  ext_pck_file <- paste(system.file(package = 'fastverse'), 'fastverse_ext_pck.txt', sep = '/')
-  if(file.exists(ext_pck_file)) {
-    fileConn <- file(ext_pck_file)
-    pck <- readLines(fileConn)
-    close(fileConn)
-  } else pck <- .core_pck
-  if(extended && length(ex <- options("fastverse_extend")[[1L]])) pck <- unique(c(pck, ex))
+  if(file.exists(".fastverse")) {
+    pck <- project_packages()
+  } else {
+    ext_pck_file <- paste(system.file(package = 'fastverse'), 'fastverse_extend.txt', sep = '/')
+    if(file.exists(ext_pck_file)) {
+      fileConn <- file(ext_pck_file)
+      pck <- readLines(fileConn)
+      close(fileConn)
+    } else pck <- .core_pck
+  }
+  if(extended && length(ex <- getOption("fastverse_extend"))) pck <- unique(c(pck, ex))
   if(include.self) pck <- c(pck, "fastverse")
   pck
+}
+
+#' Reset the fastverse to defaults
+#' 
+#' Calling this function will remove any permanent package extensions and (default) clear all package options. Packages loaded will not be unloaded. 
+#'
+#' @param options logical. \code{TRUE} also clears all \emph{fastverse} options. 
+#' @export
+fastverse_reset <- function(options = TRUE) {
+  if(options) options(fastverse_extend = NULL, fastverse_quiet = NULL)
+  ext_file <- paste(system.file(package = 'fastverse'), 'fastverse_extend.txt', sep = '/')
+  if(file.exists(ext_file)) file.remove(ext_file)
+  invisible()
 }
 
 # Not needed anymore

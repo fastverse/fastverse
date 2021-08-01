@@ -583,5 +583,3 @@ replace_matrixStats <- function() {
   rm(ms, i)
 }
 
-
-# funique2 <- kit::funique

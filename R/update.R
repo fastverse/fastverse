@@ -1,3 +1,47 @@
+packageVersion2 <- function(pkg) {
+  if (requireNamespace(pkg, quietly = TRUE)) utils::packageVersion(pkg) else 0
+}
+
+#' List all fastverse dependencies
+#'
+#' @param recursive if \code{TRUE}, will also list all dependencies of
+#'   \emph{fastverse} packages.
+#' @param repos the repositories to use to check for updates.
+#'   Defaults to \code{getOptions("repos")}.
+#' @export
+fastverse_deps <- function(recursive = FALSE, repos = getOption("repos")) {
+  pkgs <- utils::available.packages(repos = repos)
+  pck <- fastverse_packages(include.self = FALSE)
+  # if(identical(pck, .core_pck)) pck <- "fastverse"
+  deps <- tools::package_dependencies(pck, pkgs, recursive = recursive)
+  
+  pkg_deps <- unique(sort(c(pck, unlist(deps))))
+  
+  base_pkgs <- c(
+    "base", "compiler", "datasets", "graphics", "grDevices", "grid",
+    "methods", "parallel", "splines", "stats", "stats4", "tools", "tcltk",
+    "utils"
+  )
+  pkg_deps <- setdiff(pkg_deps, base_pkgs)
+  
+  # tool_pkgs <- c("cli", "crayon", "rstudioapi")
+  # pkg_deps <- setdiff(pkg_deps, tool_pkgs)
+  
+  cran_version <- lapply(pkgs[pkg_deps, "Version"], base::package_version)
+  local_version <- lapply(pkg_deps, packageVersion2)
+  
+  behind <- mapply(`>`, cran_version, local_version)
+  
+  data.frame(
+    package = pkg_deps,
+    cran = sapply(cran_version, as.character),
+    local = sapply(local_version, as.character),
+    behind = behind,
+    row.names = seq_along(pkg_deps)
+  )
+}
+
+
 #' Update fastverse packages
 #'
 #' This will check to see if all fastverse packages (and optionally, their
@@ -42,13 +86,14 @@ fastverse_update <- function(recursive = FALSE, repos = getOption("repos")) {
 fastverse_sitrep <- function() {
   #kingsblue()
   rule(paste0("fastverse ", package_version("fastverse"), ": Core packages"), 
-       paste("R", getRversion()))
+       paste("R", getRversion()), 
+       style.left = function(x) sub("fastverse", kingsblue("fastverse"), x, fixed = TRUE))
 
   deps <- fastverse_deps()
   package_pad <- format(deps$package)
   packages <- ifelse(
     deps$behind,
-    paste0("* ", gold(bold(package_pad)), " (", deps$local, " < ", deps$cran, ")\n"),
+    paste0("* ", gold(package_pad), " (", deps$local, " < ", deps$cran, ")\n"), # bold()
     paste0("* ", magenta2(package_pad), " (", deps$cran, ")\n")
   )
   
@@ -57,45 +102,4 @@ fastverse_sitrep <- function() {
   cat("\n", packages[!deps$package %in% .core_pck])
 }
 
-packageVersion2 <- function(pkg) {
-  if (requireNamespace(pkg, quietly = TRUE)) utils::packageVersion(pkg) else 0
-}
-
-#' List all \emph{fastverse} dependencies
-#'
-#' @param recursive if \code{TRUE}, will also list all dependencies of
-#'   \emph{fastverse} packages.
-#' @param repos the repositories to use to check for updates.
-#'   Defaults to \code{getOptions("repos")}.
-#' @export
-fastverse_deps <- function(recursive = FALSE, repos = getOption("repos")) {
-  pkgs <- utils::available.packages(repos = repos)
-  pck <- fastverse_packages(include.self = FALSE)
-  # if(identical(pck, .core_pck)) pck <- "fastverse"
-  deps <- tools::package_dependencies(pck, pkgs, recursive = recursive)
-  
-  pkg_deps <- unique(sort(unlist(deps)))
-  
-  base_pkgs <- c(
-    "base", "compiler", "datasets", "graphics", "grDevices", "grid",
-    "methods", "parallel", "splines", "stats", "stats4", "tools", "tcltk",
-    "utils"
-  )
-  pkg_deps <- setdiff(pkg_deps, base_pkgs)
-  
-  # tool_pkgs <- c("cli", "crayon", "rstudioapi")
-  # pkg_deps <- setdiff(pkg_deps, tool_pkgs)
-  
-  cran_version <- lapply(pkgs[pkg_deps, "Version"], base::package_version)
-  local_version <- lapply(pkg_deps, packageVersion2)
-  
-  behind <- mapply(`>`, cran_version, local_version)
-  
-  data.frame(
-    package = pkg_deps,
-    cran = sapply(cran_version, as.character),
-    local = sapply(local_version, as.character),
-    behind = behind
-  )
-}
 

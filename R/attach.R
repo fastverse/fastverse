@@ -39,10 +39,8 @@ fastverse_attach <- function(to_load, txt = "Attaching core packages", onattach 
   
   if(length(packages) %% 2L == 1L) packages <- append(packages, "")
   
-  col1 <- seq_len(length(packages) / 2)
+  col1 <- seq_len(length(packages) / 2L)
   info <- paste0(packages[col1], "     ", packages[-col1])
-  
-  msg(paste(info, collapse = "\n"), startup = onattach) # cat(paste(info, collapse = "\n"))
   
   oldopts <- options(warn = -1)
   on.exit(options(oldopts))
@@ -55,11 +53,13 @@ fastverse_attach <- function(to_load, txt = "Attaching core packages", onattach 
       lapply(to_load, same_library)
       # Special case: matrixStats was loaded before the fastverse
       if(onattach && any(fastverse_packages(include.self = FALSE) == "matrixStats") && is_attached("matrixStats")) {
-          detach("package:matrixStats", unload = TRUE)
+          detach("package:matrixStats") # , unload = TRUE
           replace_matrixStats()
       }
     }
   })
+  
+  msg(paste(info, collapse = "\n"), startup = onattach) # cat(paste(info, collapse = "\n"))
   
   invisible()
 }
@@ -67,13 +67,13 @@ fastverse_attach <- function(to_load, txt = "Attaching core packages", onattach 
 
 .onAttach <- function(libname, pkgname) {
   
-  needed <- ckeck_attached()
-  
+  needed <- ckeck_attached() 
+
   if(length(needed) == 0L) return()
   
   fastverse_attach(needed, onattach = TRUE)
   
-  if(!"package:conflicted" %in% search()) {
+  if(!isTRUE(getOption("fastverse_quiet")) && !"package:conflicted" %in% search()) {
     x <- fastverse_conflicts() 
     if(length(x)) msg(fastverse_conflict_message(x), startup = TRUE)
   }
@@ -81,7 +81,7 @@ fastverse_attach <- function(to_load, txt = "Attaching core packages", onattach 
 }
 
 
-#' Detach \emph{fastverse} packages
+#' Detach fastverse packages
 #' 
 #' Detaches \emph{fastverse} packages (removing them from the \code{\link{search}} path).
 #' 
@@ -89,6 +89,7 @@ fastverse_attach <- function(to_load, txt = "Attaching core packages", onattach 
 #' @param unload logical. \code{TRUE} also unloads the packages using \code{\link[=detach]{detach(name, unload = TRUE)}}.
 #' @param include.self logical. \code{TRUE} also includes the fastverse package - only applicable if \code{\dots} is left empty.  
 #' @param force logical. should a fastverse package be detached / unloaded even though other attached packages depend on it?
+#' @param session logical. \code{TRUE} also removes the packages from \code{options("fastverse_extend")}, so they will not be loaded again with \code{library(fastverse)} in the current session. If \code{\dots} is left empty (i.e. all packages are detached), this will also clear \code{options("fastverse_quiet")}. 
 #' @param permanent logical. if \code{\dots} are used to detach certain packages, \code{permament = TRUE} will disable them being loaded the next time the fastverse is loaded. 
 #' This is implemented via a config file saved to the package directory. Core \emph{fastverse} packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}.
 #' @export
@@ -96,25 +97,30 @@ fastverse_attach <- function(to_load, txt = "Attaching core packages", onattach 
 #' \dontrun{
 #' fastverse_detach()
 #' }
-fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = TRUE, permanent = FALSE) {
+fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = TRUE, 
+                             session = FALSE, permanent = FALSE) {
   
   if(missing(...)) {
     loaded <- ckeck_attached(needed = FALSE)
     if(include.self) loaded <- c(loaded, "fastverse") # Could already be part of loaded ??
+    if(session) options(fastverse_extend = NULL, fastverse_quiet = NULL)
   } else {
     ex <- substitute(c(...))
     pck <- tryCatch(eval(ex), error = function(e) as.character(ex[-1L]))
     if(!is.character(pck)) pck <- as.character(ex[-1L])
     loaded <- pck[is_attached(pck)] # Include self? -> nope, not sensible...
+    if(session) {
+      epck <- getOption("fastverse_extend")
+      if(length(epck) && length(pdiff <- setdiff(epck, pck)))
+        options(fastverse_extend = pdiff)
+    }
   }
-  
-  options(fastverse_extend = NULL)
   
   if(permanent) {
     if(missing(...)) stop("permanently detaching all packages in the fastverse does not make any sense. Please indicate packages to permanently detach.")
-    ext_pck_file <- paste(system.file(package = 'fastverse'), 'fastverse_ext_pck.txt', sep = '/')
-    fileConn <- file(ext_pck_file)
+    ext_pck_file <- paste(system.file(package = 'fastverse'), 'fastverse_extend.txt', sep = '/')
     fexl <- file.exists(ext_pck_file)
+    fileConn <- file(ext_pck_file)
     ext_pck <- if(fexl) setdiff(readLines(fileConn), pck) else setdiff(.core_pck, pck)
     if(identical(ext_pck, .core_pck)) {
       close(fileConn)
@@ -127,8 +133,8 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
   
   if(length(loaded)) {
     ul <- paste0("package:", loaded) 
-    for(i in ul)  eval(substitute(detach(pck, unload = unload, 
-                                         character.only = TRUE, force = force), list(pck = i)))
+    for(i in ul)  eval(substitute(detach(pcki, unload = unload, 
+                                         character.only = TRUE, force = force), list(pcki = i)))
   }
 }
 
@@ -139,27 +145,27 @@ topics_selector <- function(x) {
          TS = c("xts", "zoo", "roll"), 
          DT = c("lubridate", "clock", "timechange", "fasttime", "nanotime"),
          ST = c("snakecase", "stringr", "stringi"),
-         SC = c("Rfast", "Rfast2", "fastDummies", "parallelDist", "coop"), # "fastmatch", "fastmap", 
+         SC = c("Rfast", "Rfast2", "parallelDist", "coop"), # "fastmatch", "fastmap", (not on topic), "fastDummies" (16 dependencies)
          SP = c("stars", "terra", "sf"), # "sp" "rgdal" "raster"
-         VI = c("dygraphs", "latticeExtra", "lattice", "gridExtra", "grid", "ggplot2", "scales", "RColorBrewer", "viridis"), # "gridtext", "plotly"
-         TV = c("dtplyr", "tidytable", "tidyfst", "tidyft", "tidyfast", "table.express", "maditr"), 
+         VI = c("dygraphs", "lattice", "grid", "ggplot2", "scales"), # "latticeExtra", "lattice", "gridExtra", "grid" # "gridtext", "plotly", "viridis" (32 dependencies), "RColorBrewer" (main function provided by scales)
+         TV = c("tidytable", "tidyfast", "tidyfst", "tidyft", "maditr"), # "dtplyr", "table.express" import dplyr!!
          stop("Unknown topic:", x))
 }
 
-#' Extend the \emph{fastverse}
+#' Extend the fastverse
 #' 
 #' Loads additional packages as part of the \emph{fastverse}, either for the current session or permanently.
 #' 
 #' @param \dots comma-separated package names, quoted or unquoted, or vectors of package names. The code simply captures the \code{\dots} expression, evaluates it inside \code{\link{tryCatch}}, and if it fails coerces it to character.  
-#' @param topics integer or character. Short-keys to attach groups of related and packages suggested as extensions to the \emph{fastverse} (not case sensitive if character). Packages that are not available are not attached unless \code{install = TRUE}.  
+#' @param topics integer or character. Short-keys to attach groups of related and packages suggested as extensions to the \emph{fastverse} (not case sensitive if character). Packages that are not available are skipped unless \code{install = TRUE}.  
 #' \enumerate{
 #' \item \code{"TS"}: Time Series. Attaches \emph{xts}, \emph{zoo} and \emph{roll}. 
 #' \item \code{"DT"}: Dates and Times. Attaches \emph{lubridate}, \emph{clock}, \emph{timechange}, \emph{fasttime} and \emph{nanotime}.
 #' \item \code{"ST"}: Strings. Attaches \emph{stringr}, \emph{sringi} and \emph{snakecase}.
 #' \item \code{"SC"}: Statistics and Computing. Attaches \emph{Rfast}, \emph{Rfast2}, \emph{fastDummies}, \emph{parallelDist} and \emph{coop}.
 #' \item \code{"SP"}: Spatial. Attaches \emph{sf}, \emph{stars} and \emph{terra}.
-#' \item \code{"VI"}: Visualization. Attaches \emph{dygraphs}, \emph{lattice}, \emph{latticeExtra}, \emph{grid}, \emph{gridExtra}, \emph{ggplot2}, \emph{scales}, \emph{RColorBrewer} and \emph{viridis}.
-#' \item \code{"TV"}: Tidyverse-Like. Attaches \emph{dtplyr}, \emph{tidytable}, \emph{tidyfst}, \emph{tidyft}, \emph{tidyfast}, \emph{table.express} and \emph{maditr}.
+#' \item \code{"VI"}: Visualization. Attaches \emph{dygraphs}, \emph{lattice}, \emph{grid}, \emph{ggplot2}, \emph{scales}, \emph{RColorBrewer} and \emph{viridis}.
+#' \item \code{"TV"}: Tidyverse-Like. Attaches \emph{tidytable}, \emph{tidyfast}, \emph{tidyfst}, \emph{tidyft} and \emph{maditr}. % , \emph{table.express} and \emph{dtplyr}, import dplyr
 #' }
 #' @param install logical. Install packages not available?
 #' @param permanent logical. Should extensions be saved and included when \code{library(fastverse)} is called next time. This is implemented via a config file saved to the package directory. The config file will be removed if the \emph{fastverse} is reinstalled. Packages can be removed from the config file using \code{\link[=fastverse_detach]{fastverse_detach(..., permanent = TRUE)}}.
@@ -181,7 +187,7 @@ topics_selector <- function(x) {
 #' fastverse_extend(Rfast, xts, stringi)
 #' fastverse_extend(clock, topics = "TS")
 fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FALSE, 
-                             check.conflicts = TRUE) {
+                             check.conflicts = !isTRUE(getOption("fastverse_quiet"))) {
   
   if(!missing(...)) {
     ex <- substitute(c(...))
@@ -196,15 +202,17 @@ fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FA
     epck <- if(missing(...)) tpck else unique(c(epck, tpck))
   }
   
+  if(missing(...) && is.null(topics)) stop("Need to either supply package names to ... or use the 'topics' argument to load groups of related packages")
+  
   pck <- fastverse_packages(include.self = FALSE)
   
   if(permanent) {
-    ext_pck_file <- paste(system.file(package = 'fastverse'), 'fastverse_ext_pck.txt', sep = '/')
+    ext_pck_file <- paste(system.file(package = 'fastverse'), 'fastverse_extend.txt', sep = '/')
     fileConn <- file(ext_pck_file)
     writeLines(unique(c(pck, epck)), fileConn)
     close(fileConn)
   } else {
-    if(length(ex <- options("fastverse_extend")[[1L]])) { # It was already extended before
+    if(length(ex <- getOption("fastverse_extend"))) { # It was already extended before
       options(fastverse_extend = unique(c(ex, setdiff(epck, pck))))
     } else { # It is extended for the first time
       options(fastverse_extend = setdiff(epck, pck))
