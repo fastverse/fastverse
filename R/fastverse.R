@@ -45,6 +45,7 @@
 #' @section \emph{fastverse} Options:
 #' \itemize{
 #' \item Setting \code{option(fastverse_quiet = TRUE)} will disable all automatic messages (including conflict reporting) when calling \code{library(fastvsers)} or \code{\link{fastverse_extend}}
+#' \item \code{option(fastverse_styling = FALSE)} will disable any styling applied to text printed to the console. 
 #' \item \code{option(fastverse_extend = c(...))} can be set before calling \code{library(fastvsers)} to extend the fastverse with some packages for the session. The same can be done with the
 #' \code{\link{fastverse_extend}} function after \code{library(fastvsers)}, which will also populate \code{option("fastverse_extend")}. 
 #' }

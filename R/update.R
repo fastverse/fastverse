@@ -8,7 +8,7 @@ deps_core <- function(pck, recursive = FALSE, repos = getOption("repos"), ..., c
   pkgs <- utils::available.packages(repos = repos)
   if(check.deps) {
     deps <- tools::package_dependencies(pck, pkgs, recursive = recursive)
-    pkg_deps <- unique(sort(c(pck, unlist(deps))))
+    pkg_deps <- unique(c(pck, sort(unlist(deps, use.names = FALSE)))) 
   } else pkg_deps <- pck
   
   base_pkgs <- c(
@@ -108,9 +108,10 @@ fastverse_update <- function(check.deps = TRUE, ...) {
 #' @export
 fastverse_sitrep <- function(check.deps = TRUE, ...) {
 
-  rule(paste0("fastverse ", package_version("fastverse"), ": Core packages"), 
+  cat(rule(paste0("fastverse ", package_version("fastverse"), ": Situation Report"), # , ": Core packages" 
        paste("R", getRversion()), 
-       style.left = function(x) sub("fastverse", kingsblue("fastverse"), x, fixed = TRUE))
+       style.left = function(x) sub("Situation Report", bold("Situation Report"), 
+                                    sub("fastverse", kingsblue("fastverse"), x, fixed = TRUE), fixed = TRUE)))
 
   include.self <- if(!missing(...) && any(isl <- ...names() == "include.self")) ...elt(which(isl)) else FALSE 
   pck <- fastverse_packages(include.self = include.self)
@@ -128,16 +129,16 @@ fastverse_sitrep <- function(check.deps = TRUE, ...) {
   ex <- getOption("fastverse_extend")
   if(length(ex)) pck <- setdiff(pck, ex)
   
-  cat("\n", packages[deps %in% pck])
+  glcol <- file.exists(gconf_path())
+  pcol <- file.exists(".fastverse")
+  cat("\n", c(paste0("* Global config file: ", glcol, if(glcol && pcol) " (ignored)\n" else "\n"),
+              paste0("* Project config file: ", pcol, "\n")))
+  cat(rule("Core packages"), "\n", packages[deps %in% pck])
   if(length(ex)) {
-    rule("Extension packages")
-    cat("\n", packages[deps %in% ex])
+    cat(rule("Extension packages"), "\n", packages[deps %in% ex])
     pck <- c(pck, ex)
   }
-  if(check.deps) {
-    rule("Dependencies")
-    cat("\n", packages[!deps %in% pck])
-  }
+  if(check.deps) cat(rule("Dependencies"), "\n", packages[!deps %in% pck])
 }
 
 

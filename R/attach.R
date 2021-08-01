@@ -29,13 +29,15 @@ tick <- "v" # "\\U2713" # Heavy: \U2714 # cli::symbol$tick
 fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FALSE) {
   if(length(to_load) == 0L) return(invisible())
   
-  msg(rule(left = txt, style.left = bold,
-           right = paste("fastverse", package_version("fastverse")), 
-           style.right = function(x) sub("fastverse", kingsblue("fastverse"), x, fixed = TRUE)), 
+  pv <- package_version("fastverse")
+  msg(rule(left = txt, style.left = function(x) bold(text_col(x)),
+           right = paste("fastverse", pv), 
+           style.right = function(x) sub(pv, text_col(pv), sub("fastverse", kingsblue("fastverse"), x, fixed = TRUE), fixed = TRUE), 
+           style.rule = TRUE), 
       startup = onattach)
   
   versions <- vapply(to_load, package_version, character(1L))
-  packages <- paste0(kingsblue(tick), " ", magenta2(format(to_load)), " ", grey09(format(versions)))
+  packages <- paste0(kingsblue(tick), " ", magenta2(format(to_load)), " ", grey70(format(versions)))
   
   if(length(packages) %% 2L == 1L) packages <- append(packages, "")
   
@@ -107,7 +109,8 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
     if(include.self) loaded <- c(loaded, "fastverse") # Could already be part of loaded ??
     if(session) {
       options(fastverse_extend = NULL)
-      if(include.self) options(fastverse_quiet = NULL)
+      if(include.self) options(fastverse_quiet = NULL, 
+                               fastverse_styling = NULL)
     }
   } else {
     ex <- substitute(c(...))
@@ -123,7 +126,7 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
   
   if(permanent) {
     if(missing(...)) stop("permanently detaching all packages in the fastverse does not make any sense. Please indicate packages to permanently detach.")
-    ext_pck_file <- paste(system.file(package = 'fastverse'), 'fastverse_extend.txt', sep = '/')
+    ext_pck_file <- gconf_path()
     fexl <- file.exists(ext_pck_file)
     fileConn <- file(ext_pck_file)
     ext_pck <- if(fexl) setdiff(readLines(fileConn), pck) else setdiff(.core_pck, pck)
@@ -213,7 +216,7 @@ fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FA
   pck <- fastverse_packages(extended = !permanent, include.self = FALSE)
   
   if(permanent) {
-    ext_pck_file <- paste(system.file(package = 'fastverse'), 'fastverse_extend.txt', sep = '/')
+    ext_pck_file <- gconf_path()
     fileConn <- file(ext_pck_file)
     writeLines(unique(c(pck, epck)), fileConn)
     close(fileConn)

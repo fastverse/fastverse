@@ -69,15 +69,15 @@ fastverse_conflicts <- function(pck = fastverse_packages(include.self = FALSE)) 
 fastverse_conflict_message <- function(x) {
   if (length(x) == 0L) return("")
   
-  header <- rule(left = "Conflicts", style.left = bold, right = "fastverse_conflicts()")
+  header <- text_col(rule(left = "Conflicts", style.left = bold, right = "fastverse_conflicts()"))
   
   pkgs <- lapply(x, gsub, pattern = "^package:", replacement = "")
   others <- lapply(pkgs, `[`, -1L)
-  other_calls <- mapply(function(x, y) paste0(blue(x), grey09(paste0("::", y, "()")), collapse = ", "), others, names(others))
+  other_calls <- mapply(function(x, y) paste0(blue(x), grey70(paste0("::", y, "()")), collapse = ", "), others, names(others))
 
   winner <- vapply(pkgs, `[`, character(1L), 1L)
-  funs <- format(paste0(blue(winner), grey09("::"), green(paste0(names(x), "()"))))
-  bullets <- paste0(red("x"), " ", funs, grey09(" masks "), other_calls, collapse = "\n")
+  funs <- format(paste0(blue(winner), grey70("::"), green(paste0(names(x), "()"))))
+  bullets <- paste0(red("x"), " ", funs, grey70(" masks "), other_calls, collapse = "\n")
   
   paste0(header, "\n", bullets)
 }
