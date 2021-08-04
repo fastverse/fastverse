@@ -37,7 +37,7 @@ fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FAL
       startup = onattach)
   
   versions <- vapply(to_load, package_version, character(1L))
-  packages <- paste0(kingsblue(tick), " ", magenta2(format(to_load)), " ", grey70(format(versions)))
+  packages <- paste0(kingsblue(tick), " ", magenta2(format(to_load)), " ", text_col(format(versions)))
   
   if(length(packages) %% 2L == 1L) packages <- append(packages, "")
   
@@ -85,22 +85,18 @@ fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FAL
 
 #' Detach fastverse packages
 #' 
-#' Detaches \emph{fastverse} packages (removing them from the \code{\link{search}} path).
+#' Detaches \emph{fastverse} packages, removing them from the \code{\link{search}} path.
 #' 
 #' @param \dots comma-separated package names, quoted or unquoted, or vectors of package names. If left empty, all packages returned by \code{\link{fastverse_packages}} are detached. 
 #' @param unload logical. \code{TRUE} also unloads the packages using \code{\link[=detach]{detach(name, unload = TRUE)}}.
 #' @param include.self logical. \code{TRUE} also includes the fastverse package - only applicable if \code{\dots} is left empty.  
 #' @param force logical. should a fastverse package be detached / unloaded even though other attached packages depend on it?
-#' @param session logical. \code{TRUE} also removes the packages from \code{options("fastverse_extend")}, so they will not be loaded again with \code{library(fastverse)} in the current session. If \code{\dots} is left empty and \code{include.self = TRUE}, this will also clear \code{options("fastverse_quiet")}. 
+#' @param session logical. \code{TRUE} also removes the packages from \code{options("fastverse_extend")}, so they will not be loaded again with \code{library(fastverse)} in the current session. If \code{\dots} is left empty and \code{include.self = TRUE}, this will clear \bold{all} \emph{fastverse} options set for the session. 
 #' @param permanent logical. if \code{\dots} are used to detach certain packages, \code{permament = TRUE} will disable them being loaded the next time the fastverse is loaded. 
-#' This is implemented via a config file saved to the package directory. Core \emph{fastverse} packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}.
+#' This is implemented via a config file saved to the package directory. Core \emph{fastverse} packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}. The config file can be removed with \code{\link{fastverse_reset}}.
 #' 
 #' @seealso \code{\link{fastverse_extend}}, \code{\link{fastverse}}
 #' @export
-#' @examples 
-#' \dontrun{
-#' fastverse_detach()
-#' }
 fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = TRUE, 
                              session = FALSE, permanent = FALSE) {
   
@@ -132,7 +128,7 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
     ext_pck <- if(fexl) setdiff(readLines(fileConn), pck) else setdiff(.core_pck, pck)
     if(identical(ext_pck, .core_pck)) {
       close(fileConn)
-      file.remove(ext_pck_file)
+      if(fexl) file.remove(ext_pck_file) # If condition necessary, else error !!
     } else {
       writeLines(ext_pck, fileConn)
       close(fileConn)
@@ -151,7 +147,7 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
 topics_selector <- function(x) {
   switch(if(is.character(x)) toupper(x) else x, 
          TS = c("xts", "zoo", "roll"), 
-         DT = c("lubridate", "clock", "timechange", "fasttime", "nanotime"),
+         DT = c("lubridate", "clock", "timechange", "fasttime", "nanotime"), # anytime?? #nanotime??
          ST = c("snakecase", "stringr", "stringi"),
          SC = c("Rfast", "Rfast2", "parallelDist", "coop"), # "fastmatch", "fastmap", (not on topic), "fastDummies" (16 dependencies)
          SP = c("stars", "terra", "sf"), # "sp" "rgdal" "raster"
@@ -162,10 +158,10 @@ topics_selector <- function(x) {
 
 #' Extend the fastverse
 #' 
-#' Loads additional packages as part of the \emph{fastverse}, either for the current session or permanently.
+#' Loads additional packages as part of the \emph{fastverse}. By default only for the session, but extensions can be saved up to reinstallation/updating of the \emph{fastverse} package. 
 #' 
 #' @param \dots comma-separated package names, quoted or unquoted, or vectors of package names. 
-#' @param topics integer or character. Short-keys to attach groups of related and packages suggested as extensions to the \emph{fastverse} (not case sensitive if character). Packages that are not available are skipped unless \code{install = TRUE}.  
+#' @param topics integer or character. Short-keys to attach groups of related and packages suggested as extensions to the \emph{fastverse} (not case sensitive if character). Unavailable packages are skipped unless \code{install = TRUE}.  
 #' \enumerate{
 #' \item \code{"TS"}: Time Series. Attaches \emph{xts}, \emph{zoo} and \emph{roll}. 
 #' \item \code{"DT"}: Dates and Times. Attaches \emph{lubridate}, \emph{clock}, \emph{timechange}, \emph{fasttime} and \emph{nanotime}.
@@ -176,19 +172,19 @@ topics_selector <- function(x) {
 #' \item \code{"TV"}: Tidyverse-Like. Attaches \emph{tidytable}, \emph{tidyfast}, \emph{tidyfst}, \emph{tidyft} and \emph{maditr}. % , \emph{table.express} and \emph{dtplyr}, import dplyr
 #' }
 #' @param install logical. Install packages not available?
-#' @param permanent logical. Should extensions be saved and included when \code{library(fastverse)} is called next time. This is implemented via a config file saved to the package directory. The config file will be removed if the \emph{fastverse} is reinstalled. Packages can be removed from the config file using \code{\link[=fastverse_detach]{fastverse_detach(..., permanent = TRUE)}}.
+#' @param permanent logical. Should packages be saved and included when \code{library(fastverse)} is called next time? Implemented via a config file saved to the package directory. The file will be removed if the \emph{fastverse} is reinstalled, and can be removed without reinstallation using \code{\link{fastverse_reset}}. Packages can be removed from the config file using \code{\link[=fastverse_detach]{fastverse_detach(..., permanent = TRUE)}}.
 #' @param check.conflicts logical. Should conflicts between extension packages and loaded packages be checked?
 #' 
 #' @details 
 #' The \emph{fastverse} can be extended using a free choice of packages, packages listed under \code{topics}, or a combination of both. If \code{install = FALSE}, only packages 
 #' among the \code{topics} groups that are available are considered, others are disregarded. 
 #' 
-#' When the \emph{fastverse} is extended calling \code{fastverse_extend(...)}, the packages that are not attached are attached and conflicts are checked for the newly attached packages. 
+#' When the \emph{fastverse} is extended calling \code{fastverse_extend(...)}, the packages that are not attached are attached, but conflicts are checked for all specified packages. 
 #' If \code{permanent = FALSE}, an \code{option("fastverse_extend")} is set which stores these extension packages, regardless of whether they were already attached or not. When calling 
-#' \code{\link{fastverse_packages}}, \code{\link{fastverse_deps}}, \code{\link{fastverse_conflicts}}, \code{\link{fastverse_update}} or \code{\link{fastverse_detach}}, these packages are included as part of the fastverse. 
-#' This is also the case if \code{permanent = TRUE}, with the only difference that instead of an option, a file is saved to the package directory such that the extended packages are also loaded
-#' when calling \code{library(fastverse)} in the next session. To extend the \emph{fastverse} for the current session when it is not yet loaded, users can also set \code{options(fastverse_extend = c(...))}, where \code{c(...)}
-#' is a character vector of packages, before calling \code{library(fastverse)}. 
+#' \code{\link{fastverse_packages}}, \code{\link{fastverse_deps}}, \code{\link{fastverse_conflicts}}, \code{\link{fastverse_update}}, \code{\link{fastverse_sitrep}} or \code{\link{fastverse_detach}}, these packages are included as part of the \emph{fastverse}. 
+#' This is also the case if \code{permanent = TRUE}, with the only difference that instead of populating the option, a file is saved to the package directory such that the packages are also loaded
+#' (as part of the core \emph{fastverse}) when calling \code{library(fastverse)} in the next session. To extend the \emph{fastverse} for the current session when it is not yet loaded, users can also set \code{options(fastverse_extend = c(...))}, where \code{c(...)}
+#' is a character vector of package names, before calling \code{library(fastverse)}. 
 #' 
 #' @seealso \code{\link{fastverse_detach}}, \code{\link{fastverse}}
 #' @export
@@ -213,7 +209,7 @@ fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FA
   
   if(missing(...) && is.null(topics)) stop("Need to either supply package names to ... or use the 'topics' argument to load groups of related packages")
   # Need to be able to first temporarily and then permanently extend fastverse. It cannot be that packages from a first temporary extension get added here if permanent = TRUE
-  pck <- fastverse_packages(extended = !permanent, include.self = FALSE)
+  pck <- fastverse_packages(extensions = !permanent, include.self = FALSE)
   
   if(permanent) {
     ext_pck_file <- gconf_path()

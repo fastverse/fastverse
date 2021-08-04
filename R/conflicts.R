@@ -31,19 +31,23 @@ confirm_conflict <- function(packages, name) { # packages <- conflicts[[3]]; nam
 
 #' Conflicts between the fastverse and other packages
 #'
-#' This function lists all the conflicts between packages in the \emph{fastverse}
-#' and other packages that you have attached.
+#' This function lists all the conflicts among \emph{fastverse} packages and between \emph{fastverse} packages and other attached packages.
+#' It can also be used to check conflicts for any other attached packages.
+#'
 #'
 #' There are 2 internal conflict in the core \emph{fastverse} which are not displayed by \code{fastverse_conflicts()}:
 #' \itemize{
-#' \item \code{collapse::funique} maks \code{kit::funique}. If both packages are unloaded, \emph{collapse} is loaded after \emph{kit}. In general the 
-#' \emph{collapse} version is faster on data frames and supports unique rows on selected columns, whereas the \emph{kit} version is generally
-#' faster for vectors and also supports matrices. 
+#' \item \code{collapse::funique} maks \code{kit::funique}. If both packages are unloaded, \emph{collapse} is loaded after \emph{kit}. In general, the 
+#' \emph{collapse} version is often faster on data frames and supports unique rows on selected columns, but only preserves the first-match appearance order of 
+#' character data (unique values for numeric columns are determined using a sort-based method). 
+#' An option \code{sort = TRUE} lets \code{collapse::funique} return sorted unique values (for both character and numeric data). 
+#' The \emph{kit} version is generally faster for vectors and someties for data frames, and also supports matrices. 
+#' It is a full hash-table based implementation that always preserves the first-match appearance order of data.   
 #' 
 #' \item \code{matrixStats::count} masks \code{kit::count}. The \emph{matrixStats} version is more flexible, supporting restricted search and missing value removal. The \emph{kit} version is nearly twice as fast. 
 #' }
-#' @param pck character. A vector of packages to check conflicts for. The default is all fastverse packages.
-#'
+#' @param pck character. A vector of packages to check conflicts for. The default is all \emph{fastverse} packages. 
+#' 
 #' @seealso \code{\link{fastverse}}
 #' @export
 #' @examples
@@ -73,11 +77,11 @@ fastverse_conflict_message <- function(x) {
   
   pkgs <- lapply(x, gsub, pattern = "^package:", replacement = "")
   others <- lapply(pkgs, `[`, -1L)
-  other_calls <- mapply(function(x, y) paste0(blue(x), grey70(paste0("::", y, "()")), collapse = ", "), others, names(others))
+  other_calls <- mapply(function(x, y) paste0(blue(x), text_col(paste0("::", y, "()")), collapse = ", "), others, names(others))
 
   winner <- vapply(pkgs, `[`, character(1L), 1L)
-  funs <- format(paste0(blue(winner), grey70("::"), green(paste0(names(x), "()"))))
-  bullets <- paste0(red("x"), " ", funs, grey70(" masks "), other_calls, collapse = "\n")
+  funs <- format(paste0(blue(winner), text_col("::"), green(paste0(names(x), "()"))))
+  bullets <- paste0(red("x"), " ", funs, text_col(" masks "), other_calls, collapse = "\n")
   
   paste0(header, "\n", bullets)
 }
