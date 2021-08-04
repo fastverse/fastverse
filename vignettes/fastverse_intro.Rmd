@@ -1,8 +1,11 @@
 ---
-title: "Introduction + Extending the fastverse"
+title: "Introduction to the *fastverse*"
+author: "Sebastian Krantz"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+
 vignette: >
-  %\VignetteIndexEntry{Introduction + Extending the fastverse}
+  %\VignetteIndexEntry{Introduction to the *fastverse*}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -10,10 +13,16 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#" # comment = "#>" # tidy = FALSE #, out.width = '100%' #,  cache = FALSE
 )
+# https://github.com/r-lib/crayon/issues/24
+options(repos = c(CRAN = "https://cran.rstudio.com/")) # crayon.enabled = TRUE
 
-options(repos = c(CRAN = "https://cran.rstudio.com/"))
+# Hooks needs to be set to deal with outputs
+# thanks to fansi logic
+# old_hooks <- fansi::set_knit_hooks(knitr::knit_hooks, 
+#                                    which = c("output", "message", "error"))
+options(fastverse_styling = FALSE)
 ```
 
 The *fastverse* is an extensible suite of R packages, developed by independent people,
@@ -74,33 +83,38 @@ library(fastverse)
 
 'Harder' modes of detaching can be achieved using arguments `unload = TRUE` (and `force = TRUE`) to (forcefully) detach and unload *fastverse* packages, and/or `session = TRUE` which will clear all *fastverse* options set^[`options("fastverse_quiet")` will only be cleared if all packages are detached]. 
 ```{r}
-# Detaching and unloading all packages and clearing opions
+# Detaching and unloading all packages and clearing options
 fastverse_detach(session = TRUE, unload = TRUE)
 ```
 
 `fastverse_detach` can also be used to detach any other packages that are not part of the *fastverse*. 
 
 Since `options("fastverse_extend")` keeps track of which packages were added to the *fastverse* for the current session, it is also possible to set it before loading the fastverse e.g. 
-
+```{r, include=FALSE}
+options(fastverse_styling = FALSE)
+```
 ```{r}
-options(fastverse_extend = c("ggplot2", "scales"))
+options(fastverse_extend = c("dygraphs", "tidyfast"))
 library(fastverse)
 
 fastverse_detach(session = TRUE)
 ```
+```{r, include=FALSE}
+options(fastverse_styling = FALSE)
+```
 
 ## Permanent *fastverse* Modifications
 
-`fasvtverse_extend` and `fastverse_detach` both have an argument `permanent = TRUE` which can be used to make the changes persist across R sessions. This is implemented using a file called 'fastverse_extend.txt' which is saved in the package directory (so it will be removed when the *fastverse* is reinstalled). 
+`fasvtverse_extend` and `fastverse_detach` both have an argument `permanent = TRUE` which can be used to make the changes persist across R sessions. This is implemented using a global configuration file saved to the package directory (so it will be removed when the *fastverse* is reinstalled). 
 
-For example, suppose most of my work involves time series analysis, and I would like to add *xts*, *roll*, *forecast*, *tsbox* and *dygraphs* to my *fastverse*. Let's say I also don't really use the *fst* file format, and I don't really need *matrixStats* either as I can do most of the statistics I need with base R and *collapse*. Let's finally say that I don't want `xts::first` and `xts::last` to mask `data.table::first` and `data.table::last`.
+For example, suppose most of my work involves time series analysis, and I would like to add *xts*, *roll*, and *dygraphs* to my *fastverse*. Let's say I also don't really use the *fst* file format, and I don't really need *matrixStats* either as I can do most of the statistics I need with base R and *collapse*. Let's finally say that I don't want `xts::first` and `xts::last` to mask `data.table::first` and `data.table::last`.
 
-Then I could permanently modify my *fastverse* as follows: 
+Then I could permanently modify my *fastverse* as follows^[I note that namespace conflicts can also be detected and handled with the [conflicted](<https://cran.r-project.org/package=conflicted>) package on CRAN.]: 
 
 ```{r}
 library(fastverse)
 # Adding extensions
-fastverse_extend(xts, roll, forecast, tsbox, dygraphs, permanent = TRUE)
+fastverse_extend(xts, roll, dygraphs, permanent = TRUE)
 # Removing some core packages
 fastverse_detach(data.table, fst, matrixStats, permanent = TRUE)
 # Adding data.table again, so it is loaded last
@@ -120,7 +134,7 @@ I also note here that `options("fastverse_extend")` is still empty, because we h
 
 ```{r}
 # Extension for the session
-fastverse_extend(ggplot2, scales)
+fastverse_extend(Rfast2, coop)
 # These packages go here
 options("fastverse_extend")
 # This fetches packages from both the file and the option
@@ -132,6 +146,11 @@ Now lets see if our permanent modification worked:
 ```{r}
 # detach all packages and clear all options
 fastverse_detach(session = TRUE)
+```
+```{r, include=FALSE}
+options(fastverse_styling = FALSE)
+```
+```{r}
 library(fastverse) 
 ```
 
@@ -160,7 +179,7 @@ If we only want to omit a function clash check when calling `fastverse_extend`, 
 
 ## Conclusion
 
-The *fastverse* package exists principally for 2 reasons: to promote quality high-performance software for R, and to provide a flexible approach to package loading and management in R. This vignette introduced the key features of the package. Suggested *fastverse* extension packages are introduced in the [README](yyy) file. 
+The *fastverse* package exists principally for 2 reasons: to promote quality high-performance software development for R, and to provide a flexible approach to package loading and management in R. This vignette introduced the key features of the package. Suggested *fastverse* extension packages are introduced in the [README](yyy) file. 
 
 ```{r}
 # Resetting the fastverse to defaults (clearing all permanent extensions and options)
