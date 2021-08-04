@@ -59,7 +59,7 @@ fastverse_deps <- function(recursive = FALSE, repos = getOption("repos"), includ
 #' This will check all fastverse packages (and their
 #' dependencies) for updates and print an install command. 
 #'
-#' @param ckeck.deps logical. \code{TRUE} also checks for updates in dependencies of \emph{fastverse} packages. 
+#' @param check.deps logical. \code{TRUE} also checks for updates in dependencies of \emph{fastverse} packages. 
 #' @param \dots arguments passed to \code{\link{fastverse_deps}}.
 #' 
 #' @seealso \code{\link{fastverse_deps}}, \code{\link{fastverse}}
@@ -97,8 +97,7 @@ fastverse_update <- function(check.deps = TRUE, ...) {
 #' whether any global or project-level configuration files are in use
 #' (as described in the vignette). 
 #' 
-#' @param ckeck.deps logical. \code{TRUE} also checks for updates in dependencies of \emph{fastverse} packages. 
-#' @param \dots arguments passed to \code{\link{fastverse_deps}}.
+#' @inheritParams fastverse_update
 #' 
 #' @seealso \code{\link{fastverse_deps}}, \code{\link{fastverse}}
 #' @export
