@@ -2,8 +2,8 @@
 ls_env <- function(env) {
   x <- ls(pos = env)
   switch(env, 
-         `package:kit` = setdiff(x, c("funique", "count")),
-         `package:collapse` = setdiff(x, "D"),
+         `package:kit` = x[!x %in% c("funique", "count")],
+         `package:collapse` = x[x != "D"],
          x)
 }
 

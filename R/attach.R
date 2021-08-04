@@ -49,7 +49,7 @@ fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FAL
   
   suppressPackageStartupMessages({
     if(any(to_load == "matrixStats")) {
-      lapply(setdiff(to_load, "matrixStats"), same_library)
+      lapply(to_load[to_load != "matrixStats"], same_library)
       replace_matrixStats()
     } else {
       lapply(to_load, same_library)
