@@ -16,15 +16,20 @@ project_packages <- function() {
 }
 
 #' List all packages in the fastverse
-#'
-#' @param extended logical. \code{TRUE} return all packages currently loaded either with \code{library(fastverse)} or \code{\link{fastverse_extend}}. 
-#' \code{FALSE} only returns the core fastverse packages and any packages added using \code{\link[=fastverse_extend]{fastverse_extend(..., permanent = TRUE)}}.
+#' 
+#' Core packages are first fetched from a project-level configuration file (if found), else from a global configuration file (if found), 
+#' otherwise the standard set of core packages is returned. In addition, if \code{extensions = TRUE}, any packages used to extend the \emph{fastverse} for the current 
+#' session are also returned. 
+#' 
+#' @param extensions logical. \code{TRUE} appends the set of core packages with all packages found in \code{options("fastverse_extend")}. 
 #' @param include.self logical. Include the \emph{fastverse} package in the list?
+#' 
+#' @returns A character vector of package names. 
 #' @export
-#' @seealso \code{\link{fastverse}}
+#' @seealso \code{\link{fastverse_extend}}, \code{\link{fastverse}}
 #' @examples
 #' fastverse_packages()
-fastverse_packages <- function(extended = TRUE, include.self = TRUE) {
+fastverse_packages <- function(extensions = TRUE, include.self = TRUE) {
   if(file.exists(".fastverse")) {
     pck <- project_packages()
   } else {
@@ -35,25 +40,25 @@ fastverse_packages <- function(extended = TRUE, include.self = TRUE) {
       close(fileConn)
     } else pck <- .core_pck
   }
-  if(extended && length(ex <- getOption("fastverse_extend"))) pck <- unique(c(pck, ex))
+  if(extensions && length(ex <- getOption("fastverse_extend"))) pck <- unique(c(pck, ex))
   if(include.self) pck <- c(pck, "fastverse")
   pck
 }
 
 #' Reset the fastverse to defaults
 #' 
-#' Calling this function will remove any permanent package extensions and (default) clear all package options. 
+#' Calling this function will remove global configuration \emph{fastverse} files and (default) clear all package options. 
 #' Packages loaded will not be unloaded, and configuration files for projects (as discussed in the vignette) will not be removed. 
 #'
 #' @param options logical. \code{TRUE} also clears all \emph{fastverse} options. 
 #' @seealso \code{\link{fastverse_extend}}, \code{\link{fastverse}}
 #' @export
 fastverse_reset <- function(options = TRUE) {
+  ext_file <- gconf_path()
+  if(file.exists(ext_file)) file.remove(ext_file)
   if(options) options(fastverse_extend = NULL, 
                       fastverse_quiet = NULL, 
                       fastverse_styling = NULL)
-  ext_file <- gconf_path()
-  if(file.exists(ext_file)) file.remove(ext_file)
   invisible()
 }
 
