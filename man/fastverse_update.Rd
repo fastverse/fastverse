@@ -4,22 +4,17 @@
 \alias{fastverse_update}
 \title{Update fastverse packages}
 \usage{
-fastverse_update(recursive = FALSE, repos = getOption("repos"))
+fastverse_update(check.deps = TRUE, ...)
 }
 \arguments{
-\item{recursive}{if \code{TRUE}, will also list all dependencies of
-\emph{fastverse} packages.}
+\item{check.deps}{logical. \code{TRUE} also checks for updates in dependencies of \emph{fastverse} packages.}
 
-\item{repos}{the repositories to use to check for updates.
-Defaults to \code{getOptions("repos")}.}
+\item{\dots}{arguments passed to \code{\link{fastverse_deps}}.}
 }
 \description{
-This will check to see if all fastverse packages (and optionally, their
-dependencies) are up-to-date, and will install after an interactive
-confirmation.
+This will check all fastverse packages (and their
+dependencies) for updates and print an install command.
 }
-\examples{
-\dontrun{
-fastverse_update()
-}
+\seealso{
+\code{\link{fastverse_deps}}, \code{\link{fastverse}}
 }

@@ -2,33 +2,34 @@
 % Please edit documentation in R/attach.R
 \name{fastverse_detach}
 \alias{fastverse_detach}
-\title{Detach \emph{fastverse} packages}
+\title{Detach fastverse packages}
 \usage{
 fastverse_detach(
   ...,
   unload = FALSE,
   force = FALSE,
   include.self = TRUE,
+  session = FALSE,
   permanent = FALSE
 )
 }
 \arguments{
-\item{\dots}{comma-separated package names, quoted or unquoted, or vectors of package names. The code simply captures the \code{\dots} expression, evaluates it inside \code{\link{tryCatch}}, and if it fails coerces it to character. If left empty, all packages returned by \code{\link{fastverse_packages}} are detached.}
+\item{\dots}{comma-separated package names, quoted or unquoted, or vectors of package names. If left empty, all packages returned by \code{\link{fastverse_packages}} are detached.}
 
 \item{unload}{logical. \code{TRUE} also unloads the packages using \code{\link[=detach]{detach(name, unload = TRUE)}}.}
 
 \item{force}{logical. should a fastverse package be detached / unloaded even though other attached packages depend on it?}
 
-\item{include.self}{logical. \code{TRUE} also includes the fastverse package.}
+\item{include.self}{logical. \code{TRUE} also includes the fastverse package - only applicable if \code{\dots} is left empty.}
+
+\item{session}{logical. \code{TRUE} also removes the packages from \code{options("fastverse.extend")}, so they will not be loaded again with \code{library(fastverse)} in the current session. If \code{\dots} is left empty and \code{include.self = TRUE}, this will clear \bold{all} \emph{fastverse} options set for the session.}
 
 \item{permanent}{logical. if \code{\dots} are used to detach certain packages, \code{permament = TRUE} will disable them being loaded the next time the fastverse is loaded. 
-This is implemented via a config file saved to the package directory. Core \emph{fastverse} packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}.}
+This is implemented via a config file saved to the package directory. Core \emph{fastverse} packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}. The config file can be removed with \code{\link{fastverse_reset}}.}
 }
 \description{
-Detaches \emph{fastverse} packages (removing them from the \code{\link{search}} path).
+Detaches \emph{fastverse} packages, removing them from the \code{\link{search}} path.
 }
-\examples{
-\dontrun{
-fastverse_detach()
-}
+\seealso{
+\code{\link{fastverse_extend}}, \code{\link{fastverse}}
 }

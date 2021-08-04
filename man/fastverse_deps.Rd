@@ -2,17 +2,28 @@
 % Please edit documentation in R/update.R
 \name{fastverse_deps}
 \alias{fastverse_deps}
-\title{List all \emph{fastverse} dependencies}
+\title{List all fastverse dependencies}
 \usage{
-fastverse_deps(recursive = FALSE, repos = getOption("repos"))
+fastverse_deps(
+  recursive = FALSE,
+  repos = getOption("repos"),
+  include.self = FALSE
+)
 }
 \arguments{
-\item{recursive}{if \code{TRUE}, will also list all dependencies of
-\emph{fastverse} packages.}
+\item{recursive}{logical. \code{TRUE} recursively determines all packages required to operate the current set of \emph{fastverse} packages.
+\code{FALSE} will only list the \emph{fastverse} packages and direct dependencies of those packages.}
 
-\item{repos}{the repositories to use to check for updates.
-Defaults to \code{getOptions("repos")}.}
+\item{repos}{the repositories to use to check for updates. Defaults to \code{getOptions("repos")}.}
+
+\item{include.self}{logical. \code{TRUE} also includes the \emph{fastverse} package and checks against CRAN updates.}
+}
+\value{
+A data frame giving the package names, the CRAN and local version, and a logical variable stating whether the local version is behind the CRAN version.
 }
 \description{
-List all \emph{fastverse} dependencies
+Lists all fastverse dependencies.
+}
+\seealso{
+\code{\link{fastverse_sitrep}}, \code{\link{fastverse}}
 }

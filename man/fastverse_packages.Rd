@@ -2,20 +2,26 @@
 % Please edit documentation in R/utils.R
 \name{fastverse_packages}
 \alias{fastverse_packages}
-\title{\emph{Fastverse} Options}
+\title{List all packages in the fastverse}
 \usage{
-fastverse_packages(extended = TRUE, include.self = TRUE)
+fastverse_packages(extensions = TRUE, include.self = TRUE)
 }
 \arguments{
-\item{extended}{logical. \code{TRUE} return all packages currently loaded with \code{library(fastverse)}. \code{FALSE} only returns the core fastverse packages.
-For a list of suggested packages to extend \emph{fastverse} see \code{\link{fastverse_extend}} or the README page.}
+\item{extensions}{logical. \code{TRUE} appends the set of core packages with all packages found in \code{options("fastverse.extend")}.}
 
 \item{include.self}{logical. Include the \emph{fastverse} package in the list?}
 }
+\value{
+A character vector of package names.
+}
 \description{
-Setting \code{options(fastverse_quiet = TRUE)} will not print any messages to the console when calling \code{library(fastverse)}.
-List all packages in the fastverse
+Core packages are first fetched from a project-level configuration file (if found), else from a global configuration file (if found), 
+otherwise the standard set of core packages is returned. In addition, if \code{extensions = TRUE}, any packages used to extend the \emph{fastverse} for the current 
+session are also returned.
 }
 \examples{
 fastverse_packages()
+}
+\seealso{
+\code{\link{fastverse_extend}}, \code{\link{fastverse}}
 }
