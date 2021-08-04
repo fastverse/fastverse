@@ -4,3 +4,4 @@ crandb.rda
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.github$
+cache$

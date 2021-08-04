@@ -1,5 +1,5 @@
 Package: fastverse
-Title: A Suite of High-Performance Packages for Statistical Computing and Data Manipulation in R
+Title: A Suite of High-Performance Packages for Statistical Computing and Data Manipulation
 Version: 0.1.5
 Authors@R: c(person("Sebastian", "Krantz", role = c("aut", "cre"), 
                     email = "sebastian.krantz@graduateinstitute.ch"),
@@ -10,16 +10,16 @@ Description: The 'fastverse' package integrates and provides utilities for easy 
              'data.table', 'collapse', 'matrixStats', 'kit', 'magrittr' and 'fst'. These are loaded
              and harmonized whenever the 'fastverse' is loaded (the 'fastverse' modifies a number of
              matrixStats functions to make them handle attributes consistently). The fastverse can freely 
-             and permanently be extended with additional packages, thus the package itself doubles as 
-             a flexible package loader and manager. Selected fast packages for time series, dates and times, 
-             string manipulation, spatial manipulation and statistics are suggested as fastverse extensions and 
-             can be bulk-loaded. All core 'fastverse' packages and suggested extensions are carefully 
+             and permanently be extended with additional packages. Selected fast packages for time series, 
+             dates and times, string manipulation, spatial manipulation and statistics are suggested as 
+             extensions. All core 'fastverse' packages and suggested extensions are carefully 
              designed, deliver outstanding C/C++ powered performance, handle various R objects and real-world 
-             data well, and share a minimal dependency burden (the core fastverse depends on the 6 packages + 'Rcpp'). 
+             data well, and share a minimal dependency burden (the core fastverse only depends on the 6 packages + 'Rcpp'). 
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
 Imports: data.table, collapse, matrixStats, kit, magrittr, fst
-Suggests: xts, roll, clock, fasttime, stringi, Rfast, Rfast2, coop
+Suggests: xts, roll, lubridate, fasttime, dygraphs, stringi, Rfast,
+          Rfast2, parallelDist, coop, tidyfast, knitr, rmarkdown
 RoxygenNote: 7.1.1
 NeedsCompilation: yes
+VignetteBuilder: knitr
