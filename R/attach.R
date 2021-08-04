@@ -75,7 +75,7 @@ fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FAL
   
   fastverse_attach(needed, onattach = TRUE)
   
-  if(!isTRUE(getOption("fastverse_quiet")) && !"package:conflicted" %in% search()) {
+  if(!isTRUE(getOption("fastverse.quiet")) && !"package:conflicted" %in% search()) {
     x <- fastverse_conflicts() 
     if(length(x)) msg(fastverse_conflict_message(x), startup = TRUE)
   }
@@ -91,7 +91,7 @@ fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FAL
 #' @param unload logical. \code{TRUE} also unloads the packages using \code{\link[=detach]{detach(name, unload = TRUE)}}.
 #' @param include.self logical. \code{TRUE} also includes the fastverse package - only applicable if \code{\dots} is left empty.  
 #' @param force logical. should a fastverse package be detached / unloaded even though other attached packages depend on it?
-#' @param session logical. \code{TRUE} also removes the packages from \code{options("fastverse_extend")}, so they will not be loaded again with \code{library(fastverse)} in the current session. If \code{\dots} is left empty and \code{include.self = TRUE}, this will clear \bold{all} \emph{fastverse} options set for the session. 
+#' @param session logical. \code{TRUE} also removes the packages from \code{options("fastverse.extend")}, so they will not be loaded again with \code{library(fastverse)} in the current session. If \code{\dots} is left empty and \code{include.self = TRUE}, this will clear \bold{all} \emph{fastverse} options set for the session. 
 #' @param permanent logical. if \code{\dots} are used to detach certain packages, \code{permament = TRUE} will disable them being loaded the next time the fastverse is loaded. 
 #' This is implemented via a config file saved to the package directory. Core \emph{fastverse} packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}. The config file can be removed with \code{\link{fastverse_reset}}.
 #' 
@@ -104,9 +104,9 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
     loaded <- ckeck_attached(needed = FALSE)
     if(include.self) loaded <- c(loaded, "fastverse") # Could already be part of loaded ??
     if(session) {
-      options(fastverse_extend = NULL)
-      if(include.self) options(fastverse_quiet = NULL, 
-                               fastverse_styling = NULL)
+      options(fastverse.extend = NULL)
+      if(include.self) options(fastverse.quiet = NULL, 
+                               fastverse.styling = NULL)
     }
   } else {
     ex <- substitute(c(...))
@@ -114,9 +114,9 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
     if(!is.character(pck)) pck <- as.character(ex[-1L])
     loaded <- pck[is_attached(pck)] # Include self? -> nope, not sensible...
     if(session) {
-      epck <- getOption("fastverse_extend")
+      epck <- getOption("fastverse.extend")
       if(length(epck) && length(pdiff <- setdiff(epck, pck)))
-        options(fastverse_extend = pdiff)
+        options(fastverse.extend = pdiff)
     }
   }
   
@@ -180,10 +180,10 @@ topics_selector <- function(x) {
 #' among the \code{topics} groups that are available are considered, others are disregarded. 
 #' 
 #' When the \emph{fastverse} is extended calling \code{fastverse_extend(...)}, the packages that are not attached are attached, but conflicts are checked for all specified packages. 
-#' If \code{permanent = FALSE}, an \code{option("fastverse_extend")} is set which stores these extension packages, regardless of whether they were already attached or not. When calling 
+#' If \code{permanent = FALSE}, an \code{option("fastverse.extend")} is set which stores these extension packages, regardless of whether they were already attached or not. When calling 
 #' \code{\link{fastverse_packages}}, \code{\link{fastverse_deps}}, \code{\link{fastverse_conflicts}}, \code{\link{fastverse_update}}, \code{\link{fastverse_sitrep}} or \code{\link{fastverse_detach}}, these packages are included as part of the \emph{fastverse}. 
 #' This is also the case if \code{permanent = TRUE}, with the only difference that instead of populating the option, a file is saved to the package directory such that the packages are also loaded
-#' (as part of the core \emph{fastverse}) when calling \code{library(fastverse)} in the next session. To extend the \emph{fastverse} for the current session when it is not yet loaded, users can also set \code{options(fastverse_extend = c(...))}, where \code{c(...)}
+#' (as part of the core \emph{fastverse}) when calling \code{library(fastverse)} in the next session. To extend the \emph{fastverse} for the current session when it is not yet loaded, users can also set \code{options(fastverse.extend = c(...))}, where \code{c(...)}
 #' is a character vector of package names, before calling \code{library(fastverse)}. 
 #' 
 #' @seealso \code{\link{fastverse_detach}}, \code{\link{fastverse}}
@@ -192,7 +192,7 @@ topics_selector <- function(x) {
 #' fastverse_extend(Rfast, xts, stringi)
 #' fastverse_extend(clock, topics = "TS")
 fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FALSE, 
-                             check.conflicts = !isTRUE(getOption("fastverse_quiet"))) {
+                             check.conflicts = !isTRUE(getOption("fastverse.quiet"))) {
   
   if(!missing(...)) {
     ex <- substitute(c(...))
@@ -217,10 +217,10 @@ fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FA
     writeLines(unique(c(pck, epck)), fileConn)
     close(fileConn)
   } else {
-    if(length(ex <- getOption("fastverse_extend"))) { # It was already extended before
-      options(fastverse_extend = unique(c(ex, setdiff(epck, pck))))
+    if(length(ex <- getOption("fastverse.extend"))) { # It was already extended before
+      options(fastverse.extend = unique(c(ex, setdiff(epck, pck))))
     } else { # It is extended for the first time
-      options(fastverse_extend = setdiff(epck, pck))
+      options(fastverse.extend = setdiff(epck, pck))
     }
   }
   

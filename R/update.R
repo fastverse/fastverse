@@ -121,7 +121,7 @@ fastverse_sitrep <- function(check.deps = TRUE, ...) {
   
   deps <- deps$package
   
-  ex <- getOption("fastverse_extend")
+  ex <- getOption("fastverse.extend")
   if(length(ex)) pck <- setdiff(pck, ex)
   if(any(deps == "fastverse")) pck <- c(pck, "fastverse") # include.self = FALSE above makes sure we don't add it twice here
   

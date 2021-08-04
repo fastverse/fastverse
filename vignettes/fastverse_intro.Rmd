@@ -22,7 +22,7 @@ options(repos = c(CRAN = "https://cran.rstudio.com/")) # crayon.enabled = TRUE
 # thanks to fansi logic
 # old_hooks <- fansi::set_knit_hooks(knitr::knit_hooks, 
 #                                    which = c("output", "message", "error"))
-options(fastverse_styling = FALSE)
+options(fastverse.styling = FALSE)
 ```
 
 The *fastverse* is an extensible suite of R packages, developed by independent people,
@@ -62,7 +62,7 @@ fastverse_extend(xts, roll, fasttime)
 fastverse_packages()
 
 # They are also saved in a like-named option 
-options("fastverse_extend")
+options("fastverse.extend")
 
 # Check versions and update status of packages and dependencies
 fastverse_sitrep()
@@ -79,13 +79,13 @@ Note that for programming purposes it is also possible to pass vectors of packag
 
 ```{r}
 # Our extensions are still here
-options("fastverse_extend")
+options("fastverse.extend")
 
 # Thus attaching the fastverse again will include them
 library(fastverse)
 ```
 
-'Harder' modes of detaching can be achieved using arguments `unload = TRUE` (and `force = TRUE`) to (forcefully) detach and unload *fastverse* packages, and/or `session = TRUE` which will clear all *fastverse* options set^[`options("fastverse_quiet")` will only be cleared if all packages are detached]. 
+'Harder' modes of detaching can be achieved using arguments `unload = TRUE` (and `force = TRUE`) to (forcefully) detach and unload *fastverse* packages, and/or `session = TRUE` which will clear all *fastverse* options set^[`options("fastverse.quiet")` will only be cleared if all packages are detached]. 
 ```{r}
 # Detaching and unloading all packages and clearing options
 fastverse_detach(session = TRUE, unload = TRUE)
@@ -93,18 +93,18 @@ fastverse_detach(session = TRUE, unload = TRUE)
 
 `fastverse_detach` can also be used to detach any other packages that are not part of the *fastverse*. 
 
-Since `options("fastverse_extend")` keeps track of which packages were added to the *fastverse* for the current session, it is also possible to set it before loading the fastverse e.g. 
+Since `options("fastverse.extend")` keeps track of which packages were added to the *fastverse* for the current session, it is also possible to set it before loading the fastverse e.g. 
 ```{r, include=FALSE}
-options(fastverse_styling = FALSE)
+options(fastverse.styling = FALSE)
 ```
 ```{r}
-options(fastverse_extend = c("dygraphs", "tidyfast"))
+options(fastverse.extend = c("dygraphs", "tidyfast"))
 library(fastverse)
 
 fastverse_detach(session = TRUE)
 ```
 ```{r, include=FALSE}
-options(fastverse_styling = FALSE)
+options(fastverse.styling = FALSE)
 ```
 
 ## Permanent *fastverse* Modifications
@@ -134,13 +134,13 @@ fastverse_packages(include.self = FALSE)
 fastverse_conflicts()
 ```
 
-I also note here that `options("fastverse_extend")` is still empty, because we have written those changes to a file. After this permanent modification I can still extend the *fastverse* for the session:
+I also note here that `options("fastverse.extend")` is still empty, because we have written those changes to a file. After this permanent modification I can still extend the *fastverse* for the session:
 
 ```{r}
 # Extension for the session
 fastverse_extend(Rfast2, coop)
 # These packages go here
-options("fastverse_extend")
+options("fastverse.extend")
 # This fetches packages from both the file and the option
 fastverse_packages()
 ```
@@ -152,7 +152,7 @@ Now lets see if our permanent modification worked:
 fastverse_detach(session = TRUE)
 ```
 ```{r, include=FALSE}
-options(fastverse_styling = FALSE)
+options(fastverse.styling = FALSE)
 ```
 ```{r}
 library(fastverse) 
@@ -164,22 +164,22 @@ As long as the current installation of the *fastverse* is kept, these modificati
 
 An additional bit of flexibility afforded by the *fastverse* is the ability to put together a custom collection of packages for a project that you want to load and manage with `library(fastverse)`.
 
-You can do this by including a configuration file named `.fastverse` (no file extension) inside a project directory, and placing inside that file the names of packages to be loaded when calling `library(fastverse)`^[You can place package names in that file any manner you deem suitable: separated using spaces or commas, on one or multiple lines. Note that the file will be read from left to right and from top to bottom. Packages are loaded in the order found in the file.]. This will ignore any global configuration discussed in the previous section. You can still extend the *fastverse* inside a project session using `fastverse_extend` or `options("fastvers_extend")`. 
+You can do this by including a configuration file named `.fastverse` (no file extension) inside a project directory, and placing inside that file the names of packages to be loaded when calling `library(fastverse)`^[You can place package names in that file any manner you deem suitable: separated using spaces or commas, on one or multiple lines. Note that the file will be read from left to right and from top to bottom. Packages are loaded in the order found in the file.]. This will ignore any global configuration discussed in the previous section. You can still extend the *fastverse* inside a project session using `fastverse_extend` or `options("fastvers.extend")`. 
 
 ## Quiet Mode
 
-A useful option that was not yet demonstrated is `option("fastverse_quiet")`:
+A useful option that was not yet demonstrated is `option("fastverse.quiet")`:
 
 ```{r}
 fastverse_detach()
-options(fastverse_quiet = TRUE)
+options(fastverse.quiet = TRUE)
 library(fastverse)
 
 # This gives lots of function clashes with data.table, but they are not displayed in quiet mode
 fastverse_extend(lubridate)
 ```
 
-If we only want to omit a function clash check when calling `fastverse_extend`, we can also use `fastverse_extend(..., check.conflicts = FALSE)`. I note at this point it is not possible to permanently set `options("fastverse_quiet")`. 
+If we only want to omit a function clash check when calling `fastverse_extend`, we can also use `fastverse_extend(..., check.conflicts = FALSE)`. I note at this point it is not possible to permanently set `options("fastverse.quiet")`. 
 
 ## Conclusion
 
