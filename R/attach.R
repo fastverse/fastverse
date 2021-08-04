@@ -180,7 +180,7 @@ topics_selector <- function(x) {
 #' among the \code{topics} groups that are available are considered, others are disregarded. 
 #' 
 #' When the \emph{fastverse} is extended calling \code{fastverse_extend(...)}, the packages that are not attached are attached, but conflicts are checked for all specified packages. 
-#' If \code{permanent = FALSE}, an \code{option("fastverse.extend")} is set which stores these extension packages, regardless of whether they were already attached or not. When calling 
+#' If \code{permanent = FALSE}, an \code{options("fastverse.extend")} is set which stores these extension packages, regardless of whether they were already attached or not. When calling 
 #' \code{\link{fastverse_packages}}, \code{\link{fastverse_deps}}, \code{\link{fastverse_conflicts}}, \code{\link{fastverse_update}}, \code{\link{fastverse_sitrep}} or \code{\link{fastverse_detach}}, these packages are included as part of the \emph{fastverse}. 
 #' This is also the case if \code{permanent = TRUE}, with the only difference that instead of populating the option, a file is saved to the package directory such that the packages are also loaded
 #' (as part of the core \emph{fastverse}) when calling \code{library(fastverse)} in the next session. To extend the \emph{fastverse} for the current session when it is not yet loaded, users can also set \code{options(fastverse.extend = c(...))}, where \code{c(...)}
@@ -190,7 +190,7 @@ topics_selector <- function(x) {
 #' @export
 #' @examples 
 #' fastverse_extend(Rfast, xts, stringi)
-#' fastverse_extend(clock, topics = "TS")
+#' fastverse_extend(fasttime, topics = "TS")
 fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FALSE, 
                              check.conflicts = !isTRUE(getOption("fastverse.quiet"))) {
   

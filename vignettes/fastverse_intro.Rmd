@@ -168,7 +168,7 @@ You can do this by including a configuration file named `.fastverse` (no file ex
 
 ## Quiet Mode
 
-A useful option that was not yet demonstrated is `option("fastverse.quiet")`:
+A useful option that was not yet demonstrated is `options("fastverse.quiet")`:
 
 ```{r}
 fastverse_detach()
