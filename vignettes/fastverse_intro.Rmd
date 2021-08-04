@@ -32,20 +32,24 @@ that contribute towards the objectives of:
 - Enabling more complex statistical and data manipulation operations in R
 - Reducing the number of dependencies required to do advanced computations in R
 
-The *fastverse* installs 6 core packages (*data.table*, *collapse*, *matrixStats*, *kit*, *magrittr* and *fst*) that are (by default) loaded and harmonized with `library(fastverse)`. These packages were selected because they provide compiled code for most common statistical and data manipulation tasks, have carefully managed API's, jointly depend only on base R and *Rcpp*, and work remarkably well together. 
+The *fastverse* installs 6 core packages (*data.table*, *collapse*, *matrixStats*, *kit*, *magrittr* and *fst*) that are (by default) loaded and harmonized with `library(fastverse)`. These packages were selected because they provide high quality compiled code for most common statistical and data manipulation tasks, have carefully managed API's, jointly depend only on base R and *Rcpp*, and work remarkably well together. 
 
 ```{r}
 library(fastverse)
 ```
 
-The package then provides functionality familiar from the *tidyverse* package, such as checking and reporting namespace clashes, and utilities to update the packages. 
+The package then provides functionality familiar from the *tidyverse* package, such as checking and reporting namespace clashes, and utilities to update the packages and generate situational reports. 
 
 ```{r}
 # Checking for any updates
 fastverse_update()
 ```
 
-While placing a clear emphasis on High-Quality, High-Performance and Low-Dependency code, which warranted a selection of core packages and a number of [suggested extensions](link), the *fastverse* is not particularly opinionated and can be freely and permanently extended by any number of packages. These extensions can then be loaded and managed by the *fastverse* package, just like the core packages. 
+A key feature of the *fastverse* is that it can liberally be extended with other packages that can be loaded and managed using the tools this package provides. 
+
+While placing a clear emphasis on High-Quality, High-Performance and Low-Dependency code, as well as statistical rigor and broad based compatibility with the classes and objects most used in R - which warranted a selection of core packages and a number of [suggested extensions](link) - the *fastverse* is not particularly opinionated about coding style, function nomenclature, or the format of inputs and outputs. Users are encouraged to make of use the features described in the remainder of this vignette to create a 'verse' of packages that suits their personal analysis needs. 
+
+<!-- These extensions can then be loaded and managed by the *fastverse* package, just like the core packages. -->
 
 ## Extending the *fastverse* for the Session
 After the core packages have been loaded with `library(fastverse)`, it is possible to extend the *fastverse* for the current session by adding any number of additional packages with `fastverse_extend()`. This will attach the packages and (default) check for function clashes with core packages and among the extension packages. 

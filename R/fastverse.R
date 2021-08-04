@@ -13,10 +13,10 @@
 #' 
 #' The \code{fastverse} installs 6 core packages (\code{data.table}, \code{collapse}, \code{matrixStats}, \code{kit}, \code{magrittr} and \code{fst}) that 
 #' provide native C/C++ code of proven quality, work well together, and enable complex statistical computing and data manipulation - with only \code{Rcpp} as an additional dependency. 
-#' The package also harmonizes some functionality among some of these core packages (see section below). 
+#' The package also harmonizes functionality among some of these core packages (see below). 
 #' 
 #' The \code{fastverse} further allows users to freely (and permanently) extend or reduce the number of packages in the \emph{fastverse}. 
-#' A selection of suggested high-performing packages for various topics is provided in \code{\link{fastverse_extend}} (see also \href{test}{README}).
+#' A selection of suggested high-performing packages for various topics is provided in \code{\link{fastverse_extend}} (and with more details in the \href{test}{README}).
 #' Other package functions help with sorting out namespace conflicts between attached packages, and updating packages.  
 #' 
 #' @details NULL
@@ -28,7 +28,7 @@
 #' \code{\link[=fastverse_detach]{fastverse_detach()}}\cr
 #' \code{\link[=fastverse_reset]{fastverse_reset()}}
 #' 
-#' Function to display conflicts between \emph{fastverse} packages
+#' Function to display conflicts for \emph{fastverse} packages (or any other attached packages)
 #'
 #' \code{\link[=fastverse_conflicts]{fastverse_conflicts()}}
 #'
@@ -36,7 +36,7 @@
 #' 
 #' \code{\link[=fastverse_update]{fastverse_update()}}
 #'
-#' Utilities to retrieve the names of \emph{fastverse} packages (and dependencies), and their update status.
+#' Utilities to retrieve the names of \emph{fastverse} packages (and dependencies), their update status and produce a situation report.
 #' 
 #' \code{\link[=fastverse_packages]{fastverse_packages()}}\cr
 #' \code{\link[=fastverse_deps]{fastverse_deps()}}\cr
@@ -44,7 +44,7 @@
 #'
 #' @section \emph{fastverse} Options:
 #' \itemize{
-#' \item Setting \code{option(fastverse_quiet = TRUE)} will disable all automatic messages (including conflict reporting) when calling \code{library(fastvsers)} or \code{\link{fastverse_extend}}
+#' \item \code{option(fastverse_quiet = TRUE)} will disable all automatic messages (including conflict reporting) when calling \code{library(fastvsers)} or \code{\link{fastverse_extend}}.
 #' \item \code{option(fastverse_styling = FALSE)} will disable any styling applied to text printed to the console. 
 #' \item \code{option(fastverse_extend = c(...))} can be set before calling \code{library(fastvsers)} to extend the fastverse with some packages for the session. The same can be done with the
 #' \code{\link{fastverse_extend}} function after \code{library(fastvsers)}, which will also populate \code{option("fastverse_extend")}. 
@@ -53,12 +53,13 @@
 #' @section \emph{fastverse} Harmonisations:
 #' \itemize{
 #' \item There are 2 internal clashes between \code{collapse::funique} and \code{kit::funique}, and between \code{matrixStats::count} and \code{kit::count}.
-#' The \emph{collapse} and \emph{matrixStats} versions take precedence over the \emph{kit} versions. For a comparison see the details section of \code{\link{fastverse_conflicts}}.
+#' The \emph{collapse} and \emph{matrixStats} versions take precedence over the \emph{kit} versions. For a comparison of functionality see the details section of \code{\link{fastverse_conflicts}}.
 #' \item Quite A number of functions in the \emph{matrixStats} package do not (by default) preserve the attributes of objects passed to them, resulting in inconsistent behavior of different functions. 
 #' The \code{fastverse} alters most of the functions where this is the case, listed in a global variable \code{.matrixStats_replaced}, bestowing them with 
 #' capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). 
 #' This is done using very efficient R and C code, so that performance does not suffer. When the \code{fastverse} is attached, these
-#' altered function are replaced in the \emph{matrixStats} namespace.      
+#' altered function are replaced in the \emph{matrixStats} namespace. Once \emph{matrixStats} has evolved so that consistent attribute handling becomes the default 
+#' setting, these alternative versions will become redundant and be removed from the \emph{fastverse}.
 #' }
 #' 
 #' 
