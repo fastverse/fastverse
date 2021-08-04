@@ -85,7 +85,7 @@ fastverse_update <- function(check.deps = TRUE, ...) {
   }
   
   cat("The following packages are out of date:\n")
-  cat("\n", paste0("* ", magenta2(format(behind$package)), " (", behind$local, " -> ", behind$cran, ")\n"))
+  cat("\n", paste0("* ", gold(format(behind$package)), " (", behind$local, " -> ", behind$cran, ")\n"))
   
   cat("\nStart a clean R session then run:\n")
   
