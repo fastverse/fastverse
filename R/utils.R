@@ -49,7 +49,9 @@ fastverse_packages <- function(extended = TRUE, include.self = TRUE) {
 #' @seealso \code{\link{fastverse_extend}}, \code{\link{fastverse}}
 #' @export
 fastverse_reset <- function(options = TRUE) {
-  if(options) options(fastverse_extend = NULL, fastverse_quiet = NULL)
+  if(options) options(fastverse_extend = NULL, 
+                      fastverse_quiet = NULL, 
+                      fastverse_styling = NULL)
   ext_file <- gconf_path()
   if(file.exists(ext_file)) file.remove(ext_file)
   invisible()
