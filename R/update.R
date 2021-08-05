@@ -6,32 +6,32 @@ packageVersion2 <- function(pkg) {
 #' 
 #' Lists all fastverse dependencies and the local and CRAN versions of packages and dependencies.
 #'
-#' @param pck character vector of packages to check dependencies and update status of. By default all \emph{fastverse} packages. 
+#' @param pkg character vector of packages to check dependencies and update status of. By default all \emph{fastverse} packages. 
 #' @param recursive logical. \code{TRUE} recursively determines all packages required to operate these packages.
 #' \code{FALSE} will only list the packages itself and their direct dependencies. 
 #' @param repos the repositories to use to check for updates. Defaults to \code{getOptions("repos")}.
 #' @param include.self logical. \code{TRUE} also includes the \emph{fastverse} package and checks against CRAN updates.  
-#' @param check.deps logical. \code{FALSE} will not determine dependencies but only display the update status of packages in \code{pck}. 
+#' @param check.deps logical. \code{FALSE} will not determine dependencies but only display the update status of packages in \code{pkg}. 
 #' 
 #' @returns A data frame giving the package names, the CRAN and local version, and a logical variable stating whether the local version is behind the CRAN version. 
 #' @seealso \code{\link{fastverse_sitrep}}, \code{\link{fastverse}}
 #' @export
-fastverse_deps <- function(pck = fastverse_packages(), recursive = FALSE, 
+fastverse_deps <- function(pkg = fastverse_packages(), recursive = FALSE, 
                            repos = getOption("repos"), include.self = FALSE, check.deps = TRUE) {  
   
   pkgs <- utils::available.packages(repos = repos)
   if(!length(pkgs)) stop("Please connect to the internet to execute this function")
   fv <- "fastverse"
-  pck <- pck[pck != fv] # Code should work regardless of whether pck includes "fastverse" or not!!
+  pkg <- pkg[pkg != fv] # Code should work regardless of whether pkg includes "fastverse" or not!!
   if(check.deps) {
     if(!include.self) fv <- NULL
-    deps <- tools::package_dependencies(pck, pkgs, recursive = recursive)
-    pkg_deps <- unique(c(pck, fv, sort(unlist(deps, use.names = FALSE)))) 
+    deps <- tools::package_dependencies(pkg, pkgs, recursive = recursive)
+    pkg_deps <- unique(c(pkg, fv, sort(unlist(deps, use.names = FALSE)))) 
     base_pkgs <- c("base", "compiler", "datasets", "graphics", "grDevices", "grid",
       "methods", "parallel", "splines", "stats", "stats4", "tools", "tcltk", "utils")
     pkg_deps <- setdiff(pkg_deps, base_pkgs)
   } else {
-    pkg_deps <- if(include.self) c(pck, fv) else pck
+    pkg_deps <- if(include.self) c(pkg, fv) else pkg
   }
   
   cran_version <- lapply(pkgs[pkg_deps, "Version"], base::package_version)
@@ -86,7 +86,7 @@ fastverse_update <- function(...) {
 #' whether any global or project-level configuration files are in use
 #' (as described in the vignette). 
 #' 
-#' @param \dots arguments other than \code{pck} passed to \code{\link{fastverse_deps}}.
+#' @param \dots arguments other than \code{pkg} passed to \code{\link{fastverse_deps}}.
 #' 
 #' @seealso \code{\link{fastverse_deps}}, \code{\link{fastverse}}
 #' @export
@@ -97,8 +97,8 @@ fastverse_sitrep <- function(...) {
        style.left = function(x) sub("Situation Report", bold("Situation Report"), 
                                     sub("fastverse", kingsblue("fastverse"), x, fixed = TRUE), fixed = TRUE)))
 
-  pck <- fastverse_packages(include.self = FALSE) # need include.self = FALSE here !!
-  deps <- fastverse_deps(pck, ...)  
+  pkg <- fastverse_packages(include.self = FALSE) # need include.self = FALSE here !!
+  deps <- fastverse_deps(pkg, ...)  
 
   package_pad <- format(deps$package)
   packages <- ifelse(
@@ -110,20 +110,20 @@ fastverse_sitrep <- function(...) {
   deps <- deps$package
   
   ex <- getOption("fastverse.extend")
-  if(length(ex)) pck <- setdiff(pck, ex)
-  if(any(deps == "fastverse")) pck <- c(pck, "fastverse") # include.self = FALSE above makes sure we don't add it twice here
+  if(length(ex)) pkg <- setdiff(pkg, ex)
+  if(any(deps == "fastverse")) pkg <- c(pkg, "fastverse") # include.self = FALSE above makes sure we don't add it twice here
   
   glcol <- file.exists(gconf_path())
   pcol <- file.exists(".fastverse")
   cat("\n", c(paste0("* Global config file: ", glcol, if(glcol && pcol) " (ignored)\n" else "\n"),
               paste0("* Project config file: ", pcol, "\n")))
-  cat(rule("Core packages"), "\n", packages[deps %in% pck])
+  cat(rule("Core packages"), "\n", packages[deps %in% pkg])
   if(length(ex)) {
     cat(rule("Extension packages"), "\n", packages[deps %in% ex])
-    pck <- c(pck, ex)
+    pkg <- c(pkg, ex)
   }
   if(missing(...) || !any(cdl <- ...names() == "check.deps") || ...elt(which(cdl))) 
-    cat(rule("Dependencies"), "\n", packages[!deps %in% pck])
+    cat(rule("Dependencies"), "\n", packages[!deps %in% pkg])
 }
 
 

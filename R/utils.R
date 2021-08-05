@@ -9,10 +9,10 @@ gconf_path <- function() paste(system.file(package = 'fastverse'), '.fastverse',
 
 project_packages <- function() {
   fileConn <- file(".fastverse")
-  pck <- readLines(fileConn, warn = FALSE, skipNul = TRUE)
+  pkg <- readLines(fileConn, warn = FALSE, skipNul = TRUE)
   close(fileConn)
-  pck <- unlist(strsplit(pck, c(" ", ",")), use.names = FALSE)
-  pck[nzchar(pck)]
+  pkg <- unlist(strsplit(pkg, c(" ", ",")), use.names = FALSE)
+  pkg[nzchar(pkg)]
 }
 
 #' List all packages in the fastverse
@@ -31,18 +31,18 @@ project_packages <- function() {
 #' fastverse_packages()
 fastverse_packages <- function(extensions = TRUE, include.self = TRUE) {
   if(file.exists(".fastverse")) {
-    pck <- project_packages()
+    pkg <- project_packages()
   } else {
-    ext_pck_file <- gconf_path()
-    if(file.exists(ext_pck_file)) {
-      fileConn <- file(ext_pck_file)
-      pck <- readLines(fileConn)
+    ext_pkg_file <- gconf_path()
+    if(file.exists(ext_pkg_file)) {
+      fileConn <- file(ext_pkg_file)
+      pkg <- readLines(fileConn)
       close(fileConn)
-    } else pck <- .core_pck
+    } else pkg <- .core_pkg
   }
-  if(extensions && length(ex <- getOption("fastverse.extend"))) pck <- unique(c(pck, ex))
-  if(include.self) pck <- c(pck, "fastverse")
-  pck
+  if(extensions && length(ex <- getOption("fastverse.extend"))) pkg <- unique(c(pkg, ex))
+  if(include.self) pkg <- c(pkg, "fastverse")
+  pkg
 }
 
 #' Reset the fastverse to defaults

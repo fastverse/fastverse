@@ -1,13 +1,13 @@
-.core_pck <- c("data.table", "magrittr", "kit", "collapse", "matrixStats", "fst")
+.core_pkg <- c("data.table", "magrittr", "kit", "collapse", "matrixStats", "fst")
 # Not needed anymore 
-# core_unloaded <- function() .core_pck[!paste0("package:", .core_pck) %in% search()]
+# core_unloaded <- function() .core_pkg[!paste0("package:", .core_pkg) %in% search()]
 
 is_attached <- function(x) paste0("package:", x) %in% search()
 
 ckeck_attached <- function(needed = TRUE) {
-  pck <- fastverse_packages(include.self = FALSE)
-  attached <- is_attached(pck)
-  return(pck[if(needed) !attached else attached])
+  pkg <- fastverse_packages(include.self = FALSE)
+  attached <- is_attached(pkg)
+  return(pkg[if(needed) !attached else attached])
 }
 
 # Attach the package from the same package library it was
@@ -110,35 +110,35 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
     }
   } else {
     ex <- substitute(c(...))
-    pck <- tryCatch(eval(ex), error = function(e) as.character(ex[-1L]))
-    if(!is.character(pck)) pck <- as.character(ex[-1L])
-    loaded <- pck[is_attached(pck)] # Include self? -> nope, not sensible...
+    pkg <- tryCatch(eval(ex), error = function(e) as.character(ex[-1L]))
+    if(!is.character(pkg)) pkg <- as.character(ex[-1L])
+    loaded <- pkg[is_attached(pkg)] # Include self? -> nope, not sensible...
     if(session) {
-      epck <- getOption("fastverse.extend")
-      if(length(epck) && length(pdiff <- setdiff(epck, pck)))
+      epkg <- getOption("fastverse.extend")
+      if(length(epkg) && length(pdiff <- setdiff(epkg, pkg)))
         options(fastverse.extend = pdiff)
     }
   }
   
   if(permanent) {
     if(missing(...)) stop("permanently detaching all packages in the fastverse does not make any sense. Please indicate packages to permanently detach.")
-    ext_pck_file <- gconf_path()
-    fexl <- file.exists(ext_pck_file)
-    fileConn <- file(ext_pck_file)
-    ext_pck <- if(fexl) setdiff(readLines(fileConn), pck) else setdiff(.core_pck, pck)
-    if(identical(ext_pck, .core_pck)) {
+    ext_pkg_file <- gconf_path()
+    fexl <- file.exists(ext_pkg_file)
+    fileConn <- file(ext_pkg_file)
+    ext_pkg <- if(fexl) setdiff(readLines(fileConn), pkg) else setdiff(.core_pkg, pkg)
+    if(identical(ext_pkg, .core_pkg)) {
       close(fileConn)
-      if(fexl) file.remove(ext_pck_file) # If condition necessary, else error !!
+      if(fexl) file.remove(ext_pkg_file) # If condition necessary, else error !!
     } else {
-      writeLines(ext_pck, fileConn)
+      writeLines(ext_pkg, fileConn)
       close(fileConn)
     }
   }
   
   if(length(loaded)) {
     ul <- paste0("package:", loaded) 
-    for(i in ul)  eval(substitute(detach(pcki, unload = unload, 
-                                         character.only = TRUE, force = force), list(pcki = i)))
+    for(i in ul)  eval(substitute(detach(pkgi, unload = unload, 
+                                         character.only = TRUE, force = force), list(pkgi = i)))
   }
 }
 
@@ -196,40 +196,40 @@ fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FA
   
   if(!missing(...)) {
     ex <- substitute(c(...))
-    epck <- tryCatch(eval(ex), error = function(e) as.character(ex[-1L]))
-    if(!is.character(epck)) epck <- as.character(ex[-1L])
+    epkg <- tryCatch(eval(ex), error = function(e) as.character(ex[-1L]))
+    if(!is.character(epkg)) epkg <- as.character(ex[-1L])
   }
-  if(length(topics) || install) inst_pck <- installed.packages()[, "Package"]
+  if(length(topics) || install) inst_pkg <- installed.packages()[, "Package"]
   
   if(length(topics)) {
-    tpck <- unlist(lapply(topics, topics_selector)) # needed, don't use sapply
-    if(!install) tpck <- tpck[tpck %in% inst_pck]
-    epck <- if(missing(...)) tpck else unique(c(epck, tpck))
+    tpkg <- unlist(lapply(topics, topics_selector)) # needed, don't use sapply
+    if(!install) tpkg <- tpkg[tpkg %in% inst_pkg]
+    epkg <- if(missing(...)) tpkg else unique(c(epkg, tpkg))
   }
   
   if(missing(...) && is.null(topics)) stop("Need to either supply package names to ... or use the 'topics' argument to load groups of related packages")
   # Need to be able to first temporarily and then permanently extend fastverse. It cannot be that packages from a first temporary extension get added here if permanent = TRUE
-  pck <- fastverse_packages(extensions = !permanent, include.self = FALSE)
+  pkg <- fastverse_packages(extensions = !permanent, include.self = FALSE)
   
   if(permanent) {
-    ext_pck_file <- gconf_path()
-    fileConn <- file(ext_pck_file)
-    writeLines(unique(c(pck, epck)), fileConn)
+    ext_pkg_file <- gconf_path()
+    fileConn <- file(ext_pkg_file)
+    writeLines(unique(c(pkg, epkg)), fileConn)
     close(fileConn)
   } else {
     if(length(ex <- getOption("fastverse.extend"))) { # It was already extended before
-      options(fastverse.extend = unique(c(ex, setdiff(epck, pck))))
+      options(fastverse.extend = unique(c(ex, setdiff(epkg, pkg))))
     } else { # It is extended for the first time
-      options(fastverse.extend = setdiff(epck, pck))
+      options(fastverse.extend = setdiff(epkg, pkg))
     }
   }
   
-  # epck <- setdiff(epck, pck[is_attached(pck)]) # Not clear what the point of this line is.
-  needed <- epck[!is_attached(epck)]
+  # epkg <- setdiff(epkg, pkg[is_attached(pkg)]) # Not clear what the point of this line is.
+  needed <- epkg[!is_attached(epkg)]
   if(length(needed) == 0L) return(invisible())
 
   if(install) {
-    inst <- needed[!(needed %in% inst_pck)]
+    inst <- needed[!(needed %in% inst_pkg)]
     if(length(inst)) {
       install.packages(inst)
       cat("\n")
@@ -239,7 +239,7 @@ fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FA
   fastverse_attach(needed, "Attaching extension packages")
 
   if(check.conflicts && !"package:conflicted" %in% search()) {
-    x <- fastverse_conflicts(epck)
+    x <- fastverse_conflicts(epkg)
     if(length(x)) msg(fastverse_conflict_message(x))
   }
 }

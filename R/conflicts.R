@@ -46,7 +46,7 @@ confirm_conflict <- function(packages, name) { # packages <- conflicts[[3]]; nam
 #' 
 #' \item \code{matrixStats::count} masks \code{kit::count}. The \emph{matrixStats} version is more flexible, supporting restricted search and missing value removal. The \emph{kit} version is nearly twice as fast. 
 #' }
-#' @param pck character. A vector of packages to check conflicts for. The default is all \emph{fastverse} packages. 
+#' @param pkg character. A vector of packages to check conflicts for. The default is all \emph{fastverse} packages. 
 #' 
 #' @seealso \code{\link{fastverse}}
 #' @export
@@ -56,12 +56,12 @@ confirm_conflict <- function(packages, name) { # packages <- conflicts[[3]]; nam
 #' 
 #' # Check conflicts among all attached packages
 #' fastverse_conflicts(rm_stub(search()[-1], "package:"))
-fastverse_conflicts <- function(pck = fastverse_packages()) {
+fastverse_conflicts <- function(pkg = fastverse_packages()) {
   envs <- grep("^package:", search(), value = TRUE)
   names(envs) <- envs
   conflicts <- invert_simplify(lapply(envs, ls_env)) # formerly objs
   # conflicts <- objs[as.logical(lengths(objs))] # Redundant: if envs is non empty, objs will also be
-  tidy_names <- paste0("package:", pck)
+  tidy_names <- paste0("package:", pkg)
   conflicts <- conflicts[vapply(conflicts, function(x) any(x %in% tidy_names), TRUE)]
   
   conflict_funs <- Map(confirm_conflict, conflicts, names(conflicts))
