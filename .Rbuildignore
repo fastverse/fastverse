@@ -5,3 +5,6 @@ crandb.rda
 ^\.Rproj\.user$
 ^\.github$
 cache$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
