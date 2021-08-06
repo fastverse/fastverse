@@ -1,8 +1,8 @@
 #' An Extensible Suite of High-Performance Packages for Statistical Computing and Data Manipulation
 #' 
 #' @description
-#' The \emph{fastverse} is an extensible suite of R packages, developed by independent people,
-#' that contribute towards the objectives of:
+#' The \emph{fastverse} is an extensible suite of R packages, developed independently by different people,
+#' that jointly contribute to the objectives of:
 #' \enumerate{
 #' \item Speeding up R through heavy use of compiled code (C, C++, Fortran)
 #' \item Enabling more complex statistical and data manipulation operations in R
@@ -58,7 +58,7 @@
 #' The \code{fastverse} alters most of the functions where this is the case, listed in a global variable \code{.matrixStats_replaced}, bestowing them with 
 #' capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). 
 #' This is done using very efficient R and C code, so that performance does not suffer. When the \code{fastverse} is attached, these
-#' altered function are replaced in the \emph{matrixStats} namespace. Once \emph{matrixStats} has evolved so that consistent attribute handling becomes the default 
+#' altered function are replaced in the \emph{matrixStats} namespace. Once \emph{matrixStats} has evolved so that consistent attribute handling (\code{useNames = TRUE}) becomes the default 
 #' setting, these alternative versions will become redundant and be removed from the \emph{fastverse}.
 #' }
 #' 

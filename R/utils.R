@@ -120,6 +120,7 @@ rule <- function(left, right = NULL, style.left = identity, style.right = identi
 }
 
 # Not needed, but better than not.. 
+#' @export
 print.fvrule <- function(x, ..., sep = "\n") {
   cat(x, ..., sep = sep)
   invisible(x)
