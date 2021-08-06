@@ -158,7 +158,7 @@
     </tr>
     <tr>
       <th>permanent</th>
-      <td><p>logical. Should packages be saved and included when <code>library(fastverse)</code> is called next time? Implemented via a config file saved to the package directory. The file will be removed if the <em>fastverse</em> is reinstalled, and can be removed without reinstallation using <code><a href='fastverse_reset.html'>fastverse_reset</a></code>. Packages can be removed from the config file using <code><a href='fastverse_detach.html'>fastverse_detach(..., permanent = TRUE)</a></code>.</p></td>
+      <td><p>logical. Should packages be saved and included when <code><a href='https://sebkrantz.github.io/fastverse/'>library(fastverse)</a></code> is called next time? Implemented via a config file saved to the package directory. The file will be removed if the <em>fastverse</em> is reinstalled, and can be removed without reinstallation using <code><a href='fastverse_reset.html'>fastverse_reset</a></code>. Packages can be removed from the config file using <code><a href='fastverse_detach.html'>fastverse_detach(..., permanent = TRUE)</a></code>.</p></td>
     </tr>
     <tr>
       <th>check.conflicts</th>
@@ -174,8 +174,8 @@ among the <code>topics</code> groups that are available are considered, others a
 If <code>permanent = FALSE</code>, an <code><a href='https://rdrr.io/r/base/options.html'>options("fastverse.extend")</a></code> is set which stores these extension packages, regardless of whether they were already attached or not. When calling 
 <code><a href='fastverse_packages.html'>fastverse_packages</a></code>, <code><a href='fastverse_deps.html'>fastverse_deps</a></code>, <code><a href='fastverse_conflicts.html'>fastverse_conflicts</a></code>, <code><a href='fastverse_update.html'>fastverse_update</a></code>, <code><a href='fastverse_sitrep.html'>fastverse_sitrep</a></code> or <code><a href='fastverse_detach.html'>fastverse_detach</a></code>, these packages are included as part of the <em>fastverse</em>. 
 This is also the case if <code>permanent = TRUE</code>, with the only difference that instead of populating the option, a file is saved to the package directory such that the packages are also loaded
-(as part of the core <em>fastverse</em>) when calling <code>library(fastverse)</code> in the next session. To extend the <em>fastverse</em> for the current session when it is not yet loaded, users can also set <code><a href='https://rdrr.io/r/base/options.html'>options(fastverse.extend = c(...))</a></code>, where <code><a href='https://rdrr.io/r/base/c.html'>c(...)</a></code>
-is a character vector of package names, before calling <code>library(fastverse)</code>.</p>
+(as part of the core <em>fastverse</em>) when calling <code><a href='https://sebkrantz.github.io/fastverse/'>library(fastverse)</a></code> in the next session. To extend the <em>fastverse</em> for the current session when it is not yet loaded, users can also set <code><a href='https://rdrr.io/r/base/options.html'>options(fastverse.extend = c(...))</a></code>, where <code><a href='https://rdrr.io/r/base/c.html'>c(...)</a></code>
+is a character vector of package names, before calling <code><a href='https://sebkrantz.github.io/fastverse/'>library(fastverse)</a></code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='fastverse_detach.html'>fastverse_detach</a></code>, <code><a href='fastverse-package.html'>fastverse</a></code></p></div>

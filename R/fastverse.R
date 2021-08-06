@@ -1,7 +1,7 @@
 #' An Extensible Suite of High-Performance Packages for Statistical Computing and Data Manipulation
 #' 
 #' @description
-#' The \emph{fastverse} is an extensible suite of R packages, being developed independently by different people,
+#' The \emph{fastverse} is an extensible suite of R packages, developed independently by different people,
 #' that jointly contribute to the objectives of:
 #' \enumerate{
 #' \item Speeding up R through heavy use of compiled code (C, C++, Fortran)
@@ -16,8 +16,8 @@
 #' The package also harmonizes functionality among some of these core packages (see below). 
 #' 
 #' The \code{fastverse} further allows users to freely (and permanently) extend or reduce the number of packages in the \emph{fastverse}. 
-#' A selection of suggested high-performing packages for various topics is provided in \code{\link{fastverse_extend}} (and with more details in the \href{test}{README}).
-#' Other package functions help with sorting out namespace conflicts between attached packages, and updating packages.  
+#' A selection of suggested high-performing packages for various topics is provided in \code{\link{fastverse_extend}} (and with more details in the \href{https://sebkrantz.github.io/fastverse/#suggested-extensions}{README}).
+#' Other functions help to determine joint dependencies, sort out namespace conflicts among attached packages, and update packages.  
 #' 
 #' @details NULL
 #' @section Functions in the \emph{fastverse} Package:

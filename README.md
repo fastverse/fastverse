@@ -15,7 +15,7 @@
  badges: end -->
 
 
-The *fastverse* is a complimentary suite of high-performance packages for statistical computing and data manipulation in R. Being developed independently by different people, *fastverse* packages jointly contribute to the objectives of:
+The *fastverse* is a complimentary suite of high-performance packages for statistical computing and data manipulation in R. Developed independently by different people, *fastverse* packages jointly contribute to the objectives of:
 
 - Speeding up R through heavy use of compiled code (C, C++, Fortran)
 - Enabling more complex statistical and data manipulation operations in R
@@ -173,7 +173,7 @@ In addition to a global customization, separate *fastverse*'s can be created for
 
 ### Suggested Extensions
 
-High-performing packages for different data manipulation and statistical computing topics are suggested below. Each topic as a 2-character topic-id, which can be used to quickly attach all available packages with `fastvere_extend(topcis = c(..id's..))`, and to install missing packages by adding argument `install = TRUE`. The majority of these packages provide compiled code and have few dependencies. The total (recursive) dependency count is indicated for each package. 
+High-performing packages for different data manipulation and statistical computing topics are suggested below. Each topic has a 2-character topic-id, which can be used to quickly attach all available packages with `fastvere_extend(topcis = c(..id's..))`, and to install missing packages by adding argument `install = TRUE`. The majority of these packages provide compiled code and have few dependencies. The total (recursive) dependency count is indicated for each package. 
 
 ***
 

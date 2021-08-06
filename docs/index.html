@@ -23,7 +23,7 @@
              statistical computing and data manipulation. The core fastverse consists of 6 packages:
              data.table, collapse, matrixStats, kit, magrittr and fst, that jointly only
              depend on Rcpp. These packages are attached and harmonized through the fastverse. 
-             The fastverse can also freely and permanently be extended with additional packages, both 
+             The fastverse can also be freely and permanently extended with additional packages, both 
              globally or for individual projects. Extensions are also jointly attached and managed 
              with the fastverse. Selected fast packages for various topics such as time series, dates 
              and times, strings, spatial data and statistics are suggested in the README file.  ">
@@ -90,14 +90,14 @@
 [![cran checks](https://cranchecks.info/badges/worst/fastverse)](https://cran.r-project.org/web/checks/check_results_fastverse.html)
 [![Travis build status](https://travis-ci.com/SebKrantz/fastverse.svg?branch=master)](https://travis-ci.com/SebKrantz/fastverse) -->
 
-<p>The <em>fastverse</em> is a complimentary suite of high-performance packages for statistical computing and data manipulation in R. Being developed independently by different people, <em>fastverse</em> packages jointly contribute to the objectives of:</p>
+<p>The <em>fastverse</em> is a complimentary suite of high-performance packages for statistical computing and data manipulation in R. Developed independently by different people, <em>fastverse</em> packages jointly contribute to the objectives of:</p>
 <ul>
 <li>Speeding up R through heavy use of compiled code (C, C++, Fortran)</li>
 <li>Enabling more complex statistical and data manipulation operations in R</li>
 <li>Reducing the number of dependencies required for advanced computing in R</li>
 </ul>
 <p>The <code>fastverse</code> package integrates and provides utilities for easy installation, loading and management of these packages. It is an extensible framework that allows users to (permanently) add or remove packages to create a ‘verse’ of packages suiting their general needs. Separate ‘verses’ can be created for different projects.</p>
-<p><em>fastverse</em> packages are jointly attached with <code>library(fastverse)</code>, and several functions starting with <code>fastverse_</code> help manage dependencies, detect namespace conflicts, add/remove packages from the <em>fastverse</em> and update packages.</p>
+<p><em>fastverse</em> packages are jointly attached with <code><a href="https://sebkrantz.github.io/fastverse/">library(fastverse)</a></code>, and several functions starting with <code>fastverse_</code> help manage dependencies, detect namespace conflicts, add/remove packages from the <em>fastverse</em> and update packages.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -133,8 +133,8 @@
 </h3>
 <p>In addition, users have the option (via the <code>fastverse_entend()</code> function) to freely attach extension packages offering more specific functionality. The <em>fastverse</em> can by extended by any R package, either just for the current session or permanently:</p>
 <details><summary><b><a style="cursor: pointer;">Click here to expand </a></b>
-</summary><pre class="fansi fansi-message"><code class="r"># Loads and attaches the core fastverse packages
-library(fastverse)</code>
+</summary><pre class="fansi fansi-message"><code class="r"><a href="https://sebkrantz.github.io/fastverse/"># Loads and attaches the core fastverse packages
+library(fastverse)</a></code>
 <code># -- <span style="font-weight: bold;">Attaching packages</span><span> --------------------------------------- </span><span style="color: #0087FF;">fastverse</span><span> 0.1.5 --
 </span></code><code># <span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">data.table </span><span> 1.14.0     </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">collapse   </span><span> 1.6.5 
 # </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">magrittr   </span><span> 2.0.1      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">matrixStats</span><span> 0.59.0
@@ -238,12 +238,12 @@ fastverse_reset()</a></code>
 </pre>
 </details><p>
 </p>
-<p>In addition to a global customization, separate <em>fastverse</em>’s can be created for projects by adding a <code>.fastverse</code> config file in the project directory and listing packages there. Only these packages will then be loaded and managed with <code>library(fastverse)</code> in the project.</p>
+<p>In addition to a global customization, separate <em>fastverse</em>’s can be created for projects by adding a <code>.fastverse</code> config file in the project directory and listing packages there. Only these packages will then be loaded and managed with <code><a href="https://sebkrantz.github.io/fastverse/">library(fastverse)</a></code> in the project.</p>
 </div>
 <div id="suggested-extensions" class="section level3">
 <h3 class="hasAnchor">
 <a href="#suggested-extensions" class="anchor"></a>Suggested Extensions</h3>
-<p>High-performing packages for different data manipulation and statistical computing topics are suggested below. Each topic as a 2-character topic-id, which can be used to quickly attach all available packages with <code>fastvere_extend(topcis = c(..id's..))</code>, and to install missing packages by adding argument <code>install = TRUE</code>. The majority of these packages provide compiled code and have few dependencies. The total (recursive) dependency count is indicated for each package.</p>
+<p>High-performing packages for different data manipulation and statistical computing topics are suggested below. Each topic has a 2-character topic-id, which can be used to quickly attach all available packages with <code>fastvere_extend(topcis = c(..id's..))</code>, and to install missing packages by adding argument <code>install = TRUE</code>. The majority of these packages provide compiled code and have few dependencies. The total (recursive) dependency count is indicated for each package.</p>
 <hr>
 <div id="time-series-ts" class="section level4">
 <h4 class="hasAnchor">
@@ -355,7 +355,7 @@ fastverse_reset()</a></code>
 <ul class="list-unstyled">
 <li>Browse source code at <br><a href="https://github.com/SebKrantz/fastverse/">https://​github.com/​SebKrantz/​fastverse/​</a>
 </li>
-<li>Report a bug at <br><a href="https://github.com/SebKrantz/fastverse">https://​github.com/​SebKrantz/​fastverse</a>
+<li>Report a bug at <br><a href="https://github.com/SebKrantz/fastverse/issues">https://​github.com/​SebKrantz/​fastverse/​issues</a>
 </li>
 </ul>
 </div>

@@ -9,7 +9,7 @@ Description: The 'fastverse' package integrates and provides utilities for easy 
              statistical computing and data manipulation. The core 'fastverse' consists of 6 packages:
              'data.table', 'collapse', 'matrixStats', 'kit', 'magrittr' and 'fst', that jointly only
              depend on 'Rcpp'. These packages are attached and harmonized through the 'fastverse'. 
-             The 'fastverse' can also freely and permanently be extended with additional packages, both 
+             The 'fastverse' can also be freely and permanently extended with additional packages, both 
              globally or for individual projects. Extensions are also jointly attached and managed 
              with the 'fastverse'. Selected fast packages for various topics such as time series, dates 
              and times, strings, spatial data and statistics are suggested in the README file.  
@@ -18,7 +18,9 @@ Encoding: UTF-8
 Imports: data.table, collapse, matrixStats, kit, magrittr, fst
 Suggests: xts, roll, lubridate, fasttime, dygraphs, stringi, Rfast,
           Rfast2, parallelDist, coop, tidyfast, knitr, rmarkdown
-BugReports: https://github.com/SebKrantz/fastverse
+URL: https://sebkrantz.github.io/fastverse/, 
+     https://github.com/SebKrantz/fastverse
+BugReports: https://github.com/SebKrantz/fastverse/issues
 RoxygenNote: 7.1.1
 NeedsCompilation: yes
 VignetteBuilder: knitr
