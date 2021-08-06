@@ -4,13 +4,13 @@ packageVersion2 <- function(pkg) {
 
 #' List all fastverse dependencies
 #' 
-#' Lists all fastverse dependencies and the local and CRAN versions of packages and dependencies.
+#' Lists all \emph{fastverse} dependencies and the local and CRAN versions of packages and dependencies.
 #'
-#' @param pkg character vector of packages to check dependencies and update status of. By default all \emph{fastverse} packages. 
+#' @param pkg character vector of packages to check dependencies and versions of. Default is all \emph{fastverse} packages. 
 #' @param recursive logical. \code{TRUE} recursively determines all packages required to operate these packages.
-#' \code{FALSE} will only list the packages itself and their direct dependencies. 
+#' \code{FALSE} will only list the packages and their direct dependencies. 
 #' @param repos the repositories to use to check for updates. Defaults to \code{getOptions("repos")}.
-#' @param include.self logical. \code{TRUE} also includes the \emph{fastverse} package and checks against CRAN updates.  
+#' @param include.self logical. \code{TRUE} also includes the \emph{fastverse} package and checks against the CRAN version.  
 #' @param check.deps logical. \code{FALSE} will not determine dependencies but only display the update status of packages in \code{pkg}. 
 #' 
 #' @returns A data frame giving the package names, the CRAN and local version, and a logical variable stating whether the local version is behind the CRAN version. 
@@ -51,8 +51,8 @@ fastverse_deps <- function(pkg = fastverse_packages(), recursive = FALSE,
 
 #' Update fastverse packages
 #'
-#' This will check all fastverse packages (and their
-#' dependencies) for updates and print an install command. 
+#' This will check all \emph{fastverse} packages (and their
+#' dependencies) for updates and print a command to install those updates. 
 #'
 #' @param \dots arguments passed to \code{\link{fastverse_deps}}.
 #' 
@@ -83,8 +83,8 @@ fastverse_update <- function(...) {
 #'
 #' This function gives a quick overview of the version of R and all 
 #' \emph{fastverse} packages (including availability updates for packages) and indicates 
-#' whether any global or project-level configuration files are in use
-#' (as described in the vignette). 
+#' whether any global or project-level configuration files are used
+#' (as described in more detail the vignette). 
 #' 
 #' @param \dots arguments other than \code{pkg} passed to \code{\link{fastverse_deps}}.
 #' 
