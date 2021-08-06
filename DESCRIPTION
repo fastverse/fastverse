@@ -8,11 +8,11 @@ Description: The 'fastverse' package integrates and provides utilities for easy 
              loading and management of a complimentary set of high-performance R packages for 
              statistical computing and data manipulation. The core 'fastverse' consists of 6 packages:
              'data.table', 'collapse', 'matrixStats', 'kit', 'magrittr' and 'fst', that jointly only
-             depend on 'Rcpp'. These pacakges are loaded and harmonized through the 'fastverse'. 
+             depend on 'Rcpp'. These packages are attached and harmonized through the 'fastverse'. 
              The 'fastverse' can also freely and permanently be extended with additional packages, both 
-             globally or for particular projects, which can then also be jointly loaded and managed using 
-             tools the 'fastverse' provides. Selected fast packages for time series, dates and times, 
-             string manipulation, spatial manipulation and statistics are suggested in the README file.  
+             globally or for individual projects. Extensions are also jointly attached and managed 
+             with the 'fastverse'. Selected fast packages for various topics such as time series, dates 
+             and times, strings, spatial data and statistics are suggested in the README file.  
 License: GPL-3
 Encoding: UTF-8
 Imports: data.table, collapse, matrixStats, kit, magrittr, fst
