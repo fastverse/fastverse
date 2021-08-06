@@ -6,10 +6,10 @@
 #' \enumerate{
 #' \item Speeding up R through heavy use of compiled code (C, C++, Fortran)
 #' \item Enabling more complex statistical and data manipulation operations in R
-#' \item Reducing the number of dependencies required to do advanced computations in R
+#' \item Reducing the number of dependencies required for advanced computing in R
 #' }
 #' Inspired by the \code{tidyverse} package, the \code{fastverse} package is a flexible package loader and manager 
-#' that allows users to put together their own 'verse' of packages and load them with \code{library(fastverse)}. 
+#' that allows users to put together their own 'verses' of packages and load them with \code{library(fastverse)}. 
 #' 
 #' The \code{fastverse} installs 6 core packages (\code{data.table}, \code{collapse}, \code{matrixStats}, \code{kit}, \code{magrittr} and \code{fst}) that 
 #' provide native C/C++ code of proven quality, work well together, and enable complex statistical computing and data manipulation - with only \code{Rcpp} as an additional dependency. 

@@ -6,7 +6,7 @@ packageVersion2 <- function(pkg) {
 #' 
 #' Lists all \emph{fastverse} dependencies and the local and CRAN versions of packages and dependencies.
 #'
-#' @param pkg character vector of packages to check dependencies and versions of. Default is all \emph{fastverse} packages. 
+#' @param pkg character vector of packages to check dependencies and versions of. The default is all \emph{fastverse} packages. 
 #' @param recursive logical. \code{TRUE} recursively determines all packages required to operate these packages.
 #' \code{FALSE} will only list the packages and their direct dependencies. 
 #' @param repos the repositories to use to check for updates. Defaults to \code{getOptions("repos")}.

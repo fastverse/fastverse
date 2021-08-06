@@ -37,7 +37,7 @@ confirm_conflict <- function(packages, name) { # packages <- conflicts[[3]]; nam
 #'
 #' There are 2 internal conflict in the core \emph{fastverse} which are not displayed by \code{fastverse_conflicts()}:
 #' \itemize{
-#' \item \code{collapse::funique} masks \code{kit::funique}. If both packages are unloaded, \emph{collapse} is loaded after \emph{kit}. In general, the 
+#' \item \code{collapse::funique} masks \code{kit::funique}. If both packages are detached, \emph{collapse} is attached after \emph{kit}. In general, the 
 #' \emph{collapse} version is often faster on data frames and supports unique rows on selected columns, but only preserves the first-match appearance order of 
 #' character data (unique values for numeric columns are determined using a sort-based method). 
 #' An option \code{sort = TRUE} lets \code{collapse::funique} return sorted unique values (for both character and numeric data). 

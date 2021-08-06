@@ -91,7 +91,7 @@ fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FAL
 #' @param unload logical. \code{TRUE} also unloads the packages using \code{\link[=detach]{detach(name, unload = TRUE)}}.
 #' @param include.self logical. \code{TRUE} also includes the \code{fastverse} package - only applicable if \code{\dots} is left empty.  
 #' @param force logical. should a \emph{fastverse} package be detached / unloaded even though other attached packages depend on it?
-#' @param session logical. \code{TRUE} also removes the packages from \code{options("fastverse.extend")}, so they will not be loaded again with \code{library(fastverse)} in the current session. If \code{\dots} is left empty and \code{include.self = TRUE}, this will clear \bold{all} \emph{fastverse} options set for the session. 
+#' @param session logical. \code{TRUE} also removes the packages from \code{options("fastverse.extend")}, so they will not be attached again with \code{library(fastverse)} in the current session. If \code{\dots} is left empty and \code{include.self = TRUE}, this will clear \bold{all} \emph{fastverse} options set for the session. 
 #' @param permanent logical. if \code{\dots} are used to detach certain packages, \code{permament = TRUE} will disable them being loaded the next time the \emph{fastverse} is loaded. 
 #' This is implemented via a config file saved to the package directory. Core \emph{fastverse} packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}. The config file can be removed with \code{\link{fastverse_reset}}.
 #' 
@@ -172,7 +172,7 @@ topics_selector <- function(x) {
 #' }
 #' @param install logical. Install packages not available?
 #' @param permanent logical. Should packages be saved and included when \code{library(fastverse)} is called next time? Implemented via a config file saved to the package directory. The file will be removed if the \emph{fastverse} is reinstalled, and can be removed without reinstallation using \code{\link{fastverse_reset}}. Packages can be removed from the config file using \code{\link[=fastverse_detach]{fastverse_detach(..., permanent = TRUE)}}.
-#' @param check.conflicts logical. Should conflicts between extension packages and loaded packages be checked?
+#' @param check.conflicts logical. Should conflicts between extension packages and attached packages be checked?
 #' 
 #' @details 
 #' The \emph{fastverse} can be extended using a free choice of packages, packages listed under \code{topics}, or a combination of both. If \code{install = FALSE}, only packages 
