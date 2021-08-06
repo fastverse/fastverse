@@ -8,3 +8,4 @@ cache$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^logo\.png$
