@@ -147,7 +147,7 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
 topics_selector <- function(x) {
   switch(if(is.character(x)) toupper(x) else x, 
          TS = c("xts", "zoo", "roll"), 
-         DT = c("lubridate", "clock", "timechange", "fasttime", "nanotime"), # anytime?? #nanotime??
+         DT = c("lubridate", "clock", "fasttime", "anytime", "timechange"), # anytime?? #nanotime??
          ST = c("snakecase", "stringr", "stringi"),
          SC = c("Rfast", "Rfast2", "parallelDist", "coop"), # "fastmatch", "fastmap", (not on topic), "fastDummies" (16 dependencies)
          SP = c("stars", "terra", "sf"), # "sp" "rgdal" "raster"
