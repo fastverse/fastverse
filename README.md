@@ -23,6 +23,16 @@ The *fastverse* package integrates and provides utilities for easy installation,
 
 - A minimal set of dependencies. Most *fastverse* packages only depend on packages providing C++ API's in R, if any. 
 
+## Installation
+
+``` r
+# Install the current version on CRAN
+install.packages("fastverse")
+
+# Install the development version from Github (Requires Rtools)
+remotes::install_github("SebKrantz/fastverse")
+```
+
 ## Packages
 
 The *fastverse* consists of 6 core packages (7 dependencies in total) that provide broad based data manipulation functionality and have a carefully managed API. These packages are installed and attached along with the `fastverse` package. In addition the user has the option (via the `fastverse_entend()` function) to freely and flexibly install and attach extension packages offering more specific functionality. 
@@ -43,6 +53,118 @@ The *fastverse* consists of 6 core packages (7 dependencies in total) that provi
 
   *Additional dependency*: Package *Rcpp* is imported by *collapse* and *fst*.
 
+### Extending the *fastverse*
+
+<details>
+  <summary><b><a style="cursor: pointer;">Click here to expand </a></b> </summary>
+
+<PRE class="fansi fansi-message"><code class="r"># Loads and attaches the core fastverse packages
+library(fastverse)</code>
+<CODE># -- <span style="font-weight: bold;">Attaching packages</span><span> --------------------------------------- </span><span style="color: #0087FF;">fastverse</span><span> 0.1.5 --
+</span></CODE><CODE># <span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">data.table </span><span> 1.14.0     </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">collapse   </span><span> 1.6.5 
+# </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">magrittr   </span><span> 2.0.1      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">matrixStats</span><span> 0.59.0
+# </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">kit        </span><span> 0.0.7      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">fst        </span><span> 0.9.4
+</span></CODE>
+<code class="r"># Permanently extends the core fastverse by certain packages
+fastverse_extend(xts, roll, dygraphs, permanent = TRUE)</code>
+<CODE># -- <span style="font-weight: bold;">Attaching extension packages</span><span> ----------------------------- </span><span style="color: #0087FF;">fastverse</span><span> 0.1.5 --
+</span></CODE><CODE># <span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">xts     </span><span> 0.12.1      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">dygraphs</span><span> 1.1.1.6
+# </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">roll    </span><span> 1.1.6
+</span></CODE><CODE># -- <span style="font-weight: bold;">Conflicts</span><span> ------------------------------------------ fastverse_conflicts() --
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">xts</span><span>::</span><span style="color: #00BB00;">first()</span><span> masks </span><span style="color: #0000BB;">data.table</span><span>::first()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">xts</span><span>::</span><span style="color: #00BB00;">last()</span><span>  masks </span><span style="color: #0000BB;">data.table</span><span>::last()
+</span></CODE>
+<code class="r"># If the fastverse is now loaded in a new session, these packages are added 
+fastverse_detach(session = TRUE)
+library(fastverse)</code><CODE># -- <span style="font-weight: bold;">Attaching packages</span><span> --------------------------------------- </span><span style="color: #0087FF;">fastverse</span><span> 0.1.5 --
+</span></CODE>
+<CODE># <span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">data.table </span><span> 1.14.0      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">fst        </span><span> 0.9.4  
+# </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">magrittr   </span><span> 2.0.1       </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">xts        </span><span> 0.12.1 
+# </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">kit        </span><span> 0.0.7       </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">roll       </span><span> 1.1.6  
+# </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">collapse   </span><span> 1.6.5       </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">dygraphs   </span><span> 1.1.1.6
+# </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">matrixStats</span><span> 0.59.0
+</span></CODE><CODE># -- <span style="font-weight: bold;">Conflicts</span><span> ------------------------------------------ fastverse_conflicts() --
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">xts</span><span>::</span><span style="color: #00BB00;">first()</span><span>           masks </span><span style="color: #0000BB;">data.table</span><span>::first()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">collapse</span><span>::</span><span style="color: #00BB00;">is.regular()</span><span> masks </span><span style="color: #0000BB;">zoo</span><span>::is.regular()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">xts</span><span>::</span><span style="color: #00BB00;">last()</span><span>            masks </span><span style="color: #0000BB;">data.table</span><span>::last()
+</span></CODE>
+<code class="r"># We can also extend only the fastverse for the session, here adding Rfast2
+# and any installed suggested packages for date-time manipulation
+fastverse_extend(Rfast2, topics = &quot;DT&quot;) </code>
+<CODE># -- <span style="font-weight: bold;">Attaching extension packages</span><span> ----------------------------- </span><span style="color: #0087FF;">fastverse</span><span> 0.1.5 --
+</span></CODE><CODE># <span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">Rfast2   </span><span> 0.0.9      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">clock    </span><span> 0.3.1 
+# </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">lubridate</span><span> 1.7.10     </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">fasttime </span><span> 1.0.2
+</span></CODE><CODE># -- <span style="font-weight: bold;">Conflicts</span><span> ------------------------------------------ fastverse_conflicts() --
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">as.difftime()</span><span> masks </span><span style="color: #0000BB;">base</span><span>::as.difftime()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">clock</span><span>::</span><span style="color: #00BB00;">as_date()</span><span>         masks </span><span style="color: #0000BB;">lubridate</span><span>::as_date()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">date()</span><span>        masks </span><span style="color: #0000BB;">base</span><span>::date()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">hour()</span><span>        masks </span><span style="color: #0000BB;">data.table</span><span>::hour()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">intersect()</span><span>   masks </span><span style="color: #0000BB;">base</span><span>::intersect()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">is.Date()</span><span>     masks </span><span style="color: #0000BB;">collapse</span><span>::is.Date()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">isoweek()</span><span>     masks </span><span style="color: #0000BB;">data.table</span><span>::isoweek()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">mday()</span><span>        masks </span><span style="color: #0000BB;">data.table</span><span>::mday()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">minute()</span><span>      masks </span><span style="color: #0000BB;">data.table</span><span>::minute()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">month()</span><span>       masks </span><span style="color: #0000BB;">data.table</span><span>::month()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">quarter()</span><span>     masks </span><span style="color: #0000BB;">data.table</span><span>::quarter()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">second()</span><span>      masks </span><span style="color: #0000BB;">data.table</span><span>::second()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">setdiff()</span><span>     masks </span><span style="color: #0000BB;">base</span><span>::setdiff()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">union()</span><span>       masks </span><span style="color: #0000BB;">base</span><span>::union()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">wday()</span><span>        masks </span><span style="color: #0000BB;">data.table</span><span>::wday()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">week()</span><span>        masks </span><span style="color: #0000BB;">data.table</span><span>::week()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">yday()</span><span>        masks </span><span style="color: #0000BB;">data.table</span><span>::yday()
+# </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">year()</span><span>        masks </span><span style="color: #0000BB;">data.table</span><span>::year()
+</span></CODE>
+<code class="r"># This shows a situation report of the fastverse, including all dependencies
+fastverse_sitrep(recursive = TRUE)</code>
+<CODE># -- <span style="color: #0087FF;">fastverse</span><span> 0.1.5: </span><span style="font-weight: bold;">Situation Report</span><span> -------------------------------- R 4.1.0 --
+#  * Global config file: TRUE
+#  * Project config file: FALSE
+# -- Core packages --------------------------------------------------------------- 
+#  * <span style="color: #FF0087;">data.table   </span><span> (1.14.0)
+#  * </span><span style="color: #FF0087;">magrittr     </span><span> (2.0.1)
+#  * </span><span style="color: #FF0087;">kit          </span><span> (0.0.7)
+#  * </span><span style="color: #FF0087;">collapse     </span><span> (1.6.5)
+#  * </span><span style="color: #FFAF00;">matrixStats  </span><span> (0.59.0 &lt; 0.60.0)
+#  * </span><span style="color: #FF0087;">fst          </span><span> (0.9.4)
+#  * </span><span style="color: #FF0087;">xts          </span><span> (0.12.1)
+#  * </span><span style="color: #FF0087;">roll         </span><span> (1.1.6)
+#  * </span><span style="color: #FF0087;">dygraphs     </span><span> (1.1.1.6)
+# -- Extension packages ---------------------------------------------------------- 
+#  * </span><span style="color: #FF0087;">Rfast2       </span><span> (0.0.9)
+#  * </span><span style="color: #FF0087;">lubridate    </span><span> (1.7.10)
+#  * </span><span style="color: #FFAF00;">clock        </span><span> (0.3.1 &lt; 0.4.0)
+#  * </span><span style="color: #FF0087;">fasttime     </span><span> (1.0.2)
+# -- Dependencies ---------------------------------------------------------------- 
+#  * </span><span style="color: #FF0087;">base64enc    </span><span> (0.1.3)
+#  * </span><span style="color: #FF0087;">cpp11        </span><span> (0.3.1)
+#  * </span><span style="color: #FF0087;">digest       </span><span> (0.6.27)
+#  * </span><span style="color: #FFAF00;">ellipsis     </span><span> (0.3.1 &lt; 0.3.2)
+#  * </span><span style="color: #FF0087;">generics     </span><span> (0.1.0)
+#  * </span><span style="color: #FF0087;">glue         </span><span> (1.4.2)
+#  * </span><span style="color: #FF0087;">htmltools    </span><span> (0.5.1.1)
+#  * </span><span style="color: #FF0087;">htmlwidgets  </span><span> (1.5.3)
+#  * </span><span style="color: #FF0087;">jsonlite     </span><span> (1.7.2)
+#  * </span><span style="color: #FF0087;">lattice      </span><span> (0.20.44)
+#  * </span><span style="color: #FF0087;">RANN         </span><span> (2.6.1)
+#  * </span><span style="color: #FF0087;">Rcpp         </span><span> (1.0.7)
+#  * </span><span style="color: #FFAF00;">RcppArmadillo</span><span> (0.10.2.1.0 &lt; 0.10.6.0.0)
+#  * </span><span style="color: #FFAF00;">RcppGSL      </span><span> (0.3.8 &lt; 0.3.9)
+#  * </span><span style="color: #FFAF00;">RcppParallel </span><span> (5.0.2 &lt; 5.1.4)
+#  * </span><span style="color: #FFAF00;">RcppZiggurat </span><span> (0.1.5 &lt; 0.1.6)
+#  * </span><span style="color: #FFAF00;">Rfast        </span><span> (2.0.1 &lt; 2.0.3)
+#  * </span><span style="color: #FF0087;">rlang        </span><span> (0.4.11)
+#  * </span><span style="color: #FFAF00;">tzdb         </span><span> (0.1.1 &lt; 0.1.2)
+#  * </span><span style="color: #FFAF00;">vctrs        </span><span> (0.3.7 &lt; 0.3.8)
+#  * </span><span style="color: #FF0087;">yaml         </span><span> (2.2.1)
+#  * </span><span style="color: #FF0087;">zoo          </span><span> (1.8.9)
+</span></CODE>
+<code class="r"># Resets the fastverse to defaults, removing any permanent modifications
+fastverse_reset()</code>
+</PRE>
+
+</details>
+
+
 ### Suggested Extensions
 
 
@@ -60,15 +182,15 @@ The *fastverse* consists of 6 core packages (7 dependencies in total) that provi
 
 - **clock**: Comprehensive and fast library to deal with dates and times (6 dependencies).
 
-- **timechange**: (1 dependency).
-
 - **fasttime**: Fast parsing of strings to 'POSIXct' (0 dependencies).
 
 - **anytime**: Anything to 'POSIXct' or 'Date' Converter
 
-- **nanotime**: (7 dependencies).
+- **timechange**: (1 dependency).
 
-  *Integration Notes*: Date and time variables are preserved in many *data.table* and *collapse* operations. *data.table* additionally offers an efficient integer based date class 'IDate' with some supporting functionality.
+  *Integration Notes*: Date and time variables are preserved in many *data.table* and *collapse* operations. *data.table* additionally offers an efficient integer based date class 'IDate' with some supporting functionality. *xts* and *zoo* also provide various functions to transform dates. 
+  
+  <!-- - **nanotime**: (7 dependencies). -->
 
 #### Strings (ST)
 - **stringi**: Main R package for fast, correct, consistent, and convenient string/text manipulation (backend to *stringr* and *snakecase*) (0 dependencies).
@@ -99,7 +221,7 @@ The *fastverse* consists of 6 core packages (7 dependencies in total) that provi
 
 - **terra**: (4 dependencies) 
 
-  *Integration Notes*: *collapse* can be used for efficient manipulation and computations on *sf* data frames. *sf* also offers tight integration with *dplyr*.
+  *Notes*: *collapse* can be used for efficient manipulation and computations on *sf* data frames. *sf* also offers tight integration with *dplyr*.
 
 
 #### Visualization (VI)
@@ -113,7 +235,7 @@ The *fastverse* consists of 6 core packages (7 dependencies in total) that provi
 
 - **scales**: Scale Functions for Visualization (10 dependencies). 
 
-Notes: *latticeExtra* provides extra graphical utilities base on *lattice*. *gridExtra* provides miscellaneous functions for *grid* graphics (and consequently for *ggplot2* which is based on *grid*). *gridtext* provides improved text rendering support for *grid* graphics. Many packages offer *ggplot2* extensions, (typically starting with 'gg') such as *ggExtra*, *ggalt*, *ggforce*, *ggmap*, *ggtext*, *ggthemes*, *ggrepel*, *ggridges*, *ggfortify*, *ggstatsplot*, *ggeffects*, *ggsignif*, *GGally*, *ggcorrplot*, *ggdendro*, etc...
+  *Notes:* *latticeExtra* provides extra graphical utilities base on *lattice*. *gridExtra* provides miscellaneous functions for *grid* graphics (and consequently for *ggplot2* which is based on *grid*). *gridtext* provides improved text rendering support for *grid* graphics. Many packages offer *ggplot2* extensions, (typically starting with 'gg') such as *ggExtra*, *ggalt*, *ggforce*, *ggmap*, *ggtext*, *ggthemes*, *ggrepel*, *ggridges*, *ggfortify*, *ggstatsplot*, *ggeffects*, *ggsignif*, *GGally*, *ggcorrplot*, *ggdendro*, etc...
 
 
 #### Tidyverse-like data manipulation built on *data.table* (TV)
@@ -128,20 +250,6 @@ Notes: *latticeExtra* provides extra graphical utilities base on *lattice*. *gri
 
 - **maditr**: Minimal implementation with functions `let()` and `take()` (2 dependencies). 
 
-(One could also mention Rstudio's **dtplyr** and the **table.express** package here, but these packages import **dplyr** and thus have a around 20 dependencies.)
+  *Notes*: One could also mention Rstudio's **dtplyr** and the **table.express** package here, but these packages import **dplyr** and thus have a around 20 dependencies.
 
-## Usage
-
-``` r
-# Loads and attaches the core fastverse packages
-library(fastverse)
-
-# Extend the fastverse by all installed extension packages
-fastverse_extend()
-
-# Extends the core fastverse by packages in certain topics
-fastverse_extend(topics = c("ts", "sp"))
-
-# Extends the core fastverse by certain packages
-fastverse_extend(xts, roll, sf, Rfast)
-```
+Feel free to notify me of any other packages you think should be included here. Such packages should be well designed, top-performing, low-dependency, and, with few exceptions, provide own compiled code. Please note that the *fastverse* focuses on general purpose statistical computing and data manipulation, thus I won't include fast packages to estimate specific kinds of models here (of which R also has a great many). 
