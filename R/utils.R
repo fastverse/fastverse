@@ -11,8 +11,10 @@ project_packages <- function() {
   fileConn <- file(".fastverse")
   pkg <- readLines(fileConn, warn = FALSE, skipNul = TRUE)
   close(fileConn)
-  pkg <- unlist(strsplit(pkg, c(" ", ",")), use.names = FALSE)
-  pkg[nzchar(pkg)]
+  pkg <- trimws(unlist(strsplit(pkg, ", | ,|,| "), use.names = FALSE)) # This will always work!
+  pkg <- pkg[nzchar(pkg)]
+  if(!length(pkg)) stop("Empty config file. Please write package names into your .fastverse config file, separated by commas, spaces or line breaks.")
+  pkg
 }
 
 #' List all packages in the fastverse

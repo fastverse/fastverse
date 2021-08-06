@@ -30,9 +30,9 @@ The *fastverse* is an extensible suite of R packages, developed independently by
 
 - Speeding up R through heavy use of compiled code (C, C++, Fortran)
 - Enabling more complex statistical and data manipulation operations in R
-- Reducing the number of dependencies required to do advanced computations in R
+- Reducing the number of dependencies required for advanced computing in R
 
-The *fastverse* installs 6 core packages (*data.table*, *collapse*, *matrixStats*, *kit*, *magrittr* and *fst*) that are (by default) loaded and harmonized with `library(fastverse)`. These packages were selected because they provide high quality compiled code for most common statistical and data manipulation tasks, have carefully managed API's, jointly depend only on base R and *Rcpp*, and work remarkably well together. 
+The *fastverse* installs 6 core packages (*data.table*, *collapse*, *matrixStats*, *kit*, *magrittr* and *fst*) that are (by default) harmonized and attached with `library(fastverse)`. These packages were selected because they provide high quality compiled code for most common statistical and data manipulation tasks, have carefully managed APIs, jointly depend only on base R and *Rcpp*, and work remarkably well together. 
 
 ```{r}
 library(fastverse)
@@ -49,12 +49,12 @@ A key feature of the *fastverse* is that it can liberally be extended with other
 
 While placing a clear emphasis on high-quality, high-performance and low-dependency code, as well as statistical rigor and broad based compatibility with the classes and objects most used in R - which warranted a selection of core packages and a number of [suggested extensions](<https://github.com/SebKrantz/fastverse>) - the *fastverse* is not particularly opinionated about coding style, function nomenclature, or the format of inputs and outputs. 
 
-Users are encouraged to make of use the features described in the remainder of this vignette to create a 'verse' of packages that suits their personal analysis needs. 
+Users are encouraged to make of use the features described in the remainder of this vignette to create 'verses' of packages that suit their personal analysis needs. 
 
 <!-- These extensions can then be loaded and managed by the *fastverse* package, just like the core packages. -->
 
 ## Extending the *fastverse* for the Session
-After the core packages have been loaded with `library(fastverse)`, it is possible to extend the *fastverse* for the current session by adding any number of additional packages with `fastverse_extend()`. This will attach the packages and, by default, check for namespace clashes with attached packages as well as among the added packages. 
+After the core packages have been attached with `library(fastverse)`, it is possible to extend the *fastverse* for the current session by adding any number of additional packages with `fastverse_extend()`. This will attach the packages and, by default, check for namespace clashes with attached packages, as well as among the added packages. 
 
 ```{r}
 # Extend the fastverse for the session
@@ -90,7 +90,7 @@ library(fastverse)
 fastverse_detach(session = TRUE, unload = TRUE)
 ```
 
-`fastverse_detach` can also be used to detach any other attached packages that are not loaded as part of the *fastverse*. 
+`fastverse_detach` can also be used to detach any other attached packages not part of the *fastverse*. 
 
 Since `options("fastverse.extend")` keeps track of which packages were added to the *fastverse* for the current session, it is also possible to set it before loading the *fastverse* e.g. 
 ```{r, include=FALSE}
@@ -106,7 +106,7 @@ fastverse_detach(session = TRUE)
 options(fastverse.styling = FALSE)
 ```
 
-## Permanent Extension
+## Permanent Extensions
 
 `fasvtverse_extend` and `fastverse_detach` both have an argument `permanent = TRUE` which can be used to make these changes persist across R sessions. This is implemented using a global configuration file saved to the package directory^[Thus it will be removed when the *fastverse* is reinstalled.]. 
 
@@ -123,14 +123,14 @@ fastverse_extend(xts, zoo, roll, dygraphs, permanent = TRUE)
 # Removing some core packages
 fastverse_detach(data.table, fst, matrixStats, permanent = TRUE)
 
-# Adding data.table again, so it is loaded last
+# Adding data.table again, so it is attached last
 fastverse_extend(data.table, permanent = TRUE)
 ```
 
-To verify our modification, we can see the order in which the packages are loaded, and do a conflict check:
+To verify our modification, we can see the order in which the packages are attached, and do a conflict check:
 
 ```{r}
-# This will be the order in which packages are loaded
+# This will be the order in which packages are attached
 fastverse_packages(include.self = FALSE)
 # Check conflicts to make sure data.table functions take precedence
 fastverse_conflicts()
@@ -166,11 +166,11 @@ As long as the current installation of the *fastverse* is kept, these modificati
 
 The *fastverse* gives you the ability to put together a custom collection of packages for a project and load and manage them with `library(fastverse)`.
 
-To do this you need to include a configuration file named `.fastverse` (no file extension) inside a project directory, and place inside that file the names of packages to be loaded when calling `library(fastverse)`^[You can place package names in that file any manner you deem suitable: separated using spaces or commas, on one or multiple lines. Note that the file will be read from left to right and from top to bottom. Packages are loaded in the order found in the file.]. Note that **all** packages to be loaded as core *fastverse* for your project need to be included in that file, in the order they should be loaded.    
+To do this you need to include a configuration file named `.fastverse` (no file extension) inside a project directory, and place inside that file the names of packages to be loaded when calling `library(fastverse)`^[You can place package names in that file any manner you deem suitable: separated using spaces or commas, on one or multiple lines. Note that the file will be read from left to right and from top to bottom. Packages are attached in the order found in the file.]. Note that **all** packages to be loaded as core *fastverse* for your project need to be included in that file, in the order they should be attached.    
 
 Using the *fastverse* to jointly load important packages can facilitate package management inside projects and serve as a bridge between loading packages individually and using more rigorous package and namespace management solutions like [renv](<https://github.com/rstudio/renv>), [conflicted](<https://github.com/r-lib/conflicted>), [box](<https://github.com/klmr/box>) or [import](<https://github.com/rticulate/import>). 
 
-At the most basic level, loading packages with the *fastverse* displays the package versions and checks namespace conflicts, helping you spot issues that might arise as packages are updated. It also allows you to easily check the dependencies and update status of packages used in your project using `fastverse_sitrep()`, and update if necessary with `fastverse_update()`. 
+At the most basic level, loading packages with the *fastverse* displays the package versions and checks namespace conflicts, helping you spot issues that might arise as packages are updated. It also allows you to easily check the dependencies and update status of packages used in your project with `fastverse_sitrep()`, and update if necessary with `fastverse_update()`. 
 
 Using a config file in a project will ignore any global configuration as discussed in the previous section. You can still extend the *fastverse* inside a project session using `fastverse_extend`, or `options("fastvers.extend")` before `library(fastverse)`. 
 
@@ -178,7 +178,7 @@ Using a config file in a project will ignore any global configuration as discuss
 
 Just like it's *tidyverse* equivalent, `fastverse_deps()` (recursively) determines the joint dependencies of *fastverse* packages and also checks local versions against CRAN versions.
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 # Recursively determine the joint dependencies of the current fastverse configuration
 fastverse_deps(recursive = TRUE) # Returns a data frame
 ```
@@ -212,7 +212,7 @@ If we only want to omit a function clash check when calling `fastverse_extend`, 
 
 ## Conclusion
 
-The *fastverse* was developed principally for 2 reasons: to promote quality high-performance software development for R, and to provide a flexible approach to package loading and management in R, particularly for users wishing to combine various high-performance packages in statistical workflows. To the extent that high-performance software development in R continues to prioritize low-dependency and stable API's, these two objectives are compatible, and complex statistical workflows can be developed without sophisticated package management solutions.  
+The *fastverse* was developed principally for 2 reasons: to promote quality high-performance software development for R, and to provide a flexible approach to package loading and management in R, particularly for users wishing to combine various high-performance packages in statistical workflows. To the extent that high-performance software development in R continues to prioritize low-dependency and stable APIs, these two objectives are compatible, and complex statistical workflows can be developed without sophisticated package management solutions.  
 
 This vignette introduced the key features of the package. Suggested *fastverse* extension packages are introduced in the [README](<https://github.com/SebKrantz/fastverse>) file. 
 
