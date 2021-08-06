@@ -132,6 +132,7 @@ To verify our modification, we can see the order in which the packages are attac
 ```{r}
 # This will be the order in which packages are attached
 fastverse_packages(include.self = FALSE)
+
 # Check conflicts to make sure data.table functions take precedence
 fastverse_conflicts()
 ```
@@ -154,8 +155,10 @@ After this permanent modification, the *fastverse* can still be extend for the s
 ```{r}
 # Extension for the session
 fastverse_extend(Rfast2, coop)
+
 # These packages go here
 options("fastverse.extend")
+
 # This fetches packages from both the file and the option
 fastverse_packages()
 ```
