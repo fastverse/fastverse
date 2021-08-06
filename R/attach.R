@@ -115,8 +115,7 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
     loaded <- pkg[is_attached(pkg)] # Include self? -> nope, not sensible...
     if(session) {
       epkg <- getOption("fastverse.extend")
-      if(length(epkg) && length(pdiff <- setdiff(epkg, pkg)))
-        options(fastverse.extend = pdiff)
+      if(length(epkg)) options(fastverse.extend = if(length(pdiff <- setdiff(epkg, pkg))) pdiff else NULL)
     }
   }
   
@@ -191,6 +190,9 @@ topics_selector <- function(x) {
 #' @examples 
 #' fastverse_extend(Rfast, xts, stringi)
 #' fastverse_extend(fasttime, topics = "TS")
+#' 
+#' # Undoing this again
+#' fastverse_detach(getOption("fastverse.extend"), session = TRUE)
 fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FALSE, 
                              check.conflicts = !isTRUE(getOption("fastverse.quiet"))) {
   
