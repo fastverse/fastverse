@@ -1,3 +1,27 @@
+# Sumission comments: 
+
+# Options set at the end of code, no possibility of it to fail...
+
+
+# TODO: 
+# function argument consistency? -> pkg or pck
+# Options: "." or "_" ? -> "." is used by tidyverse and data.table and kit: better !!
+# Suggested extensions: Less is better: Only quality code !!
+# Harmonize description, vignette, package page. -> Ok
+# matrixStats new useNames argument can be passed down ??? Same behavior ? -> yes !!
+# Spell check !! -> yes !
+# Check local config file!! packages loaded in the order you say in the vignette ?? -> yes !!
+# Check documentation links !! -> Ok
+# MISSING GH LINKS (README !!)
+# Update DESCRIPTION !! (Links, URL)
+
+# Clearer use of terms 'loaded' and 'attached'. -> yes !
+
+# Update Logo !!!! -> Ok
+
+
+
+
 # library(RWsearch)
 # 
 # # How it works: library(fastverse) loads core fastverse. 
