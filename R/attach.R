@@ -147,11 +147,11 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
 topics_selector <- function(x) {
   switch(if(is.character(x)) toupper(x) else x, 
          TS = c("xts", "zoo", "roll"), 
-         DT = c("lubridate", "clock", "fasttime", "anytime", "timechange"), # anytime?? #nanotime??
+         DT = c("lubridate", "clock", "anytime", "fasttime", "timechange"), # nanotime??
          ST = c("snakecase", "stringr", "stringi"),
          SC = c("Rfast", "Rfast2", "parallelDist", "coop"), # "fastmatch", "fastmap", (not on topic), "fastDummies" (16 dependencies)
          SP = c("stars", "terra", "sf"), # "sp" "rgdal" "raster"
-         VI = c("dygraphs", "lattice", "grid", "ggplot2", "scales"), # "latticeExtra", "lattice", "gridExtra", "grid" # "gridtext", "plotly", "viridis" (32 dependencies), "RColorBrewer" (main function provided by scales)
+         VI = c("dygraphs", "ggplot2", "scales", "lattice", "grid"), # "latticeExtra", "gridExtra", "gridtext", "plotly", "viridis" (32 dependencies), "RColorBrewer" (main function provided by scales)
          TV = c("tidytable", "tidyfast", "tidyfst", "tidyft", "maditr"), # "dtplyr", "table.express" import dplyr!!
          stop("Unknown topic:", x))
 }
@@ -164,11 +164,11 @@ topics_selector <- function(x) {
 #' @param topics integer or character. Short-keys to attach groups of related and packages suggested as extensions to the \emph{fastverse} (not case sensitive if character). Unavailable packages are skipped unless \code{install = TRUE}.  
 #' \enumerate{
 #' \item \code{"TS"}: Time Series. Attaches \emph{xts}, \emph{zoo} and \emph{roll}. 
-#' \item \code{"DT"}: Dates and Times. Attaches \emph{lubridate}, \emph{clock}, \emph{timechange}, \emph{fasttime} and \emph{nanotime}.
+#' \item \code{"DT"}: Dates and Times. Attaches \emph{lubridate}, \emph{clock}, \emph{anytime}, \emph{fasttime} and \emph{timechange}.
 #' \item \code{"ST"}: Strings. Attaches \emph{stringr}, \emph{stringi} and \emph{snakecase}.
 #' \item \code{"SC"}: Statistics and Computing. Attaches \emph{Rfast}, \emph{Rfast2}, \emph{parallelDist} and \emph{coop}. % \emph{fastDummies}, 
 #' \item \code{"SP"}: Spatial. Attaches \emph{sf}, \emph{stars} and \emph{terra}.
-#' \item \code{"VI"}: Visualization. Attaches \emph{dygraphs}, \emph{lattice}, \emph{grid}, \emph{ggplot2} and \emph{scales}. % \emph{RColorBrewer} and \emph{viridis}.
+#' \item \code{"VI"}: Visualization. Attaches \emph{dygraphs}, \emph{ggplot2}, \emph{scales}, \emph{lattice} and \emph{grid}. % \emph{RColorBrewer} and \emph{viridis}.
 #' \item \code{"TV"}: Tidyverse-Like. Attaches \emph{tidytable}, \emph{tidyfast}, \emph{tidyfst}, \emph{tidyft} and \emph{maditr}. % , \emph{table.express} and \emph{dtplyr}, import dplyr
 #' }
 #' @param install logical. Install packages not available?
