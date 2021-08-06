@@ -35,10 +35,12 @@ ms_difficult <- c("colAvgsPerRowSet", "rowAvgsPerColSet", "colCollapse", "rowCol
 # x_OP_y
 # t_tx_OP_y
 
-# These should all be vector-based functions..
-# rem <- setdiff(ls("package:matrixStats"), c(ls(), ms_handles_attr, ms_difficult))
+ms <- getNamespace("matrixStats")
 
-rowWeightedMeans_ms <- matrixStats::rowWeightedMeans
+# These should all be vector-based functions..
+# rem <- setdiff(ls(ms), c(ls(), ms_handles_attr, ms_difficult))
+
+rowWeightedMeans_ms <- get0("rowWeightedMeans", envir = ms)
 # #' @export
 rowWeightedMeans <- function(x, w = NULL, rows = NULL, cols = NULL, na.rm = FALSE, ...) {
   rn <- dimnames(x)[[1L]]
@@ -47,7 +49,7 @@ rowWeightedMeans <- function(x, w = NULL, rows = NULL, cols = NULL, na.rm = FALS
   res
 }
 
-colMeans2_ms <- matrixStats::colMeans2
+colMeans2_ms <- get0("colMeans2", envir = ms)
 # #' @export
 colMeans2 <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -56,7 +58,7 @@ colMeans2 <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x),
   res
 }
 
-rowMeans2_ms <- matrixStats::rowMeans2
+rowMeans2_ms <- get0("rowMeans2", envir = ms)
 # #' @export
 rowMeans2 <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), ...) {
   rn <- dimnames(x)[[1L]]
@@ -65,7 +67,7 @@ rowMeans2 <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x),
   res
 }
 
-colSums2_ms <- matrixStats::colSums2
+colSums2_ms <- get0("colSums2", envir = ms)
 # #' @export
 colSums2 <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -74,7 +76,7 @@ colSums2 <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), 
   res
 }
 
-rowSums2_ms <- matrixStats::rowSums2
+rowSums2_ms <- get0("rowSums2", envir = ms)
 # #' @export
 rowSums2 <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), ...) {
   rn <- dimnames(x)[[1L]]
@@ -84,7 +86,7 @@ rowSums2 <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), 
 }
 
 # Note: The function actually uses plain R 
-colProds_ms <- matrixStats::colProds
+colProds_ms <- get0("colProds", envir = ms)
 # #' @export
 colProds <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, method = c("direct", "expSumLog"), ...) {
   cn <- dimnames(x)[[2L]]
@@ -94,7 +96,7 @@ colProds <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, method = c("dir
 }
 
 # Note: The function actually uses plain R 
-rowProds_ms <- matrixStats::rowProds
+rowProds_ms <- get0("rowProds", envir = ms)
 # #' @export
 rowProds <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, method = c("direct", "expSumLog"), ...) {
   rn <- dimnames(x)[[1L]]
@@ -103,7 +105,7 @@ rowProds <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, method = c("dir
   res
 }
 
-colMedians_ms <- matrixStats::colMedians
+colMedians_ms <- get0("colMedians", envir = ms)
 # #' @export
 colMedians <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -112,7 +114,7 @@ colMedians <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x)
   res
 }
 
-rowMedians_ms <- matrixStats::rowMedians
+rowMedians_ms <- get0("rowMedians", envir = ms)
 # #' @export
 rowMedians <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), ...) {
   rn <- dimnames(x)[[1L]]
@@ -121,7 +123,7 @@ rowMedians <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x)
   res
 }
 
-colVars_ms <- matrixStats::colVars
+colVars_ms <- get0("colVars", envir = ms)
 # #' @export
 colVars <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, center = NULL, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -130,7 +132,7 @@ colVars <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, center = NULL, d
   res
 }
 
-rowVars_ms <- matrixStats::rowVars
+rowVars_ms <- get0("rowVars", envir = ms)
 # #' @export
 rowVars <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, center = NULL, dim. = dim(x), ...) {
   rn <- dimnames(x)[[1L]]
@@ -139,7 +141,7 @@ rowVars <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, center = NULL, d
   res
 }
 
-colSds_ms <- matrixStats::colSds
+colSds_ms <- get0("colSds", envir = ms)
 # #' @export
 colSds <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, center = NULL, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -148,7 +150,7 @@ colSds <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, center = NULL, di
   res
 }
 
-rowSds_ms <- matrixStats::rowSds
+rowSds_ms <- get0("rowSds", envir = ms)
 # #' @export
 rowSds <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, center = NULL, dim. = dim(x), ...) {
   rn <- dimnames(x)[[1L]]
@@ -157,7 +159,7 @@ rowSds <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, center = NULL, di
   res
 }
 
-colMads_ms <- matrixStats::colMads
+colMads_ms <- get0("colMads", envir = ms)
 # #' @export
 colMads <- function(x, rows = NULL, cols = NULL, center = NULL, constant = 1.4826, na.rm = FALSE, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -166,7 +168,7 @@ colMads <- function(x, rows = NULL, cols = NULL, center = NULL, constant = 1.482
   res
 }
 
-rowMads_ms <- matrixStats::rowMads
+rowMads_ms <- get0("rowMads", envir = ms)
 # #' @export
 rowMads <- function(x, rows = NULL, cols = NULL, center = NULL, constant = 1.4826, na.rm = FALSE, dim. = dim(x), ...) {
   rn <- dimnames(x)[[1L]]
@@ -175,7 +177,7 @@ rowMads <- function(x, rows = NULL, cols = NULL, center = NULL, constant = 1.482
   res
 }
 
-colIQRs_ms <- matrixStats::colIQRs
+colIQRs_ms <- get0("colIQRs", envir = ms)
 # #' @export
 colIQRs <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, ...) {
   cn <- dimnames(x)[[2L]]
@@ -184,7 +186,7 @@ colIQRs <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, ...) {
   res
 }
 
-rowIQRs_ms <- matrixStats::rowIQRs
+rowIQRs_ms <- get0("rowIQRs", envir = ms)
 # #' @export
 rowIQRs <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, ...) {
   rn <- dimnames(x)[[1L]]
@@ -193,7 +195,7 @@ rowIQRs <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, ...) {
   res
 }
 
-colRanges_ms <- matrixStats::colRanges
+colRanges_ms <- get0("colRanges", envir = ms)
 # #' @export
 colRanges <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -202,7 +204,7 @@ colRanges <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x),
   res
 }
 
-rowRanges_ms <- matrixStats::rowRanges
+rowRanges_ms <- get0("rowRanges", envir = ms)
 # #' @export
 rowRanges <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), ...) {
   rn <- dimnames(x)[[1L]]
@@ -211,7 +213,7 @@ rowRanges <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x),
   res
 }
 
-colMins_ms <- matrixStats::colMins
+colMins_ms <- get0("colMins", envir = ms)
 # #' @export
 colMins <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -220,7 +222,7 @@ colMins <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), .
   res
 }
 
-rowMins_ms <- matrixStats::rowMins
+rowMins_ms <- get0("rowMins", envir = ms)
 # #' @export
 rowMins <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), ...) {
   rn <- dimnames(x)[[1L]]
@@ -229,7 +231,7 @@ rowMins <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), .
   res
 }
 
-colMaxs_ms <- matrixStats::colMaxs
+colMaxs_ms <- get0("colMaxs", envir = ms)
 # #' @export
 colMaxs <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -238,7 +240,7 @@ colMaxs <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), .
   res
 }
 
-rowMaxs_ms <- matrixStats::rowMaxs
+rowMaxs_ms <- get0("rowMaxs", envir = ms)
 # #' @export
 rowMaxs <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), ...) {
   rn <- dimnames(x)[[1L]]
@@ -247,7 +249,7 @@ rowMaxs <- function(x, rows = NULL, cols = NULL, na.rm = FALSE, dim. = dim(x), .
   res
 }
 
-colOrderStats_ms <- matrixStats::colOrderStats
+colOrderStats_ms <- get0("colOrderStats", envir = ms)
 # #' @export
 colOrderStats <- function(x, rows = NULL, cols = NULL, which, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -256,7 +258,7 @@ colOrderStats <- function(x, rows = NULL, cols = NULL, which, dim. = dim(x), ...
   res
 }
 
-rowOrderStats_ms <- matrixStats::rowOrderStats
+rowOrderStats_ms <- get0("rowOrderStats", envir = ms)
 # #' @export
 rowOrderStats <- function(x, rows = NULL, cols = NULL, which, dim. = dim(x), ...) {
   rn <- dimnames(x)[[1L]]
@@ -265,7 +267,7 @@ rowOrderStats <- function(x, rows = NULL, cols = NULL, which, dim. = dim(x), ...
   res
 }
 
-colAnyMissings_ms <- matrixStats::colAnyMissings
+colAnyMissings_ms <- get0("colAnyMissings", envir = ms)
 # #' @export
 colAnyMissings <- function(x, rows = NULL, cols = NULL, ...) {
   cn <- dimnames(x)[[2L]]
@@ -274,7 +276,7 @@ colAnyMissings <- function(x, rows = NULL, cols = NULL, ...) {
   res
 }
 
-rowAnyMissings_ms <- matrixStats::rowAnyMissings
+rowAnyMissings_ms <- get0("rowAnyMissings", envir = ms)
 # #' @export
 rowAnyMissings <- function(x, rows = NULL, cols = NULL, ...) {
   rn <- dimnames(x)[[1L]]
@@ -283,7 +285,7 @@ rowAnyMissings <- function(x, rows = NULL, cols = NULL, ...) {
   res
 }
 
-colAnyNAs_ms <- matrixStats::colAnyNAs
+colAnyNAs_ms <- get0("colAnyNAs", envir = ms)
 # #' @export
 colAnyNAs <- function(x, rows = NULL, cols = NULL, ...) {
   cn <- dimnames(x)[[2L]]
@@ -292,7 +294,7 @@ colAnyNAs <- function(x, rows = NULL, cols = NULL, ...) {
   res
 }
 
-rowAnyNAs_ms <- matrixStats::rowAnyNAs
+rowAnyNAs_ms <- get0("rowAnyNAs", envir = ms)
 # #' @export
 rowAnyNAs <- function(x, rows = NULL, cols = NULL, ...) {
   rn <- dimnames(x)[[1L]]
@@ -301,7 +303,7 @@ rowAnyNAs <- function(x, rows = NULL, cols = NULL, ...) {
   res
 }
 
-colAnys_ms <- matrixStats::colAnys
+colAnys_ms <- get0("colAnys", envir = ms)
 # #' @export
 colAnys <- function(x, rows = NULL, cols = NULL, value = TRUE, na.rm = FALSE, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -310,7 +312,7 @@ colAnys <- function(x, rows = NULL, cols = NULL, value = TRUE, na.rm = FALSE, di
   res
 }
 
-rowAnys_ms <- matrixStats::rowAnys
+rowAnys_ms <- get0("rowAnys", envir = ms)
 # #' @export
 rowAnys <- function(x, rows = NULL, cols = NULL, value = TRUE, na.rm = FALSE, dim. = dim(x), ...) {
   rn <- dimnames(x)[[1L]]
@@ -319,7 +321,7 @@ rowAnys <- function(x, rows = NULL, cols = NULL, value = TRUE, na.rm = FALSE, di
   res
 }
 
-colAlls_ms <- matrixStats::colAlls
+colAlls_ms <- get0("colAlls", envir = ms)
 # #' @export
 colAlls <- function(x, rows = NULL, cols = NULL, value = TRUE, na.rm = FALSE, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -328,7 +330,7 @@ colAlls <- function(x, rows = NULL, cols = NULL, value = TRUE, na.rm = FALSE, di
   res
 }
 
-rowAlls_ms <- matrixStats::rowAlls
+rowAlls_ms <- get0("rowAlls", envir = ms)
 # #' @export
 rowAlls <- function(x, rows = NULL, cols = NULL, value = TRUE, na.rm = FALSE, dim. = dim(x), ...) {
   rn <- dimnames(x)[[1L]]
@@ -337,7 +339,7 @@ rowAlls <- function(x, rows = NULL, cols = NULL, value = TRUE, na.rm = FALSE, di
   res
 }
 
-colCounts_ms <- matrixStats::colCounts
+colCounts_ms <- get0("colCounts", envir = ms)
 # #' @export
 colCounts <- function(x, rows = NULL, cols = NULL, value = TRUE, na.rm = FALSE, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -346,7 +348,7 @@ colCounts <- function(x, rows = NULL, cols = NULL, value = TRUE, na.rm = FALSE, 
   res
 }
 
-rowCounts_ms <- matrixStats::rowCounts
+rowCounts_ms <- get0("rowCounts", envir = ms)
 # #' @export
 rowCounts <- function(x, rows = NULL, cols = NULL, value = TRUE, na.rm = FALSE, dim. = dim(x), ...) {
   rn <- dimnames(x)[[1L]]
@@ -362,7 +364,7 @@ rowCounts <- function(x, rows = NULL, cols = NULL, value = TRUE, na.rm = FALSE, 
 #     dimnames(m) <- list(dn[[1L]], dn[[2L]])  892 1339 1620.331   1339 1785  131643 1e+05 a  
 # dimnames(m) <- pairlist(dn[[1L]], dn[[2L]]) 2231 2678 3631.340   3124 3570 5464301 1e+05   c
 
-colCumsums_ms <- matrixStats::colCumsums
+colCumsums_ms <- get0("colCumsums", envir = ms)
 # #' @export
 colCumsums <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   dn <- dimnames(x)
@@ -379,7 +381,7 @@ colCumsums <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   res
 }
 
-rowCumsums_ms <- matrixStats::rowCumsums
+rowCumsums_ms <- get0("rowCumsums", envir = ms)
 # #' @export
 rowCumsums <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   dn <- dimnames(x)
@@ -396,7 +398,7 @@ rowCumsums <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   res
 }
 
-colCumprods_ms <- matrixStats::colCumprods
+colCumprods_ms <- get0("colCumprods", envir = ms)
 # #' @export
 colCumprods <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   dn <- dimnames(x)
@@ -413,7 +415,7 @@ colCumprods <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   res
 }
 
-rowCumprods_ms <- matrixStats::rowCumprods
+rowCumprods_ms <- get0("rowCumprods", envir = ms)
 # #' @export
 rowCumprods <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   dn <- dimnames(x)
@@ -430,7 +432,7 @@ rowCumprods <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   res
 }
 
-colCummins_ms <- matrixStats::colCummins
+colCummins_ms <- get0("colCummins", envir = ms)
 # #' @export
 colCummins <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   dn <- dimnames(x)
@@ -447,7 +449,7 @@ colCummins <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   res
 }
 
-rowCummins_ms <- matrixStats::rowCummins
+rowCummins_ms <- get0("rowCummins", envir = ms)
 # #' @export
 rowCummins <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   dn <- dimnames(x)
@@ -464,7 +466,7 @@ rowCummins <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   res
 }
 
-colCummaxs_ms <- matrixStats::colCummaxs
+colCummaxs_ms <- get0("colCummaxs", envir = ms)
 # #' @export
 colCummaxs <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   dn <- dimnames(x)
@@ -481,7 +483,7 @@ colCummaxs <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   res
 }
 
-rowCummaxs_ms <- matrixStats::rowCummaxs
+rowCummaxs_ms <- get0("rowCummaxs", envir = ms)
 # #' @export
 rowCummaxs <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   dn <- dimnames(x)
@@ -498,7 +500,7 @@ rowCummaxs <- function(x, rows = NULL, cols = NULL, dim. = dim(x), ...) {
   res
 }
 
-colRanks_ms <- matrixStats::colRanks
+colRanks_ms <- get0("colRanks", envir = ms)
 # #' @export
 colRanks <- function(x, rows = NULL, cols = NULL, 
                      ties.method = c("max", "average", "first", "last", "random", "max", "min", "dense"),
@@ -522,7 +524,7 @@ colRanks <- function(x, rows = NULL, cols = NULL,
   res
 }
 
-rowRanks_ms <- matrixStats::rowRanks
+rowRanks_ms <- get0("rowRanks", envir = ms)
 # #' @export
 rowRanks <- function(x, rows = NULL, cols = NULL, 
                      ties.method = c("max", "average", "first", "last", "random", "max", "min", "dense"), 
@@ -541,7 +543,7 @@ rowRanks <- function(x, rows = NULL, cols = NULL,
   res
 }
 
-colDiffs_ms <- matrixStats::colDiffs
+colDiffs_ms <- get0("colDiffs", envir = ms)
 # #' @export
 colDiffs <- function(x, rows = NULL, cols = NULL, lag = 1L, differences = 1L, dim. = dim(x), ...) {
   cn <- dimnames(x)[[2L]]
@@ -550,7 +552,7 @@ colDiffs <- function(x, rows = NULL, cols = NULL, lag = 1L, differences = 1L, di
   res
 }
 
-rowDiffs_ms <- matrixStats::rowDiffs
+rowDiffs_ms <- get0("rowDiffs", envir = ms)
 # #' @export
 rowDiffs <- function(x, rows = NULL, cols = NULL, lag = 1L, differences = 1L, dim. = dim(x), ...) {
   rn <- dimnames(x)[[1L]]
@@ -559,26 +561,29 @@ rowDiffs <- function(x, rows = NULL, cols = NULL, lag = 1L, differences = 1L, di
   res
 }
 
-ms <- getNamespace("matrixStats")
-
 #' @export
-.matrixStats_replaced <- grep("^row|^col", setdiff(ls(ms), c(ms_handles_attr, ms_difficult)), value = TRUE)
+.matrixStats_replaced <- c("colAlls", "colAnyMissings", "colAnyNAs", "colAnys", "colCounts", 
+                           "colCummaxs", "colCummins", "colCumprods", "colCumsums", 
+                           "colDiffs", "colIQRs", "colMads", "colMaxs", "colMeans2", "colMedians", 
+                           "colMins", "colOrderStats", "colProds", "colRanges", "colRanks", "colSds", 
+                           "colSums2", "colVars", "rowAlls", "rowAnyMissings", "rowAnyNAs", "rowAnys", 
+                           "rowCounts", "rowCummaxs", "rowCummins", "rowCumprods", "rowCumsums", 
+                           "rowDiffs", "rowIQRs", "rowMads", "rowMaxs", "rowMeans2", "rowMedians", 
+                           "rowMins", "rowOrderStats", "rowProds", "rowRanges", "rowRanks", "rowSds", 
+                           "rowSums2", "rowVars", "rowWeightedMeans")
+  
+# .matrixStats_replaced <- grep("^row|^col", setdiff(ls(ms), c(ms_handles_attr, ms_difficult)), value = TRUE)
+
 
 # https://stackoverflow.com/questions/24331690/modify-package-function?noredirect=1&lq=1
 # https://stackoverflow.com/questions/3094232/add-objects-to-package-namespace
 replace_matrixStats <- function() {
   for(i in .matrixStats_replaced) {
-    # if(!endsWith(i, "_ms")) {
-      unlockBinding(as.name(i), env = ms)
-      assign(i, get(i), envir = ms)
-    # } else {
-      # eval(substitute(environment(j) <- ms, list(j = as.name(i))))
-      # # assignInNamespace(i, get(i), ms) # doesn't work...
-    # }
+    unlockBinding(as.name(i), env = ms)
+    assign(i, get(i), envir = ms)
   }
   environment(C_copyMostAttrib) <- ms
   environment(C_DUPLICATE_ATTRIB) <- ms
-  # rm(list = grep("_ms", .matrixStats_replaced, value = TRUE, invert = TRUE), envir = parent.frame()) 
   attachNamespace(ms)
   rm(ms, i)
 }
