@@ -4,10 +4,10 @@
 \alias{fastverse_conflicts}
 \title{Conflicts between the fastverse and other packages}
 \usage{
-fastverse_conflicts(pck = fastverse_packages(include.self = FALSE))
+fastverse_conflicts(pkg = fastverse_packages())
 }
 \arguments{
-\item{pck}{character. A vector of packages to check conflicts for. The default is all \emph{fastverse} packages.}
+\item{pkg}{character. A vector of packages to check conflicts for. The default is all \emph{fastverse} packages.}
 }
 \description{
 This function lists all the conflicts among \emph{fastverse} packages and between \emph{fastverse} packages and other attached packages.
@@ -16,11 +16,11 @@ It can also be used to check conflicts for any other attached packages.
 \details{
 There are 2 internal conflict in the core \emph{fastverse} which are not displayed by \code{fastverse_conflicts()}:
 \itemize{
-\item \code{collapse::funique} maks \code{kit::funique}. If both packages are unloaded, \emph{collapse} is loaded after \emph{kit}. In general, the 
+\item \code{collapse::funique} masks \code{kit::funique}. If both packages are detached, \emph{collapse} is attached after \emph{kit}. In general, the 
 \emph{collapse} version is often faster on data frames and supports unique rows on selected columns, but only preserves the first-match appearance order of 
 character data (unique values for numeric columns are determined using a sort-based method). 
 An option \code{sort = TRUE} lets \code{collapse::funique} return sorted unique values (for both character and numeric data). 
-The \emph{kit} version is generally faster for vectors and someties for data frames, and also supports matrices. 
+The \emph{kit} version is generally faster for vectors and sometimes for data frames, and also supports matrices. 
 It is a full hash-table based implementation that always preserves the first-match appearance order of data.   
 
 \item \code{matrixStats::count} masks \code{kit::count}. The \emph{matrixStats} version is more flexible, supporting restricted search and missing value removal. The \emph{kit} version is nearly twice as fast. 

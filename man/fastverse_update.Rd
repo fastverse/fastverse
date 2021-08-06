@@ -4,16 +4,14 @@
 \alias{fastverse_update}
 \title{Update fastverse packages}
 \usage{
-fastverse_update(check.deps = TRUE, ...)
+fastverse_update(...)
 }
 \arguments{
-\item{check.deps}{logical. \code{TRUE} also checks for updates in dependencies of \emph{fastverse} packages.}
-
 \item{\dots}{arguments passed to \code{\link{fastverse_deps}}.}
 }
 \description{
-This will check all fastverse packages (and their
-dependencies) for updates and print an install command.
+This will check all \emph{fastverse} packages (and their
+dependencies) for updates and print a command to install those updates.
 }
 \seealso{
 \code{\link{fastverse_deps}}, \code{\link{fastverse}}

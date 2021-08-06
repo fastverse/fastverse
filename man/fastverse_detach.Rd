@@ -18,13 +18,13 @@ fastverse_detach(
 
 \item{unload}{logical. \code{TRUE} also unloads the packages using \code{\link[=detach]{detach(name, unload = TRUE)}}.}
 
-\item{force}{logical. should a fastverse package be detached / unloaded even though other attached packages depend on it?}
+\item{force}{logical. should a \emph{fastverse} package be detached / unloaded even though other attached packages depend on it?}
 
-\item{include.self}{logical. \code{TRUE} also includes the fastverse package - only applicable if \code{\dots} is left empty.}
+\item{include.self}{logical. \code{TRUE} also includes the \code{fastverse} package - only applicable if \code{\dots} is left empty.}
 
-\item{session}{logical. \code{TRUE} also removes the packages from \code{options("fastverse.extend")}, so they will not be loaded again with \code{library(fastverse)} in the current session. If \code{\dots} is left empty and \code{include.self = TRUE}, this will clear \bold{all} \emph{fastverse} options set for the session.}
+\item{session}{logical. \code{TRUE} also removes the packages from \code{options("fastverse.extend")}, so they will not be attached again with \code{library(fastverse)} in the current session. If \code{\dots} is left empty and \code{include.self = TRUE}, this will clear \bold{all} \emph{fastverse} options set for the session.}
 
-\item{permanent}{logical. if \code{\dots} are used to detach certain packages, \code{permament = TRUE} will disable them being loaded the next time the fastverse is loaded. 
+\item{permanent}{logical. if \code{\dots} are used to detach certain packages, \code{permament = TRUE} will disable them being loaded the next time the \emph{fastverse} is loaded. 
 This is implemented via a config file saved to the package directory. Core \emph{fastverse} packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}. The config file can be removed with \code{\link{fastverse_reset}}.}
 }
 \description{

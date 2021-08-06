@@ -5,24 +5,30 @@
 \title{List all fastverse dependencies}
 \usage{
 fastverse_deps(
+  pkg = fastverse_packages(),
   recursive = FALSE,
   repos = getOption("repos"),
-  include.self = FALSE
+  include.self = FALSE,
+  check.deps = TRUE
 )
 }
 \arguments{
-\item{recursive}{logical. \code{TRUE} recursively determines all packages required to operate the current set of \emph{fastverse} packages.
-\code{FALSE} will only list the \emph{fastverse} packages and direct dependencies of those packages.}
+\item{pkg}{character vector of packages to check dependencies and versions of. The default is all \emph{fastverse} packages.}
+
+\item{recursive}{logical. \code{TRUE} recursively determines all packages required to operate these packages.
+\code{FALSE} will only list the packages and their direct dependencies.}
 
 \item{repos}{the repositories to use to check for updates. Defaults to \code{getOptions("repos")}.}
 
-\item{include.self}{logical. \code{TRUE} also includes the \emph{fastverse} package and checks against CRAN updates.}
+\item{include.self}{logical. \code{TRUE} also includes the \emph{fastverse} package and checks against the CRAN version.}
+
+\item{check.deps}{logical. \code{FALSE} will not determine dependencies but only display the update status of packages in \code{pkg}.}
 }
 \value{
 A data frame giving the package names, the CRAN and local version, and a logical variable stating whether the local version is behind the CRAN version.
 }
 \description{
-Lists all fastverse dependencies.
+Lists all \emph{fastverse} dependencies and the local and CRAN versions of packages and dependencies.
 }
 \seealso{
 \code{\link{fastverse_sitrep}}, \code{\link{fastverse}}

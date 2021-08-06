@@ -18,11 +18,11 @@ fastverse_extend(
 \item{topics}{integer or character. Short-keys to attach groups of related and packages suggested as extensions to the \emph{fastverse} (not case sensitive if character). Unavailable packages are skipped unless \code{install = TRUE}.
 \enumerate{
 \item \code{"TS"}: Time Series. Attaches \emph{xts}, \emph{zoo} and \emph{roll}. 
-\item \code{"DT"}: Dates and Times. Attaches \emph{lubridate}, \emph{clock}, \emph{timechange}, \emph{fasttime} and \emph{nanotime}.
-\item \code{"ST"}: Strings. Attaches \emph{stringr}, \emph{sringi} and \emph{snakecase}.
+\item \code{"DT"}: Dates and Times. Attaches \emph{lubridate}, \emph{clock}, \emph{anytime}, \emph{fasttime} and \emph{timechange}.
+\item \code{"ST"}: Strings. Attaches \emph{stringr}, \emph{stringi} and \emph{snakecase}.
 \item \code{"SC"}: Statistics and Computing. Attaches \emph{Rfast}, \emph{Rfast2}, \emph{parallelDist} and \emph{coop}. % \emph{fastDummies}, 
 \item \code{"SP"}: Spatial. Attaches \emph{sf}, \emph{stars} and \emph{terra}.
-\item \code{"VI"}: Visualization. Attaches \emph{dygraphs}, \emph{lattice}, \emph{grid}, \emph{ggplot2} and \emph{scales}. % \emph{RColorBrewer} and \emph{viridis}.
+\item \code{"VI"}: Visualization. Attaches \emph{dygraphs}, \emph{ggplot2}, \emph{scales}, \emph{lattice} and \emph{grid}. % \emph{RColorBrewer} and \emph{viridis}.
 \item \code{"TV"}: Tidyverse-Like. Attaches \emph{tidytable}, \emph{tidyfast}, \emph{tidyfst}, \emph{tidyft} and \emph{maditr}. % , \emph{table.express} and \emph{dtplyr}, import dplyr
 }}
 
@@ -30,7 +30,7 @@ fastverse_extend(
 
 \item{permanent}{logical. Should packages be saved and included when \code{library(fastverse)} is called next time? Implemented via a config file saved to the package directory. The file will be removed if the \emph{fastverse} is reinstalled, and can be removed without reinstallation using \code{\link{fastverse_reset}}. Packages can be removed from the config file using \code{\link[=fastverse_detach]{fastverse_detach(..., permanent = TRUE)}}.}
 
-\item{check.conflicts}{logical. Should conflicts between extension packages and loaded packages be checked?}
+\item{check.conflicts}{logical. Should conflicts between extension packages and attached packages be checked?}
 }
 \description{
 Loads additional packages as part of the \emph{fastverse}. By default only for the session, but extensions can be saved up to reinstallation/updating of the \emph{fastverse} package.
@@ -49,6 +49,9 @@ is a character vector of package names, before calling \code{library(fastverse)}
 \examples{
 fastverse_extend(Rfast, xts, stringi)
 fastverse_extend(fasttime, topics = "TS")
+
+# Undoing this again
+fastverse_detach(getOption("fastverse.extend"), session = TRUE)
 }
 \seealso{
 \code{\link{fastverse_detach}}, \code{\link{fastverse}}

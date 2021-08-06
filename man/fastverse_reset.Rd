@@ -11,7 +11,7 @@ fastverse_reset(options = TRUE)
 }
 \description{
 Calling this function will remove global configuration \emph{fastverse} files and (default) clear all package options. 
-Packages loaded will not be unloaded, and configuration files for projects (as discussed in the vignette) will not be removed.
+Attached packages will not be detached, and configuration files for projects (as discussed in the vignette) will not be removed.
 }
 \seealso{
 \code{\link{fastverse_extend}}, \code{\link{fastverse}}

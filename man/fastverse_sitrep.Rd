@@ -4,18 +4,16 @@
 \alias{fastverse_sitrep}
 \title{Get a situation report on the fastverse}
 \usage{
-fastverse_sitrep(check.deps = TRUE, ...)
+fastverse_sitrep(...)
 }
 \arguments{
-\item{check.deps}{logical. \code{TRUE} also checks for updates in dependencies of \emph{fastverse} packages.}
-
-\item{...}{arguments passed to \code{\link{fastverse_deps}}.}
+\item{\dots}{arguments other than \code{pkg} passed to \code{\link{fastverse_deps}}.}
 }
 \description{
 This function gives a quick overview of the version of R and all 
 \emph{fastverse} packages (including availability updates for packages) and indicates 
-whether any global or project-level configuration files are in use
-(as described in the vignette).
+whether any global or project-level configuration files are used
+(as described in more detail the vignette).
 }
 \seealso{
 \code{\link{fastverse_deps}}, \code{\link{fastverse}}

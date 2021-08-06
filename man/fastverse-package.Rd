@@ -5,17 +5,17 @@
 \alias{fastverse-package}
 \alias{fastverse}
 \alias{.matrixStats_replaced}
-\title{The fastverse: A Suite of High-Performance Packages for Statistical Computing and Data Manipulation}
+\title{An Extensible Suite of High-Performance Packages for Statistical Computing and Data Manipulation}
 \description{
-The \emph{fastverse} is an extensible suite of R packages, developed by independent people,
-that contribute towards the objectives of:
+The \emph{fastverse} is an extensible suite of R packages, being developed independently by different people,
+that jointly contribute to the objectives of:
 \enumerate{
 \item Speeding up R through heavy use of compiled code (C, C++, Fortran)
 \item Enabling more complex statistical and data manipulation operations in R
-\item Reducing the number of dependencies required to do advanced computations in R
+\item Reducing the number of dependencies required for advanced computing in R
 }
 Inspired by the \code{tidyverse} package, the \code{fastverse} package is a flexible package loader and manager 
-that allows users to put together their own 'verse' of packages and load them with \code{library(fastverse)}. 
+that allows users to put together their own 'verses' of packages and load them with \code{library(fastverse)}. 
 
 The \code{fastverse} installs 6 core packages (\code{data.table}, \code{collapse}, \code{matrixStats}, \code{kit}, \code{magrittr} and \code{fst}) that 
 provide native C/C++ code of proven quality, work well together, and enable complex statistical computing and data manipulation - with only \code{Rcpp} as an additional dependency. 
@@ -68,7 +68,7 @@ The \emph{collapse} and \emph{matrixStats} versions take precedence over the \em
 The \code{fastverse} alters most of the functions where this is the case, listed in a global variable \code{.matrixStats_replaced}, bestowing them with 
 capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). 
 This is done using very efficient R and C code, so that performance does not suffer. When the \code{fastverse} is attached, these
-altered function are replaced in the \emph{matrixStats} namespace. Once \emph{matrixStats} has evolved so that consistent attribute handling becomes the default 
+altered function are replaced in the \emph{matrixStats} namespace. Once \emph{matrixStats} has evolved so that consistent attribute handling (\code{useNames = TRUE}) becomes the default 
 setting, these alternative versions will become redundant and be removed from the \emph{fastverse}.
 }
 }
