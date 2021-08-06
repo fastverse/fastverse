@@ -220,7 +220,7 @@ If we only want to omit a function clash check when calling `fastverse_extend`, 
 
 The *fastverse* was developed principally for 2 reasons: to promote quality high-performance software development for R, and to provide a flexible approach to package loading and management in R, particularly for users wishing to combine various high-performance packages in statistical workflows. To the extent that high-performance software development in R continues to prioritize low-dependency and stable APIs, these two objectives are compatible, and complex statistical workflows can be developed without sophisticated package management solutions.  
 
-This vignette introduced the key features of the package. Suggested *fastverse* extension packages are introduced in the [README](<https://github.com/SebKrantz/fastverse>) file. 
+<!-- This vignette introduced the key features of the package. Suggested *fastverse* extension packages are introduced in the [README](<https://github.com/SebKrantz/fastverse>) file. -->
 
 ```{r}
 # Resetting the fastverse to defaults (clearing all permanent extensions and options)
