@@ -1,4 +1,4 @@
-# fastverse <img src='misc/fastverse_logo.png' width="350px" align="right" />
+# fastverse <img src='logo.png' width="350px" align="right" />
 
 <!-- badges: start 
 [![CRAN status](https://www.r-pkg.org/badges/version/fastverse)](https://cran.r-project.org/package=fastverse) 
@@ -15,14 +15,16 @@
  badges: end -->
 
 
-The *fastverse* is a complimentary suite of high-performance packages for statistical computing and data manipulation in R. Developed independently by different people, *fastverse* packages jointly contribute to the objectives of:
+The *fastverse* is a complimentary suite of high-performance packages for statistical computing and data manipulation in R. Being developed independently by different people, *fastverse* packages jointly contribute to the objectives of:
 
 - Speeding up R through heavy use of compiled code (C, C++, Fortran)
 - Enabling more complex statistical and data manipulation operations in R
-- Reducing the number of dependencies required to do advanced computations in R
+- Reducing the number of dependencies required for advanced computing in R
 
 The `fastverse` package integrates and provides utilities for easy installation, loading and management 
-of these packages. It is an extensible framework that allows users to (permanently) add or remove packages and put together their own 'verse' of packages to suit their needs, or for projects. Constituent packages are jointly attached with `library(fastverse)`, and several functions starting with `fastverse_` help to manage dependencies, detect namespace conflicts, add/remove packages from the *fastverse* and update packages.
+of these packages. It is an extensible framework that allows users to (permanently) add or remove packages to create a 'verse' of packages suiting their general needs. Separate 'verses' can be created for different projects. 
+
+*fastverse* packages are jointly attached with `library(fastverse)`, and several functions starting with `fastverse_` help manage dependencies, detect namespace conflicts, add/remove packages from the *fastverse* and update packages.
 
 ## Installation
 
@@ -36,7 +38,7 @@ remotes::install_github("SebKrantz/fastverse")
 
 ## Packages
 
-The *fastverse* consists of 6 core packages (7 dependencies in total) that provide broad based statistical and data manipulation functionality and have a carefully managed API. These packages are installed and attached along with the `fastverse` package. In addition, the user has the option (via the `fastverse_entend()` function) to freely attach extension packages offering more specific functionality. 
+The *fastverse* consists of 6 core packages (7 dependencies in total) which provide broad C/C++ based statistical and data manipulation functionality and have carefully managed APIs. These packages are installed and attached along with the `fastverse` package. 
 
 ### Core fastverse
 
@@ -55,7 +57,7 @@ The *fastverse* consists of 6 core packages (7 dependencies in total) that provi
   *Additional dependency*: Package *Rcpp* is imported by *collapse* and *fst*.
 
 ### Extending the *fastverse*
-The *fastverse* can by extended by any R package, either just for the current session or permanently: 
+In addition, users have the option (via the `fastverse_entend()` function) to freely attach extension packages offering more specific functionality. The *fastverse* can by extended by any R package, either just for the current session or permanently: 
 
 <details>
   <summary><b><a style="cursor: pointer;">Click here to expand </a></b> </summary>
@@ -80,8 +82,7 @@ fastverse_extend(xts, roll, dygraphs, permanent = TRUE)</code>
 fastverse_detach(session = TRUE)
 library(fastverse)
 </code><CODE># -- <span style="font-weight: bold;">Attaching packages</span><span> --------------------------------------- </span><span style="color: #0087FF;">fastverse</span><span> 0.1.5 --
-</span></CODE>
-<CODE># <span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">data.table </span><span> 1.14.0      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">fst        </span><span> 0.9.4  
+</span></CODE><CODE># <span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">data.table </span><span> 1.14.0      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">fst        </span><span> 0.9.4  
 # </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">magrittr   </span><span> 2.0.1       </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">xts        </span><span> 0.12.1 
 # </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">kit        </span><span> 0.0.7       </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">roll       </span><span> 1.1.6  
 # </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">collapse   </span><span> 1.6.5       </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">dygraphs   </span><span> 1.1.1.6
@@ -166,11 +167,13 @@ fastverse_reset()</code>
 </PRE>
 
 </details>
+<p> </p>
 
+In addition to a global customization, separate *fastverse*'s can be created for projects by adding a `.fastverse` config file in the project directory and listing packages there. Only these packages will then be loaded and managed with `library(fastverse)` in the project. 
 
 ### Suggested Extensions
 
-Fast packages for different data manipulation and statistical computing topics are suggested below. Each topic as a 2-character topic-id, which can be used to quickly load all installed packages with `fastvere_extend(topcis = c(..ids..))`. The majority of these packages provide compiled code and have few dependencies. The total (recursive) dependency count is indicated for each package. 
+High-performing packages for different data manipulation and statistical computing topics are suggested below. Each topic as a 2-character topic-id, which can be used to quickly attach all available packages with `fastvere_extend(topcis = c(..id's..))`, and to install missing packages by adding argument `install = TRUE`. The majority of these packages provide compiled code and have few dependencies. The total (recursive) dependency count is indicated for each package. 
 
 ***
 
@@ -180,7 +183,7 @@ Fast packages for different data manipulation and statistical computing topics a
 
 - **roll**: Very fast rolling and expanding window functions for vectors and matrices (3 dependencies).
 
-  *Notes*: *xts*/*zoo* objects are preserved by *roll* functions and by *collapse*'s time series and data transformation functions^[*collapse* functions can also handle irregular time series, but this requires passing an integer time variable to the `t` argument which has consecutive integer steps for regular parts of the time series and non-consecutive integers for the irregular parts.]. As *xts*/*zoo* objects are matrices, all *matrixStats* functions apply to them as well. Finally, *xts* objects can easily be converted to and from *data.table*. 
+  *Notes*: *xts*/*zoo* objects are preserved by *roll* functions and by *collapse*'s time series and data transformation functions^[*collapse* functions can also handle irregular time series, but this requires passing an integer time variable to the `t` argument which has consecutive integer steps for regular parts of the time series and non-consecutive integers for the irregular parts.]. As *xts*/*zoo* objects are matrices, all *matrixStats* functions apply to them as well. *xts* objects can also easily be converted to and from *data.table*. 
   
 <!-- Passing the `xts::index()` coerced to integer to the `t` argument of *collapse*'s `flag`, `fdiff` and `fgrowth` further allows exact time-based computations on irregularly spaced time series, which is not supported by *xts*'s built-in functions. -->  
 
@@ -243,7 +246,7 @@ Fast packages for different data manipulation and statistical computing topics a
 
 - **grid**: The grid graphics package (0 dependencies). 
 
-- **ggplot2**: Create elegant data visualisations using the Grammar of Graphics (30 dependencies). 
+- **ggplot2**: Create elegant data visualizations using the Grammar of Graphics (30 dependencies). 
 
 - **scales**: Scale functions for visualizations (10 dependencies). 
 
@@ -252,9 +255,9 @@ Fast packages for different data manipulation and statistical computing topics a
 
 #### Tidyverse-like data manipulation built on *data.table* (TV)
 
-- **tidytable**: A tidy interface to *data.table* that is *rlang* compatible. Quite comprehensive implementation of *dplyr*, *tidyr* and *purr* functions. Function names appended with a `.` e.g. `mutate.()`. Package uses a class *tidytable* that inherits from *data.table*. The `dt()` function makes *data.table* syntax pipeable (14 total dependencies). 
+- **tidytable**: A tidy interface to *data.table* that is *rlang* compatible. Quite comprehensive implementation of *dplyr*, *tidyr* and *purr* functions. *tidyverse* function names are appended with a `.` e.g. `mutate.()`. Package uses a class *tidytable* that inherits from *data.table*. The `dt()` function makes *data.table* syntax pipeable (14 total dependencies). 
 
-- **tidyfast**: Fast tidying of data. Covers *tidyr* functionality, `dt_` prefix, preserves *data.table* object. Some unsecessary deep copies (2 dependencies). 
+- **tidyfast**: Fast tidying of data. Covers *tidyr* functionality, `dt_` prefix, preserves *data.table* object. Some unnecessary deep copies (2 dependencies). 
 
 - **tidyfst**: Tidy verbs for fast data manipulation. Covers *dplyr* and some *tidyr* functionality. Functions have `_dt` suffix and preserve *data.table* object. A [cheatsheet](<https://hope-data-science.github.io/tidyfst/docs/tidyfst_cheatsheet.pdf>) is provided (7 dependencies). 
 
@@ -262,7 +265,7 @@ Fast packages for different data manipulation and statistical computing topics a
 
 - **maditr**: Fast data aggregation, modification, and filtering with pipes and *data.table*. Minimal implementation with functions `let()` and `take()` for most common data manipulation tasks. Also provides Excel-like lookup functions (2 dependencies). 
 
-  *Notes*: One could also mention Rstudio's **dtplyr** and the **table.express** package here, but these packages import **dplyr** and thus have a around 20 dependencies.
+  *Notes*: One could also mention Rstudio's *dtplyr* and the *table.express* package here, but these packages import *dplyr* and thus have a around 20 dependencies.
   
   
 ***

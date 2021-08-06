@@ -23,10 +23,13 @@ options(repos = c(CRAN = "https://cran.rstudio.com/")) # crayon.enabled = TRUE
 # thanks to fansi logic
 # old_hooks <- fansi::set_knit_hooks(knitr::knit_hooks, 
 #                                    which = c("output", "message", "error"))
-options(fastverse.styling = FALSE)
+
+.fv_styling <- FALSE # identical(Sys.getenv("PKGDOWN"), "TRUE")
+
+options(fastverse.styling = .fv_styling)
 ```
 
-The *fastverse* is an extensible suite of R packages, developed independently by different people, that jointly contribute to the objectives of:
+The *fastverse* is an extensible suite of R packages, being developed independently by different people, that jointly contribute to the objectives of:
 
 - Speeding up R through heavy use of compiled code (C, C++, Fortran)
 - Enabling more complex statistical and data manipulation operations in R
@@ -94,7 +97,7 @@ fastverse_detach(session = TRUE, unload = TRUE)
 
 Since `options("fastverse.extend")` keeps track of which packages were added to the *fastverse* for the current session, it is also possible to set it before loading the *fastverse* e.g. 
 ```{r, include=FALSE}
-options(fastverse.styling = FALSE)
+options(fastverse.styling = .fv_styling)
 ```
 ```{r}
 options(fastverse.extend = c("dygraphs", "tidyfast"))
@@ -103,7 +106,7 @@ library(fastverse)
 fastverse_detach(session = TRUE)
 ```
 ```{r, include=FALSE}
-options(fastverse.styling = FALSE)
+options(fastverse.styling = .fv_styling)
 ```
 
 ## Permanent Extensions
@@ -144,7 +147,7 @@ Note that `options("fastverse.extend")` is still empty, because we have written 
 fastverse_detach(session = TRUE)
 ```
 ```{r, include=FALSE}
-options(fastverse.styling = FALSE)
+options(fastverse.styling = .fv_styling)
 ```
 ```{r}
 library(fastverse) 
