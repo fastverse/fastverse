@@ -7,7 +7,7 @@
 \alias{.matrixStats_replaced}
 \title{An Extensible Suite of High-Performance Packages for Statistical Computing and Data Manipulation}
 \description{
-The \emph{fastverse} is an extensible suite of R packages, developed independently by different people,
+The \emph{fastverse} is an extensible suite of R packages, developed independently by various people,
 that jointly contribute to the objectives of:
 \enumerate{
 \item Speeding up R through heavy use of compiled code (C, C++, Fortran)

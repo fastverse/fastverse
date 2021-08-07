@@ -4,7 +4,7 @@
 
 
 # TODO: 
-# function argument consistency? -> pkg or pck
+# function argument consistency? -> pkg or pck - > Ok
 # Options: "." or "_" ? -> "." is used by tidyverse and data.table and kit: better !!
 # Suggested extensions: Less is better: Only quality code !!
 # Harmonize description, vignette, package page. -> Ok
@@ -12,8 +12,8 @@
 # Spell check !! -> yes !
 # Check local config file!! packages loaded in the order you say in the vignette ?? -> yes !!
 # Check documentation links !! -> Ok
-# MISSING GH LINKS (README !!)
-# Update DESCRIPTION !! (Links, URL)
+# MISSING GH LINKS (README !!) -> Ok
+# Update DESCRIPTION !! (Links, URL) -> Ok
 
 # Clearer use of terms 'loaded' and 'attached'. -> yes !
 

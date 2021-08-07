@@ -15,13 +15,13 @@
  badges: end -->
 
 
-The *fastverse* is a complimentary suite of high-performance packages for statistical computing and data manipulation in R. Developed independently by different people, *fastverse* packages jointly contribute to the objectives of:
+The *fastverse* is a suite of complementary high-performance packages for statistical computing and data manipulation in R. Developed independently by various people, *fastverse* packages jointly contribute to the objectives of:
 
 - Speeding up R through heavy use of compiled code (C, C++, Fortran)
 - Enabling more complex statistical and data manipulation operations in R
 - Reducing the number of dependencies required for advanced computing in R
 
-The `fastverse` package integrates and provides utilities for easy installation, loading and management 
+The `fastverse` package integrates, and provides utilities for easy installation, loading and management 
 of these packages. It is an extensible framework that allows users to (permanently) add or remove packages to create a 'verse' of packages suiting their general needs. Separate 'verses' can be created for different projects. 
 
 *fastverse* packages are jointly attached with `library(fastverse)`, and several functions starting with `fastverse_` help manage dependencies, detect namespace conflicts, add/remove packages from the *fastverse* and update packages.
@@ -259,7 +259,7 @@ High-performing packages for different data manipulation and statistical computi
 
 - **tidyfast**: Fast tidying of data. Covers *tidyr* functionality, `dt_` prefix, preserves *data.table* object. Some unnecessary deep copies (2 dependencies). 
 
-- **tidyfst**: Tidy verbs for fast data manipulation. Covers *dplyr* and some *tidyr* functionality. Functions have `_dt` suffix and preserve *data.table* object. A [cheatsheet](<https://hope-data-science.github.io/tidyfst/docs/tidyfst_cheatsheet.pdf>) is provided (7 dependencies). 
+- **tidyfst**: Tidy verbs for fast data manipulation. Covers *dplyr* and some *tidyr* functionality. Functions have `_dt` suffix and preserve *data.table* object. A [cheatsheet](<https://raw.githubusercontent.com/hope-data-science/tidyfst/master/docs/tidyfst_cheatsheet.pdf>) is provided (7 dependencies). 
 
 - **tidyft**: Tidy verbs for fast data operations by reference. Best for big data manipulation on out of memory data using facilities provided by *fst* (7 dependencies).
 
