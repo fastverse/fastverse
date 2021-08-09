@@ -1,4 +1,4 @@
-#' An Extensible Suite of High-Performance Packages for Statistical Computing and Data Manipulation
+#' An Extensible Suite of High-Performance and Low-Dependency Packages for Statistical Computing and Data Manipulation
 #' 
 #' @description
 #' The \emph{fastverse} is an extensible suite of R packages, developed independently by various people,
@@ -54,6 +54,7 @@
 #' \itemize{
 #' \item There are 2 internal clashes between \code{collapse::funique} and \code{kit::funique}, and between \code{matrixStats::count} and \code{kit::count}.
 #' The \emph{collapse} and \emph{matrixStats} versions take precedence over the \emph{kit} versions. For a comparison of functionality see the details section of \code{\link{fastverse_conflicts}}.
+
 #' \item Quite A number of functions in the \emph{matrixStats} package do not (by default) preserve the attributes of objects passed to them, resulting in inconsistent behavior of different functions. 
 #' The development (GitHub) version of the \code{fastverse} alters most of the functions where this is the case, listed in a global variable \code{.matrixStats_replaced}, bestowing them with 
 #' capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). 
@@ -65,12 +66,11 @@
 #' 
 #' @docType package
 #' @name fastverse
-#' @aliases .matrixStats_replaced
 #' 
 #' 
 #'
-#' @importFrom  stats setNames
-#' @importFrom  utils packageVersion packageDescription install.packages installed.packages
+#' @importFrom  utils packageVersion install.packages
+#' @importFrom  collapse .c
 #'
 NULL
 
