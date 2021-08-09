@@ -64,8 +64,8 @@
 #' 
 #' 
 #' @docType package
-#' @name fastverse-package
-#' @aliases fastverse .matrixStats_replaced
+#' @name fastverse
+#' @aliases .matrixStats_replaced
 #' 
 #' 
 #'

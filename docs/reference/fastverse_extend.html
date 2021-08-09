@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastverse</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6</span>
       </span>
     </div>
 
@@ -178,36 +178,17 @@ This is also the case if <code>permanent = TRUE</code>, with the only difference
 is a character vector of package names, before calling <code><a href='https://sebkrantz.github.io/fastverse/'>library(fastverse)</a></code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='fastverse_detach.html'>fastverse_detach</a></code>, <code><a href='fastverse-package.html'>fastverse</a></code></p></div>
+    <div class='dont-index'><p><code><a href='fastverse_detach.html'>fastverse_detach</a></code>, <code><a href='fastverse.html'>fastverse</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>fastverse_extend</span><span class='op'>(</span><span class='va'>Rfast</span>, <span class='va'>xts</span>, <span class='va'>stringi</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>-- <span style='font-weight: bold;'>Attaching extension packages</span><span> ----------------------------- </span><span style='color: #0087FF;'>fastverse</span><span> 0.1.5 --</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0087FF;'>v</span><span> </span><span style='color: #FF0087;'>Rfast  </span><span> 2.0.1      </span><span style='color: #0087FF;'>v</span><span> </span><span style='color: #FF0087;'>stringi</span><span> 1.5.3 </span>
-#&gt; <span class='message'></span><span style='color: #0087FF;'>v</span><span> </span><span style='color: #FF0087;'>xts    </span><span> 0.12.1     </span></div><div class='output co'>#&gt; <span class='message'>-- </span><span style='font-weight: bold;'>Conflicts</span><span> ------------------------------------------ fastverse_conflicts() --</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>Rfast</span><span>::</span><span style='color: #00BB00;'>colMads()</span><span>    masks </span><span style='color: #0000BB;'>matrixStats</span><span>::colMads()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>Rfast</span><span>::</span><span style='color: #00BB00;'>colMaxs()</span><span>    masks </span><span style='color: #0000BB;'>matrixStats</span><span>::colMaxs()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>Rfast</span><span>::</span><span style='color: #00BB00;'>colMedians()</span><span> masks </span><span style='color: #0000BB;'>matrixStats</span><span>::colMedians()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>Rfast</span><span>::</span><span style='color: #00BB00;'>colMins()</span><span>    masks </span><span style='color: #0000BB;'>matrixStats</span><span>::colMins()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>Rfast</span><span>::</span><span style='color: #00BB00;'>colRanks()</span><span>   masks </span><span style='color: #0000BB;'>matrixStats</span><span>::colRanks()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>Rfast</span><span>::</span><span style='color: #00BB00;'>colVars()</span><span>    masks </span><span style='color: #0000BB;'>matrixStats</span><span>::colVars()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>xts</span><span>::</span><span style='color: #00BB00;'>first()</span><span>        masks </span><span style='color: #0000BB;'>data.table</span><span>::first()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>xts</span><span>::</span><span style='color: #00BB00;'>last()</span><span>         masks </span><span style='color: #0000BB;'>data.table</span><span>::last()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>Rfast</span><span>::</span><span style='color: #00BB00;'>rowMads()</span><span>    masks </span><span style='color: #0000BB;'>matrixStats</span><span>::rowMads()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>Rfast</span><span>::</span><span style='color: #00BB00;'>rowMaxs()</span><span>    masks </span><span style='color: #0000BB;'>matrixStats</span><span>::rowMaxs()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>Rfast</span><span>::</span><span style='color: #00BB00;'>rowMedians()</span><span> masks </span><span style='color: #0000BB;'>matrixStats</span><span>::rowMedians()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>Rfast</span><span>::</span><span style='color: #00BB00;'>rowMins()</span><span>    masks </span><span style='color: #0000BB;'>matrixStats</span><span>::rowMins()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>Rfast</span><span>::</span><span style='color: #00BB00;'>rowRanks()</span><span>   masks </span><span style='color: #0000BB;'>matrixStats</span><span>::rowRanks()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>Rfast</span><span>::</span><span style='color: #00BB00;'>rowVars()</span><span>    masks </span><span style='color: #0000BB;'>matrixStats</span><span>::rowVars()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>Rfast</span><span>::</span><span style='color: #00BB00;'>transpose()</span><span>  masks </span><span style='color: #0000BB;'>data.table</span><span>::transpose()</span></div><div class='input'><span class='fu'>fastverse_extend</span><span class='op'>(</span><span class='va'>fasttime</span>, topics <span class='op'>=</span> <span class='st'>"TS"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>-- </span><span style='font-weight: bold;'>Attaching extension packages</span><span> ----------------------------- </span><span style='color: #0087FF;'>fastverse</span><span> 0.1.5 --</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #0087FF;'>v</span><span> </span><span style='color: #FF0087;'>fasttime</span><span> 1.0.2     </span><span style='color: #0087FF;'>v</span><span> </span><span style='color: #FF0087;'>roll    </span><span> 1.1.6</span></div><div class='output co'>#&gt; <span class='message'>-- </span><span style='font-weight: bold;'>Conflicts</span><span> ------------------------------------------ fastverse_conflicts() --</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>zoo</span><span>::</span><span style='color: #00BB00;'>as.Date()</span><span>         masks </span><span style='color: #0000BB;'>base</span><span>::as.Date()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>zoo</span><span>::</span><span style='color: #00BB00;'>as.Date.numeric()</span><span> masks </span><span style='color: #0000BB;'>base</span><span>::as.Date.numeric()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>xts</span><span>::</span><span style='color: #00BB00;'>first()</span><span>           masks </span><span style='color: #0000BB;'>data.table</span><span>::first()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>zoo</span><span>::</span><span style='color: #00BB00;'>is.regular()</span><span>      masks </span><span style='color: #0000BB;'>collapse</span><span>::is.regular()</span>
-#&gt; <span class='message'></span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>xts</span><span>::</span><span style='color: #00BB00;'>last()</span><span>            masks </span><span style='color: #0000BB;'>data.table</span><span>::last()</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>fastverse_extend</span><span class='op'>(</span><span class='va'>Rfast</span>, <span class='va'>xts</span>, <span class='va'>stringi</span><span class='op'>)</span>
+<span class='fu'>fastverse_extend</span><span class='op'>(</span><span class='va'>fasttime</span>, topics <span class='op'>=</span> <span class='st'>"TS"</span><span class='op'>)</span>
+
 <span class='co'># Undoing this again</span>
 <span class='fu'><a href='fastverse_detach.html'>fastverse_detach</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"fastverse.extend"</span><span class='op'>)</span>, session <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div></span></pre>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
