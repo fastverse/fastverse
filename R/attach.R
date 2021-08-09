@@ -27,7 +27,7 @@ tick <- "v" # "\\U2713" # Heavy: \U2714 # cli::symbol$tick
 # }
 
 fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FALSE) {
-  if(length(to_load) == 0L) return(invisible()) # Note: If nothing is to be loaded, won't replace matrixStats !!
+  if(length(to_load) == 0L) return(invisible()) 
   
   pv <- package_version("fastverse")
   msg(rule(left = txt, style.left = function(x) bold(text_col(x)),
@@ -48,17 +48,7 @@ fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FAL
   on.exit(options(oldopts))
   
   suppressPackageStartupMessages({
-    if(any(to_load == "matrixStats")) {
-      lapply(to_load[to_load != "matrixStats"], same_library)
-      replace_matrixStats()
-    } else {
       lapply(to_load, same_library)
-      # Special case: matrixStats was loaded before the fastverse
-      if(onattach && any(fastverse_packages(include.self = FALSE) == "matrixStats") && is_attached("matrixStats")) {
-          detach("package:matrixStats") # , unload = TRUE
-          replace_matrixStats()
-      }
-    }
   })
   
   msg(paste(info, collapse = "\n"), startup = onattach) # cat(paste(info, collapse = "\n"))
