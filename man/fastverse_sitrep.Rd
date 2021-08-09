@@ -9,6 +9,9 @@ fastverse_sitrep(...)
 \arguments{
 \item{\dots}{arguments other than \code{pkg} passed to \code{\link{fastverse_deps}}.}
 }
+\value{
+\code{fastverse_sitrep} returns \code{NULL} invisibly.
+}
 \description{
 This function gives a quick overview of the version of R and all 
 \emph{fastverse} packages (including availability updates for packages) and indicates 

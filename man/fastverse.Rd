@@ -3,7 +3,7 @@
 \docType{package}
 \name{fastverse}
 \alias{fastverse}
-\title{An Extensible Suite of High-Performance Packages for Statistical Computing and Data Manipulation}
+\title{An Extensible Suite of High-Performance and Low-Dependency Packages for Statistical Computing and Data Manipulation}
 \description{
 The \emph{fastverse} is an extensible suite of R packages, developed independently by various people,
 that jointly contribute to the objectives of:

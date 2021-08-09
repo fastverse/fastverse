@@ -1,18 +1,17 @@
 Package: fastverse
-Title: An Extensible Suite of High-Performance Packages for Statistical Computing and Data Manipulation
-Version: 0.1.6
+Title: A Suite of High-Performance Packages for Statistics and Data Manipulation
+Version: 0.1.7
 Authors@R: c(person("Sebastian", "Krantz", role = c("aut", "cre"), 
                     email = "sebastian.krantz@graduateinstitute.ch"),
              person("Hadley", "Wickham", role = "ctb"))
-Description: The 'fastverse' package integrates, and provides utilities for easy installation, 
-             loading and management, of a complementary set of high-performance packages for 
-             statistical computing and data manipulation. The core 'fastverse' consists of 6 packages:
+Description: Easy installation, loading and management, of a complementary set of high-performance packages 
+             for statistical computing and data manipulation. The core 'fastverse' consists of 6 packages:
              'data.table', 'collapse', 'matrixStats', 'kit', 'magrittr' and 'fst', that jointly only
              depend on 'Rcpp'. These packages are attached and harmonized through the 'fastverse'. 
              In addition, the 'fastverse' can be freely and permanently extended with additional packages, 
-             both globally or for individual projects. Extension packages also are attached and managed 
-             by the 'fastverse'. Selected fast packages for various topics such as time series, dates 
-             and times, strings, spatial data and statistics are suggested in the 'README' file.  
+             both globally or for individual projects. Selected fast and low-dependency packages are suggested 
+             for various topics such as time series, dates and times, strings, spatial data and statistics  
+             (see 'README.md' on GitHub / website).  
 License: GPL-3
 Encoding: UTF-8
 Imports: data.table, collapse, matrixStats, kit, magrittr, fst
@@ -22,5 +21,5 @@ URL: https://sebkrantz.github.io/fastverse/,
      https://github.com/SebKrantz/fastverse
 BugReports: https://github.com/SebKrantz/fastverse/issues
 RoxygenNote: 7.1.1
-NeedsCompilation: yes
+NeedsCompilation: no
 VignetteBuilder: knitr

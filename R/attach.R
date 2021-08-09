@@ -3,6 +3,7 @@
 # core_unloaded <- function() .core_pkg[!paste0("package:", .core_pkg) %in% search()]
 
 is_attached <- function(x) paste0("package:", x) %in% search()
+is_installed <- function(x) vapply(x, requireNamespace, TRUE, quietly = TRUE)
 
 ckeck_attached <- function(needed = TRUE) {
   pkg <- fastverse_packages(include.self = FALSE)
@@ -43,9 +44,6 @@ fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FAL
   
   col1 <- seq_len(length(packages) / 2L)
   info <- paste0(packages[col1], "     ", packages[-col1])
-  
-  oldopts <- options(warn = -1L)
-  on.exit(options(oldopts))
   
   suppressPackageStartupMessages({
       lapply(to_load, same_library)
@@ -99,9 +97,8 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
                                fastverse.styling = NULL)
     }
   } else {
-    ex <- substitute(c(...))
-    pkg <- tryCatch(eval(ex), error = function(e) as.character(ex[-1L]))
-    if(!is.character(pkg)) pkg <- as.character(ex[-1L])
+    pkg <- tryCatch(c(...), error = function(e) .c(...))
+    if(!is.character(pkg) || length(pkg) > 200L) pkg <- .c(...)
     loaded <- pkg[is_attached(pkg)] # Include self? -> nope, not sensible...
     if(session) {
       epkg <- getOption("fastverse.extend")
@@ -177,27 +174,26 @@ topics_selector <- function(x) {
 #' 
 #' @seealso \code{\link{fastverse_detach}}, \code{\link{fastverse}}
 #' @export
-#' @examples 
-#' \dontrun{
-#' fastverse_extend(Rfast, xts, stringi)
-#' fastverse_extend(fasttime, topics = "TS")
+#' @examples \donttest{
+#' ex <- getOption("fastverse.extend")
+#' fastverse_extend(xts, stringi)
+#' fastverse_extend(fasttime, topics = "VI")
 #' 
 #' # Undoing this again
-#' fastverse_detach(getOption("fastverse.extend"), session = TRUE)
+#' fastverse_detach(setdiff(getOption("fastverse.extend"), ex), session = TRUE)
+#' rm(ex)
 #' }
 fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FALSE, 
                              check.conflicts = !isTRUE(getOption("fastverse.quiet"))) {
   
   if(!missing(...)) {
-    ex <- substitute(c(...))
-    epkg <- tryCatch(eval(ex), error = function(e) as.character(ex[-1L]))
-    if(!is.character(epkg)) epkg <- as.character(ex[-1L])
+    epkg <- tryCatch(c(...), error = function(e) .c(...))
+    if(!is.character(epkg) || length(epkg) > 200L) epkg <- .c(...)
   }
-  if(length(topics) || install) inst_pkg <- installed.packages()[, "Package"]
   
   if(length(topics)) {
     tpkg <- unlist(lapply(topics, topics_selector)) # needed, don't use sapply
-    if(!install) tpkg <- tpkg[tpkg %in% inst_pkg]
+    if(!install) tpkg <- tpkg[is_installed(tpkg)]
     epkg <- if(missing(...)) tpkg else unique(c(epkg, tpkg))
   }
   
@@ -223,7 +219,7 @@ fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FA
   if(length(needed) == 0L) return(invisible())
 
   if(install) {
-    inst <- needed[!(needed %in% inst_pkg)]
+    inst <- needed[!is_installed(needed)]
     if(length(inst)) {
       install.packages(inst)
       cat("\n")

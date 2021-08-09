@@ -48,6 +48,8 @@ confirm_conflict <- function(packages, name) { # packages <- conflicts[[3]]; nam
 #' }
 #' @param pkg character. A vector of packages to check conflicts for. The default is all \emph{fastverse} packages. 
 #' 
+#' @returns An object of class 'fastverse_conflicts': A named list of character vectors where the names are the conflicted objects, and the 
+#' content are the names of the package namespaces containing the object, in the order they appear on the \code{\link{search}} path. 
 #' @seealso \code{\link{fastverse}}
 #' @export
 #' @examples

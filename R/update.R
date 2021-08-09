@@ -1,5 +1,5 @@
 packageVersion2 <- function(pkg) {
-  if (requireNamespace(pkg, quietly = TRUE)) utils::packageVersion(pkg) else 0
+  if (requireNamespace(pkg, quietly = TRUE)) packageVersion(pkg) else 0
 }
 
 #' List all fastverse dependencies
@@ -56,6 +56,7 @@ fastverse_deps <- function(pkg = fastverse_packages(), recursive = FALSE,
 #'
 #' @param \dots arguments passed to \code{\link{fastverse_deps}}.
 #' 
+#' @returns \code{fastverse_update} returns \code{NULL} invisibly. 
 #' @seealso \code{\link{fastverse_deps}}, \code{\link{fastverse}}
 #' @export
 fastverse_update <- function(...) {
@@ -88,6 +89,7 @@ fastverse_update <- function(...) {
 #' 
 #' @param \dots arguments other than \code{pkg} passed to \code{\link{fastverse_deps}}.
 #' 
+#' @returns \code{fastverse_sitrep} returns \code{NULL} invisibly. 
 #' @seealso \code{\link{fastverse_deps}}, \code{\link{fastverse}}
 #' @export
 fastverse_sitrep <- function(...) {
@@ -124,6 +126,8 @@ fastverse_sitrep <- function(...) {
   }
   if(missing(...) || !any(cdl <- ...names() == "check.deps") || ...elt(which(cdl))) 
     cat(rule("Dependencies"), "\n", packages[!deps %in% pkg])
+  
+  invisible()
 }
 
 

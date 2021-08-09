@@ -1,4 +1,4 @@
-#' An Extensible Suite of High-Performance Packages for Statistical Computing and Data Manipulation
+#' An Extensible Suite of High-Performance and Low-Dependency Packages for Statistical Computing and Data Manipulation
 #' 
 #' @description
 #' The \emph{fastverse} is an extensible suite of R packages, developed independently by various people,
@@ -70,8 +70,8 @@
 #' 
 #' 
 #'
-#' @importFrom  stats setNames
-#' @importFrom  utils packageVersion packageDescription install.packages installed.packages
+#' @importFrom  utils packageVersion install.packages
+#' @importFrom  collapse .c
 #'
 NULL
 

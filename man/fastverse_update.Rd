@@ -9,6 +9,9 @@ fastverse_update(...)
 \arguments{
 \item{\dots}{arguments passed to \code{\link{fastverse_deps}}.}
 }
+\value{
+\code{fastverse_update} returns \code{NULL} invisibly.
+}
 \description{
 This will check all \emph{fastverse} packages (and their
 dependencies) for updates and print a command to install those updates.
