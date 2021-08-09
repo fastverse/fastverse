@@ -47,11 +47,13 @@ This is also the case if \code{permanent = TRUE}, with the only difference that 
 is a character vector of package names, before calling \code{library(fastverse)}.
 }
 \examples{
+\dontrun{
 fastverse_extend(Rfast, xts, stringi)
 fastverse_extend(fasttime, topics = "TS")
 
 # Undoing this again
 fastverse_detach(getOption("fastverse.extend"), session = TRUE)
+}
 }
 \seealso{
 \code{\link{fastverse_detach}}, \code{\link{fastverse}}

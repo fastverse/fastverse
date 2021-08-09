@@ -27,7 +27,7 @@ tick <- "v" # "\\U2713" # Heavy: \U2714 # cli::symbol$tick
 # }
 
 fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FALSE) {
-  if(length(to_load) == 0L) return(invisible())
+  if(length(to_load) == 0L) return(invisible()) # Note: If nothing is to be loaded, won't replace matrixStats !!
   
   pv <- package_version("fastverse")
   msg(rule(left = txt, style.left = function(x) bold(text_col(x)),
@@ -188,11 +188,13 @@ topics_selector <- function(x) {
 #' @seealso \code{\link{fastverse_detach}}, \code{\link{fastverse}}
 #' @export
 #' @examples 
+#' \dontrun{
 #' fastverse_extend(Rfast, xts, stringi)
 #' fastverse_extend(fasttime, topics = "TS")
 #' 
 #' # Undoing this again
 #' fastverse_detach(getOption("fastverse.extend"), session = TRUE)
+#' }
 fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FALSE, 
                              check.conflicts = !isTRUE(getOption("fastverse.quiet"))) {
   
