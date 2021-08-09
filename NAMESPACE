@@ -2,6 +2,7 @@
 
 S3method(print,fastverse_conflicts)
 S3method(print,fvrule)
+export(.matrixStats_replaced)
 export(fastverse_conflicts)
 export(fastverse_deps)
 export(fastverse_detach)
@@ -16,3 +17,4 @@ importFrom(utils,available.packages)
 importFrom(utils,install.packages)
 importFrom(utils,packageVersion)
 importFrom(utils,stack)
+useDynLib(fastverse, .registration = TRUE)

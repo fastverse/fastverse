@@ -3,6 +3,7 @@
 \docType{package}
 \name{fastverse}
 \alias{fastverse}
+\alias{.matrixStats_replaced}
 \title{An Extensible Suite of High-Performance and Low-Dependency Packages for Statistical Computing and Data Manipulation}
 \description{
 The \emph{fastverse} is an extensible suite of R packages, developed independently by various people,
