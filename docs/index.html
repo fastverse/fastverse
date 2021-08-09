@@ -98,23 +98,10 @@
 </ul>
 <p>The <code>fastverse</code> package integrates, and provides utilities for easy installation, loading and management of these packages. It is an extensible framework that allows users to (permanently) add or remove packages to create a ‘verse’ of packages suiting their general needs. Separate ‘verses’ can be created for different projects.</p>
 <p><em>fastverse</em> packages are jointly attached with <code><a href="https://sebkrantz.github.io/fastverse/">library(fastverse)</a></code>, and several functions starting with <code>fastverse_</code> help manage dependencies, detect namespace conflicts, add/remove packages from the <em>fastverse</em> and update packages.</p>
-<div id="installation" class="section level2">
+<div id="core-packages" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co"># Install the current version on CRAN</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"fastverse"</span><span class="op">)</span>
-
-<span class="co"># Install the development version from Github (Requires Rtools)</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"SebKrantz/fastverse"</span><span class="op">)</span></pre></div>
-</div>
-<div id="packages" class="section level2">
-<h2 class="hasAnchor">
-<a href="#packages" class="anchor"></a>Packages</h2>
+<a href="#core-packages" class="anchor"></a>Core Packages</h2>
 <p>The <em>fastverse</em> consists of 6 core packages (7 dependencies in total) which provide broad C/C++ based statistical and data manipulation functionality and have carefully managed APIs. These packages are installed and attached along with the <code>fastverse</code> package.</p>
-<div id="core-fastverse" class="section level3">
-<h3 class="hasAnchor">
-<a href="#core-fastverse" class="anchor"></a>Core fastverse</h3>
 <ul>
 <li><p><strong>data.table</strong>: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, extremely flexible split-apply-combine computing, reshaping, joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as transposition of data.</p></li>
 <li><p><strong>collapse</strong>: Fast grouped &amp; weighted statistical computations, time series and panel data transformations, list-processing, data manipulation functions, summary statistics and various utilities such as support for variable labels. Class-agnostic framework designed to work with vectors, matrices, data frames, lists and related classes including <em>xts</em>, <em>data.table</em>, <em>tibble</em>, <em>pdata.frame</em>, <em>sf</em>. <!-- *tsibble*, *tibbletime* --></p></li>
@@ -127,10 +114,22 @@
 </li>
 </ul>
 </div>
-<div id="extending-the-fastverse" class="section level3">
-<h3 class="hasAnchor">
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
+<p>Currently, there are 2 different versions of the <em>fastverse</em>. The development version is recommended if you want to have <em>matrixStats</em> consistently preserve attributes of your matrices: it modifies functions in the <em>matrixStats</em> namespace making them preserve attributes consistently (and by default) where this is not the case. This version was rejected by CRAN because it requires a call to <code>unlockBinding</code>. The CRAN version takes <em>matrixStats</em> as it is, which means most functions do not preserve attributes such as dimension names in computations.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="co"># Install the CRAN version</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"fastverse"</span><span class="op">)</span>
+
+<span class="co"># Install the development version from Github (Requires Rtools)</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"SebKrantz/fastverse"</span><span class="op">)</span></pre></div>
+<p><em>matrixStats</em> is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies.</p>
+</div>
+<div id="extending-the-fastverse" class="section level2">
+<h2 class="hasAnchor">
 <a href="#extending-the-fastverse" class="anchor"></a>Extending the <em>fastverse</em>
-</h3>
+</h2>
 <p>In addition, users have the option (via the <code>fastverse_entend()</code> function) to freely attach extension packages offering more specific functionality. The <em>fastverse</em> can by extended by any R package, either just for the current session or permanently:</p>
 <details><summary><b><a style="cursor: pointer;">Click here to expand </a></b>
 </summary><pre class="fansi fansi-message"><code class="r"><a href="https://sebkrantz.github.io/fastverse/"># Loads and attaches the core fastverse packages
@@ -239,7 +238,6 @@ fastverse_reset()</a></code>
 </details><p>
 </p>
 <p>In addition to a global customization, separate <em>fastverse</em>’s can be created for projects by adding a <code>.fastverse</code> config file in the project directory and listing packages there. Only these packages will then be loaded and managed with <code><a href="https://sebkrantz.github.io/fastverse/">library(fastverse)</a></code> in the project.</p>
-</div>
 <div id="suggested-extensions" class="section level3">
 <h3 class="hasAnchor">
 <a href="#suggested-extensions" class="anchor"></a>Suggested Extensions</h3>
