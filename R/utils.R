@@ -5,7 +5,7 @@ msg <- function(..., startup = FALSE) {
   }
 }
 
-gconf_path <- function() paste(system.file(package = 'fastverse'), '.fastverse', sep = '/')
+gconf_path <- function() paste(find.package('fastverse'), '.fastverse', sep = '/')
 
 project_packages <- function() {
   fileConn <- file(".fastverse")
