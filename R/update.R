@@ -19,13 +19,13 @@ packageVersion2 <- function(pkg) {
 fastverse_deps <- function(pkg = fastverse_packages(), recursive = FALSE, 
                            repos = getOption("repos"), include.self = FALSE, check.deps = TRUE) {  
   
-  pkgs <- utils::available.packages(repos = repos)
+  pkgs <- available.packages(repos = repos)
   if(!length(pkgs)) stop("Please connect to the internet to execute this function")
   fv <- "fastverse"
   pkg <- pkg[pkg != fv] # Code should work regardless of whether pkg includes "fastverse" or not!!
   if(check.deps) {
     if(!include.self) fv <- NULL
-    deps <- tools::package_dependencies(pkg, pkgs, recursive = recursive)
+    deps <- package_dependencies(pkg, pkgs, recursive = recursive)
     pkg_deps <- unique(c(pkg, fv, sort(unlist(deps, use.names = FALSE)))) 
     base_pkgs <- c("base", "compiler", "datasets", "graphics", "grDevices", "grid",
       "methods", "parallel", "splines", "stats", "stats4", "tools", "tcltk", "utils")

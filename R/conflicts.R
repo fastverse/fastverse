@@ -10,7 +10,7 @@ ls_env <- function(env) {
 # Significantly faster than what was previously there
 invert_simplify <- function(x) {
   if (length(x) == 0L) return()
-  stacked <- unclass(utils::stack(x))
+  stacked <- unclass(stack(x))
   dup <- stacked$values[duplicated(stacked$values)]
   if(!length(dup)) return()
   dup <- which(stacked$values %in% dup)
