@@ -187,7 +187,7 @@ Other functions help to determine joint dependencies, sort out namespace conflic
 <li><p>There are 2 internal clashes between <code><a href='https://sebkrantz.github.io/collapse/reference/funique.html'>collapse::funique</a></code> and <code><a href='https://rdrr.io/pkg/kit/man/funique.html'>kit::funique</a></code>, and between <code><a href='https://rdrr.io/pkg/matrixStats/man/rowCounts.html'>matrixStats::count</a></code> and <code><a href='https://rdrr.io/pkg/kit/man/count.html'>kit::count</a></code>.
 The <em>collapse</em> and <em>matrixStats</em> versions take precedence over the <em>kit</em> versions. For a comparison of functionality see the details section of <code><a href='fastverse_conflicts.html'>fastverse_conflicts</a></code>.</p></li>
 <li><p>Quite A number of functions in the <em>matrixStats</em> package do not (by default) preserve the attributes of objects passed to them, resulting in inconsistent behavior of different functions. 
-The <code>fastverse</code> alters most of the functions where this is the case, listed in a global variable <code>.matrixStats_replaced</code>, bestowing them with 
+The development (GitHub) version of the <code>fastverse</code> alters most of the functions where this is the case, listed in a global variable <code>.matrixStats_replaced</code>, bestowing them with 
 capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). 
 This is done using very efficient R and C code, so that performance does not suffer. When the <code>fastverse</code> is attached, these
 altered function are replaced in the <em>matrixStats</em> namespace. Once <em>matrixStats</em> has evolved so that consistent attribute handling (<code>useNames = TRUE</code>) becomes the default 
