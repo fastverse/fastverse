@@ -63,11 +63,11 @@ Utilities to retrieve the names of \emph{fastverse} packages (and dependencies),
 \item There are 2 internal clashes between \code{collapse::funique} and \code{kit::funique}, and between \code{matrixStats::count} and \code{kit::count}.
 The \emph{collapse} and \emph{matrixStats} versions take precedence over the \emph{kit} versions. For a comparison of functionality see the details section of \code{\link{fastverse_conflicts}}.
 \item Quite A number of functions in the \emph{matrixStats} package do not (by default) preserve the attributes of objects passed to them, resulting in inconsistent behavior of different functions. 
-The development (GitHub) version of the \code{fastverse} alters most of the functions where this is the case, listed in a global variable \code{.matrixStats_replaced}, bestowing them with 
-capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). 
-This is done using very efficient R and C code, so that performance does not suffer. When the \code{fastverse} is attached, these
-altered function are replaced in the \emph{matrixStats} namespace. Once \emph{matrixStats} has evolved so that consistent attribute handling (\code{useNames = TRUE}) becomes the default 
-setting, these alternative versions will become redundant and be removed from the \emph{fastverse}.
+The GitHub version of the \code{fastverse} alters most of the functions where this is the case, listed in a global variable \code{.matrixStats_replaced}, bestowing them with 
+capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). This is done using very efficient R and C code, so that performance does not suffer. 
+When the \code{fastverse} is attached, these altered function are replaced in the \emph{matrixStats} namespace. Since CRAN does not allow namespace modifications in other packages, 
+this feature is only available in the GitHub version, installable using \code{remotes::install_github("SebKrantz/fastverse")}. Development of CRAN and GitHub version will
+continue synchronous until \emph{matrixStats} has evolved so that consistent attribute handling (\code{useNames = TRUE}) becomes the default.
 }
 }
 
