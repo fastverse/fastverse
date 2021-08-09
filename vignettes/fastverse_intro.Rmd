@@ -1,6 +1,6 @@
 ---
 title: "Introduction to the *fastverse*"
-subtitle: "An Extensible Suite of High-Performance Packages for Statistical Computing and Data Manipulation in R"
+subtitle: "An Extensible Suite of High-Performance and Low Dependency Packages for Statistical Computing and Data Manipulation in R"
 author: "Sebastian Krantz"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette

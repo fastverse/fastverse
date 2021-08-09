@@ -81,7 +81,7 @@ It can also be used to check conflicts for any other attached packages." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastverse</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.7</span>
       </span>
     </div>
 
@@ -138,6 +138,10 @@ It can also be used to check conflicts for any other attached packages.</p>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>An object of class 'fastverse_conflicts': A named list of character vectors where the names are the conflicted objects, and the 
+content are the names of the package namespaces containing the object, in the order they appear on the <code><a href='https://rdrr.io/r/base/search.html'>search</a></code> path.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>There are 2 internal conflict in the core <em>fastverse</em> which are not displayed by <code>fastverse_conflicts()</code>:</p><ul>
@@ -152,7 +156,7 @@ It is a full hash-table based implementation that always preserves the first-mat
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='fastverse-package.html'>fastverse</a></code></p></div>
+    <div class='dont-index'><p><code><a href='fastverse.html'>fastverse</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Check conflicts between fastverse packages and all attached packages</span>
@@ -160,9 +164,9 @@ It is a full hash-table based implementation that always preserves the first-mat
 
 <span class='co'># Check conflicts among all attached packages</span>
 <span class='fu'>fastverse_conflicts</span><span class='op'>(</span><span class='fu'>rm_stub</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/search.html'>search</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>[</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>]</span>, <span class='st'>"package:"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; -- <span style='font-weight: bold;'>Conflicts</span><span> ------------------------------------------ fastverse_conflicts() --
-#&gt; </span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>methods</span><span>::</span><span style='color: #00BB00;'>body&lt;-()</span><span>    masks </span><span style='color: #0000BB;'>base</span><span>::body&lt;-()
-#&gt; </span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>methods</span><span>::</span><span style='color: #00BB00;'>kronecker()</span><span> masks </span><span style='color: #0000BB;'>base</span><span>::kronecker()</div></span></pre>
+</div><div class='output co'>#&gt; <span style='color: #B2B2B2;'>-- </span><span style='color: #B2B2B2;font-weight: bold;'>Conflicts</span><span style='color: #B2B2B2;'> ------------------------------------------ fastverse_conflicts() --</span><span>
+#&gt; </span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>methods</span><span style='color: #B2B2B2;'>::</span><span style='color: #00BB00;'>body&lt;-()</span><span>   </span><span style='color: #B2B2B2;'> masks </span><span style='color: #0000BB;'>base</span><span style='color: #B2B2B2;'>::body&lt;-()</span><span>
+#&gt; </span><span style='color: #BB0000;'>x</span><span> </span><span style='color: #0000BB;'>methods</span><span style='color: #B2B2B2;'>::</span><span style='color: #00BB00;'>kronecker()</span><span style='color: #B2B2B2;'> masks </span><span style='color: #0000BB;'>base</span><span style='color: #B2B2B2;'>::kronecker()</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
