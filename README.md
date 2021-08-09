@@ -26,21 +26,9 @@ of these packages. It is an extensible framework that allows users to (permanent
 
 *fastverse* packages are jointly attached with `library(fastverse)`, and several functions starting with `fastverse_` help manage dependencies, detect namespace conflicts, add/remove packages from the *fastverse* and update packages.
 
-## Installation
-
-``` r
-# Install the current version on CRAN
-install.packages("fastverse")
-
-# Install the development version from Github (Requires Rtools)
-remotes::install_github("SebKrantz/fastverse")
-```
-
-## Packages
+## Core Packages
 
 The *fastverse* consists of 6 core packages (7 dependencies in total) which provide broad C/C++ based statistical and data manipulation functionality and have carefully managed APIs. These packages are installed and attached along with the `fastverse` package. 
-
-### Core fastverse
 
 - **data.table**: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, extremely flexible split-apply-combine computing, reshaping, joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as transposition of data. 
 
@@ -56,7 +44,20 @@ The *fastverse* consists of 6 core packages (7 dependencies in total) which prov
 
   *Additional dependency*: Package *Rcpp* is imported by *collapse* and *fst*.
 
-### Extending the *fastverse*
+## Installation
+
+Currently, there are 2 different versions of the *fastverse*. The development version is recommended if you want to have *matrixStats* consistently preserve attributes of your matrices: it modifies functions in the *matrixStats* namespace making them preserve attributes consistently (and by default) where this is not the case. This version was rejected by CRAN because it requires a call to `unlockBinding`. The CRAN version takes *matrixStats* as it is, which means most functions do not preserve attributes such as dimension names in computations. 
+
+``` r
+# Install the CRAN version
+install.packages("fastverse")
+
+# Install the development version from Github (Requires Rtools)
+remotes::install_github("SebKrantz/fastverse")
+```
+*matrixStats* is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies. 
+
+## Extending the *fastverse*
 In addition, users have the option (via the `fastverse_entend()` function) to freely attach extension packages offering more specific functionality. The *fastverse* can by extended by any R package, either just for the current session or permanently: 
 
 <details>

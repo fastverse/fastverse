@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>An Extensible Suite of High-Performance Packages for Statistical Computing and Data Manipulation — fastverse-package • fastverse</title>
+<title>An Extensible Suite of High-Performance Packages for Statistical Computing and Data Manipulation — fastverse • fastverse</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="An Extensible Suite of High-Performance Packages for Statistical Computing and Data Manipulation — fastverse-package" />
+<meta property="og:title" content="An Extensible Suite of High-Performance Packages for Statistical Computing and Data Manipulation — fastverse" />
 <meta property="og:description" content="The fastverse is an extensible suite of R packages, developed independently by various people,
 that jointly contribute to the objectives of:
 Speeding up R through heavy use of compiled code (C, C++, Fortran)
@@ -130,7 +130,7 @@ Other functions help to determine joint dependencies, sort out namespace conflic
     <div class="page-header">
     <h1>An Extensible Suite of High-Performance Packages for Statistical Computing and Data Manipulation</h1>
     <small class="dont-index">Source: <a href='https://github.com/SebKrantz/fastverse/blob/master/R/fastverse.R'><code>R/fastverse.R</code></a></small>
-    <div class="hidden name"><code>fastverse-package.Rd</code></div>
+    <div class="hidden name"><code>fastverse.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -187,7 +187,7 @@ Other functions help to determine joint dependencies, sort out namespace conflic
 <li><p>There are 2 internal clashes between <code><a href='https://sebkrantz.github.io/collapse/reference/funique.html'>collapse::funique</a></code> and <code><a href='https://rdrr.io/pkg/kit/man/funique.html'>kit::funique</a></code>, and between <code><a href='https://rdrr.io/pkg/matrixStats/man/rowCounts.html'>matrixStats::count</a></code> and <code><a href='https://rdrr.io/pkg/kit/man/count.html'>kit::count</a></code>.
 The <em>collapse</em> and <em>matrixStats</em> versions take precedence over the <em>kit</em> versions. For a comparison of functionality see the details section of <code><a href='fastverse_conflicts.html'>fastverse_conflicts</a></code>.</p></li>
 <li><p>Quite A number of functions in the <em>matrixStats</em> package do not (by default) preserve the attributes of objects passed to them, resulting in inconsistent behavior of different functions. 
-The <code>fastverse</code> alters most of the functions where this is the case, listed in a global variable <code>.matrixStats_replaced</code>, bestowing them with 
+The development (GitHub) version of the <code>fastverse</code> alters most of the functions where this is the case, listed in a global variable <code>.matrixStats_replaced</code>, bestowing them with 
 capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). 
 This is done using very efficient R and C code, so that performance does not suffer. When the <code>fastverse</code> is attached, these
 altered function are replaced in the <em>matrixStats</em> namespace. Once <em>matrixStats</em> has evolved so that consistent attribute handling (<code>useNames = TRUE</code>) becomes the default 
