@@ -1,3 +1,6 @@
+# fastverse 0.1.7
+Implementing various CRAN comments on 0.1.6 (small things), and setting up synchronous development of CRAN and GitHub version through a 'development' branch which can be merged into both. Pull requests should be sent to the 'development' branch. 
+
 # fastverse 0.1.6
 CRAN rejected 0.1.5, which made sure *matrixStats* handles attributes consistently whenever the *fastverse* is attached, because CRAN packages are not allowed to modify the namespace of other packages. Thus 0.1.6 comes in two versions: A CRAN version which takes *matrixStats* as it is, and a GitHub version which is the original 0.1.5. User who value a consistent *matrixStats* that preserves dimension names in all functions are recommended the GitHub version. 
 
