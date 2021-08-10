@@ -23,5 +23,5 @@ URL: https://sebkrantz.github.io/fastverse/,
      https://github.com/SebKrantz/fastverse
 BugReports: https://github.com/SebKrantz/fastverse/issues
 RoxygenNote: 7.1.1
-NeedsCompilation: no
+NeedsCompilation: yes
 VignetteBuilder: knitr
