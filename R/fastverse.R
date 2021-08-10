@@ -1,4 +1,4 @@
-#' An Extensible Suite of High-Performance and Low-Dependency Packages for Statistical Computing and Data Manipulation
+#' The fastverse
 #' 
 #' @description
 #' The \emph{fastverse} is an extensible suite of R packages, developed independently by various people,
