@@ -4,13 +4,15 @@ Version: 0.1.7
 Authors@R: c(person("Sebastian", "Krantz", role = c("aut", "cre"), 
                     email = "sebastian.krantz@graduateinstitute.ch"),
              person("Hadley", "Wickham", role = "ctb"))
-Description: Easy installation, loading and management, of a complementary set of high-performance packages 
-             for statistical computing and data manipulation. The core 'fastverse' consists of 6 packages:
-             'data.table', 'collapse', 'matrixStats', 'kit', 'magrittr' and 'fst', that jointly only
-             depend on 'Rcpp'. These packages are attached and harmonized through the 'fastverse'. 
-             In addition, the 'fastverse' can be freely and permanently extended with additional packages, 
-             both globally or for individual projects. Selected fast and low-dependency packages are suggested 
-             for various topics such as time series, dates and times, strings, spatial data and statistics  
+Description: Easy installation, loading and management, of a complementary set of 
+             high-performance packages for statistical computing and data manipulation. 
+             The core 'fastverse' consists of 6 packages: 'data.table', 'collapse', 
+             'matrixStats', 'kit', 'magrittr' and 'fst', that jointly only depend on 
+             'Rcpp'. These packages are attached and harmonized through the 'fastverse'. 
+             In addition, the 'fastverse' can be freely and permanently extended with 
+             additional packages, both globally or for individual projects. Selected 
+             fast and low-dependency packages are suggested for various topics such as 
+             time series, dates and times, strings, spatial data and statistics  
              (see 'README.md' on GitHub / website).  
 License: GPL-3
 Encoding: UTF-8
