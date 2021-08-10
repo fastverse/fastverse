@@ -192,9 +192,6 @@ fastverse_deps(recursive = TRUE) # Returns a data frame
 Additional flexibility is offered by the `pkg` argument allowing dependency and update status checks for any other packages. `fastverse_sitrep()` displays the same information in a more elegant printout, also showing the version of R, and whether any global or project-level configuration files - as discussed in previous sections - are used. 
 
 ```{r}
-# Temporary fastverse extension
-fastverse_extend(coop)
-
 # Check versions and update status of packages and dependencies
 fastverse_sitrep() # default is recursive = FALSE
 ```
