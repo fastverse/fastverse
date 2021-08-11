@@ -46,16 +46,17 @@ The *fastverse* consists of 6 core packages (7 dependencies in total) which prov
 
 ## Installation
 
-Currently, there are 2 different versions of the *fastverse*. The development version is recommended if you want to have *matrixStats* consistently preserve attributes of your matrices: it modifies functions in the *matrixStats* namespace making them preserve attributes consistently (and by default) where this is not the case. This version was rejected by CRAN because it requires a call to `unlockBinding`. The CRAN version takes *matrixStats* as it is, which means most functions do not preserve attributes such as dimension names in computations. 
+Currently, there are 2 different versions of the *fastverse* on CRAN and GitHub. The GitHub version is recommended if you want to have *matrixStats* consistently preserve attributes of your matrices: it modifies functions in the *matrixStats* namespace making them preserve attributes consistently (and by default) whenever the *fastverse* is attached. This version was rejected by CRAN because it requires a call to `unlockBinding`. The CRAN version takes *matrixStats* as it is, which means most functions do not preserve attributes such as dimension names in computations. 
 
 ``` r
 # Install the CRAN version
 install.packages("fastverse")
 
-# Install the development version from Github (Requires Rtools)
+# Install the GitHub version (Requires Rtools)
 remotes::install_github("SebKrantz/fastverse")
 ```
-*matrixStats* is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies. 
+*Note* that the GitHub version is not a development version, development takes place in the 'development' branch. 
+*matrixStats* is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies. Until then CRAN and GitHub versions of the *fastverse* are released together. 
 
 ## Extending the *fastverse*
 In addition, users have the option (via the `fastverse_entend()` function) to freely attach extension packages offering more specific functionality. The *fastverse* can by extended by any R package, either just for the current session or permanently: 

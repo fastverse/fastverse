@@ -118,14 +118,14 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>Currently, there are 2 different versions of the <em>fastverse</em>. The development version is recommended if you want to have <em>matrixStats</em> consistently preserve attributes of your matrices: it modifies functions in the <em>matrixStats</em> namespace making them preserve attributes consistently (and by default) where this is not the case. This version was rejected by CRAN because it requires a call to <code>unlockBinding</code>. The CRAN version takes <em>matrixStats</em> as it is, which means most functions do not preserve attributes such as dimension names in computations.</p>
+<p>Currently, there are 2 different versions of the <em>fastverse</em> on CRAN and GitHub. The GitHub version is recommended if you want to have <em>matrixStats</em> consistently preserve attributes of your matrices: it modifies functions in the <em>matrixStats</em> namespace making them preserve attributes consistently (and by default) whenever the <em>fastverse</em> is attached. This version was rejected by CRAN because it requires a call to <code>unlockBinding</code>. The CRAN version takes <em>matrixStats</em> as it is, which means most functions do not preserve attributes such as dimension names in computations.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
 <span class="co"># Install the CRAN version</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"fastverse"</span><span class="op">)</span>
 
-<span class="co"># Install the development version from Github (Requires Rtools)</span>
+<span class="co"># Install the GitHub version (Requires Rtools)</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"SebKrantz/fastverse"</span><span class="op">)</span></pre></div>
-<p><em>matrixStats</em> is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies.</p>
+<p><em>Note</em> that the GitHub version is not a development version, development takes place in the ‘development’ branch. <em>matrixStats</em> is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies. Until then CRAN and GitHub versions of the <em>fastverse</em> are released together.</p>
 </div>
 <div id="extending-the-fastverse" class="section level2">
 <h2 class="hasAnchor">
