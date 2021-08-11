@@ -27,6 +27,9 @@ fastverse_detach(
 \item{permanent}{logical. if \code{\dots} are used to detach certain packages, \code{permament = TRUE} will disable them being loaded the next time the \emph{fastverse} is loaded. 
 This is implemented via a config file saved to the package directory. Core \emph{fastverse} packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}. The config file can be removed with \code{\link{fastverse_reset}}.}
 }
+\value{
+This function returns nothing. Courtesy to CRAN maintainers, and because my name is not Hadley Wickham - who ostensibly is able to publish an entire \emph{tidyverse} package without these redundant statements.
+}
 \description{
 Detaches \emph{fastverse} packages, removing them from the \code{\link{search}} path.
 }
