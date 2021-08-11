@@ -10,7 +10,7 @@ fastverse_reset(options = TRUE)
 \item{options}{logical. \code{TRUE} also clears all \emph{fastverse} options.}
 }
 \value{
-This function returns nothing. Courtesy to CRAN maintainers, and because my name is not Hadley Wickham - who ostensibly is able to publish an entire \emph{tidyverse} package without these redundant statements.
+\code{fastverse_reset} returns \code{NULL} invisibly.
 }
 \description{
 Calling this function will remove global configuration files and (default) clear all package options. 

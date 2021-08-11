@@ -52,7 +52,7 @@ fastverse_packages <- function(extensions = TRUE, include.self = TRUE) {
 #' Calling this function will remove global configuration files and (default) clear all package options. 
 #' Attached packages will not be detached, and configuration files for projects (as discussed in the vignette) will not be removed. 
 #'
-#' @returns This function returns nothing. Courtesy to CRAN maintainers, and because my name is not Hadley Wickham - who ostensibly is able to publish an entire \emph{tidyverse} package without these redundant statements. 
+#' @returns \code{fastverse_reset} returns \code{NULL} invisibly.  
 #' @param options logical. \code{TRUE} also clears all \emph{fastverse} options. 
 #' @seealso \code{\link{fastverse_extend}}, \code{\link{fastverse}}
 #' @export
