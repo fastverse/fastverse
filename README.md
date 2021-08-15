@@ -192,15 +192,18 @@ High-performing packages for different data manipulation and statistical computi
 
 - **lubridate**: Facilitates POSIX-based computations (2 dependencies).
 
-- **clock**: Comprehensive library for date-time manipulations using a new family of orthogonal date-time classes (durations, time points, zoned-times, and calendars) (6 dependencies).
-
-- **anytime**: Anything to 'POSIXct' or 'Date' Converter (2 dependencies).
+- **anytime**: Anything to 'POSIXct' or 'Date' converter (2 dependencies).
 
 - **fasttime**: Fast parsing of strings to 'POSIXct' (0 dependencies).
 
+- **nanotime**: Provides a coherent set of temporal types and functions with nanosecond precision -  
+                based on the 'integer64' class (7 dependencies).
+
+- **clock**: Comprehensive library for date-time manipulations using a new family of orthogonal date-time classes (durations, time points, zoned-times, and calendars) (6 dependencies).
+
 - **timechange**: Efficient manipulation of date-times accounting for time zones and daylight saving times (1 dependency).
 
-  *Notes*: Date and time variables are preserved in many *data.table* and *collapse* operations. *data.table* additionally offers an efficient integer based date class 'IDate' with some supporting functionality. *xts* and *zoo* also provide various functions to transform dates. 
+  *Notes*: Date and time variables are preserved in many *data.table* and *collapse* operations. *data.table* additionally offers an efficient integer based date class 'IDate' with some supporting functionality. *xts* and *zoo* also provide various functions to transform dates, and *zoo* provides classes 'yearmon' and 'yearqtr' for convenient computation with monthly and quarterly data. Package *mondate* also provides a class 'mondate' for monthly data. 
   
   <!-- - **nanotime**: (7 dependencies). -->
 
@@ -268,6 +271,15 @@ High-performing packages for different data manipulation and statistical computi
 
   *Notes*: One could also mention Rstudio's *dtplyr* and the *table.express* package here, but these packages import *dplyr* and thus have a around 20 dependencies.
   
+
+#### Data Input-Output and Serialization (IO)  
+
+- **qs** provides a lightning-fast and complete replacement for the `saveRDS` and `readRDS` functions in R. It 
+  supports general R objects with attributes and references - at similar speeds to *fst* - but does not provide on-disk random access to data subsets like *fst* (4 dependencies).
+  
+- **arrow** provides both a low-level interface to the Apache Arrow C++ library (a multi-language toolbox for accelerated data interchange and in-memory processing) and some higher-level, R-flavored tools for working with it - including fast reading / writing delimited files and sharing data between R and Python (12 dependencies). 
+
+ *Notes*: Package *vroom* offers fast reading and writing of delimited files, but with 24 dependencies is not really a *fastverse* candidate.  
   
 ***
   
