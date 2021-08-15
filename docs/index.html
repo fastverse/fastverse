@@ -258,12 +258,14 @@ fastverse_reset()</a></code>
 <a href="#dates-and-times-dt" class="anchor"></a>Dates and Times (DT)</h4>
 <ul>
 <li><p><strong>lubridate</strong>: Facilitates POSIX-based computations (2 dependencies).</p></li>
-<li><p><strong>clock</strong>: Comprehensive library for date-time manipulations using a new family of orthogonal date-time classes (durations, time points, zoned-times, and calendars) (6 dependencies).</p></li>
-<li><p><strong>anytime</strong>: Anything to ‘POSIXct’ or ‘Date’ Converter (2 dependencies).</p></li>
+<li><p><strong>anytime</strong>: Anything to ‘POSIXct’ or ‘Date’ converter (2 dependencies).</p></li>
 <li><p><strong>fasttime</strong>: Fast parsing of strings to ‘POSIXct’ (0 dependencies).</p></li>
+<li><p><strong>nanotime</strong>: Provides a coherent set of temporal types and functions with nanosecond precision -<br>
+based on the ‘integer64’ class (7 dependencies).</p></li>
+<li><p><strong>clock</strong>: Comprehensive library for date-time manipulations using a new family of orthogonal date-time classes (durations, time points, zoned-times, and calendars) (6 dependencies).</p></li>
 <li>
 <p><strong>timechange</strong>: Efficient manipulation of date-times accounting for time zones and daylight saving times (1 dependency).</p>
-<p><em>Notes</em>: Date and time variables are preserved in many <em>data.table</em> and <em>collapse</em> operations. <em>data.table</em> additionally offers an efficient integer based date class ‘IDate’ with some supporting functionality. <em>xts</em> and <em>zoo</em> also provide various functions to transform dates.</p>
+<p><em>Notes</em>: Date and time variables are preserved in many <em>data.table</em> and <em>collapse</em> operations. <em>data.table</em> additionally offers an efficient integer based date class ‘IDate’ with some supporting functionality. <em>xts</em> and <em>zoo</em> also provide various functions to transform dates, and <em>zoo</em> provides classes ‘yearmon’ and ‘yearqtr’ for convenient computation with monthly and quarterly data. Package <em>mondate</em> also provides a class ‘mondate’ for monthly data.</p>
 <!-- - **nanotime**: (7 dependencies). -->
 </li>
 </ul>
@@ -333,6 +335,15 @@ fastverse_reset()</a></code>
 <p><em>Notes</em>: One could also mention Rstudio’s <em>dtplyr</em> and the <em>table.express</em> package here, but these packages import <em>dplyr</em> and thus have a around 20 dependencies.</p>
 </li>
 </ul>
+</div>
+<div id="data-input-output-and-serialization-io" class="section level4">
+<h4 class="hasAnchor">
+<a href="#data-input-output-and-serialization-io" class="anchor"></a>Data Input-Output and Serialization (IO)</h4>
+<ul>
+<li><p><strong>qs</strong> provides a lightning-fast and complete replacement for the <code>saveRDS</code> and <code>readRDS</code> functions in R. It supports general R objects with attributes and references - at similar speeds to <em>fst</em> - but does not provide on-disk random access to data subsets like <em>fst</em> (4 dependencies).</p></li>
+<li><p><strong>arrow</strong> provides both a low-level interface to the Apache Arrow C++ library (a multi-language toolbox for accelerated data interchange and in-memory processing) and some higher-level, R-flavored tools for working with it - including fast reading / writing delimited files and sharing data between R and Python (12 dependencies).</p></li>
+</ul>
+<p><em>Notes</em>: Package <em>vroom</em> offers fast reading and writing of delimited files, but with 24 dependencies is not really a <em>fastverse</em> candidate.</p>
 <hr>
 </div>
 <div id="adding-to-this-list" class="section level4">
