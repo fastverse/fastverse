@@ -28,7 +28,7 @@ options(repos = c(CRAN = "https://cran.rstudio.com/")) # crayon.enabled = TRUE
 
 options(fastverse.styling = .fv_styling)
 
-NCRAN <- indentical(Sys.getenv("NCRAN"), "TRUE")
+NCRAN <- identical(Sys.getenv("NCRAN"), "TRUE")
 ```
 
 The *fastverse* is an extensible suite of R packages, developed independently by various people, that jointly contribute to the objectives of:
@@ -134,7 +134,7 @@ fastverse_extend(data.table, permanent = TRUE)
 
 To verify our modification, we can see the order in which the packages are attached, and do a conflict check:
 
-```{r}
+```{r, eval=NCRAN}
 # This will be the order in which packages are attached
 fastverse_packages(include.self = FALSE)
 
@@ -144,7 +144,7 @@ fastverse_conflicts()
 
 Note that `options("fastverse.extend")` is still empty, because we have written those changes to a config file^[When fetching the names of *fastverse* packages, `fastverse_packages` first checks any config file and then checks `options("fastverse.extend")`.]. Now lets see if our permanent modification worked: 
 
-```{r}
+```{r, eval=NCRAN}
 # detach all packages and clear all options
 fastverse_detach(session = TRUE)
 ```
@@ -180,7 +180,9 @@ Using the *fastverse* to jointly load important packages can facilitate package 
 
 At the most basic level, loading packages with the *fastverse* displays the package versions and checks namespace conflicts, helping you spot issues that might arise as packages are updated. It also allows you to easily check the dependencies and update status of packages used in your project with `fastverse_sitrep()`, and update if necessary with `fastverse_update()`. 
 
-Using a config file in a project will ignore any global configuration as discussed in the previous section. You can still extend the *fastverse* inside a project session using `fastverse_extend`, or `options("fastvers.extend")` before `library(fastverse)`. 
+You additionally have the option to call `fastverse::fastverse_install()` at the beginning of a project file before calling `library(fastverse)`. This will execute a swift check if all packages listed in `.fastverse` are available, and, by default, install any missing packages needed for the project. 
+
+Using a config file in a project will ignore any global configuration as discussed in the previous section. You can still extend the *fastverse* inside a project session using `fastverse_extend`, or `options("fastvers.extend")` before `library(fastverse)`^[Naturally, if you populate `options("fastvers.extend")` before calling `fastverse::fastverse_install()`, followed by `library(fastverse)`, the availability of these packages will also be guaranteed.]. 
 
 ## Dependencies, Situational Reports and Updating
 
