@@ -66,18 +66,19 @@ fastverse_update <- function(..., install = FALSE) {
   behind <- subset(deps, behind)
   
   if (nrow(behind) == 0L) {
-    cat("All fastverse packages up-to-date\n")
+    if(!isTRUE(getOption("fastverse.quiet"))) cat("All fastverse packages up-to-date\n")
     return(invisible())
   }
   
-  cat("The following packages are out of date:\n")
-  cat("\n", paste0("* ", gold(format(behind$package)), " (", behind$local, " -> ", behind$cran, ")\n"))
-  
-  cat("\nStart a clean R session then run:\n")
+  if(!isTRUE(getOption("fastverse.quiet"))) {
+    cat("The following packages are out of date:\n")
+    cat("\n", paste0("* ", gold(format(behind$package)), " (", behind$local, " -> ", behind$cran, ")\n"))
+  }
   
   if(install) {
     install.packages(behind$package)
   } else {
+    cat("\nStart a clean R session then run:\n")
     pkg_str <- paste0(deparse(behind$package), collapse = "\n")
     cat("install.packages(", pkg_str, ")\n", sep = "")
   }
