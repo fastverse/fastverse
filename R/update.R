@@ -52,14 +52,15 @@ fastverse_deps <- function(pkg = fastverse_packages(), recursive = FALSE,
 #' Update fastverse packages
 #'
 #' This will check all \emph{fastverse} packages (and their
-#' dependencies) for updates and print a command to install those updates. 
+#' dependencies) for updates and (optionally) install those updates. 
 #'
 #' @param \dots arguments passed to \code{\link{fastverse_deps}}.
+#' @param install logical. \code{TRUE} will proceed to install outdated packages, whereas \code{FALSE} (recommended) will print the installation command asking you to run it in a clean R session.
 #' 
 #' @returns \code{fastverse_update} returns \code{NULL} invisibly. 
 #' @seealso \code{\link{fastverse_deps}}, \code{\link{fastverse}}
 #' @export
-fastverse_update <- function(...) {
+fastverse_update <- function(..., install = FALSE) {
   
   deps <- fastverse_deps(...) 
   behind <- subset(deps, behind)
@@ -74,8 +75,12 @@ fastverse_update <- function(...) {
   
   cat("\nStart a clean R session then run:\n")
   
-  pkg_str <- paste0(deparse(behind$package), collapse = "\n")
-  cat("install.packages(", pkg_str, ")\n", sep = "")
+  if(install) {
+    install.packages(behind$package)
+  } else {
+    pkg_str <- paste0(deparse(behind$package), collapse = "\n")
+    cat("install.packages(", pkg_str, ")\n", sep = "")
+  }
   
   invisible()
 }

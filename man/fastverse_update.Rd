@@ -4,17 +4,19 @@
 \alias{fastverse_update}
 \title{Update fastverse packages}
 \usage{
-fastverse_update(...)
+fastverse_update(..., install = FALSE)
 }
 \arguments{
 \item{\dots}{arguments passed to \code{\link{fastverse_deps}}.}
+
+\item{install}{logical. \code{TRUE} will proceed to install outdated packages, whereas \code{FALSE} (recommended) will print the installation command asking you to run it in a clean R session.}
 }
 \value{
 \code{fastverse_update} returns \code{NULL} invisibly.
 }
 \description{
 This will check all \emph{fastverse} packages (and their
-dependencies) for updates and print a command to install those updates.
+dependencies) for updates and (optionally) install those updates.
 }
 \seealso{
 \code{\link{fastverse_deps}}, \code{\link{fastverse}}
