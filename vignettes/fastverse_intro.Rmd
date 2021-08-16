@@ -27,6 +27,8 @@ options(repos = c(CRAN = "https://cran.rstudio.com/")) # crayon.enabled = TRUE
 .fv_styling <- FALSE # identical(Sys.getenv("PKGDOWN"), "TRUE")
 
 options(fastverse.styling = .fv_styling)
+
+NCRAN <- indentical(Sys.getenv("NCRAN"), "TRUE")
 ```
 
 The *fastverse* is an extensible suite of R packages, developed independently by various people, that jointly contribute to the objectives of:
@@ -117,7 +119,7 @@ For example, suppose most of my work involves time series analysis, and I would 
 
 Then I could permanently modify my *fastverse* as follows^[I note that namespace conflicts can also be detected and handled with the [conflicted](<https://cran.r-project.org/package=conflicted>) package on CRAN.]: 
 
-```{r}
+```{r, eval=NCRAN}
 library(fastverse)
 
 # Adding extensions
@@ -219,13 +221,17 @@ The *fastverse* was developed principally for 2 reasons: to promote quality high
 
 <!-- This vignette introduced the key features of the package. Suggested *fastverse* extension packages are introduced in the [README](<https://sebkrantz.github.io/fastverse/#suggested-extensions>) file. -->
 
-```{r}
+```{r, eval=NCRAN}
 # Resetting the fastverse to defaults (clearing all permanent extensions and options)
 fastverse_reset()
 # Detaching 
 fastverse_detach()
 ```
 
+```{r, eval=!NCRAN, include=FALSE}
+# Detaching 
+fastverse_detach()
+```
 
 
 
