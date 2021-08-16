@@ -215,6 +215,8 @@ High-performing packages for different data manipulation and statistical computi
 
 - **[snakecase](https://github.com/Tazinho/snakecase)**: Convert strings into any case, based on *stringi* and *stringr* (4 dependencies).
 
+- **[stringfish](https://github.com/traversc/stringfish)**: Fast computation of common (base R) string operations using the ALTREP system (2 dependencies).
+
 - **[stringdist](https://github.com/markvanderloo/stringdist)**: Fast computation of string distance metrics, matrices, and fuzzy matching (0 dependencies).
 
 #### Statistics and Computing (SC)
@@ -281,7 +283,7 @@ High-performing packages for different data manipulation and statistical computi
   
 - **[arrow](https://github.com/apache/arrow/tree/master/r)** provides both a low-level interface to the Apache Arrow C++ library (a multi-language toolbox for accelerated data interchange and in-memory processing) and some higher-level, R-flavored tools for working with it - including fast reading / writing delimited files and sharing data between R and Python (12 dependencies). 
 
- *Notes*: Package *vroom* offers fast reading and writing of delimited files, but with 24 dependencies is not really a *fastverse* candidate.  
+  *Notes*: Package *vroom* offers fast reading and writing of delimited files, but with 24 dependencies is not really a *fastverse* candidate.  
   
 ***
   
