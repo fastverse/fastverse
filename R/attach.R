@@ -2,9 +2,6 @@
 # Not needed anymore 
 # core_unloaded <- function() .core_pkg[!paste0("package:", .core_pkg) %in% search()]
 
-is_attached <- function(x) paste0("package:", x) %in% search()
-is_installed <- function(x) vapply(x, requireNamespace, TRUE, quietly = TRUE)
-
 ckeck_attached <- function(needed = TRUE) {
   pkg <- fastverse_packages(include.self = FALSE)
   attached <- is_attached(pkg)
