@@ -1,4 +1,20 @@
 
+#' @title Utilities
+#' @name is_attached
+#' @aliases is_installed 
+#' @aliases is_attached
+#' 
+#' @description Checks if packages are installed or attached.
+#' 
+#' @param x character. A vector of package names.
+#' @export
+is_attached <- function(x) paste0("package:", x) %in% search()
+
+#' 
+#' @rdname is_attached
+#' @export
+is_installed <- function(x) vapply(x, requireNamespace, TRUE, quietly = TRUE)
+
 msg <- function(..., startup = FALSE) {
   if(!isTRUE(getOption("fastverse.quiet"))) {
       if(startup) packageStartupMessage(...) else message(...)

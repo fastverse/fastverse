@@ -52,33 +52,83 @@ fastverse_deps <- function(pkg = fastverse_packages(), recursive = FALSE,
 #' Update fastverse packages
 #'
 #' This will check all \emph{fastverse} packages (and their
-#' dependencies) for updates and print a command to install those updates. 
+#' dependencies) for updates and (optionally) install those updates. 
 #'
 #' @param \dots arguments passed to \code{\link{fastverse_deps}}.
+#' @param install logical. \code{TRUE} will proceed to install outdated packages, whereas \code{FALSE} (recommended) will print the installation command asking you to run it in a clean R session.
 #' 
 #' @returns \code{fastverse_update} returns \code{NULL} invisibly. 
 #' @seealso \code{\link{fastverse_deps}}, \code{\link{fastverse}}
 #' @export
-fastverse_update <- function(...) {
+fastverse_update <- function(..., install = FALSE) {
   
   deps <- fastverse_deps(...) 
   behind <- subset(deps, behind)
   
   if (nrow(behind) == 0L) {
-    cat("All fastverse packages up-to-date\n")
+    if(!isTRUE(getOption("fastverse.quiet"))) cat("All fastverse packages up-to-date\n")
     return(invisible())
   }
   
-  cat("The following packages are out of date:\n")
-  cat("\n", paste0("* ", gold(format(behind$package)), " (", behind$local, " -> ", behind$cran, ")\n"))
+  if(!isTRUE(getOption("fastverse.quiet"))) {
+    cat("The following packages are out of date:\n")
+    cat("\n", paste0("* ", gold(format(behind$package)), " (", behind$local, " -> ", behind$cran, ")\n"))
+  }
   
-  cat("\nStart a clean R session then run:\n")
-  
-  pkg_str <- paste0(deparse(behind$package), collapse = "\n")
-  cat("install.packages(", pkg_str, ")\n", sep = "")
+  if(install) {
+    install.packages(behind$package)
+  } else {
+    cat("\nStart a clean R session then run:\n")
+    pkg_str <- paste0(deparse(behind$package), collapse = "\n")
+    cat("install.packages(", pkg_str, ")\n", sep = "")
+  }
   
   invisible()
 }
+
+#' Install (missing) fastverse packages
+#'
+#' This function (by default) checks if any \emph{fastverse} package is missing and installs the missing package(s).
+#'
+#' @param \dots comma-separated package names, quoted or unquoted, or vectors of package names. If left empty, all packages returned by \code{\link{fastverse_packages}} are checked. 
+#' @param only.missing logical. \code{TRUE} only installs packages that are unavailable. \code{FALSE} installs all packages, even if they are available. 
+#' @param install logical. \code{TRUE} will proceed to install packages, whereas \code{FALSE} (recommended) will print the installation command asking you to run it in a clean R session.
+#' 
+#' @details 
+#' This function is useful to call before \code{library(fastverse)}, especially in a project when a \code{.fastverse} configuration file is used to load a custom set of packages not natively installed by the \code{fastverse} package (see vignette). 
+#' The idea behind this is that you may customize the \emph{fastverse} for the project, then revisit the project after a long while, and some packages listed in your config file may be missing. 
+#' You can guard against missing packages by running \code{fastverse::fastverse_install()} before \code{library(fastverse)}, to ensure that all \emph{fastverse} packages are available before loading the \emph{fastverse} and executing any code.
+#' 
+#' 
+#' @returns \code{fastverse_install} returns \code{NULL} invisibly. 
+#' @seealso \code{\link{fastverse_update}}, \code{\link{fastverse}}
+#' @export
+fastverse_install <- function(..., only.missing = TRUE, install = TRUE) {
+  
+  if(missing(...)) {
+    pkg <- fastverse_packages(include.self = FALSE)
+  } else {
+    pkg <- tryCatch(c(...), error = function(e) .c(...))
+    if(!is.character(pkg) || length(pkg) > 200L) pkg <- .c(...)
+  }
+  
+  needed <- if(only.missing) pkg[!is_installed(pkg)] else pkg
+  
+  if(length(needed)) {
+    if(install) {
+      install.packages(needed)
+    } else {
+      cat("\nStart a clean R session then run:\n")
+      pkg_str <- paste0(deparse(needed), collapse = "\n")
+      cat("install.packages(", pkg_str, ")\n", sep = "")
+    }
+  } else if(!isTRUE(getOption("fastverse.quiet"))) {
+    cat("All fastverse packages installed\n")
+  }
+  
+  return(invisible())
+}
+
 
 #' Get a situation report on the fastverse
 #'
