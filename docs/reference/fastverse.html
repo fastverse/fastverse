@@ -92,7 +92,7 @@ Other functions help to determine joint dependencies, sort out namespace conflic
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastverse</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -162,19 +162,22 @@ Other functions help to determine joint dependencies, sort out namespace conflic
 <code><a href='fastverse_reset.html'>fastverse_reset()</a></code></p>
 <p>Function to display conflicts for <em>fastverse</em> packages (or any other attached packages)</p>
 <p><code><a href='fastverse_conflicts.html'>fastverse_conflicts()</a></code></p>
-<p>Function to update <em>fastverse</em> packages (and dependencies)</p>
-<p><code><a href='fastverse_update.html'>fastverse_update()</a></code></p>
+<p>Function to update <em>fastverse</em> packages (and dependencies) and install (missing) packages</p>
+<p><code><a href='fastverse_update.html'>fastverse_update()</a></code><br />
+<code><a href='fastverse_install.html'>fastverse_install()</a></code></p>
 <p>Utilities to retrieve the names of <em>fastverse</em> packages (and dependencies), their update status and produce a situation report.</p>
 <p><code><a href='fastverse_packages.html'>fastverse_packages()</a></code><br />
 <code><a href='fastverse_deps.html'>fastverse_deps()</a></code><br />
 <code><a href='fastverse_sitrep.html'>fastverse_sitrep()</a></code></p>
+<p>Function to create a new extensible verse of packages like the <em>fastverse</em></p>
+<p><code><a href='fastverse_child.html'>fastverse_child()</a></code></p>
     <h2 class="hasAnchor" id="fastverse-options"><a class="anchor" href="#fastverse-options"></a><em>fastverse</em> Options</h2>
 
     
 
 <ul>
-<li><p><code><a href='https://rdrr.io/r/base/options.html'>options(fastverse.quiet = TRUE)</a></code> will disable all automatic messages (including conflict reporting) when calling <code>library(fastvsers)</code> or <code><a href='fastverse_extend.html'>fastverse_extend</a></code>.</p></li>
-<li><p><code><a href='https://rdrr.io/r/base/options.html'>options(fastverse.styling = FALSE)</a></code> will disable any styling applied to text printed to the console.</p></li>
+<li><p><code><a href='https://rdrr.io/r/base/options.html'>options(fastverse.quiet = TRUE)</a></code> will disable all automatic messages (including conflict reporting) when calling <code>library(fastvsers)</code>, <code><a href='fastverse_extend.html'>fastverse_extend</a></code>, <code><a href='fastverse_update.html'>fastverse_update(install = TRUE)</a></code> and <code><a href='fastverse_install.html'>fastverse_install</a></code>.</p></li>
+<li><p><code><a href='https://rdrr.io/r/base/options.html'>options(fastverse.styling = FALSE)</a></code> will disable all styling applied to text printed to the console.</p></li>
 <li><p><code><a href='https://rdrr.io/r/base/options.html'>options(fastverse.extend = c(...))</a></code> can be set before calling <code>library(fastvsers)</code> to extend the fastverse with some packages for the session. The same can be done with the
 <code><a href='fastverse_extend.html'>fastverse_extend</a></code> function after <code>library(fastvsers)</code>, which will also populate <code><a href='https://rdrr.io/r/base/options.html'>options("fastverse.extend")</a></code>.</p></li>
 </ul>

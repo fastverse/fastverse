@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fastverse</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -277,6 +277,7 @@ based on the ‘integer64’ class (7 dependencies).</p></li>
 <li><p><strong><a href="https://github.com/gagolews/stringi">stringi</a></strong>: Main R package for fast, correct, consistent, and convenient string/text manipulation (backend to <em>stringr</em> and <em>snakecase</em>) (0 dependencies).</p></li>
 <li><p><strong><a href="https://github.com/tidyverse/stringr">stringr</a></strong>: Simple, consistent wrappers for common string operations, based on <em>stringi</em> (3 dependencies).</p></li>
 <li><p><strong><a href="https://github.com/Tazinho/snakecase">snakecase</a></strong>: Convert strings into any case, based on <em>stringi</em> and <em>stringr</em> (4 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/traversc/stringfish">stringfish</a></strong>: Fast computation of common (base R) string operations using the ALTREP system (2 dependencies).</p></li>
 <li><p><strong><a href="https://github.com/markvanderloo/stringdist">stringdist</a></strong>: Fast computation of string distance metrics, matrices, and fuzzy matching (0 dependencies).</p></li>
 </ul>
 </div>
@@ -342,9 +343,11 @@ based on the ‘integer64’ class (7 dependencies).</p></li>
 <a href="#data-input-output-and-serialization-io" class="anchor"></a>Data Input-Output and Serialization (IO)</h4>
 <ul>
 <li><p><strong><a href="https://github.com/traversc/qs">qs</a></strong> provides a lightning-fast and complete replacement for the <code>saveRDS</code> and <code>readRDS</code> functions in R. It supports general R objects with attributes and references - at similar speeds to <em>fst</em> - but does not provide on-disk random access to data subsets like <em>fst</em> (4 dependencies).</p></li>
-<li><p><strong><a href="https://github.com/apache/arrow/tree/master/r">arrow</a></strong> provides both a low-level interface to the Apache Arrow C++ library (a multi-language toolbox for accelerated data interchange and in-memory processing) and some higher-level, R-flavored tools for working with it - including fast reading / writing delimited files and sharing data between R and Python (12 dependencies).</p></li>
-</ul>
+<li>
+<p><strong><a href="https://github.com/apache/arrow/tree/master/r">arrow</a></strong> provides both a low-level interface to the Apache Arrow C++ library (a multi-language toolbox for accelerated data interchange and in-memory processing) and some higher-level, R-flavored tools for working with it - including fast reading / writing delimited files and sharing data between R and Python (12 dependencies).</p>
 <p><em>Notes</em>: Package <em>vroom</em> offers fast reading and writing of delimited files, but with 24 dependencies is not really a <em>fastverse</em> candidate.</p>
+</li>
+</ul>
 <hr>
 </div>
 <div id="adding-to-this-list" class="section level4">

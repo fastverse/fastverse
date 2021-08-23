@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastverse</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -119,11 +119,24 @@
       <small>Source: <a href='https://github.com/SebKrantz/fastverse/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="fastverse-020" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0">
+<a href="#fastverse-020" class="anchor"></a>fastverse 0.2.0<small> Unreleased </small>
+</h1>
+<ul>
+<li><p>Making sure no files are written to disc on CRAN servers.</p></li>
+<li><p><code><a href="../reference/fastverse_update.html">fastverse_update()</a></code> has an additional argument <code>install</code>. The default is <code>install = FALSE</code>, which will just print the installation command as before, asking you to run it in a clean R session, whereas <code>install = TRUE</code> will instead execute the command.</p></li>
+<li><p>Added a function <code><a href="../reference/fastverse_install.html">fastverse_install()</a></code> to check package availability and install any missing <em>fastverse</em> packages before calling <code><a href="https://sebkrantz.github.io/fastverse/">library(fastverse)</a></code>. Useful especially for custom <em>fastverse</em> configurations (inside projects) to safeguard the availability of packages.</p></li>
+<li><p>Added a function <code><a href="../reference/fastverse_child.html">fastverse_child()</a></code> (following a request), which allows users to create a wholly different package-verse like the <em>fastverse</em> - under a different name and with different core packages. Such <em>fastverse</em> children inherit 90% of the functionality of the <em>fastverse</em> package (e.g. they are not permanently globally extensible, but can be configured for projects and extended in the session). Childbearing requires an internet connection but no additional packages (like <code>devtools</code>).</p></li>
+<li><p>Export utility functions <code>is_installed</code> and <code>is_attached</code> to check if packages are installed / attached.</p></li>
+<li><p>Several additions to suggested extensions list: <code>qs</code>, <code>arrow</code>, <code>stringdist</code>, <code>stringfish</code>, <code>nanotime</code>.</p></li>
+</ul>
+</div>
     <div id="fastverse-018" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.8">
 <a href="#fastverse-018" class="anchor"></a>fastverse 0.1.8<small> 2021-08-12 </small>
 </h1>
-<p>In version 0.1.7 I had implemented all CRAN comments, except for placing return values on <code><a href="../reference/fastverse_extend.html">fastverse_extend()</a></code> and <code><a href="../reference/fastverse_detach.html">fastverse_detach()</a></code>, which do not return anything as clearly evident from the function title and description. In mentioning this to CRAN, I have also pointed out that the <code>tidyverse</code> package has 6 functions similar in nature, non of which have a return value statement. I was refused with the words ‘no need to copy bad practice’. Wondering why CRAN is not consequent enough to purge this ostensible bad practice off CRAN, I want to say I agree with Hadley Wickham: functions who are not meant to return anything should not be required to have a return value, in contrast to functions which are meant to return something. This makes for clear and parsimonious documentation. So the CRAN version now gets return values - with some critique - but I will spare you this in the GitHub version. My apologies to all CRAN version users.</p>
+<p>CRAN required me to place return values on <code><a href="../reference/fastverse_extend.html">fastverse_extend()</a></code> and <code><a href="../reference/fastverse_detach.html">fastverse_detach()</a></code> - which do not return anything.</p>
 </div>
     <div id="fastverse-017" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.7">
