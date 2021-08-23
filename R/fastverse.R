@@ -72,7 +72,7 @@
 #'
 #' @importFrom utils stack packageVersion install.packages available.packages
 #' @importFrom tools package_dependencies
-#' @importFrom collapse .c
+#' @importFrom collapse .c rm_stub
 #'
 NULL
 
