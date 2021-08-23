@@ -133,13 +133,13 @@ rule <- function(left, right = NULL, style.left = identity, style.right = identi
       res <- paste(c("-- ", style.left(left), " ", rep("-", w)), collapse = "") 
     }
   }
-  class(res) <- "fvrule"
+  class(res) <- "fastverse_rule"
   res
 }
 
 # Not needed, but better than not.. 
 #' @export
-print.fvrule <- function(x, ..., sep = "\n") {
+print.fastverse_rule <- function(x, ..., sep = "\n") {
   cat(x, ..., sep = sep)
   invisible(x)
 }
