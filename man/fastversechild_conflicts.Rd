@@ -22,7 +22,7 @@ It can also be used to check conflicts for any other attached packages.
 fastversechild_conflicts()
 
 # Check conflicts among all attached packages
-fastversechild_conflicts(rm_stub(search()[-1], "package:"))
+fastversechild_conflicts(sub("package:", "", search()[-1]))
 }
 \seealso{
 \code{\link{fastversechild}}

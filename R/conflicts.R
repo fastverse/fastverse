@@ -38,7 +38,7 @@ confirm_conflict <- function(packages, name) {
 #' fastversechild_conflicts()
 #' 
 #' # Check conflicts among all attached packages
-#' fastversechild_conflicts(rm_stub(search()[-1], "package:"))
+#' fastversechild_conflicts(sub("package:", "", search()[-1]))
 fastversechild_conflicts <- function(pkg = fastversechild_packages()) {
   envs <- grep("^package:", search(), value = TRUE)
   names(envs) <- envs
