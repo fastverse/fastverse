@@ -60,6 +60,11 @@ grey70 <- function(x) if(isFALSE(getOption("fastversechild.styling"))) x else pa
 red <- function(x) if(isFALSE(getOption("fastversechild.styling"))) x else paste0("\033[31m", x, "\033[39m")
 yellow <- function(x) if(isFALSE(getOption("fastversechild.styling"))) x else paste0("\033[33m", x, "\033[39m")
 bold <- function(x) if(isFALSE(getOption("fastversechild.styling"))) x else paste0("\033[1m", x, "\033[22m")
+# Crayons white is more gray-isch
+# white <- function(x) if(isFALSE(getOption("fastverse.styling"))) x else paste0("\033[37m", x, "\033[39m")
+# Using bright white: https://i.stack.imgur.com/9UVnC.png
+# white <- function(x) if(isFALSE(getOption("fastverse.styling"))) x else paste0("\033[97m", x, "\033[39m")
+# Problem: If console is white: cannot read..
 
 
 text_col <- function(x) {
