@@ -47,6 +47,10 @@ Utilities to retrieve the names of \emph{fastverse} packages (and dependencies),
 \code{\link[=fastverse_packages]{fastverse_packages()}}\cr
 \code{\link[=fastverse_deps]{fastverse_deps()}}\cr
 \code{\link[=fastverse_sitrep]{fastverse_sitrep()}}
+
+Function to create a new extensible verse of packages like the \emph{fastverse}
+
+\code{\link[=fastverse_child]{fastverse_child()}}
 }
 
 \section{\emph{fastverse} Options}{

@@ -33,6 +33,9 @@ fastverse_extend(
 
 \item{check.conflicts}{logical. Should conflicts between extension packages and attached packages be checked?}
 }
+\value{
+\code{fastverse_extend} returns \code{NULL} invisibly.
+}
 \description{
 Loads additional packages as part of the \emph{fastverse}. By default only for the session, but extensions can be saved up to reinstallation/updating of the \emph{fastverse} package.
 }
