@@ -15,7 +15,7 @@ fastversechild_sitrep(...)
 \description{
 This function gives a quick overview of the version of R and all 
 \emph{fastversechild} packages (including availability updates for packages) and indicates 
-whether any global or project-level configuration files are used.
+whether any project-level configuration files are used.
 }
 \seealso{
 \code{\link{fastversechild_deps}}, \code{\link{fastversechild}}

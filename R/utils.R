@@ -23,7 +23,7 @@ project_packages <- function() {
 
 #' List all packages in the fastversechild
 #' 
-#' Core packages are first fetched from a project-level configuration file (if found), otherwise the standard set of core packages is returned. 
+#' Core packages are first fetched from a project-level configuration file (named \code{.fastversechild}, if found), otherwise the standard set of core packages is returned. 
 #' In addition, if \code{extensions = TRUE}, any packages used to extend the \emph{fastversechild} for the current 
 #' session are also returned. 
 #' 

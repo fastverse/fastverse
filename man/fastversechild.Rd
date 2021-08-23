@@ -5,7 +5,7 @@
 \alias{fastversechild}
 \title{The fastversechild}
 \description{
-The \emph{fastversechild} is an extensible suite of R packages. It is a descendant of the \href{https://sebkrantz.github.io/fastverse/}{fastverse}).
+The \emph{fastversechild} is an extensible suite of R packages. It is a descendant of the \href{https://sebkrantz.github.io/fastverse/}{fastverse}.
 }
 \section{Functions in the \emph{fastversechild} Package}{
 
@@ -34,10 +34,10 @@ Utilities to retrieve the names of \emph{fastversechild} packages (and dependenc
 \section{\emph{fastversechild} Options}{
 
 \itemize{
-\item \code{options(fastversechild.quiet = TRUE)} will disable all automatic messages (including conflict reporting) when calling \code{library(fastvsers)}, \code{\link{fastversechild_extend}}, \code{\link[=fastversechild_update]{fastversechild_update(install = TRUE)}} and \code{\link{fastversechild_install}}.
+\item \code{options(fastversechild.quiet = TRUE)} will disable all automatic messages (including conflict reporting) when calling \code{library(fastvsersechild)}, \code{\link{fastversechild_extend}}, \code{\link[=fastversechild_update]{fastversechild_update(install = TRUE)}} and \code{\link{fastversechild_install}}.
 \item \code{options(fastversechild.styling = FALSE)} will disable all styling applied to text printed to the console. 
-\item \code{options(fastversechild.extend = c(...))} can be set before calling \code{library(fastvsers)} to extend the fastversechild with some packages for the session. The same can be done with the
-\code{\link{fastversechild_extend}} function after \code{library(fastvsers)}, which will also populate \code{options("fastversechild.extend")}. 
+\item \code{options(fastversechild.extend = c(...))} can be set before calling \code{library(fastvsersechild)} to extend the fastversechild with some packages for the session. The same can be done with the
+\code{\link{fastversechild_extend}} function after \code{library(fastvsersechild)}, which will also populate \code{options("fastversechild.extend")}. 
 }
 }
 
