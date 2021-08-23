@@ -1,4 +1,21 @@
 
+#' @title Utilities
+#' @name is_attached
+#' @aliases is_installed 
+#' @aliases is_attached
+#' 
+#' @description Checks if packages are installed or attached.
+#' 
+#' @param x character. A vector of package names.
+#' @returns A named logical vector. 
+#' @export
+is_attached <- function(x) `names<-`(paste0("package:", x) %in% search(), x)
+
+#' 
+#' @rdname is_attached
+#' @export
+is_installed <- function(x) vapply(x, requireNamespace, TRUE, quietly = TRUE)
+
 msg <- function(..., startup = FALSE) {
   if(!isTRUE(getOption("fastverse.quiet"))) {
       if(startup) packageStartupMessage(...) else message(...)
@@ -52,8 +69,9 @@ fastverse_packages <- function(extensions = TRUE, include.self = TRUE) {
 #' Calling this function will remove global configuration files and (default) clear all package options. 
 #' Attached packages will not be detached, and configuration files for projects (as discussed in the vignette) will not be removed. 
 #'
-#' @returns \code{fastverse_reset} returns \code{NULL} invisibly.  
-#' @param options logical. \code{TRUE} also clears all \emph{fastverse} options. 
+#' @param options logical. \code{TRUE} also clears all \emph{fastverse} options.
+#' 
+#' @returns \code{fastverse_reset} returns \code{NULL} invisibly. 
 #' @seealso \code{\link{fastverse_extend}}, \code{\link{fastverse}}
 #' @export
 fastverse_reset <- function(options = TRUE) {
@@ -118,13 +136,13 @@ rule <- function(left, right = NULL, style.left = identity, style.right = identi
       res <- paste(c("-- ", style.left(left), " ", rep("-", w)), collapse = "") 
     }
   }
-  class(res) <- "fvrule"
+  class(res) <- "fastverse_rule"
   res
 }
 
 # Not needed, but better than not.. 
 #' @export
-print.fvrule <- function(x, ..., sep = "\n") {
+print.fastverse_rule <- function(x, ..., sep = "\n") {
   cat(x, ..., sep = sep)
   invisible(x)
 }

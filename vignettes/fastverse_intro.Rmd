@@ -27,6 +27,8 @@ options(repos = c(CRAN = "https://cran.rstudio.com/")) # crayon.enabled = TRUE
 .fv_styling <- FALSE # identical(Sys.getenv("PKGDOWN"), "TRUE")
 
 options(fastverse.styling = .fv_styling)
+
+NCRAN <- identical(Sys.getenv("NCRAN"), "TRUE")
 ```
 
 The *fastverse* is an extensible suite of R packages, developed independently by various people, that jointly contribute to the objectives of:
@@ -117,7 +119,7 @@ For example, suppose most of my work involves time series analysis, and I would 
 
 Then I could permanently modify my *fastverse* as follows^[I note that namespace conflicts can also be detected and handled with the [conflicted](<https://cran.r-project.org/package=conflicted>) package on CRAN.]: 
 
-```{r}
+```{r, eval=NCRAN}
 library(fastverse)
 
 # Adding extensions
@@ -132,7 +134,7 @@ fastverse_extend(data.table, permanent = TRUE)
 
 To verify our modification, we can see the order in which the packages are attached, and do a conflict check:
 
-```{r}
+```{r, eval=NCRAN}
 # This will be the order in which packages are attached
 fastverse_packages(include.self = FALSE)
 
@@ -142,7 +144,7 @@ fastverse_conflicts()
 
 Note that `options("fastverse.extend")` is still empty, because we have written those changes to a config file^[When fetching the names of *fastverse* packages, `fastverse_packages` first checks any config file and then checks `options("fastverse.extend")`.]. Now lets see if our permanent modification worked: 
 
-```{r}
+```{r, eval=NCRAN}
 # detach all packages and clear all options
 fastverse_detach(session = TRUE)
 ```
@@ -178,7 +180,25 @@ Using the *fastverse* to jointly load important packages can facilitate package 
 
 At the most basic level, loading packages with the *fastverse* displays the package versions and checks namespace conflicts, helping you spot issues that might arise as packages are updated. It also allows you to easily check the dependencies and update status of packages used in your project with `fastverse_sitrep()`, and update if necessary with `fastverse_update()`. 
 
-Using a config file in a project will ignore any global configuration as discussed in the previous section. You can still extend the *fastverse* inside a project session using `fastverse_extend`, or `options("fastvers.extend")` before `library(fastverse)`. 
+You additionally have the option to call `fastverse::fastverse_install()` at the beginning of a project file before calling `library(fastverse)`. This will execute a swift check if all packages listed in `.fastverse` are available, and, by default, install any missing packages needed for the project. 
+
+Using a config file in a project will ignore any global configuration as discussed in the previous section. You can still extend the *fastverse* inside a project session using `fastverse_extend`, or `options("fastvers.extend")` before `library(fastverse)`^[Naturally, if you populate `options("fastvers.extend")` before calling `fastverse::fastverse_install()`, followed by `library(fastverse)`, the availability of these packages will also be guaranteed.]. 
+
+## Creating Separate Package-Verses
+
+An added feature in version 0.2.0 if the *fastverse* is the ability to create wholly separate and fully customizable verses - with the `fastverse_child()` function. Let's say I would like to create a verse for time series analysis that I want to keep separate from the *fastverse*. This is easily done using e.g.
+
+```{r, eval=FALSE}
+fastverse_child(
+  name = "tsverse", 
+  title = "Time Series Package Verse", 
+  pkg = c("xts", "roll", "zoo", "tsbox", "urca", "tseries", "tsutils", "forecast"), 
+  maintainer = 'person("GivenName", "FamilyName", role = "cre", email = "your@email.com")',
+  dir = "C:/Users/.../Documents", 
+  theme = "tidyverse")
+```
+
+By default (`install = TRUE`, `keep.dir = TRUE`) the package is installed and a source directory is created under dir/name, allowing further edits to the package. Such *fastverse* children inherit 90% of the functionality of the *fastverse* package: they are not permanently globally extensible and can not bear children themselves, but can be configured for projects^[Using, in this case, a `.tsverse` config file.] and extended in the session. The function uses a prepared 'child' branch of the [GitHub repository](<https://github.com/SebKrantz/fastverse>), and thus does not require any further packages such as `devtools`.  
 
 ## Dependencies, Situational Reports and Updating
 
@@ -196,7 +216,7 @@ Additional flexibility is offered by the `pkg` argument allowing dependency and 
 fastverse_sitrep() # default is recursive = FALSE
 ```
 
-`fastverse_update()` can be used to print an `install.packages` statement to update *fastverse* packages and dependencies. In all three functions, `check.deps = FALSE` can be specified to exclude dependencies of *fastverse* packages, `recursive = TRUE` can be used to check all dependencies, and `include.self = TRUE` can be used to also check for updates of the `fastverse` package itself.
+`fastverse_update()` can be used to (default) print an `install.packages()` statement to update *fastverse* packages and dependencies, or to install updates straight away (`intsall = TRUE`). In all three functions, `check.deps = FALSE` can be specified to exclude dependencies of *fastverse* packages, `recursive = TRUE` can be used to check all dependencies, and `include.self = TRUE` can be used to also check for updates of the `fastverse` package itself.
 
 ## Other *fastverse* Options
 
@@ -219,13 +239,17 @@ The *fastverse* was developed principally for 2 reasons: to promote quality high
 
 <!-- This vignette introduced the key features of the package. Suggested *fastverse* extension packages are introduced in the [README](<https://sebkrantz.github.io/fastverse/#suggested-extensions>) file. -->
 
-```{r}
+```{r, eval=NCRAN}
 # Resetting the fastverse to defaults (clearing all permanent extensions and options)
 fastverse_reset()
 # Detaching 
 fastverse_detach()
 ```
 
+```{r, eval=!NCRAN, include=FALSE}
+# Detaching 
+fastverse_detach()
+```
 
 
 

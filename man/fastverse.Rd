@@ -36,22 +36,27 @@ Function to display conflicts for \emph{fastverse} packages (or any other attach
 
 \code{\link[=fastverse_conflicts]{fastverse_conflicts()}}
 
-Function to update \emph{fastverse} packages (and dependencies)
+Function to update \emph{fastverse} packages (and dependencies) and install (missing) packages
 
-\code{\link[=fastverse_update]{fastverse_update()}}
+\code{\link[=fastverse_update]{fastverse_update()}}\cr
+\code{\link[=fastverse_install]{fastverse_install()}}
 
 Utilities to retrieve the names of \emph{fastverse} packages (and dependencies), their update status and produce a situation report.
 
 \code{\link[=fastverse_packages]{fastverse_packages()}}\cr
 \code{\link[=fastverse_deps]{fastverse_deps()}}\cr
 \code{\link[=fastverse_sitrep]{fastverse_sitrep()}}
+
+Function to create a new extensible verse of packages like the \emph{fastverse}
+
+\code{\link[=fastverse_child]{fastverse_child()}}
 }
 
 \section{\emph{fastverse} Options}{
 
 \itemize{
-\item \code{options(fastverse.quiet = TRUE)} will disable all automatic messages (including conflict reporting) when calling \code{library(fastvsers)} or \code{\link{fastverse_extend}}.
-\item \code{options(fastverse.styling = FALSE)} will disable any styling applied to text printed to the console. 
+\item \code{options(fastverse.quiet = TRUE)} will disable all automatic messages (including conflict reporting) when calling \code{library(fastvsers)}, \code{\link{fastverse_extend}}, \code{\link[=fastverse_update]{fastverse_update(install = TRUE)}} and \code{\link{fastverse_install}}.
+\item \code{options(fastverse.styling = FALSE)} will disable all styling applied to text printed to the console. 
 \item \code{options(fastverse.extend = c(...))} can be set before calling \code{library(fastvsers)} to extend the fastverse with some packages for the session. The same can be done with the
 \code{\link{fastverse_extend}} function after \code{library(fastvsers)}, which will also populate \code{options("fastverse.extend")}. 
 }

@@ -29,17 +29,17 @@ of these packages. It is an extensible framework that allows users to (permanent
 
 The *fastverse* consists of 6 core packages (7 dependencies in total) which provide broad C/C++ based statistical and data manipulation functionality and have carefully managed APIs. These packages are installed and attached along with the `fastverse` package. 
 
-- **data.table**: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, extremely flexible split-apply-combine computing, reshaping, joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as transposition of data. 
+- **[data.table](https://github.com/Rdatatable/data.table)**: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, extremely flexible split-apply-combine computing, reshaping, joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as transposition of data. 
 
-- **collapse**: Fast grouped & weighted statistical computations, time series and panel data transformations, list-processing, data manipulation functions, summary statistics and various utilities such as support for variable labels. Class-agnostic framework designed to work with vectors, matrices, data frames, lists and related classes including *xts*, *data.table*, *tibble*, *pdata.frame*, *sf*.  <!-- *tsibble*, *tibbletime* -->
+- **[collapse](https://github.com/SebKrantz/collapse)**: Fast grouped & weighted statistical computations, time series and panel data transformations, list-processing, data manipulation functions, summary statistics and various utilities such as support for variable labels. Class-agnostic framework designed to work with vectors, matrices, data frames, lists and related classes including *xts*, *data.table*, *tibble*, *pdata.frame*, *sf*.  <!-- *tsibble*, *tibbletime* -->
 
-- **matrixStats**: Efficient row-and column-wise (weighted) statistics on matrices and vectors, including computations on subsets of rows and columns. 
+- **[matrixStats](https://github.com/HenrikBengtsson/matrixStats)**: Efficient row-and column-wise (weighted) statistics on matrices and vectors, including computations on subsets of rows and columns. 
 
-- **kit**: Fast vectorized and nested switches, some parallel (row-wise) statistics, and some utilities such as efficient partial sorting and unique values. 
+- **[kit](https://github.com/2005m/kit)**: Fast vectorized and nested switches, some parallel (row-wise) statistics, and some utilities such as efficient partial sorting and unique values. 
 
-- **magrittr**: Efficient pipe operators for enhanced programming and code unnesting.
+- **[magrittr](https://github.com/tidyverse/magrittr)**: Efficient pipe operators for enhanced programming and code unnesting.
 
-- **fst**: A compressed data file format that is very fast to read and write. Full random access in both rows and columns allows reading subsets from a '.fst' file. 
+- **[fst](https://github.com/fstpackage/fst)**: A compressed data file format that is very fast to read and write. Full random access in both rows and columns allows reading subsets from a '.fst' file. 
 
   *Additional dependency*: Package *Rcpp* is imported by *collapse* and *fst*.
 
@@ -180,9 +180,9 @@ High-performing packages for different data manipulation and statistical computi
 
 #### Time Series (TS)
 
-- **xts** and **zoo**: Fast and reliable matrix-based time series classes providing fully identified ordered observations and various utilities for plotting and computations (1 dependency).
+- **[xts](https://github.com/joshuaulrich/xts)** and **[zoo](https://github.com/cran/zoo)**: Fast and reliable matrix-based time series classes providing fully identified ordered observations and various utilities for plotting and computations (1 dependency).
 
-- **roll**: Very fast rolling and expanding window functions for vectors and matrices (3 dependencies).
+- **[roll](https://github.com/jjf234/roll)**: Very fast rolling and expanding window functions for vectors and matrices (3 dependencies).
 
   *Notes*: *xts*/*zoo* objects are preserved by *roll* functions and by *collapse*'s time series and data transformation functions^[*collapse* functions can also handle irregular time series, but this requires passing an integer time variable to the `t` argument which has consecutive integer steps for regular parts of the time series and non-consecutive integers for the irregular parts.]. As *xts*/*zoo* objects are matrices, all *matrixStats* functions apply to them as well. *xts* objects can also easily be converted to and from *data.table*. 
   
@@ -190,35 +190,42 @@ High-performing packages for different data manipulation and statistical computi
 
 #### Dates and Times (DT)
 
-- **lubridate**: Facilitates POSIX-based computations (2 dependencies).
+- **[lubridate](https://github.com/tidyverse/lubridate)**: Facilitates 'POSIX-' and 'Date' based computations (2 dependencies).
 
-- **clock**: Comprehensive library for date-time manipulations using a new family of orthogonal date-time classes (durations, time points, zoned-times, and calendars) (6 dependencies).
+- **[anytime](https://github.com/eddelbuettel/anytime)**: Anything to 'POSIXct' or 'Date' converter (2 dependencies).
 
-- **anytime**: Anything to 'POSIXct' or 'Date' Converter (2 dependencies).
+- **[fasttime](https://github.com/s-u/fasttime)**: Fast parsing of strings to 'POSIXct' (0 dependencies).
 
-- **fasttime**: Fast parsing of strings to 'POSIXct' (0 dependencies).
+- **[nanotime](https://github.com/eddelbuettel/nanotime)**: Provides a coherent set of temporal types and functions with nanosecond precision -  
+                based on the 'integer64' class (7 dependencies).
 
-- **timechange**: Efficient manipulation of date-times accounting for time zones and daylight saving times (1 dependency).
+- **[clock](https://github.com/r-lib/clock)**: Comprehensive library for date-time manipulations using a new family of orthogonal date-time classes (durations, time points, zoned-times, and calendars) (6 dependencies).
 
-  *Notes*: Date and time variables are preserved in many *data.table* and *collapse* operations. *data.table* additionally offers an efficient integer based date class 'IDate' with some supporting functionality. *xts* and *zoo* also provide various functions to transform dates. 
+- **[timechange](https://github.com/vspinu/timechange)**: Efficient manipulation of date-times accounting for time zones and daylight saving times (1 dependency).
+
+  *Notes*: Date and time variables are preserved in many *data.table* and *collapse* operations. *data.table* additionally offers an efficient integer based date class 'IDate' with some supporting functionality. *xts* and *zoo* also provide various functions to transform dates, and *zoo* provides classes 'yearmon' and 'yearqtr' for convenient computation with monthly and quarterly data. Package *mondate* also provides a class 'mondate' for monthly data. 
   
   <!-- - **nanotime**: (7 dependencies). -->
 
 #### Strings (ST)
 
-- **stringi**: Main R package for fast, correct, consistent, and convenient string/text manipulation (backend to *stringr* and *snakecase*) (0 dependencies).
+- **[stringi](https://github.com/gagolews/stringi)**: Main R package for fast, correct, consistent, and convenient string/text manipulation (backend to *stringr* and *snakecase*) (0 dependencies).
 
-- **stringr**: Simple, consistent wrappers for common string operations, based on *stringi* (3 dependencies).
+- **[stringr](https://github.com/tidyverse/stringr)**: Simple, consistent wrappers for common string operations, based on *stringi* (3 dependencies).
 
-- **snakecase**: Convert strings into any case, based on *stringi* and *stringr* (4 dependencies).
+- **[snakecase](https://github.com/Tazinho/snakecase)**: Convert strings into any case, based on *stringi* and *stringr* (4 dependencies).
+
+- **[stringfish](https://github.com/traversc/stringfish)**: Fast computation of common (base R) string operations using the ALTREP system (2 dependencies).
+
+- **[stringdist](https://github.com/markvanderloo/stringdist)**: Fast computation of string distance metrics, matrices, and fuzzy matching (0 dependencies).
 
 #### Statistics and Computing (SC)
 
-- **Rfast** and **Rfast2**: Heterogeneous sets of fast functions for statistics, estimation and data manipulation operating on vectors and matrices. Missing values and object attributes are not (consistently) supported (4-5 dependencies).
+- **[Rfast](https://github.com/RfastOfficial/Rfast)** and **[Rfast2](https://github.com/RfastOfficial/Rfast2)**: Heterogeneous sets of fast functions for statistics, estimation and data manipulation operating on vectors and matrices. Missing values and object attributes are not (consistently) supported (4-5 dependencies).
 
-- **parallelDist**: Multi-threaded distance matrix computation (3 dependencies).
+- **[parallelDist](https://github.com/alexeckert/parallelDist)**: Multi-threaded distance matrix computation (3 dependencies).
 
-- **coop**: Fast implementations of the covariance, correlation, and cosine similarity (0 dependencies).
+- **[coop](https://github.com/wrathematics/coop)**: Fast implementations of the covariance, correlation, and cosine similarity (0 dependencies).
 
   *Notes*: *Rfast* has a number of like-named functions to *matrixStats*. These are simpler but typically faster and support multi-threading. Some highly efficient statistical functions can also be found scattered across various other packages, notable to mention here are *Hmisc* (60 dependencies) and *DescTools* (17 dependencies). *fastDummies* (16 dependencies) implements creation of dummy (binary) variables. 
 
@@ -230,44 +237,53 @@ High-performing packages for different data manipulation and statistical computi
 
 #### Spatial (SP)
 
-- **sf**: Leading framework for geospatial computing and manipulation in R, offering a simple and flexible spatial data frame and supporting functionality (13 dependencies). 
+- **[sf](https://github.com/r-spatial/sf/)**: Leading framework for geospatial computing and manipulation in R, offering a simple and flexible spatial data frame and supporting functionality (13 dependencies). 
 
-- **stars**: Spatiotemporal data (raster and vector) in the form of dense arrays, with space and time being array dimensions (17 dependencies). 
+- **[stars](https://github.com/r-spatial/stars)**: Spatiotemporal data (raster and vector) in the form of dense arrays, with space and time being array dimensions (17 dependencies). 
 
-- **terra**: Methods for spatial data analysis with raster and vector data. Processing of very large (out of memory) files is supported (4 dependencies).
+- **[terra](https://github.com/rspatial/terra)**: Methods for spatial data analysis with raster and vector data. Processing of very large (out of memory) files is supported (4 dependencies).
 
   *Notes*: *collapse* can be used for efficient manipulation and computations on *sf* data frames. *sf* also offers tight integration with *dplyr*.
 
 
 #### Visualization (VI)
 
-- **dygraphs**: Interface to 'Dygraphs' interactive time series charting library (11 dependencies). 
+- **[dygraphs](https://github.com/rstudio/dygraphs)**: Interface to 'Dygraphs' interactive time series charting library (11 dependencies). 
 
-- **lattice**: Trellis graphics for R (0 dependencies). 
+- **[lattice](https://github.com/deepayan/lattice)**: Trellis graphics for R (0 dependencies). 
 
-- **grid**: The grid graphics package (0 dependencies). 
+- **[grid](https://github.com/cran/grid)**: The grid graphics package (0 dependencies). 
 
-- **ggplot2**: Create elegant data visualizations using the Grammar of Graphics (30 dependencies). 
+- **[ggplot2](https://github.com/tidyverse/ggplot2)**: Create elegant data visualizations using the Grammar of Graphics (30 dependencies). 
 
-- **scales**: Scale functions for visualizations (10 dependencies). 
+- **[scales](https://github.com/r-lib/scales)**: Scale functions for visualizations (10 dependencies). 
 
   *Notes:* *latticeExtra* provides extra graphical utilities base on *lattice*. *gridExtra* provides miscellaneous functions for *grid* graphics (and consequently for *ggplot2* which is based on *grid*). *gridtext* provides improved text rendering support for *grid* graphics. Many packages offer *ggplot2* extensions, (typically starting with 'gg') such as *ggExtra*, *ggalt*, *ggforce*, *ggmap*, *ggtext*, *ggthemes*, *ggrepel*, *ggridges*, *ggfortify*, *ggstatsplot*, *ggeffects*, *ggsignif*, *GGally*, *ggcorrplot*, *ggdendro*, etc...
 
 
 #### Tidyverse-like data manipulation built on *data.table* (TV)
 
-- **tidytable**: A tidy interface to *data.table* that is *rlang* compatible. Quite comprehensive implementation of *dplyr*, *tidyr* and *purr* functions. *tidyverse* function names are appended with a `.` e.g. `mutate.()`. Package uses a class *tidytable* that inherits from *data.table*. The `dt()` function makes *data.table* syntax pipeable (14 total dependencies). 
+- **[tidytable](https://github.com/markfairbanks/tidytable)**: A tidy interface to *data.table* that is *rlang* compatible. Quite comprehensive implementation of *dplyr*, *tidyr* and *purr* functions. *tidyverse* function names are appended with a `.` e.g. `mutate.()`. Package uses a class *tidytable* that inherits from *data.table*. The `dt()` function makes *data.table* syntax pipeable (14 total dependencies). 
 
-- **tidyfast**: Fast tidying of data. Covers *tidyr* functionality, `dt_` prefix, preserves *data.table* object. Some unnecessary deep copies (2 dependencies). 
+- **[tidyfast](https://github.com/TysonStanley/tidyfast)**: Fast tidying of data. Covers *tidyr* functionality, `dt_` prefix, preserves *data.table* object. Some unnecessary deep copies (2 dependencies). 
 
-- **tidyfst**: Tidy verbs for fast data manipulation. Covers *dplyr* and some *tidyr* functionality. Functions have `_dt` suffix and preserve *data.table* object. A [cheatsheet](<https://raw.githubusercontent.com/hope-data-science/tidyfst/master/docs/tidyfst_cheatsheet.pdf>) is provided (7 dependencies). 
+- **[tidyfst](https://github.com/hope-data-science/tidyfst)**: Tidy verbs for fast data manipulation. Covers *dplyr* and some *tidyr* functionality. Functions have `_dt` suffix and preserve *data.table* object. A [cheatsheet](<https://raw.githubusercontent.com/hope-data-science/tidyfst/master/docs/tidyfst_cheatsheet.pdf>) is provided (7 dependencies). 
 
-- **tidyft**: Tidy verbs for fast data operations by reference. Best for big data manipulation on out of memory data using facilities provided by *fst* (7 dependencies).
+- **[tidyft](https://github.com/hope-data-science/tidyft)**: Tidy verbs for fast data operations by reference. Best for big data manipulation on out of memory data using facilities provided by *fst* (7 dependencies).
 
-- **maditr**: Fast data aggregation, modification, and filtering with pipes and *data.table*. Minimal implementation with functions `let()` and `take()` for most common data manipulation tasks. Also provides Excel-like lookup functions (2 dependencies). 
+- **[maditr](https://github.com/gdemin/maditr)**: Fast data aggregation, modification, and filtering with pipes and *data.table*. Minimal implementation with functions `let()` and `take()` for most common data manipulation tasks. Also provides Excel-like lookup functions (2 dependencies). 
 
   *Notes*: One could also mention Rstudio's *dtplyr* and the *table.express* package here, but these packages import *dplyr* and thus have a around 20 dependencies.
   
+
+#### Data Input-Output and Serialization (IO)  
+
+- **[qs](https://github.com/traversc/qs)** provides a lightning-fast and complete replacement for the `saveRDS` and `readRDS` functions in R. It 
+  supports general R objects with attributes and references - at similar speeds to *fst* - but does not provide on-disk random access to data subsets like *fst* (4 dependencies).
+  
+- **[arrow](https://github.com/apache/arrow/tree/master/r)** provides both a low-level interface to the Apache Arrow C++ library (a multi-language toolbox for accelerated data interchange and in-memory processing) and some higher-level, R-flavored tools for working with it - including fast reading / writing delimited files and sharing data between R and Python (12 dependencies). 
+
+  *Notes*: Package *vroom* offers fast reading and writing of delimited files, but with 24 dependencies is not really a *fastverse* candidate.  
   
 ***
   

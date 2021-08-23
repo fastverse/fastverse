@@ -101,13 +101,13 @@
 <a href="#core-packages" class="anchor"></a>Core Packages</h2>
 <p>The <em>fastverse</em> consists of 6 core packages (7 dependencies in total) which provide broad C/C++ based statistical and data manipulation functionality and have carefully managed APIs. These packages are installed and attached along with the <code>fastverse</code> package.</p>
 <ul>
-<li><p><strong>data.table</strong>: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, extremely flexible split-apply-combine computing, reshaping, joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as transposition of data.</p></li>
-<li><p><strong>collapse</strong>: Fast grouped &amp; weighted statistical computations, time series and panel data transformations, list-processing, data manipulation functions, summary statistics and various utilities such as support for variable labels. Class-agnostic framework designed to work with vectors, matrices, data frames, lists and related classes including <em>xts</em>, <em>data.table</em>, <em>tibble</em>, <em>pdata.frame</em>, <em>sf</em>. <!-- *tsibble*, *tibbletime* --></p></li>
-<li><p><strong>matrixStats</strong>: Efficient row-and column-wise (weighted) statistics on matrices and vectors, including computations on subsets of rows and columns.</p></li>
-<li><p><strong>kit</strong>: Fast vectorized and nested switches, some parallel (row-wise) statistics, and some utilities such as efficient partial sorting and unique values.</p></li>
-<li><p><strong>magrittr</strong>: Efficient pipe operators for enhanced programming and code unnesting.</p></li>
+<li><p><strong><a href="https://github.com/Rdatatable/data.table">data.table</a></strong>: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, extremely flexible split-apply-combine computing, reshaping, joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as transposition of data.</p></li>
+<li><p><strong><a href="https://github.com/SebKrantz/collapse">collapse</a></strong>: Fast grouped &amp; weighted statistical computations, time series and panel data transformations, list-processing, data manipulation functions, summary statistics and various utilities such as support for variable labels. Class-agnostic framework designed to work with vectors, matrices, data frames, lists and related classes including <em>xts</em>, <em>data.table</em>, <em>tibble</em>, <em>pdata.frame</em>, <em>sf</em>. <!-- *tsibble*, *tibbletime* --></p></li>
+<li><p><strong><a href="https://github.com/HenrikBengtsson/matrixStats">matrixStats</a></strong>: Efficient row-and column-wise (weighted) statistics on matrices and vectors, including computations on subsets of rows and columns.</p></li>
+<li><p><strong><a href="https://github.com/2005m/kit">kit</a></strong>: Fast vectorized and nested switches, some parallel (row-wise) statistics, and some utilities such as efficient partial sorting and unique values.</p></li>
+<li><p><strong><a href="https://github.com/tidyverse/magrittr">magrittr</a></strong>: Efficient pipe operators for enhanced programming and code unnesting.</p></li>
 <li>
-<p><strong>fst</strong>: A compressed data file format that is very fast to read and write. Full random access in both rows and columns allows reading subsets from a ‘.fst’ file.</p>
+<p><strong><a href="https://github.com/fstpackage/fst">fst</a></strong>: A compressed data file format that is very fast to read and write. Full random access in both rows and columns allows reading subsets from a ‘.fst’ file.</p>
 <p><em>Additional dependency</em>: Package <em>Rcpp</em> is imported by <em>collapse</em> and <em>fst</em>.</p>
 </li>
 </ul>
@@ -245,9 +245,9 @@ fastverse_reset()</a></code>
 <h4 class="hasAnchor">
 <a href="#time-series-ts" class="anchor"></a>Time Series (TS)</h4>
 <ul>
-<li><p><strong>xts</strong> and <strong>zoo</strong>: Fast and reliable matrix-based time series classes providing fully identified ordered observations and various utilities for plotting and computations (1 dependency).</p></li>
+<li><p><strong><a href="https://github.com/joshuaulrich/xts">xts</a></strong> and <strong><a href="https://github.com/cran/zoo">zoo</a></strong>: Fast and reliable matrix-based time series classes providing fully identified ordered observations and various utilities for plotting and computations (1 dependency).</p></li>
 <li>
-<p><strong>roll</strong>: Very fast rolling and expanding window functions for vectors and matrices (3 dependencies).</p>
+<p><strong><a href="https://github.com/jjf234/roll">roll</a></strong>: Very fast rolling and expanding window functions for vectors and matrices (3 dependencies).</p>
 <p><em>Notes</em>: <em>xts</em>/<em>zoo</em> objects are preserved by <em>roll</em> functions and by <em>collapse</em>’s time series and data transformation functions^[<em>collapse</em> functions can also handle irregular time series, but this requires passing an integer time variable to the <code>t</code> argument which has consecutive integer steps for regular parts of the time series and non-consecutive integers for the irregular parts.]. As <em>xts</em>/<em>zoo</em> objects are matrices, all <em>matrixStats</em> functions apply to them as well. <em>xts</em> objects can also easily be converted to and from <em>data.table</em>.</p>
 </li>
 </ul>
@@ -257,13 +257,15 @@ fastverse_reset()</a></code>
 <h4 class="hasAnchor">
 <a href="#dates-and-times-dt" class="anchor"></a>Dates and Times (DT)</h4>
 <ul>
-<li><p><strong>lubridate</strong>: Facilitates POSIX-based computations (2 dependencies).</p></li>
-<li><p><strong>clock</strong>: Comprehensive library for date-time manipulations using a new family of orthogonal date-time classes (durations, time points, zoned-times, and calendars) (6 dependencies).</p></li>
-<li><p><strong>anytime</strong>: Anything to ‘POSIXct’ or ‘Date’ Converter (2 dependencies).</p></li>
-<li><p><strong>fasttime</strong>: Fast parsing of strings to ‘POSIXct’ (0 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/tidyverse/lubridate">lubridate</a></strong>: Facilitates ‘POSIX-’ and ‘Date’ based computations (2 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/eddelbuettel/anytime">anytime</a></strong>: Anything to ‘POSIXct’ or ‘Date’ converter (2 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/s-u/fasttime">fasttime</a></strong>: Fast parsing of strings to ‘POSIXct’ (0 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/eddelbuettel/nanotime">nanotime</a></strong>: Provides a coherent set of temporal types and functions with nanosecond precision -<br>
+based on the ‘integer64’ class (7 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/r-lib/clock">clock</a></strong>: Comprehensive library for date-time manipulations using a new family of orthogonal date-time classes (durations, time points, zoned-times, and calendars) (6 dependencies).</p></li>
 <li>
-<p><strong>timechange</strong>: Efficient manipulation of date-times accounting for time zones and daylight saving times (1 dependency).</p>
-<p><em>Notes</em>: Date and time variables are preserved in many <em>data.table</em> and <em>collapse</em> operations. <em>data.table</em> additionally offers an efficient integer based date class ‘IDate’ with some supporting functionality. <em>xts</em> and <em>zoo</em> also provide various functions to transform dates.</p>
+<p><strong><a href="https://github.com/vspinu/timechange">timechange</a></strong>: Efficient manipulation of date-times accounting for time zones and daylight saving times (1 dependency).</p>
+<p><em>Notes</em>: Date and time variables are preserved in many <em>data.table</em> and <em>collapse</em> operations. <em>data.table</em> additionally offers an efficient integer based date class ‘IDate’ with some supporting functionality. <em>xts</em> and <em>zoo</em> also provide various functions to transform dates, and <em>zoo</em> provides classes ‘yearmon’ and ‘yearqtr’ for convenient computation with monthly and quarterly data. Package <em>mondate</em> also provides a class ‘mondate’ for monthly data.</p>
 <!-- - **nanotime**: (7 dependencies). -->
 </li>
 </ul>
@@ -272,19 +274,20 @@ fastverse_reset()</a></code>
 <h4 class="hasAnchor">
 <a href="#strings-st" class="anchor"></a>Strings (ST)</h4>
 <ul>
-<li><p><strong>stringi</strong>: Main R package for fast, correct, consistent, and convenient string/text manipulation (backend to <em>stringr</em> and <em>snakecase</em>) (0 dependencies).</p></li>
-<li><p><strong>stringr</strong>: Simple, consistent wrappers for common string operations, based on <em>stringi</em> (3 dependencies).</p></li>
-<li><p><strong>snakecase</strong>: Convert strings into any case, based on <em>stringi</em> and <em>stringr</em> (4 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/gagolews/stringi">stringi</a></strong>: Main R package for fast, correct, consistent, and convenient string/text manipulation (backend to <em>stringr</em> and <em>snakecase</em>) (0 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/tidyverse/stringr">stringr</a></strong>: Simple, consistent wrappers for common string operations, based on <em>stringi</em> (3 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/Tazinho/snakecase">snakecase</a></strong>: Convert strings into any case, based on <em>stringi</em> and <em>stringr</em> (4 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/markvanderloo/stringdist">stringdist</a></strong>: Fast computation of string distance metrics, matrices, and fuzzy matching (0 dependencies).</p></li>
 </ul>
 </div>
 <div id="statistics-and-computing-sc" class="section level4">
 <h4 class="hasAnchor">
 <a href="#statistics-and-computing-sc" class="anchor"></a>Statistics and Computing (SC)</h4>
 <ul>
-<li><p><strong>Rfast</strong> and <strong>Rfast2</strong>: Heterogeneous sets of fast functions for statistics, estimation and data manipulation operating on vectors and matrices. Missing values and object attributes are not (consistently) supported (4-5 dependencies).</p></li>
-<li><p><strong>parallelDist</strong>: Multi-threaded distance matrix computation (3 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/RfastOfficial/Rfast">Rfast</a></strong> and <strong><a href="https://github.com/RfastOfficial/Rfast2">Rfast2</a></strong>: Heterogeneous sets of fast functions for statistics, estimation and data manipulation operating on vectors and matrices. Missing values and object attributes are not (consistently) supported (4-5 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/alexeckert/parallelDist">parallelDist</a></strong>: Multi-threaded distance matrix computation (3 dependencies).</p></li>
 <li>
-<p><strong>coop</strong>: Fast implementations of the covariance, correlation, and cosine similarity (0 dependencies).</p>
+<p><strong><a href="https://github.com/wrathematics/coop">coop</a></strong>: Fast implementations of the covariance, correlation, and cosine similarity (0 dependencies).</p>
 <p><em>Notes</em>: <em>Rfast</em> has a number of like-named functions to <em>matrixStats</em>. These are simpler but typically faster and support multi-threading. Some highly efficient statistical functions can also be found scattered across various other packages, notable to mention here are <em>Hmisc</em> (60 dependencies) and <em>DescTools</em> (17 dependencies). <em>fastDummies</em> (16 dependencies) implements creation of dummy (binary) variables.</p>
 </li>
 </ul>
@@ -298,10 +301,10 @@ fastverse_reset()</a></code>
 <h4 class="hasAnchor">
 <a href="#spatial-sp" class="anchor"></a>Spatial (SP)</h4>
 <ul>
-<li><p><strong>sf</strong>: Leading framework for geospatial computing and manipulation in R, offering a simple and flexible spatial data frame and supporting functionality (13 dependencies).</p></li>
-<li><p><strong>stars</strong>: Spatiotemporal data (raster and vector) in the form of dense arrays, with space and time being array dimensions (17 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/r-spatial/sf/">sf</a></strong>: Leading framework for geospatial computing and manipulation in R, offering a simple and flexible spatial data frame and supporting functionality (13 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/r-spatial/stars">stars</a></strong>: Spatiotemporal data (raster and vector) in the form of dense arrays, with space and time being array dimensions (17 dependencies).</p></li>
 <li>
-<p><strong>terra</strong>: Methods for spatial data analysis with raster and vector data. Processing of very large (out of memory) files is supported (4 dependencies).</p>
+<p><strong><a href="https://github.com/rspatial/terra">terra</a></strong>: Methods for spatial data analysis with raster and vector data. Processing of very large (out of memory) files is supported (4 dependencies).</p>
 <p><em>Notes</em>: <em>collapse</em> can be used for efficient manipulation and computations on <em>sf</em> data frames. <em>sf</em> also offers tight integration with <em>dplyr</em>.</p>
 </li>
 </ul>
@@ -310,12 +313,12 @@ fastverse_reset()</a></code>
 <h4 class="hasAnchor">
 <a href="#visualization-vi" class="anchor"></a>Visualization (VI)</h4>
 <ul>
-<li><p><strong>dygraphs</strong>: Interface to ‘Dygraphs’ interactive time series charting library (11 dependencies).</p></li>
-<li><p><strong>lattice</strong>: Trellis graphics for R (0 dependencies).</p></li>
-<li><p><strong>grid</strong>: The grid graphics package (0 dependencies).</p></li>
-<li><p><strong>ggplot2</strong>: Create elegant data visualizations using the Grammar of Graphics (30 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/rstudio/dygraphs">dygraphs</a></strong>: Interface to ‘Dygraphs’ interactive time series charting library (11 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/deepayan/lattice">lattice</a></strong>: Trellis graphics for R (0 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/cran/grid">grid</a></strong>: The grid graphics package (0 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/tidyverse/ggplot2">ggplot2</a></strong>: Create elegant data visualizations using the Grammar of Graphics (30 dependencies).</p></li>
 <li>
-<p><strong>scales</strong>: Scale functions for visualizations (10 dependencies).</p>
+<p><strong><a href="https://github.com/r-lib/scales">scales</a></strong>: Scale functions for visualizations (10 dependencies).</p>
 <p><em>Notes:</em> <em>latticeExtra</em> provides extra graphical utilities base on <em>lattice</em>. <em>gridExtra</em> provides miscellaneous functions for <em>grid</em> graphics (and consequently for <em>ggplot2</em> which is based on <em>grid</em>). <em>gridtext</em> provides improved text rendering support for <em>grid</em> graphics. Many packages offer <em>ggplot2</em> extensions, (typically starting with ‘gg’) such as <em>ggExtra</em>, <em>ggalt</em>, <em>ggforce</em>, <em>ggmap</em>, <em>ggtext</em>, <em>ggthemes</em>, <em>ggrepel</em>, <em>ggridges</em>, <em>ggfortify</em>, <em>ggstatsplot</em>, <em>ggeffects</em>, <em>ggsignif</em>, <em>GGally</em>, <em>ggcorrplot</em>, <em>ggdendro</em>, etc…</p>
 </li>
 </ul>
@@ -324,15 +327,24 @@ fastverse_reset()</a></code>
 <h4 class="hasAnchor">
 <a href="#tidyverse-like-data-manipulation-built-on-datatable-tv" class="anchor"></a>Tidyverse-like data manipulation built on <em>data.table</em> (TV)</h4>
 <ul>
-<li><p><strong>tidytable</strong>: A tidy interface to <em>data.table</em> that is <em>rlang</em> compatible. Quite comprehensive implementation of <em>dplyr</em>, <em>tidyr</em> and <em>purr</em> functions. <em>tidyverse</em> function names are appended with a <code>.</code> e.g. <code>mutate.()</code>. Package uses a class <em>tidytable</em> that inherits from <em>data.table</em>. The <code><a href="https://rdrr.io/r/stats/TDist.html">dt()</a></code> function makes <em>data.table</em> syntax pipeable (14 total dependencies).</p></li>
-<li><p><strong>tidyfast</strong>: Fast tidying of data. Covers <em>tidyr</em> functionality, <code>dt_</code> prefix, preserves <em>data.table</em> object. Some unnecessary deep copies (2 dependencies).</p></li>
-<li><p><strong>tidyfst</strong>: Tidy verbs for fast data manipulation. Covers <em>dplyr</em> and some <em>tidyr</em> functionality. Functions have <code>_dt</code> suffix and preserve <em>data.table</em> object. A <a href="https://raw.githubusercontent.com/hope-data-science/tidyfst/master/docs/tidyfst_cheatsheet.pdf">cheatsheet</a> is provided (7 dependencies).</p></li>
-<li><p><strong>tidyft</strong>: Tidy verbs for fast data operations by reference. Best for big data manipulation on out of memory data using facilities provided by <em>fst</em> (7 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/markfairbanks/tidytable">tidytable</a></strong>: A tidy interface to <em>data.table</em> that is <em>rlang</em> compatible. Quite comprehensive implementation of <em>dplyr</em>, <em>tidyr</em> and <em>purr</em> functions. <em>tidyverse</em> function names are appended with a <code>.</code> e.g. <code>mutate.()</code>. Package uses a class <em>tidytable</em> that inherits from <em>data.table</em>. The <code><a href="https://rdrr.io/r/stats/TDist.html">dt()</a></code> function makes <em>data.table</em> syntax pipeable (14 total dependencies).</p></li>
+<li><p><strong><a href="https://github.com/TysonStanley/tidyfast">tidyfast</a></strong>: Fast tidying of data. Covers <em>tidyr</em> functionality, <code>dt_</code> prefix, preserves <em>data.table</em> object. Some unnecessary deep copies (2 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/hope-data-science/tidyfst">tidyfst</a></strong>: Tidy verbs for fast data manipulation. Covers <em>dplyr</em> and some <em>tidyr</em> functionality. Functions have <code>_dt</code> suffix and preserve <em>data.table</em> object. A <a href="https://raw.githubusercontent.com/hope-data-science/tidyfst/master/docs/tidyfst_cheatsheet.pdf">cheatsheet</a> is provided (7 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/hope-data-science/tidyft">tidyft</a></strong>: Tidy verbs for fast data operations by reference. Best for big data manipulation on out of memory data using facilities provided by <em>fst</em> (7 dependencies).</p></li>
 <li>
-<p><strong>maditr</strong>: Fast data aggregation, modification, and filtering with pipes and <em>data.table</em>. Minimal implementation with functions <code>let()</code> and <code>take()</code> for most common data manipulation tasks. Also provides Excel-like lookup functions (2 dependencies).</p>
+<p><strong><a href="https://github.com/gdemin/maditr">maditr</a></strong>: Fast data aggregation, modification, and filtering with pipes and <em>data.table</em>. Minimal implementation with functions <code>let()</code> and <code>take()</code> for most common data manipulation tasks. Also provides Excel-like lookup functions (2 dependencies).</p>
 <p><em>Notes</em>: One could also mention Rstudio’s <em>dtplyr</em> and the <em>table.express</em> package here, but these packages import <em>dplyr</em> and thus have a around 20 dependencies.</p>
 </li>
 </ul>
+</div>
+<div id="data-input-output-and-serialization-io" class="section level4">
+<h4 class="hasAnchor">
+<a href="#data-input-output-and-serialization-io" class="anchor"></a>Data Input-Output and Serialization (IO)</h4>
+<ul>
+<li><p><strong><a href="https://github.com/traversc/qs">qs</a></strong> provides a lightning-fast and complete replacement for the <code>saveRDS</code> and <code>readRDS</code> functions in R. It supports general R objects with attributes and references - at similar speeds to <em>fst</em> - but does not provide on-disk random access to data subsets like <em>fst</em> (4 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/apache/arrow/tree/master/r">arrow</a></strong> provides both a low-level interface to the Apache Arrow C++ library (a multi-language toolbox for accelerated data interchange and in-memory processing) and some higher-level, R-flavored tools for working with it - including fast reading / writing delimited files and sharing data between R and Python (12 dependencies).</p></li>
+</ul>
+<p><em>Notes</em>: Package <em>vroom</em> offers fast reading and writing of delimited files, but with 24 dependencies is not really a <em>fastverse</em> candidate.</p>
 <hr>
 </div>
 <div id="adding-to-this-list" class="section level4">
