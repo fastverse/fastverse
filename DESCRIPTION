@@ -1,12 +1,12 @@
 Package: fastversechild
-Title: Child_Title
+Title: Child Title
 Version: 0.1.0
-Authors@R: c(person("Sebastian", "Krantz", role = c("aut", "cre"), 
+Authors@R: c(person("GivenName", "FamilyName", role = "cre", email = "your@email.com"),
+             person("Sebastian", "Krantz", role = "aut", 
                     email = "sebastian.krantz@graduateinstitute.ch"),
              person("Hadley", "Wickham", role = "ctb"))
 Description: Easy installation, loading and management, of a complementary set of R
-             packages. The core 'fastversechild' consists of 6 packages: core_pkg_text. 
-             The 'fastversechild' can be freely extended with additional packages, 
+             packages. The 'fastversechild' can be extended with additional packages, 
              both during the R session and permenately for individual projects.  
 License: GPL-3
 Encoding: UTF-8
