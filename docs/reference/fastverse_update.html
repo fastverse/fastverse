@@ -48,7 +48,7 @@
 
 <meta property="og:title" content="Update fastverse packages — fastverse_update" />
 <meta property="og:description" content="This will check all fastverse packages (and their
-dependencies) for updates and print a command to install those updates." />
+dependencies) for updates and (optionally) install those updates." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -81,7 +81,7 @@ dependencies) for updates and print a command to install those updates." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastverse</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -124,10 +124,10 @@ dependencies) for updates and print a command to install those updates." />
 
     <div class="ref-description">
     <p>This will check all <em>fastverse</em> packages (and their
-dependencies) for updates and print a command to install those updates.</p>
+dependencies) for updates and (optionally) install those updates.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fastverse_update</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>fastverse_update</span><span class='op'>(</span><span class='va'>...</span>, install <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -135,6 +135,10 @@ dependencies) for updates and print a command to install those updates.</p>
     <tr>
       <th>...</th>
       <td><p>arguments passed to <code><a href='fastverse_deps.html'>fastverse_deps</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>install</th>
+      <td><p>logical. <code>TRUE</code> will proceed to install outdated packages, whereas <code>FALSE</code> (recommended) will print the installation command asking you to run it in a clean R session.</p></td>
     </tr>
     </table>
 
