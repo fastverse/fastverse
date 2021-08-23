@@ -23,6 +23,9 @@ fastversechild_detach(
 
 \item{session}{logical. \code{TRUE} also removes the packages from \code{options("fastversechild.extend")}, so they will not be attached again with \code{library(fastversechild)} in the current session. If \code{\dots} is left empty and \code{include.self = TRUE}, this will clear \bold{all} \emph{fastversechild} options set for the session.}
 }
+\value{
+\code{fastversechild_detach} returns \code{NULL} invisibly.
+}
 \description{
 Detaches \emph{fastversechild} packages, removing them from the \code{\link{search}} path.
 }

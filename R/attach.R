@@ -69,6 +69,7 @@ fastversechild_attach <- function(to_load, txt = "Attaching packages", onattach 
 #' @param force logical. should a \emph{fastversechild} package be detached / unloaded even though other attached packages depend on it?
 #' @param session logical. \code{TRUE} also removes the packages from \code{options("fastversechild.extend")}, so they will not be attached again with \code{library(fastversechild)} in the current session. If \code{\dots} is left empty and \code{include.self = TRUE}, this will clear \bold{all} \emph{fastversechild} options set for the session. 
 #' 
+#' @returns \code{fastversechild_detach} returns \code{NULL} invisibly. 
 #' @seealso \code{\link{fastversechild_extend}}, \code{\link{fastversechild}}
 #' @export
 fastversechild_detach <- function(..., unload = FALSE, force = FALSE, include.self = TRUE, 
@@ -97,6 +98,8 @@ fastversechild_detach <- function(..., unload = FALSE, force = FALSE, include.se
     for(i in ul)  eval(substitute(detach(pkgi, unload = unload, 
                                          character.only = TRUE, force = force), list(pkgi = i)))
   }
+  
+  invisible()
 }
 
 
@@ -116,6 +119,7 @@ fastversechild_detach <- function(..., unload = FALSE, force = FALSE, include.se
 #' To extend the \emph{fastversechild} for the current session when it is not yet loaded, users can also set \code{options(fastversechild.extend = c(...))}, where \code{c(...)}
 #' is a character vector of package names, before calling \code{library(fastversechild)}. 
 #' 
+#' @returns \code{fastversechild_extend} returns \code{NULL} invisibly. 
 #' @seealso \code{\link{fastversechild_detach}}, \code{\link{fastversechild}}
 #' @export
 fastversechild_extend <- function(..., install = FALSE, 
@@ -151,6 +155,8 @@ fastversechild_extend <- function(..., install = FALSE,
     x <- fastversechild_conflicts(epkg)
     if(length(x)) msg(fastversechild_conflict_message(x))
   }
+  
+  invisible()
 }
 
 

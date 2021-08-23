@@ -17,6 +17,9 @@ fastversechild_extend(
 
 \item{check.conflicts}{logical. Should conflicts between extension packages and attached packages be checked?}
 }
+\value{
+\code{fastversechild_extend} returns \code{NULL} invisibly.
+}
 \description{
 Loads additional packages as part of the \emph{fastversechild}.
 }
