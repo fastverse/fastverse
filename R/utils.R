@@ -7,8 +7,9 @@
 #' @description Checks if packages are installed or attached.
 #' 
 #' @param x character. A vector of package names.
+#' @returns A named logical vector. 
 #' @export
-is_attached <- function(x) paste0("package:", x) %in% search()
+is_attached <- function(x) `names<-`(paste0("package:", x) %in% search(), x)
 
 #' 
 #' @rdname is_attached

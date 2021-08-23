@@ -184,6 +184,22 @@ You additionally have the option to call `fastverse::fastverse_install()` at the
 
 Using a config file in a project will ignore any global configuration as discussed in the previous section. You can still extend the *fastverse* inside a project session using `fastverse_extend`, or `options("fastvers.extend")` before `library(fastverse)`^[Naturally, if you populate `options("fastvers.extend")` before calling `fastverse::fastverse_install()`, followed by `library(fastverse)`, the availability of these packages will also be guaranteed.]. 
 
+## Creating Separate Package-Verses
+
+An added feature in version 0.2.0 if the *fastverse* is the ability to create wholly separate and fully customizable verses - with the `fastverse_child()` function. Let's say I would like to create a verse for time series analysis that I want to keep separate from the *fastverse*. This is easily done using e.g.
+
+```{r, eval=FALSE}
+fastverse_child(
+  name = "tsverse", 
+  title = "Time Series Package Verse", 
+  pkg = c("xts", "roll", "zoo", "tsbox", "urca", "tseries", "tsutils", "forecast"), 
+  maintainer = 'person("GivenName", "FamilyName", role = "cre", email = "your@email.com")',
+  dir = "C:/Users/.../Documents", 
+  theme = "tidyverse")
+```
+
+By default (`install = TRUE`, `keep.dir = TRUE`) the package is installed and a source directory is created under dir/name, allowing further edits to the package. Such *fastverse* children inherit 90% of the functionality of the *fastverse* package: they are not permanently globally extensible and can not bear children themselves, but can be configured for projects^[Using, in this case, a `.tsverse` config file.] and extended in the session. The function uses a prepared 'child' branch of the [GitHub repository](<https://github.com/SebKrantz/fastverse>), and thus does not require any further packages such as `devtools`.  
+
 ## Dependencies, Situational Reports and Updating
 
 Just like it's *tidyverse* equivalent, `fastverse_deps()` (recursively) determines the joint dependencies of *fastverse* packages and also checks local versions against CRAN versions.
@@ -200,7 +216,7 @@ Additional flexibility is offered by the `pkg` argument allowing dependency and 
 fastverse_sitrep() # default is recursive = FALSE
 ```
 
-`fastverse_update()` can be used to print an `install.packages` statement to update *fastverse* packages and dependencies. In all three functions, `check.deps = FALSE` can be specified to exclude dependencies of *fastverse* packages, `recursive = TRUE` can be used to check all dependencies, and `include.self = TRUE` can be used to also check for updates of the `fastverse` package itself.
+`fastverse_update()` can be used to (default) print an `install.packages()` statement to update *fastverse* packages and dependencies, or to install updates straight away (`intsall = TRUE`). In all three functions, `check.deps = FALSE` can be specified to exclude dependencies of *fastverse* packages, `recursive = TRUE` can be used to check all dependencies, and `include.self = TRUE` can be used to also check for updates of the `fastverse` package itself.
 
 ## Other *fastverse* Options
 

@@ -12,6 +12,9 @@ is_installed(x)
 \arguments{
 \item{x}{character. A vector of package names.}
 }
+\value{
+A named logical vector.
+}
 \description{
 Checks if packages are installed or attached.
 }
