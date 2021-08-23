@@ -69,7 +69,9 @@ fastverse_packages <- function(extensions = TRUE, include.self = TRUE) {
 #' Calling this function will remove global configuration files and (default) clear all package options. 
 #' Attached packages will not be detached, and configuration files for projects (as discussed in the vignette) will not be removed. 
 #'
-#' @param options logical. \code{TRUE} also clears all \emph{fastverse} options. 
+#' @param options logical. \code{TRUE} also clears all \emph{fastverse} options.
+#' 
+#' @returns \code{fastverse_reset} returns \code{NULL} invisibly. 
 #' @seealso \code{\link{fastverse_extend}}, \code{\link{fastverse}}
 #' @export
 fastverse_reset <- function(options = TRUE) {

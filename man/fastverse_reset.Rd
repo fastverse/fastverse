@@ -9,6 +9,9 @@ fastverse_reset(options = TRUE)
 \arguments{
 \item{options}{logical. \code{TRUE} also clears all \emph{fastverse} options.}
 }
+\value{
+\code{fastverse_reset} returns \code{NULL} invisibly.
+}
 \description{
 Calling this function will remove global configuration files and (default) clear all package options. 
 Attached packages will not be detached, and configuration files for projects (as discussed in the vignette) will not be removed.

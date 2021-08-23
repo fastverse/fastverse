@@ -80,6 +80,7 @@ fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FAL
 #' @param permanent logical. if \code{\dots} are used to detach certain packages, \code{permament = TRUE} will disable them being loaded the next time the \emph{fastverse} is loaded. 
 #' This is implemented via a config file saved to the package directory. Core \emph{fastverse} packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}. The config file can be removed with \code{\link{fastverse_reset}}.
 #' 
+#' @returns \code{fastverse_detach} returns \code{NULL} invisibly. 
 #' @seealso \code{\link{fastverse_extend}}, \code{\link{fastverse}}
 #' @export
 fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = TRUE, 
@@ -123,6 +124,8 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
     for(i in ul)  eval(substitute(detach(pkgi, unload = unload, 
                                          character.only = TRUE, force = force), list(pkgi = i)))
   }
+  
+  invisible()
 }
 
 
@@ -171,6 +174,7 @@ topics_selector <- function(x) {
 #' (as part of the core \emph{fastverse}) when calling \code{library(fastverse)} in the next session. To extend the \emph{fastverse} for the current session when it is not yet loaded, users can also set \code{options(fastverse.extend = c(...))}, where \code{c(...)}
 #' is a character vector of package names, before calling \code{library(fastverse)}. 
 #' 
+#' @returns \code{fastverse_extend} returns \code{NULL} invisibly. 
 #' @seealso \code{\link{fastverse_detach}}, \code{\link{fastverse}}
 #' @export
 #' @examples \donttest{
@@ -231,6 +235,8 @@ fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FA
     x <- fastverse_conflicts(epkg)
     if(length(x)) msg(fastverse_conflict_message(x))
   }
+  
+  invisible()
 }
 
 
