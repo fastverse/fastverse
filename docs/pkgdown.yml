@@ -1,7 +1,0 @@
-pandoc: 2.11.4
-pkgdown: 1.6.1
-pkgdown_sha: ~
-articles:
-  fastverse_intro: fastverse_intro.html
-last_built: 2021-08-16T11:41Z
-
