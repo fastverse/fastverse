@@ -32,9 +32,6 @@ fastverse_extend(
 
 \item{check.conflicts}{logical. Should conflicts between extension packages and attached packages be checked?}
 }
-\value{
-This function returns nothing (\code{NULL} if assigned). Courtesy to CRAN maintainers, and because my name is not Hadley Wickham - who ostensibly is able to publish an entire \emph{tidyverse} package without these redundant statements.
-}
 \description{
 Loads additional packages as part of the \emph{fastverse}. By default only for the session, but extensions can be saved up to reinstallation/updating of the \emph{fastverse} package.
 }

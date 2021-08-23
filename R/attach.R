@@ -83,7 +83,6 @@ fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FAL
 #' @param permanent logical. if \code{\dots} are used to detach certain packages, \code{permament = TRUE} will disable them being loaded the next time the \emph{fastverse} is loaded. 
 #' This is implemented via a config file saved to the package directory. Core \emph{fastverse} packages can also be detached in this way. To add a package again use \code{extend_fastverse(..., permanent = TRUE)}. The config file can be removed with \code{\link{fastverse_reset}}.
 #' 
-#' @returns This function returns nothing (\code{NULL} if assigned). Courtesy to CRAN maintainers, and because my name is not Hadley Wickham - who ostensibly is able to publish an entire \emph{tidyverse} package without these redundant statements. 
 #' @seealso \code{\link{fastverse_extend}}, \code{\link{fastverse}}
 #' @export
 fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = TRUE, 
@@ -162,7 +161,6 @@ topics_selector <- function(x) {
 #' @param permanent logical. Should packages be saved and included when \code{library(fastverse)} is called next time? Implemented via a config file saved to the package directory. The file will be removed if the \emph{fastverse} is reinstalled, and can be removed without reinstallation using \code{\link{fastverse_reset}}. Packages can be removed from the config file using \code{\link[=fastverse_detach]{fastverse_detach(..., permanent = TRUE)}}.
 #' @param check.conflicts logical. Should conflicts between extension packages and attached packages be checked?
 #' 
-#' @returns This function returns nothing (\code{NULL} if assigned). Courtesy to CRAN maintainers, and because my name is not Hadley Wickham - who ostensibly is able to publish an entire \emph{tidyverse} package without these redundant statements. 
 #' @details 
 #' The \emph{fastverse} can be extended using a free choice of packages, packages listed under \code{topics}, or a combination of both. If \code{install = FALSE}, only packages 
 #' among the \code{topics} groups that are available are considered, others are disregarded. 
