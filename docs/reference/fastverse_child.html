@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reset the fastverse to defaults — fastverse_reset • fastverse</title>
+<title>Create a new (descendant) verse of packages — fastverse_child • fastverse</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,9 @@
 
 
 
-<meta property="og:title" content="Reset the fastverse to defaults — fastverse_reset" />
-<meta property="og:description" content="Calling this function will remove global configuration files and (default) clear all package options. 
-Attached packages will not be detached, and configuration files for projects (as discussed in the vignette) will not be removed." />
+<meta property="og:title" content="Create a new (descendant) verse of packages — fastverse_child" />
+<meta property="og:description" content="Creates and installs a fully customizable descendant verse of packages that is itself extensible and inherits 90%
+of the functionality of the fastverse package." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -117,34 +117,103 @@ Attached packages will not be detached, and configuration files for projects (as
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Reset the fastverse to defaults</h1>
-    <small class="dont-index">Source: <a href='https://github.com/SebKrantz/fastverse/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>fastverse_reset.Rd</code></div>
+    <h1>Create a new (descendant) verse of packages</h1>
+    <small class="dont-index">Source: <a href='https://github.com/SebKrantz/fastverse/blob/master/R/children.R'><code>R/children.R</code></a></small>
+    <div class="hidden name"><code>fastverse_child.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calling this function will remove global configuration files and (default) clear all package options. 
-Attached packages will not be detached, and configuration files for projects (as discussed in the vignette) will not be removed.</p>
+    <p>Creates and installs a fully customizable descendant verse of packages that is itself extensible and inherits 90%
+of the functionality of the <em>fastverse</em> package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fastverse_reset</span><span class='op'>(</span>options <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>fastverse_child</span><span class='op'>(</span>
+  <span class='va'>name</span>,
+  <span class='va'>title</span>,
+  <span class='va'>pkg</span>,
+  <span class='va'>maintainer</span>,
+  version <span class='op'>=</span> <span class='st'>"0.1.0"</span>,
+  dir <span class='op'>=</span> <span class='st'>"."</span>,
+  theme <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"fastverse"</span>, <span class='st'>"tidyverse"</span><span class='op'>)</span>,
+  install <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  keep.dir <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>options</th>
-      <td><p>logical. <code>TRUE</code> also clears all <em>fastverse</em> options.</p></td>
+      <th>name</th>
+      <td><p>character. The name of the child-verse e.g. 'myMLverse'.</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p>character. The title of the child-verse e.g. 'My Machine Learning Verse'.</p></td>
+    </tr>
+    <tr>
+      <th>pkg</th>
+      <td><p>character. A vector of core packages for the new verse.</p></td>
+    </tr>
+    <tr>
+      <th>maintainer</th>
+      <td><p>character. A quoted <code><a href='https://rdrr.io/r/utils/person.html'>person</a></code> statement giving the package maintainer. 
+If you do not intend to substantially modify the code of the resulting source package, <code>role = "cre"</code> is appropriate. See Examples.</p></td>
+    </tr>
+    <tr>
+      <th>version</th>
+      <td><p>character. A quoted version number for the new package.</p></td>
+    </tr>
+    <tr>
+      <th>dir</th>
+      <td><p>character. The directory in which a source directory dir/name for the package will be created.</p></td>
+    </tr>
+    <tr>
+      <th>theme</th>
+      <td><p>character. Set the colour-theme for text printed to the console. The options are <code>"fastverse"</code> or <code>"tidyverse"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>install</th>
+      <td><p>logical. <code>TRUE</code> installs the package using <code><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages(dir/name, repos = NULL, type = "source", ...)</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>keep.dir</th>
+      <td><p>logical. <code>FALSE</code> will remove the source directory (dir/name) again after installation.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>further arguments to <code><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>fastverse_reset</code> returns <code>NULL</code> invisibly.</p>
+    <p><code>fastverse_child</code> returns <code>NULL</code> invisibly.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function creates and installs a source package according to the users specification. 
+For that it downloads the 'child' branch of the <a href='https://github.com/SebKrantz/fastverse'>GitHub repository</a>, which 
+was specifically set up to produce a new verse, unzips it into a source directory, and substitutes the user inputs into the files. 
+The package is then installed from source, and (optionally) the source directory is removed again.</p>
+<p><em>fastverse</em> children inherit 90% of the functionality of the <em>fastverse</em> package: they are not permanently globally extensible and can not bear children themselves, 
+but can be configured for projects (using a <code>.name</code> config file) and extended in the session.
+Use of this function requires an internet connection but no additional R packages (like <code>devtools</code>, <code>remotes</code> or <code>roxygen2</code>).</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='fastverse_extend.html'>fastverse_extend</a></code>, <code><a href='fastverse.html'>fastverse</a></code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='fu'>fastverse_child</span><span class='op'>(</span>
+  name <span class='op'>=</span> <span class='st'>"tsverse"</span>, 
+  title <span class='op'>=</span> <span class='st'>"Time Series Package Verse"</span>, 
+  pkg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"xts"</span>, <span class='st'>"roll"</span>, <span class='st'>"zoo"</span>, <span class='st'>"tsbox"</span>, <span class='st'>"urca"</span>, <span class='st'>"tseries"</span>, <span class='st'>"tsutils"</span>, <span class='st'>"forecast"</span><span class='op'>)</span>, 
+  maintainer <span class='op'>=</span> <span class='st'>'person("GivenName", "FamilyName", role = "cre", email = "your@email.com")'</span>,
+  dir <span class='op'>=</span> <span class='st'>"C:/Users/.../Documents"</span>, 
+  theme <span class='op'>=</span> <span class='st'>"tidyverse"</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

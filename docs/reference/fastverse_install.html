@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reset the fastverse to defaults — fastverse_reset • fastverse</title>
+<title>Install (missing) fastverse packages — fastverse_install • fastverse</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,8 @@
 
 
 
-<meta property="og:title" content="Reset the fastverse to defaults — fastverse_reset" />
-<meta property="og:description" content="Calling this function will remove global configuration files and (default) clear all package options. 
-Attached packages will not be detached, and configuration files for projects (as discussed in the vignette) will not be removed." />
+<meta property="og:title" content="Install (missing) fastverse packages — fastverse_install" />
+<meta property="og:description" content="This function (by default) checks if any fastverse package is missing and installs the missing package(s)." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -117,33 +116,45 @@ Attached packages will not be detached, and configuration files for projects (as
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Reset the fastverse to defaults</h1>
-    <small class="dont-index">Source: <a href='https://github.com/SebKrantz/fastverse/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>fastverse_reset.Rd</code></div>
+    <h1>Install (missing) fastverse packages</h1>
+    <small class="dont-index">Source: <a href='https://github.com/SebKrantz/fastverse/blob/master/R/update.R'><code>R/update.R</code></a></small>
+    <div class="hidden name"><code>fastverse_install.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calling this function will remove global configuration files and (default) clear all package options. 
-Attached packages will not be detached, and configuration files for projects (as discussed in the vignette) will not be removed.</p>
+    <p>This function (by default) checks if any <em>fastverse</em> package is missing and installs the missing package(s).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fastverse_reset</span><span class='op'>(</span>options <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>fastverse_install</span><span class='op'>(</span><span class='va'>...</span>, only.missing <span class='op'>=</span> <span class='cn'>TRUE</span>, install <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>options</th>
-      <td><p>logical. <code>TRUE</code> also clears all <em>fastverse</em> options.</p></td>
+      <th>...</th>
+      <td><p>comma-separated package names, quoted or unquoted, or vectors of package names. If left empty, all packages returned by <code><a href='fastverse_packages.html'>fastverse_packages</a></code> are checked.</p></td>
+    </tr>
+    <tr>
+      <th>only.missing</th>
+      <td><p>logical. <code>TRUE</code> only installs packages that are unavailable. <code>FALSE</code> installs all packages, even if they are available.</p></td>
+    </tr>
+    <tr>
+      <th>install</th>
+      <td><p>logical. <code>TRUE</code> will proceed to install packages, whereas <code>FALSE</code> (recommended) will print the installation command asking you to run it in a clean R session.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>fastverse_reset</code> returns <code>NULL</code> invisibly.</p>
+    <p><code>fastverse_install</code> returns <code>NULL</code> invisibly.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function is useful to call before <code><a href='https://sebkrantz.github.io/fastverse/'>library(fastverse)</a></code>, especially in a project when a <code>.fastverse</code> configuration file is used to load a custom set of packages not natively installed by the <code>fastverse</code> package (see vignette). 
+The idea behind this is that you may customize the <em>fastverse</em> for the project, then revisit the project after a long while, and some packages listed in your config file may be missing. 
+You can guard against missing packages by running <code>fastverse::fastverse_install()</code> before <code><a href='https://sebkrantz.github.io/fastverse/'>library(fastverse)</a></code>, to ensure that all <em>fastverse</em> packages are available before loading the <em>fastverse</em> and executing any code.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='fastverse_extend.html'>fastverse_extend</a></code>, <code><a href='fastverse.html'>fastverse</a></code></p></div>
+    <div class='dont-index'><p><code><a href='fastverse_update.html'>fastverse_update</a></code>, <code><a href='fastverse.html'>fastverse</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
