@@ -1,6 +1,6 @@
 Package: fastverse
 Title: A Suite of High-Performance Packages for Statistics and Data Manipulation
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(person("Sebastian", "Krantz", role = c("aut", "cre"), 
                     email = "sebastian.krantz@graduateinstitute.ch"),
              person("Hadley", "Wickham", role = "ctb"))
@@ -10,15 +10,15 @@ Description: Easy installation, loading and management, of a complementary set o
              'matrixStats', 'kit', 'magrittr' and 'fst', that jointly only depend on 
              'Rcpp'. These packages are attached and harmonized through the 'fastverse'. 
              In addition, the 'fastverse' can be freely and permanently extended with 
-             additional packages, both globally or for individual projects. Selected 
-             fast and low-dependency packages are suggested for various topics such as 
-             time series, dates and times, strings, spatial data and statistics  
-             (see 'README.md' on GitHub / website).  
+             additional packages, both globally or for individual projects. Entirely 
+             separate package verses can also be created. Selected fast and low-dependency 
+             packages are suggested for various topics such as time series, dates and times, 
+             strings, spatial data, statistics and data serialization (see GitHub / website).  
 License: GPL-3
 Encoding: UTF-8
 Imports: data.table, collapse, matrixStats, kit, magrittr, fst
-Suggests: xts, roll, lubridate, fasttime, dygraphs, stringi, Rfast,
-          Rfast2, parallelDist, coop, tidyfast, knitr, rmarkdown
+Suggests: xts, roll, fasttime, lubridate, dygraphs, stringi, stringfish, stringdist,
+          Rfast, Rfast2, parallelDist, coop, qs, tidyfast, maditr, knitr, rmarkdown
 URL: https://sebkrantz.github.io/fastverse/, 
      https://github.com/SebKrantz/fastverse
 BugReports: https://github.com/SebKrantz/fastverse/issues

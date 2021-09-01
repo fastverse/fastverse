@@ -1,3 +1,7 @@
+# fastverse 0.2.1
+
+* Remove invalid URL and lifecycle badge (package is now considered stable).
+
 # fastverse 0.2.0
 
 * Making sure no files are written to disc on CRAN servers. 
