@@ -5,7 +5,6 @@
 [![cran checks](https://cranchecks.info/badges/worst/fastverse)](https://cran.r-project.org/web/checks/check_results_fastverse.html)
 [![R build status](https://github.com/SebKrantz/fastverse/workflows/R-CMD-check/badge.svg)](https://github.com/SebKrantz/fastverse/actions)
 [![status](https://tinyverse.netlify.com/badge/fastverse)](https://CRAN.R-project.org/package=fastverse)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 ![downloads per month](http://cranlogs.r-pkg.org/badges/fastverse?color=blue)
 ![downloads](http://cranlogs.r-pkg.org/badges/grand-total/fastverse?color=blue)
 <!--
@@ -21,7 +20,7 @@ The *fastverse* is a suite of complementary high-performance packages for statis
 - Reducing the number of dependencies required for advanced computing in R
 
 The `fastverse` package integrates, and provides utilities for easy installation, loading and management 
-of these packages. It is an extensible framework that allows users to (permanently) add or remove packages to create a 'verse' of packages suiting their general needs. Separate 'verses' can be created for different projects. 
+of these packages. It is an extensible framework that allows users to (permanently) add or remove packages to create a 'verse' of packages suiting their general needs. Separate 'verses' can also be created. 
 
 *fastverse* packages are jointly attached with `library(fastverse)`, and several functions starting with `fastverse_` help manage dependencies, detect namespace conflicts, add/remove packages from the *fastverse* and update packages.
 
