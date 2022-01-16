@@ -226,6 +226,10 @@ High-performing packages for different data manipulation and statistical computi
 
 - **[coop](https://github.com/wrathematics/coop)**: Fast implementations of the covariance, correlation, and cosine similarity (0 dependencies).
 
+- **[rsparse](https://CRAN.R-project.org/package=rsparse)**: Implements many algorithms for statistical learning on sparse matrices - matrix factorizations, matrix completion, elastic net regressions, factorization machines (8 dependencies). See also package **[MatrixExtra](https://CRAN.R-project.org/package=MatrixExtra)**.
+
+- **[rrapply](https://CRAN.R-project.org/package=rrapply)**: The `rrapply()` function extends base `rapply()` by including a condition or predicate function for the application of functions and diverse options to prune or aggregate the result (0 dependencies).
+
   *Notes*: *Rfast* has a number of like-named functions to *matrixStats*. These are simpler but typically faster and support multi-threading. Some highly efficient statistical functions can also be found scattered across various other packages, notable to mention here are *Hmisc* (60 dependencies) and *DescTools* (17 dependencies). *fastDummies* (16 dependencies) implements creation of dummy (binary) variables. 
 
 <!-- 
