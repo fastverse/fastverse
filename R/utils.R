@@ -1,3 +1,4 @@
+c_ <- function (...) as.character(substitute(c(...))[-1L])
 
 #' @title Utilities
 #' @name is_attached
@@ -28,10 +29,41 @@ project_packages <- function() {
   fileConn <- file(".fastverse")
   pkg <- readLines(fileConn, warn = FALSE, skipNul = TRUE)
   close(fileConn)
+  pkg <- trimws(pkg[nzchar(pkg)])
+  pkg <- pkg[!startsWith(pkg, "_")]
   pkg <- trimws(unlist(strsplit(pkg, ", | ,|,| "), use.names = FALSE)) # This will always work!
   pkg <- pkg[nzchar(pkg)]
   if(!length(pkg)) stop("Empty config file. Please write package names into your .fastverse config file, separated by commas, spaces or line breaks.")
   pkg
+}
+
+project_options <- function() {
+  fileConn <- file(".fastverse")
+  pkg <- readLines(fileConn, warn = FALSE, skipNul = TRUE)
+  close(fileConn)
+  pkg <- trimws(pkg[nzchar(pkg)])
+  optl <- startsWith(pkg, "_")
+  if(!any(optl)) return(list(before = NULL, after = NULL))
+  if(all(optl)) {
+    before <- pkg
+    after <- NULL
+  } else {
+    ppos <- which.min(optl)
+    before <- if(ppos > 1L) pkg[1:(ppos-1L)] else NULL
+    after <- if(ppos < length(pkg)) pkg[ppos:length(pkg)][optl[ppos:length(pkg)]] else NULL
+  }
+  lapply(list(before = before, after = after), function(x) {
+    if(is.null(x)) return(NULL)
+    ol <- startsWith(x, "_opt_")
+    x <- substr(x, 6L, 100000L)
+    r <- "function() {"
+    if(any(ol)) r <- paste0(r, "options(", paste(x[ol], collapse = ", "), ")")
+    if(all(ol)) r <- paste0(r, "}") else {
+      r <- if(any(ol)) paste0(r, "; Sys.setenv(", paste(x[!ol], collapse = ", "), ")}") else
+        paste0(r, "Sys.setenv(", paste(x[!ol], collapse = ", "), ")}") 
+    }
+    eval(str2lang(r), NULL, NULL)
+  })
 }
 
 #' List all packages in the fastverse

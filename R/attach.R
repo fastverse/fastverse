@@ -54,17 +54,23 @@ fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FAL
 
 .onAttach <- function(libname, pkgname) {
   
+  pconfl <- file.exists(".fastverse")
+  
+  if(pconfl) {
+    popts <- project_options()
+    if(length(popts$before)) popts$before()
+  }
+  
   needed <- ckeck_attached() 
 
-  if(length(needed) == 0L) return()
+  if(length(needed) > 0L) fastverse_attach(needed, onattach = TRUE)
   
-  fastverse_attach(needed, onattach = TRUE)
-  
-  if(!isTRUE(getOption("fastverse.quiet")) && !"package:conflicted" %in% search()) {
+  if(length(needed) > 0L && !isTRUE(getOption("fastverse.quiet")) && !"package:conflicted" %in% search()) {
     x <- fastverse_conflicts() 
     if(length(x)) msg(fastverse_conflict_message(x), startup = TRUE)
   }
   
+  if(pconfl && length(popts$after)) popts$after()
 }
 
 
@@ -88,15 +94,15 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
   
   if(missing(...)) {
     loaded <- ckeck_attached(needed = FALSE)
-    if(include.self) loaded <- c(loaded, "fastverse") # Could already be part of loaded ??
+    if(include.self) loaded <- c(loaded, "fastverse") 
     if(session) {
       options(fastverse.extend = NULL)
       if(include.self) options(fastverse.quiet = NULL, 
                                fastverse.styling = NULL)
     }
   } else {
-    pkg <- tryCatch(c(...), error = function(e) .c(...))
-    if(!is.character(pkg) || length(pkg) > 200L) pkg <- .c(...)
+    pkg <- tryCatch(c(...), error = function(e) c_(...))
+    if(!is.character(pkg) || length(pkg) > 200L) pkg <- c_(...)
     loaded <- pkg[is_attached(pkg)] # Include self? -> nope, not sensible...
     if(session) {
       epkg <- getOption("fastverse.extend")
@@ -135,7 +141,7 @@ topics_selector <- function(x) {
          TS = c("xts", "zoo", "roll"), 
          DT = c("lubridate", "anytime", "fasttime", "nanotime", "clock", "timechange"),
          ST = c("snakecase", "stringr", "stringi", "stringfish", "stringdist"),
-         SC = c("Rfast", "Rfast2", "parallelDist", "coop"), # "fastmatch", "fastmap", (not on topic), "fastDummies" (16 dependencies)
+         SC = c("Rfast", "Rfast2", "parallelDist", "coop", "MatrixExtra", "rsparse", "rrapply"), # "fastmatch", "fastmap", (not on topic), "fastDummies" (16 dependencies)
          SP = c("stars", "terra", "sf"), # "sp" "rgdal" "raster"
          VI = c("dygraphs", "ggplot2", "scales", "lattice", "grid"), # "latticeExtra", "gridExtra", "gridtext", "plotly", "viridis" (32 dependencies), "RColorBrewer" (main function provided by scales)
          TV = c("tidytable", "tidyfast", "tidyfst", "tidyft", "maditr"), # "dtplyr", "table.express" import dplyr!!
@@ -153,7 +159,7 @@ topics_selector <- function(x) {
 #' \item \code{"TS"}: Time Series. Attaches \emph{xts}, \emph{zoo} and \emph{roll}. 
 #' \item \code{"DT"}: Dates and Times. Attaches \emph{lubridate}, \emph{anytime}, \emph{fasttime}, \emph{nanotime}, \emph{clock}, and \emph{timechange}.
 #' \item \code{"ST"}: Strings. Attaches \emph{stringr}, \emph{stringi}, \emph{snakecase}, \emph{stringfish} and \emph{stringdist}.
-#' \item \code{"SC"}: Statistics and Computing. Attaches \emph{Rfast}, \emph{Rfast2}, \emph{parallelDist} and \emph{coop}. % \emph{fastDummies}, 
+#' \item \code{"SC"}: Statistics and Computing. Attaches \emph{Rfast}, \emph{Rfast2}, \emph{parallelDist}, \emph{coop}, \emph{MatrixExtra}, \emph{rsparse} and \emph{rrapply}. % \emph{fastDummies}, 
 #' \item \code{"SP"}: Spatial. Attaches \emph{sf}, \emph{stars} and \emph{terra}.
 #' \item \code{"VI"}: Visualization. Attaches \emph{dygraphs}, \emph{ggplot2}, \emph{scales}, \emph{lattice} and \emph{grid}. % \emph{RColorBrewer} and \emph{viridis}.
 #' \item \code{"TV"}: Tidyverse-Like. Attaches \emph{tidytable}, \emph{tidyfast}, \emph{tidyfst}, \emph{tidyft} and \emph{maditr}. % , \emph{table.express} and \emph{dtplyr}, import dplyr
@@ -190,8 +196,8 @@ fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FA
                              check.conflicts = !isTRUE(getOption("fastverse.quiet"))) {
   
   if(!missing(...)) {
-    epkg <- tryCatch(c(...), error = function(e) .c(...))
-    if(!is.character(epkg) || length(epkg) > 200L) epkg <- .c(...)
+    epkg <- tryCatch(c(...), error = function(e) c_(...))
+    if(!is.character(epkg) || length(epkg) > 200L) epkg <- c_(...)
   }
   
   if(length(topics)) {
