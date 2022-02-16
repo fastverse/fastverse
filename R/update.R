@@ -108,8 +108,8 @@ fastverse_install <- function(..., only.missing = TRUE, install = TRUE) {
   if(missing(...)) {
     pkg <- fastverse_packages(include.self = FALSE)
   } else {
-    pkg <- tryCatch(c(...), error = function(e) .c(...))
-    if(!is.character(pkg) || length(pkg) > 200L) pkg <- .c(...)
+    pkg <- tryCatch(c(...), error = function(e) c_(...))
+    if(!is.character(pkg) || length(pkg) > 200L) pkg <- c_(...)
   }
   
   needed <- if(only.missing) pkg[!is_installed(pkg)] else pkg

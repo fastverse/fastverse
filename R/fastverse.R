@@ -76,7 +76,6 @@
 #'
 #' @importFrom utils stack packageVersion install.packages available.packages download.file unzip
 #' @importFrom tools package_dependencies
-#' @importFrom collapse .c
 #'
 NULL
 

@@ -94,15 +94,15 @@ fastverse_detach <- function(..., unload = FALSE, force = FALSE, include.self = 
   
   if(missing(...)) {
     loaded <- ckeck_attached(needed = FALSE)
-    if(include.self) loaded <- c(loaded, "fastverse") # Could already be part of loaded ??
+    if(include.self) loaded <- c(loaded, "fastverse") 
     if(session) {
       options(fastverse.extend = NULL)
       if(include.self) options(fastverse.quiet = NULL, 
                                fastverse.styling = NULL)
     }
   } else {
-    pkg <- tryCatch(c(...), error = function(e) .c(...))
-    if(!is.character(pkg) || length(pkg) > 200L) pkg <- .c(...)
+    pkg <- tryCatch(c(...), error = function(e) c_(...))
+    if(!is.character(pkg) || length(pkg) > 200L) pkg <- c_(...)
     loaded <- pkg[is_attached(pkg)] # Include self? -> nope, not sensible...
     if(session) {
       epkg <- getOption("fastverse.extend")
@@ -196,8 +196,8 @@ fastverse_extend <- function(..., topics = NULL, install = FALSE, permanent = FA
                              check.conflicts = !isTRUE(getOption("fastverse.quiet"))) {
   
   if(!missing(...)) {
-    epkg <- tryCatch(c(...), error = function(e) .c(...))
-    if(!is.character(epkg) || length(epkg) > 200L) epkg <- .c(...)
+    epkg <- tryCatch(c(...), error = function(e) c_(...))
+    if(!is.character(epkg) || length(epkg) > 200L) epkg <- c_(...)
   }
   
   if(length(topics)) {

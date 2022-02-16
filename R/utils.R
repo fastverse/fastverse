@@ -1,3 +1,4 @@
+c_ <- function (...) as.character(substitute(c(...))[-1L])
 
 #' @title Utilities
 #' @name is_attached
