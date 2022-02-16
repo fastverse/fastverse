@@ -38,11 +38,8 @@ confirm_conflict <- function(packages, name) { # packages <- conflicts[[3]]; nam
 #' There are 2 internal conflict in the core \emph{fastverse} which are not displayed by \code{fastverse_conflicts()}:
 #' \itemize{
 #' \item \code{collapse::funique} masks \code{kit::funique}. If both packages are detached, \emph{collapse} is attached after \emph{kit}. In general, the 
-#' \emph{collapse} version is often faster on data frames and supports unique rows on selected columns, but only preserves the first-match appearance order of 
-#' character data (unique values for numeric columns are determined using a sort-based method). 
-#' An option \code{sort = TRUE} lets \code{collapse::funique} return sorted unique values (for both character and numeric data). 
-#' The \emph{kit} version is generally faster for vectors and sometimes for data frames, and also supports matrices. 
-#' It is a full hash-table based implementation that always preserves the first-match appearance order of data.   
+#' \emph{collapse} version is often faster on data frames and supports unique rows on selected columns. An option \code{sort = TRUE} lets \code{collapse::funique} 
+#' return sorted unique values. The \emph{kit} version is often faster for vectors and also supports matrices.    
 #' 
 #' \item \code{matrixStats::count} masks \code{kit::count}. The \emph{matrixStats} version is more flexible, supporting restricted search and missing value removal. The \emph{kit} version is nearly twice as fast. 
 #' }
