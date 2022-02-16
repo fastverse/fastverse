@@ -1,3 +1,11 @@
+# fastverse 0.2.2
+
+* Added possibility to set global options and environment variables in project configuration files. See Vignette for details. 
+
+* Added new packages to [suggested packages list](https://sebkrantz.github.io/fastverse/#suggested-extensions): *rrapply*, *MatrixExtra* and *rsparse*.
+
+* Package does not import any helper functions from *collapse* anymore, so that hard detaching with `fastverse_detach(unload = TRUE)` is possible for *collapse* as well.
+
 # fastverse 0.2.1
 
 * Remove invalid URL and lifecycle badge (package is now considered stable).
