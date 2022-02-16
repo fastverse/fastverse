@@ -45,16 +45,23 @@ fastversechild_attach <- function(to_load, txt = "Attaching packages", onattach 
 
 .onAttach <- function(libname, pkgname) {
   
+  pconfl <- file.exists(".fastversechild")
+  
+  if(pconfl) {
+    popts <- project_options()
+    if(length(popts$before)) popts$before()
+  }
+  
   needed <- ckeck_attached() 
-
-  if(length(needed) == 0L) return()
   
-  fastversechild_attach(needed, onattach = TRUE)
+  if(length(needed) > 0L) fastversechild_attach(needed, onattach = TRUE)
   
-  if(!isTRUE(getOption("fastversechild.quiet")) && !"package:conflicted" %in% search()) {
+  if(length(needed) > 0L && !isTRUE(getOption("fastversechild.quiet")) && !"package:conflicted" %in% search()) {
     x <- fastversechild_conflicts() 
     if(length(x)) msg(fastversechild_conflict_message(x), startup = TRUE)
   }
+  
+  if(pconfl && length(popts$after)) popts$after()
   
 }
 
