@@ -1,3 +1,7 @@
+# fastverse 0.2.3
+
+* Added `options(fastverse.install = TRUE)` which can be set before `library(fastverse)`, triggering an internal call to `fastverse_install()` - to make sure any missing packages are installed before loading them. In a `.fastverse` configuration file placed inside a project directory, you can also place `_opt_fastverse.install = TRUE` before the packages list. 
+
 # fastverse 0.2.2
 
 * Added possibility to set global options and environment variables in project configuration files. See Vignette for details. 
