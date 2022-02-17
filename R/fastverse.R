@@ -32,6 +32,7 @@
 #' \item \code{options(fastversechild.styling = FALSE)} will disable all styling applied to text printed to the console. 
 #' \item \code{options(fastversechild.extend = c(...))} can be set before calling \code{library(fastversechild)} to extend the fastversechild with some packages for the session. The same can be done with the
 #' \code{\link{fastversechild_extend}} function after \code{library(fastversechild)}, which will also populate \code{options("fastversechild.extend")}. 
+#' \item \code{options(fastversechild.install = TRUE)} can be set before \code{library(fastversechild)} to install any missing packages beforehand. See also \code{\link{fastversechild_install}}.
 #' }
 #'
 #' @docType package

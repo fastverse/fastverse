@@ -52,6 +52,8 @@ fastversechild_attach <- function(to_load, txt = "Attaching packages", onattach 
     if(length(popts$before)) popts$before()
   }
   
+  if(isTRUE(getOption("fastversechild.install"))) fastversechild_install()
+  
   needed <- ckeck_attached() 
   
   if(length(needed) > 0L) fastversechild_attach(needed, onattach = TRUE)
