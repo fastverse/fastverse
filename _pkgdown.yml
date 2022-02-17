@@ -3,9 +3,6 @@ destination: docs
 home:
   title: An Extensible Suite of High-Performance and Low-Dependency Packages for Statistical Computing and Data Manipulation in R
 
-template:
-  bootstrap: 4 
-
 development:
   mode: auto
 
