@@ -175,26 +175,29 @@ You can put together a custom collection of packages for a project, and load / m
 
 For this you need to include a configuration file named `.fastverse` (no file extension) inside a project directory, and place inside that file the names of packages to be loaded when calling `library(fastverse)`^[You can place package names in that file any manner you deem suitable: separated using spaces or commas, on one or multiple lines. Note that the file will be read from left to right and from top to bottom. Packages are attached in the order found in the file.]. Note that **all** packages to be loaded as core *fastverse* for your project need to be included in that file, in the order they should be attached.    
 
-In addition, you can set global options and environment variables, either before or after the list of packages. Options must be prefixed with `_opt_` and environment variables with `_env_`, and either must be on a new line. For example, including a `.fastverse` script like this:
+In addition, you can set global options and environment variables, either before or after the list of packages. Options must be prefixed with `_opt_` and environment variables with `_env_`, and either must be placed on separate lines. For example, including a `.fastverse` script like this:
 
 ```
 _opt_collapse_mask = c("manip", "helper)
+_opt_fastverse.install = TRUE
 
-data.table, kit, magrittr, collapse, qs, fixest, ranger, robustbase, decompr
+data.table, kit, magrittr, collapse, qs, fixest, 
+ranger, robustbase, decompr
 
 _opt_max.print = 100
 _opt_kit.nThread = 4
 _env_NCRAN = TRUE
 ```
-in a project directory, and placing `library(fastverse)` at the top of an R script in the project will first set `options(collapse_mask = c("manip", "helper))`, then attach all the packages in the order provided, and then set `options(max.print = 100, kit.nThread = 4)` and `Sys.setenv(NCRAN = TRUE)`. Note that packages can be spread across multiple lines, but need to be together i.e. they cannot be separated by options. 
+in a project directory, and placing `library(fastverse)` at the top of an R script in the project will first set `options(collapse_mask = c("manip", "helper), fastverse.install = TRUE)`^[Setting `options(fastverse.install = TRUE)` before loading the packages will make sure any packages missing on your system will be installed beforehand. `options(collapse_mask = ...)` can be used to make base R and dplyr functions with faster versions provided in the *collapse* package. See `help("collapse-options")`.], then attach all the packages in the order provided, and then set `options(max.print = 100, kit.nThread = 4)` and `Sys.setenv(NCRAN = TRUE)`. Note that packages can be spread across multiple lines, but need to be together i.e. they cannot be separated by options. 
 
 Using the *fastverse* to jointly load important packages and set important options can facilitate package management inside projects and serve as a bridge between loading packages individually and using more rigorous package and namespace management solutions such as [renv](<https://github.com/rstudio/renv>), [conflicted](<https://github.com/r-lib/conflicted>), [box](<https://github.com/klmr/box>) or [import](<https://github.com/rticulate/import>).
 
 At the most basic level, loading packages with the *fastverse* displays the package versions and checks namespace conflicts, helping you spot issues that might arise as packages are updated. It also allows you to easily check the dependencies and update status of packages used in your project with `fastverse_sitrep()`, and update if necessary with `fastverse_update()`. 
 
-You additionally have the option to call `fastverse::fastverse_install()` at the beginning of a project file before calling `library(fastverse)`. This will execute a swift check if all packages listed in `.fastverse` are available, and, by default, install any missing packages needed for the project. 
+<!-- 
+You additionally have the option to call `fastverse::fastverse_install()` at the beginning of a project file before calling `library(fastverse)`. This will execute a swift check if all packages listed in `.fastverse` are available, and, by default, install any missing packages needed for the project. -->
 
-Using a config file in a project will ignore any global configuration as discussed in the previous section. You can still extend the *fastverse* inside a project session using `fastverse_extend`, or `options("fastvers.extend")` before `library(fastverse)`^[Naturally, if you populate `options("fastvers.extend")` before calling `fastverse::fastverse_install()`, followed by `library(fastverse)`, the availability of these packages will also be guaranteed.]. 
+Using a config file in a project will ignore any global configuration as discussed in the previous section. You can still extend the *fastverse* inside a project session using `fastverse_extend`, or `options("fastvers.extend")` before `library(fastverse)`^[If you populate `options("fastvers.extend")` before calling `library(fastverse)`, with `_opt_fastverse.install = TRUE` set in `.fastverse`, the availability of these packages will also be guaranteed.]. 
 
 ## Creating Separate Package-Verses
 
@@ -232,7 +235,7 @@ fastverse_sitrep() # default is recursive = FALSE
 
 ## Other *fastverse* Options
 
-Apart from `"fastverse.extend"`, the *fastverse* also has options `"fastverse.styling"` and `"fastverse.quiet"`^[I note that at this point in time it is not possible to permanently set `options("fastverse.quiet")` or `options("fastverse.styling")`.]. Setting `options(fastverse.styling = FALSE)` will disable coloured text printed to the R console (as done for this vignette). `options(fastverse.quiet = TRUE)` will omit any messages printed from `library(fastverse)` and `fastverse_extend()`:
+Apart from `"fastverse.extend"`, the *fastverse* also has options `"fastverse.install"`, `"fastverse.styling"` and `"fastverse.quiet"`^[I note that at this point in time it is not possible to permanently set `options("fastverse.quiet")` or `options("fastverse.styling")`.]. Setting `options(fastverse.install = TRUE)` before `library(fastverse)` will make sure any packages missing on your system will be installed beforehand. This can also be done ex-post using the `fastverse_install()` function. Setting `options(fastverse.styling = FALSE)` will disable coloured text printed to the R console (as done for this vignette). `options(fastverse.quiet = TRUE)` will omit any messages printed from `library(fastverse)` and `fastverse_extend()`:
 
 ```{r}
 fastverse_detach()
@@ -243,11 +246,11 @@ library(fastverse) # Nothing to see here
 fastverse_extend(lubridate)
 ```
 
-If we only want to omit a function clash check when calling `fastverse_extend`, we can also use `fastverse_extend(..., check.conflicts = FALSE)`. 
+If you only want to omit a function clash check when calling `fastverse_extend`, you can also use `fastverse_extend(..., check.conflicts = FALSE)`. 
 
 ## Conclusion
 
-The *fastverse* was developed principally for 2 reasons: to promote quality high-performance software development for R, and to provide a flexible approach to package loading and management in R, particularly for users wishing to combine various high-performance packages in statistical workflows. To the extent that high-performance software development in R continues to prioritize low-dependency and stable APIs, these two objectives are compatible, and complex statistical workflows can be developed without sophisticated package management solutions.  
+The *fastverse* was developed principally for 2 reasons: to promote quality high-performance software development for R, and to provide a flexible approach to package loading and management in R, particularly for users wishing to combine various high-performance packages in statistical workflows. To the extent that high-performance software development in R continues to prioritize low-dependency and stable APIs, complex statistical and project workflows can be developed without sophisticated package management solutions.  
 
 <!-- This vignette introduced the key features of the package. Suggested *fastverse* extension packages are introduced in the [README](<https://sebkrantz.github.io/fastverse/#suggested-extensions>) file. -->
 

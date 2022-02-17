@@ -94,10 +94,9 @@ fastverse_update <- function(..., install = FALSE) {
 #' @param only.missing logical. \code{TRUE} only installs packages that are unavailable. \code{FALSE} installs all packages, even if they are available. 
 #' @param install logical. \code{TRUE} will proceed to install packages, whereas \code{FALSE} (recommended) will print the installation command asking you to run it in a clean R session.
 #' 
-#' @details 
-#' This function is useful to call before \code{library(fastverse)}, especially in a project when a \code{.fastverse} configuration file is used to load a custom set of packages not natively installed by the \code{fastverse} package (see vignette). 
-#' The idea behind this is that you may customize the \emph{fastverse} for the project, then revisit the project after a long while, and some packages listed in your config file may be missing. 
-#' You can guard against missing packages by running \code{fastverse::fastverse_install()} before \code{library(fastverse)}, to ensure that all \emph{fastverse} packages are available before loading the \emph{fastverse} and executing any code.
+#' @note 
+#' There is also the possibility to set \code{options(fastverse.install = TRUE)} before \code{library(collapse)}, which will call \code{fastverse_install()} before loading any packages to make sure all packages are available.
+#' If you are using a \code{.fastverse} configuration file inside a project (see vignette), you can also place \code{_opt_fastverse.install = TRUE} before the list of packages in that file.
 #' 
 #' 
 #' @returns \code{fastverse_install} returns \code{NULL} invisibly. 
