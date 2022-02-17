@@ -1,6 +1,6 @@
 Package: fastverse
 Title: A Suite of High-Performance Packages for Statistics and Data Manipulation
-Version: 0.2.2
+Version: 0.2.3
 Authors@R: c(person("Sebastian", "Krantz", role = c("aut", "cre"), 
                     email = "sebastian.krantz@graduateinstitute.ch"),
              person("Hadley", "Wickham", role = "ctb"))
