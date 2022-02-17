@@ -60,6 +60,7 @@ Function to create a new extensible verse of packages like the \emph{fastverse}
 \item \code{options(fastverse.styling = FALSE)} will disable all styling applied to text printed to the console. 
 \item \code{options(fastverse.extend = c(...))} can be set before calling \code{library(fastvsers)} to extend the fastverse with some packages for the session. The same can be done with the
 \code{\link{fastverse_extend}} function after \code{library(fastvsers)}, which will also populate \code{options("fastverse.extend")}. 
+\item \code{options(fastverse.install = TRUE)} can be set before \code{library(fastverse)} to install any missing packages beforehand. See also \code{\link{fastverse_install}}.
 }
 }
 
@@ -68,7 +69,7 @@ Function to create a new extensible verse of packages like the \emph{fastverse}
 \itemize{
 \item There are 2 internal clashes between \code{collapse::funique} and \code{kit::funique}, and between \code{matrixStats::count} and \code{kit::count}.
 The \emph{collapse} and \emph{matrixStats} versions take precedence over the \emph{kit} versions. For a comparison of functionality see the details section of \code{\link{fastverse_conflicts}}.
-\item Quite A number of functions in the \emph{matrixStats} package do not (by default) preserve the attributes of objects passed to them, resulting in inconsistent behavior of different functions. 
+\item Quite a number of functions in the \emph{matrixStats} package do not (by default) preserve the attributes of objects passed to them, resulting in inconsistent behavior of different functions. 
 The GitHub version of the \code{fastverse} alters most of the functions where this is the case, listed in a global variable \code{.matrixStats_replaced}, bestowing them with 
 capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). This is done using very efficient R and C code, so that performance does not suffer. 
 When the \code{fastverse} is attached, these altered function are replaced in the \emph{matrixStats} namespace. Since CRAN does not allow namespace modifications in other packages, 
