@@ -1,3 +1,9 @@
+# fastverse 0.2.4
+
+* Binaries of core fastverse packages (and a few others, including the *fastverse* package itself) can now be installed from a newly created [fastverse r-universe](https://fastverse.r-universe.dev/). This ensures that Windows and Mac binaries of the development versions of these packages are always available, independent of their CRAN status. These binaries can be installed using `install.packages("fastverse", repos = "https://fastverse.r-universe.dev/")`.
+
+* Adding *geos* to suggested list (thanks to Grant McDermott for suggesting). 
+
 # fastverse 0.2.3
 
 * Added `options(fastverse.install = TRUE)` which can be set before `library(fastverse)`, triggering an internal call to `fastverse_install()` - to make sure any missing packages are installed before loading them. In a `.fastverse` configuration file placed inside a project directory, you can also place `_opt_fastverse.install = TRUE` before the packages list. 

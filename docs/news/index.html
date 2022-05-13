@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastverse</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
       </span>
     </div>
 
@@ -51,7 +51,12 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.2.3" id="fastverse-023">fastverse 0.2.3<a class="anchor" aria-label="anchor" href="#fastverse-023"></a></h2>
+<h2 class="page-header" data-toc-text="0.2.4" id="fastverse-024">fastverse 0.2.4<a class="anchor" aria-label="anchor" href="#fastverse-024"></a></h2>
+<ul><li><p>Binaries of core fastverse packages (and a few others, including the <em>fastverse</em> package itself) can now be installed from a newly created <a href="https://fastverse.r-universe.dev/" class="external-link">fastverse r-universe</a>. This ensures that Windows and Mac binaries of the development versions of these packages are always available, independent of their CRAN status. These binaries can be installed using <code>install.packages("fastverse", repos = "https://fastverse.r-universe.dev/")</code>.</p></li>
+<li><p>Adding <em>geos</em> to suggested list (thanks to Grant McDermott for suggesting).</p></li>
+</ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.2.3" id="fastverse-023">fastverse 0.2.3<small>2022-02-17</small><a class="anchor" aria-label="anchor" href="#fastverse-023"></a></h2>
 <ul><li>Added <code>options(fastverse.install = TRUE)</code> which can be set before <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code>, triggering an internal call to <code><a href="../reference/fastverse_install.html">fastverse_install()</a></code> - to make sure any missing packages are installed before loading them. In a <code>.fastverse</code> configuration file placed inside a project directory, you can also place <code>_opt_fastverse.install = TRUE</code> before the packages list.</li>
 </ul></div>
     <div class="section level2">
