@@ -1,12 +1,15 @@
 # fastverse <img src='logo.png' width="350px" align="right" />
 
 <!-- badges: start -->
+[![R build status](https://github.com/SebKrantz/fastverse/workflows/R-CMD-check/badge.svg)](https://github.com/SebKrantz/fastverse/actions)
+[![fastverse status badge](https://fastverse.r-universe.dev/badges/fastverse)](https://fastverse.r-universe.dev)
 [![CRAN status](https://www.r-pkg.org/badges/version/fastverse)](https://cran.r-project.org/package=fastverse) 
 [![cran checks](https://cranchecks.info/badges/worst/fastverse)](https://cran.r-project.org/web/checks/check_results_fastverse.html)
-[![R build status](https://github.com/SebKrantz/fastverse/workflows/R-CMD-check/badge.svg)](https://github.com/SebKrantz/fastverse/actions)
-[![status](https://tinyverse.netlify.com/badge/fastverse)](https://CRAN.R-project.org/package=fastverse)
 ![downloads per month](http://cranlogs.r-pkg.org/badges/fastverse?color=blue)
 ![downloads](http://cranlogs.r-pkg.org/badges/grand-total/fastverse?color=blue)
+ [![Conda Version](https://img.shields.io/conda/vn/conda-forge/r-fastverse.svg)](https://anaconda.org/conda-forge/r-fastverse)
+ [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/r-fastverse.svg)](https://anaconda.org/conda-forge/r-fastverse)
+ [![status](https://tinyverse.netlify.com/badge/fastverse)](https://CRAN.R-project.org/package=fastverse)
 <!--
 [![Codecov test coverage](https://codecov.io/gh/SebKrantz/fastverse/branch/master/graph/badge.svg)](https://codecov.io/gh/SebKrantz/fastverse?branch=master) 
 [![minimal R version](https://img.shields.io/badge/R%3E%3D-2.10-6666ff.svg)](https://cran.r-project.org/) -->
@@ -44,17 +47,20 @@ The *fastverse* consists of 6 core packages (7 dependencies in total) which prov
 
 ## Installation
 
-Currently, there are 2 different versions of the *fastverse* on CRAN and GitHub. The GitHub version is recommended if you want to have *matrixStats* consistently preserve attributes of your matrices: it modifies functions in the *matrixStats* namespace making them preserve attributes consistently (and by default) whenever the *fastverse* is attached. This version was rejected by CRAN because it requires a call to `unlockBinding`. The CRAN version takes *matrixStats* as it is, which means most functions do not preserve attributes such as dimension names in computations. 
+Currently, there are 2 different versions of the *fastverse* on CRAN and GitHub/R-universe. The GitHub/R-universe version is recommended if you want to have *matrixStats* consistently preserve attributes of your matrices: it modifies functions in the *matrixStats* namespace making them preserve attributes consistently (and by default) whenever the *fastverse* is attached. This version was rejected by CRAN because it requires a call to `unlockBinding`. The CRAN version takes *matrixStats* as it is, which means most functions do not preserve attributes such as dimension names in computations. 
 
 ``` r
 # Install the CRAN version
 install.packages("fastverse")
 
-# Install the GitHub version (Requires Rtools)
+# Install (Windows/Mac binaries) from R-universe
+install.packages("fastverse", repos = "https://fastverse.r-universe.dev")
+
+# Install from GitHub (requires compilation)
 remotes::install_github("SebKrantz/fastverse")
 ```
-*Note* that the GitHub version is not a development version, development takes place in the 'development' branch. 
-*matrixStats* is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies. Until then CRAN and GitHub versions of the *fastverse* are released together. 
+*Note* that the GitHub/R-universe version is not a development version, development takes place in the 'development' branch. 
+*matrixStats* is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies. Until then CRAN and GitHub/R-universe versions of the *fastverse* are released together. 
 
 ## Extending the *fastverse*
 In addition, users have the option (via the `fastverse_entend()` function) to freely attach extension packages offering more specific functionality. The *fastverse* can by extended by any R package, either just for the current session or permanently: 
@@ -241,6 +247,8 @@ High-performing packages for different data manipulation and statistical computi
 #### Spatial (SP)
 
 - **[sf](https://github.com/r-spatial/sf/)**: Leading framework for geospatial computing and manipulation in R, offering a simple and flexible spatial data frame and supporting functionality (13 dependencies). 
+
+- **[geos](https://github.com/paleolimbot/geos/)**: Provides an R API to the [Open Source Geometry Engine (GEOS)](<https://trac.osgeo.org/geos/>) C-library and a vector format with which to efficiently store 'GEOS' geometries,  functions to extract information from, calculate relationships between, and transform geometries, and facilities to import/export geometry vectors to other spatial formats (2 dependencies).
 
 - **[stars](https://github.com/r-spatial/stars)**: Spatiotemporal data (raster and vector) in the form of dense arrays, with space and time being array dimensions (17 dependencies). 
 
