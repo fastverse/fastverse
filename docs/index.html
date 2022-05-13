@@ -49,7 +49,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fastverse</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
       </span>
     </div>
 
@@ -117,14 +117,17 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>Currently, there are 2 different versions of the <em>fastverse</em> on CRAN and GitHub. The GitHub version is recommended if you want to have <em>matrixStats</em> consistently preserve attributes of your matrices: it modifies functions in the <em>matrixStats</em> namespace making them preserve attributes consistently (and by default) whenever the <em>fastverse</em> is attached. This version was rejected by CRAN because it requires a call to <code>unlockBinding</code>. The CRAN version takes <em>matrixStats</em> as it is, which means most functions do not preserve attributes such as dimension names in computations.</p>
+<p>Currently, there are 2 different versions of the <em>fastverse</em> on CRAN and GitHub/R-universe. The GitHub/R-universe version is recommended if you want to have <em>matrixStats</em> consistently preserve attributes of your matrices: it modifies functions in the <em>matrixStats</em> namespace making them preserve attributes consistently (and by default) whenever the <em>fastverse</em> is attached. This version was rejected by CRAN because it requires a call to <code>unlockBinding</code>. The CRAN version takes <em>matrixStats</em> as it is, which means most functions do not preserve attributes such as dimension names in computations.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Install the CRAN version</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"fastverse"</span><span class="op">)</span>
 
-<span class="co"># Install the GitHub version (Requires Rtools)</span>
+<span class="co"># Install (Windows/Mac binaries) from R-universe</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"fastverse"</span>, repos <span class="op">=</span> <span class="st">"https://fastverse.r-universe.dev"</span><span class="op">)</span>
+
+<span class="co"># Install from GitHub (requires compilation)</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"SebKrantz/fastverse"</span><span class="op">)</span></code></pre></div>
-<p><em>Note</em> that the GitHub version is not a development version, development takes place in the ‘development’ branch. <em>matrixStats</em> is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies. Until then CRAN and GitHub versions of the <em>fastverse</em> are released together.</p>
+<p><em>Note</em> that the GitHub/R-universe version is not a development version, development takes place in the ‘development’ branch. <em>matrixStats</em> is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies. Until then CRAN and GitHub/R-universe versions of the <em>fastverse</em> are released together.</p>
 </div>
 <div class="section level2">
 <h2 id="extending-the-fastverse">Extending the <em>fastverse</em>
@@ -307,6 +310,7 @@ based on the ‘integer64’ class (7 dependencies).</p></li>
 </h4>
 <ul>
 <li><p><strong><a href="https://github.com/r-spatial/sf/" class="external-link">sf</a></strong>: Leading framework for geospatial computing and manipulation in R, offering a simple and flexible spatial data frame and supporting functionality (13 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/paleolimbot/geos/" class="external-link">geos</a></strong>: Provides an R API to the <a href="https://trac.osgeo.org/geos/" class="external-link">Open Source Geometry Engine (GEOS)</a> C-library and a vector format with which to efficiently store ‘GEOS’ geometries, functions to extract information from, calculate relationships between, and transform geometries, and facilities to import/export geometry vectors to other spatial formats (2 dependencies).</p></li>
 <li><p><strong><a href="https://github.com/r-spatial/stars" class="external-link">stars</a></strong>: Spatiotemporal data (raster and vector) in the form of dense arrays, with space and time being array dimensions (17 dependencies).</p></li>
 <li>
 <p><strong><a href="https://github.com/rspatial/terra" class="external-link">terra</a></strong>: Methods for spatial data analysis with raster and vector data. Processing of very large (out of memory) files is supported (4 dependencies).</p>
@@ -407,9 +411,12 @@ based on the ‘integer64’ class (7 dependencies).</p></li>
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://github.com/SebKrantz/fastverse/actions" class="external-link"><img src="https://github.com/SebKrantz/fastverse/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://fastverse.r-universe.dev" class="external-link"><img src="https://fastverse.r-universe.dev/badges/fastverse" alt="fastverse status badge"></a></li>
 <li><a href="https://cran.r-project.org/package=fastverse" class="external-link"><img src="https://www.r-pkg.org/badges/version/fastverse" alt="CRAN status"></a></li>
 <li><a href="https://cran.r-project.org/web/checks/check_results_fastverse.html" class="external-link"><img src="https://cranchecks.info/badges/worst/fastverse" alt="cran checks"></a></li>
-<li><a href="https://github.com/SebKrantz/fastverse/actions" class="external-link"><img src="https://github.com/SebKrantz/fastverse/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://anaconda.org/conda-forge/r-fastverse" class="external-link"><img src="https://img.shields.io/conda/vn/conda-forge/r-fastverse.svg" alt="Conda Version"></a></li>
+<li><a href="https://anaconda.org/conda-forge/r-fastverse" class="external-link"><img src="https://img.shields.io/conda/dn/conda-forge/r-fastverse.svg" alt="Conda Downloads"></a></li>
 <li><a href="https://CRAN.R-project.org/package=fastverse" class="external-link"><img src="https://tinyverse.netlify.com/badge/fastverse" alt="status"></a></li>
 </ul>
 </div>

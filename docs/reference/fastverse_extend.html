@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastverse</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
       </span>
     </div>
 
@@ -74,7 +74,7 @@
 <li><p><code>"DT"</code>: Dates and Times. Attaches <em>lubridate</em>, <em>anytime</em>, <em>fasttime</em>, <em>nanotime</em>, <em>clock</em>, and <em>timechange</em>.</p></li>
 <li><p><code>"ST"</code>: Strings. Attaches <em>stringr</em>, <em>stringi</em>, <em>snakecase</em>, <em>stringfish</em> and <em>stringdist</em>.</p></li>
 <li><p><code>"SC"</code>: Statistics and Computing. Attaches <em>Rfast</em>, <em>Rfast2</em>, <em>parallelDist</em>, <em>coop</em>, <em>MatrixExtra</em>, <em>rsparse</em> and <em>rrapply</em>. <!-- % \emph{fastDummies},  --></p></li>
-<li><p><code>"SP"</code>: Spatial. Attaches <em>sf</em>, <em>stars</em> and <em>terra</em>.</p></li>
+<li><p><code>"SP"</code>: Spatial. Attaches <em>sf</em>, <em>geos</em>, <em>stars</em> and <em>terra</em>.</p></li>
 <li><p><code>"VI"</code>: Visualization. Attaches <em>dygraphs</em>, <em>ggplot2</em>, <em>scales</em>, <em>lattice</em> and <em>grid</em>. <!-- % \emph{RColorBrewer} and \emph{viridis}. --></p></li>
 <li><p><code>"TV"</code>: Tidyverse-Like. Attaches <em>tidytable</em>, <em>tidyfast</em>, <em>tidyfst</em>, <em>tidyft</em> and <em>maditr</em>. <!-- % , \emph{table.express} and \emph{dtplyr}, import dplyr --></p></li>
 <li><p><code>"IO"</code>: Input-Output. Attaches <em>qs</em> and <em>arrow</em>.</p></li>
@@ -111,13 +111,13 @@ is a character vector of package names, before calling <code><a href="https://se
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
 <span class="r-in"><span class="va">ex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"fastverse.extend"</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">fastverse_extend</span><span class="op">(</span><span class="va">xts</span>, <span class="va">stringi</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> -- <span style="font-weight: bold;">Attaching extension packages</span> ----------------------------- <span style="color: #0087FF;">fastverse</span> 0.2.3 --</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #0087FF;">v</span> <span style="color: #FF0087;">xts    </span> 0.12.1     <span style="color: #0087FF;">v</span> <span style="color: #FF0087;">stringi</span> 1.7.5 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> -- <span style="font-weight: bold;">Attaching extension packages</span> ----------------------------- <span style="color: #0087FF;">fastverse</span> 0.2.4 --</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #0087FF;">v</span> <span style="color: #FF0087;">xts    </span> 0.12.1     <span style="color: #0087FF;">v</span> <span style="color: #FF0087;">stringi</span> 1.7.6 </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> -- <span style="font-weight: bold;">Conflicts</span> ------------------------------------------ fastverse_conflicts() --</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">x</span> <span style="color: #0000BB;">xts</span>::<span style="color: #00BB00;">first()</span> masks <span style="color: #0000BB;">data.table</span>::first()</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">x</span> <span style="color: #0000BB;">xts</span>::<span style="color: #00BB00;">last()</span>  masks <span style="color: #0000BB;">data.table</span>::last()</span>
 <span class="r-in"><span class="fu">fastverse_extend</span><span class="op">(</span><span class="va">fasttime</span>, topics <span class="op">=</span> <span class="st">"VI"</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> -- <span style="font-weight: bold;">Attaching extension packages</span> ----------------------------- <span style="color: #0087FF;">fastverse</span> 0.2.3 --</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> -- <span style="font-weight: bold;">Attaching extension packages</span> ----------------------------- <span style="color: #0087FF;">fastverse</span> 0.2.4 --</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #0087FF;">v</span> <span style="color: #FF0087;">fasttime</span> 1.0.2       <span style="color: #0087FF;">v</span> <span style="color: #FF0087;">scales  </span> 1.1.1  </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #0087FF;">v</span> <span style="color: #FF0087;">dygraphs</span> 1.1.1.6     <span style="color: #0087FF;">v</span> <span style="color: #FF0087;">lattice </span> 0.20.44</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #0087FF;">v</span> <span style="color: #FF0087;">ggplot2 </span> 3.3.5       <span style="color: #0087FF;">v</span> <span style="color: #FF0087;">grid    </span> 4.1.1  </span>
