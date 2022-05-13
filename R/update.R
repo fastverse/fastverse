@@ -173,7 +173,7 @@ fastverse_sitrep <- function(...) {
     cat(rule("Extension packages"), "\n", packages[deps %in% ex])
     pkg <- c(pkg, ex)
   }
-  if(missing(...) || !any(cdl <- ...names() == "check.deps") || ...elt(which(cdl))) 
+  if(missing(...) || !any(names(dots <- list(...)) == "check.deps") || dots[["check.deps"]]) 
     cat(rule("Dependencies"), "\n", packages[!deps %in% pkg])
   
   invisible()

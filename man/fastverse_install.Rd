@@ -20,7 +20,7 @@ fastverse_install(..., only.missing = TRUE, install = TRUE)
 This function (by default) checks if any \emph{fastverse} package is missing and installs the missing package(s).
 }
 \note{
-There is also the possibility to set \code{options(fastverse.install = TRUE)} before \code{library(collapse)}, which will call \code{fastverse_install()} before loading any packages to make sure all packages are available.
+There is also the possibility to set \code{options(fastverse.install = TRUE)} before \code{library(fastverse)}, which will call \code{fastverse_install()} before loading any packages to make sure all packages are available.
 If you are using a \code{.fastverse} configuration file inside a project (see vignette), you can also place \code{_opt_fastverse.install = TRUE} before the list of packages in that file.
 }
 \seealso{
