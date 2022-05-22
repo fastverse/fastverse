@@ -2,7 +2,7 @@
 
 * Binaries of core fastverse packages (and a few others, including the *fastverse* package itself) can now be installed from a newly created [fastverse r-universe](https://fastverse.r-universe.dev/). This ensures that Windows and Mac binaries of the development versions of these packages are always available, independent of their CRAN status. These binaries can be installed using `install.packages("fastverse", repos = "https://fastverse.r-universe.dev/")`.
 
-* Adding *geos* to suggested list (thanks to Grant McDermott for suggesting). 
+* Adding *geos* and *dqrng* to suggested list (thanks to Grant McDermott and Alexander Fisher for suggesting). 
 
 # fastverse 0.2.3
 
