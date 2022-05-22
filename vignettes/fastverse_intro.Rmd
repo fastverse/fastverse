@@ -52,8 +52,8 @@ fastverse_update()
 
 A key feature of the *fastverse* is that it can liberally be extended with other packages that can be loaded and managed using the tools this package provides. 
 <!-- 
-While placing a clear emphasis on high-quality, high-performance and low-dependency code, as well as statistical rigor and broad based compatibility with the classes and objects most used in R - which warranted a selection of core packages and a number of [suggested extensions](<https://sebkrantz.github.io/fastverse/#suggested-extensions>) - the *fastverse* is not particularly opinionated about coding style, function nomenclature, or the format of inputs and outputs. -->
-Users are encouraged to make of use the features described in the remainder of this vignette to extend the *fastverse* or even create 'verses' of packages that suit their personal analysis needs. A selection of [suggested packages](<https://sebkrantz.github.io/fastverse/#suggested-extensions>) is provided on the website^[Let me know about other packages you think should be featured there.]. 
+While placing a clear emphasis on high-quality, high-performance and low-dependency code, as well as statistical rigor and broad based compatibility with the classes and objects most used in R - which warranted a selection of core packages and a number of [suggested extensions](<https://fastverse.github.io/fastverse/#suggested-extensions>) - the *fastverse* is not particularly opinionated about coding style, function nomenclature, or the format of inputs and outputs. -->
+Users are encouraged to make of use the features described in the remainder of this vignette to extend the *fastverse* or even create 'verses' of packages that suit their personal analysis needs. A selection of [suggested packages](<https://fastverse.github.io/fastverse/#suggested-extensions>) is provided on the website^[Let me know about other packages you think should be featured there.]. 
 
 <!-- These extensions can then be loaded and managed by the *fastverse* package, just like the core packages. -->
 
@@ -213,7 +213,7 @@ fastverse_child(
   theme = "tidyverse")
 ```
 
-By default (`install = TRUE`, `keep.dir = TRUE`) the package is installed and a source directory is created under dir/name, allowing further edits to the package. Such *fastverse* children inherit 90% of the functionality of the *fastverse* package: they are not permanently globally extensible and can not bear children themselves, but can be configured for projects^[Using, in this case, a `.tsverse` config file.] and extended in the session. The function uses a prepared 'child' branch of the [GitHub repository](<https://github.com/SebKrantz/fastverse>), and thus does not require any further packages such as `devtools`.  
+By default (`install = TRUE`, `keep.dir = TRUE`) the package is installed and a source directory is created under dir/name, allowing further edits to the package. Such *fastverse* children inherit 90% of the functionality of the *fastverse* package: they are not permanently globally extensible and can not bear children themselves, but can be configured for projects^[Using, in this case, a `.tsverse` config file.] and extended in the session. The function uses a prepared 'child' branch of the [GitHub repository](<https://github.com/fastverse/fastverse>), and thus does not require any further packages such as `devtools`.  
 
 ## Dependencies, Situational Reports and Updating
 
@@ -252,7 +252,7 @@ If you only want to omit a function clash check when calling `fastverse_extend`,
 
 The *fastverse* was developed principally for 2 reasons: to promote quality high-performance software development for R, and to provide a flexible approach to package loading and management in R, particularly for users wishing to combine various high-performance packages in statistical workflows. To the extent that high-performance software development in R continues to prioritize low-dependency and stable APIs, complex statistical and project workflows can be developed without sophisticated package management solutions.  
 
-<!-- This vignette introduced the key features of the package. Suggested *fastverse* extension packages are introduced in the [README](<https://sebkrantz.github.io/fastverse/#suggested-extensions>) file. -->
+<!-- This vignette introduced the key features of the package. Suggested *fastverse* extension packages are introduced in the [README](<https://fastverse.github.io/fastverse/#suggested-extensions>) file. -->
 
 ```{r, eval=NCRAN}
 # Resetting the fastverse to defaults (clearing all permanent extensions and options)

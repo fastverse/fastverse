@@ -32,7 +32,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/SebKrantz/fastverse/" class="external-link">
+  <a href="https://github.com/fastverse/fastverse/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -47,7 +47,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
       <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href="https://github.com/SebKrantz/fastverse/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/fastverse/fastverse/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
     <div class="section level2">
@@ -57,12 +57,12 @@
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.3" id="fastverse-023">fastverse 0.2.3<small>2022-02-17</small><a class="anchor" aria-label="anchor" href="#fastverse-023"></a></h2>
-<ul><li>Added <code>options(fastverse.install = TRUE)</code> which can be set before <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code>, triggering an internal call to <code><a href="../reference/fastverse_install.html">fastverse_install()</a></code> - to make sure any missing packages are installed before loading them. In a <code>.fastverse</code> configuration file placed inside a project directory, you can also place <code>_opt_fastverse.install = TRUE</code> before the packages list.</li>
+<ul><li>Added <code>options(fastverse.install = TRUE)</code> which can be set before <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code>, triggering an internal call to <code><a href="../reference/fastverse_install.html">fastverse_install()</a></code> - to make sure any missing packages are installed before loading them. In a <code>.fastverse</code> configuration file placed inside a project directory, you can also place <code>_opt_fastverse.install = TRUE</code> before the packages list.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.2" id="fastverse-022">fastverse 0.2.2<small>2022-02-16</small><a class="anchor" aria-label="anchor" href="#fastverse-022"></a></h2>
 <ul><li><p>Added possibility to set global options and environment variables in project configuration files. See Vignette for details.</p></li>
-<li><p>Added new packages to <a href="https://sebkrantz.github.io/fastverse/#suggested-extensions" class="external-link">suggested packages list</a>: <em>rrapply</em>, <em>MatrixExtra</em> and <em>rsparse</em>.</p></li>
+<li><p>Added new packages to <a href="https://fastverse.github.io/fastverse/#suggested-extensions" class="external-link">suggested packages list</a>: <em>rrapply</em>, <em>MatrixExtra</em> and <em>rsparse</em>.</p></li>
 <li><p>Package does not import any helper functions from <em>collapse</em> anymore, so that hard detaching with <code>fastverse_detach(unload = TRUE)</code> is possible for <em>collapse</em> as well.</p></li>
 </ul></div>
     <div class="section level2">
@@ -73,7 +73,7 @@
 <h2 class="page-header" data-toc-text="0.2.0" id="fastverse-020">fastverse 0.2.0<a class="anchor" aria-label="anchor" href="#fastverse-020"></a></h2>
 <ul><li><p>Making sure no files are written to disc on CRAN servers.</p></li>
 <li><p><code><a href="../reference/fastverse_update.html">fastverse_update()</a></code> has an additional argument <code>install</code>. The default is <code>install = FALSE</code>, which will just print the installation command as before, asking you to run it in a clean R session, whereas <code>install = TRUE</code> will instead execute the command.</p></li>
-<li><p>Added a function <code><a href="../reference/fastverse_install.html">fastverse_install()</a></code> to check package availability and install any missing <em>fastverse</em> packages before calling <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code>. Useful especially for custom <em>fastverse</em> configurations (inside projects) to safeguard the availability of packages.</p></li>
+<li><p>Added a function <code><a href="../reference/fastverse_install.html">fastverse_install()</a></code> to check package availability and install any missing <em>fastverse</em> packages before calling <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code>. Useful especially for custom <em>fastverse</em> configurations (inside projects) to safeguard the availability of packages.</p></li>
 <li><p>Added a function <code><a href="../reference/fastverse_child.html">fastverse_child()</a></code> (following a request), which allows users to create a wholly different package-verse like the <em>fastverse</em> - under a different name and with different core packages. Such <em>fastverse</em> children inherit 90% of the functionality of the <em>fastverse</em> package (e.g. they are not permanently globally extensible, but can be configured for projects and extended in the session). Childbearing requires an internet connection but no additional packages (like <code>devtools</code>).</p></li>
 <li><p>Export utility functions <code>is_installed</code> and <code>is_attached</code> to check if packages are installed / attached.</p></li>
 <li><p>Several additions to suggested extensions list: <code>qs</code>, <code>arrow</code>, <code>stringdist</code>, <code>stringfish</code>, <code>nanotime</code>.</p></li>

@@ -67,7 +67,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/SebKrantz/fastverse/" class="external-link">
+  <a href="https://github.com/fastverse/fastverse/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -97,7 +97,7 @@
 <li>Reducing the number of dependencies required for advanced computing in R</li>
 </ul>
 <p>The <code>fastverse</code> package integrates, and provides utilities for easy installation, loading and management of these packages. It is an extensible framework that allows users to (permanently) add or remove packages to create a ‘verse’ of packages suiting their general needs. Separate ‘verses’ can also be created.</p>
-<p><em>fastverse</em> packages are jointly attached with <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code>, and several functions starting with <code>fastverse_</code> help manage dependencies, detect namespace conflicts, add/remove packages from the <em>fastverse</em> and update packages.</p>
+<p><em>fastverse</em> packages are jointly attached with <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code>, and several functions starting with <code>fastverse_</code> help manage dependencies, detect namespace conflicts, add/remove packages from the <em>fastverse</em> and update packages.</p>
 <div class="section level2">
 <h2 id="core-packages">Core Packages<a class="anchor" aria-label="anchor" href="#core-packages"></a>
 </h2>
@@ -126,7 +126,7 @@
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"fastverse"</span>, repos <span class="op">=</span> <span class="st">"https://fastverse.r-universe.dev"</span><span class="op">)</span>
 
 <span class="co"># Install from GitHub (requires compilation)</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"SebKrantz/fastverse"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"fastverse/fastverse"</span><span class="op">)</span></code></pre></div>
 <p><em>Note</em> that the GitHub/R-universe version is not a development version, development takes place in the ‘development’ branch. <em>matrixStats</em> is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies. Until then CRAN and GitHub/R-universe versions of the <em>fastverse</em> are released together.</p>
 </div>
 <div class="section level2">
@@ -136,7 +136,7 @@
 <p>In addition, users have the option (via the <code>fastverse_entend()</code> function) to freely attach extension packages offering more specific functionality. The <em>fastverse</em> can by extended by any R package, either just for the current session or permanently:</p>
 <details><summary><b><a style="cursor: pointer;">Click here to expand </a></b>
 </summary><pre class="fansi fansi-message"><code class="r"><span class="co"># Loads and attaches the core fastverse packages</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sebkrantz.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span></code>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fastverse.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span></code>
 <code># -- <span style="font-weight: bold;">Attaching packages</span><span> --------------------------------------- </span><span style="color: #0087FF;">fastverse</span><span> 0.1.5 --
 </span></code><code># <span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">data.table </span><span> 1.14.0     </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">collapse   </span><span> 1.6.5 
 # </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">magrittr   </span><span> 2.0.1      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">matrixStats</span><span> 0.59.0
@@ -240,7 +240,7 @@ fastverse_reset()</a></code>
 </pre>
 </details><p>
 </p>
-<p>In addition to a global customization, separate <em>fastverse</em>’s can be created for projects by adding a <code>.fastverse</code> config file in the project directory and listing packages there. Only these packages will then be loaded and managed with <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code> in the project.</p>
+<p>In addition to a global customization, separate <em>fastverse</em>’s can be created for projects by adding a <code>.fastverse</code> config file in the project directory and listing packages there. Only these packages will then be loaded and managed with <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code> in the project.</p>
 <div class="section level3">
 <h3 id="suggested-extensions">Suggested Extensions<a class="anchor" aria-label="anchor" href="#suggested-extensions"></a>
 </h3>
@@ -381,8 +381,8 @@ based on the ‘integer64’ class (7 dependencies).</p></li>
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li><a href="https://cloud.r-project.org/package=fastverse" class="external-link">View on CRAN</a></li>
-<li><a href="https://github.com/SebKrantz/fastverse/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/SebKrantz/fastverse/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/fastverse/fastverse/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/fastverse/fastverse/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -412,7 +412,7 @@ based on the ‘integer64’ class (7 dependencies).</p></li>
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/SebKrantz/fastverse/actions" class="external-link"><img src="https://github.com/SebKrantz/fastverse/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://github.com/fastverse/fastverse/actions" class="external-link"><img src="https://github.com/fastverse/fastverse/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://fastverse.r-universe.dev" class="external-link"><img src="https://fastverse.r-universe.dev/badges/fastverse" alt="fastverse status badge"></a></li>
 <li><a href="https://cran.r-project.org/package=fastverse" class="external-link"><img src="https://www.r-pkg.org/badges/version/fastverse" alt="CRAN status"></a></li>
 <li><a href="https://cran.r-project.org/web/checks/check_results_fastverse.html" class="external-link"><img src="https://cranchecks.info/badges/worst/fastverse" alt="cran checks"></a></li>

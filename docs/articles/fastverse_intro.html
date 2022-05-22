@@ -58,7 +58,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/SebKrantz/fastverse/" class="external-link">
+  <a href="https://github.com/fastverse/fastverse/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -83,7 +83,7 @@
             
             <h4 data-toc-skip class="date">2022-05-14</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/SebKrantz/fastverse/blob/HEAD/vignettes/fastverse_intro.Rmd" class="external-link"><code>vignettes/fastverse_intro.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/fastverse/fastverse/blob/HEAD/vignettes/fastverse_intro.Rmd" class="external-link"><code>vignettes/fastverse_intro.Rmd</code></a></small>
       <div class="hidden name"><code>fastverse_intro.Rmd</code></div>
 
     </div>
@@ -96,9 +96,9 @@
 <li>Enabling more complex statistical and data manipulation operations in R</li>
 <li>Reducing the number of dependencies required for advanced computing in R</li>
 </ul>
-<p>The <em>fastverse</em> installs 6 core packages (<em>data.table</em>, <em>collapse</em>, <em>matrixStats</em>, <em>kit</em>, <em>magrittr</em> and <em>fst</em>) that are (by default) harmonized and attached with <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code>. These packages were selected because they provide high quality compiled code for most common statistical and data manipulation tasks, have carefully managed APIs, jointly depend only on base R and <em>Rcpp</em>, and work remarkably well together.</p>
+<p>The <em>fastverse</em> installs 6 core packages (<em>data.table</em>, <em>collapse</em>, <em>matrixStats</em>, <em>kit</em>, <em>magrittr</em> and <em>fst</em>) that are (by default) harmonized and attached with <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code>. These packages were selected because they provide high quality compiled code for most common statistical and data manipulation tasks, have carefully managed APIs, jointly depend only on base R and <em>Rcpp</em>, and work remarkably well together.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sebkrantz.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fastverse.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span>
 <span class="co"># -- Attaching packages --------------------------------------- fastverse 0.2.4 --</span>
 <span class="co"># v data.table  1.14.2     v collapse    1.8.1 </span>
 <span class="co"># v magrittr    2.0.2      v matrixStats 0.61.0</span>
@@ -116,12 +116,12 @@
 <span class="co"># Start a clean R session then run:</span>
 <span class="co"># install.packages(c("magrittr", "matrixStats", "fstcore"))</span></code></pre></div>
 <p>A key feature of the <em>fastverse</em> is that it can liberally be extended with other packages that can be loaded and managed using the tools this package provides. <!-- 
-While placing a clear emphasis on high-quality, high-performance and low-dependency code, as well as statistical rigor and broad based compatibility with the classes and objects most used in R - which warranted a selection of core packages and a number of [suggested extensions](<https://sebkrantz.github.io/fastverse/#suggested-extensions>) - the *fastverse* is not particularly opinionated about coding style, function nomenclature, or the format of inputs and outputs. --> Users are encouraged to make of use the features described in the remainder of this vignette to extend the <em>fastverse</em> or even create ‘verses’ of packages that suit their personal analysis needs. A selection of <a href="https://sebkrantz.github.io/fastverse/#suggested-extensions" class="external-link">suggested packages</a> is provided on the website<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+While placing a clear emphasis on high-quality, high-performance and low-dependency code, as well as statistical rigor and broad based compatibility with the classes and objects most used in R - which warranted a selection of core packages and a number of [suggested extensions](<https://fastverse.github.io/fastverse/#suggested-extensions>) - the *fastverse* is not particularly opinionated about coding style, function nomenclature, or the format of inputs and outputs. --> Users are encouraged to make of use the features described in the remainder of this vignette to extend the <em>fastverse</em> or even create ‘verses’ of packages that suit their personal analysis needs. A selection of <a href="https://fastverse.github.io/fastverse/#suggested-extensions" class="external-link">suggested packages</a> is provided on the website<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
 <!-- These extensions can then be loaded and managed by the *fastverse* package, just like the core packages. -->
 <div class="section level2">
 <h2 id="extending-the-fastverse-for-the-session">Extending the <em>fastverse</em> for the Session<a class="anchor" aria-label="anchor" href="#extending-the-fastverse-for-the-session"></a>
 </h2>
-<p>After the core packages have been attached with <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code>, it is possible to extend the <em>fastverse</em> for the current session by adding any number of additional packages with <code><a href="../reference/fastverse_extend.html">fastverse_extend()</a></code>. This will attach the packages and, by default, check for namespace clashes with attached packages, as well as among the added packages.</p>
+<p>After the core packages have been attached with <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code>, it is possible to extend the <em>fastverse</em> for the current session by adding any number of additional packages with <code><a href="../reference/fastverse_extend.html">fastverse_extend()</a></code>. This will attach the packages and, by default, check for namespace clashes with attached packages, as well as among the added packages.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Extend the fastverse for the session</span>
 <span class="fu"><a href="../reference/fastverse_extend.html">fastverse_extend</a></span><span class="op">(</span><span class="va">xts</span>, <span class="va">roll</span>, <span class="va">fasttime</span><span class="op">)</span>
@@ -153,7 +153,7 @@ While placing a clear emphasis on high-quality, high-performance and low-depende
 <span class="co"># [1] "xts"      "roll"     "fasttime"</span>
 
 <span class="co"># Thus attaching the fastverse again will include them</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sebkrantz.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fastverse.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span>
 <span class="co"># -- Attaching packages --------------------------------------- fastverse 0.2.4 --</span>
 <span class="co"># v data.table  1.14.2     v fst         0.9.8 </span>
 <span class="co"># v magrittr    2.0.2      v xts         0.12.1</span>
@@ -173,7 +173,7 @@ While placing a clear emphasis on high-quality, high-performance and low-depende
 <p>Since <code>options("fastverse.extend")</code> keeps track of which packages were added to the <em>fastverse</em> for the current session, it is also possible to set it before loading the <em>fastverse</em> e.g. </p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>fastverse.extend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dygraphs"</span>, <span class="st">"tidyfast"</span><span class="op">)</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sebkrantz.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fastverse.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span>
 <span class="co"># -- Attaching packages --------------------------------------- fastverse 0.2.4 --</span>
 <span class="co"># v data.table  1.14.2      v matrixStats 0.61.0 </span>
 <span class="co"># v magrittr    2.0.2       v fst         0.9.8  </span>
@@ -189,7 +189,7 @@ While placing a clear emphasis on high-quality, high-performance and low-depende
 <p>For example, suppose most of my work involves time series analysis, and I would like to add <em>xts</em>, <em>zoo</em>, <em>roll</em>, and <em>dygraphs</em> to my <em>fastverse</em>. Let’s say I also don’t really use the <em>fst</em> file format, and I don’t really need <em>matrixStats</em> either as I can do most of the time series statistics I need with base R and <em>collapse</em>. Let’s finally say that I don’t want <code><a href="https://rdrr.io/pkg/xts/man/first.html" class="external-link">xts::first</a></code> and <code><a href="https://rdrr.io/pkg/xts/man/first.html" class="external-link">xts::last</a></code> to mask <code><a href="https://Rdatatable.gitlab.io/data.table/reference/last.html" class="external-link">data.table::first</a></code> and <code><a href="https://Rdatatable.gitlab.io/data.table/reference/last.html" class="external-link">data.table::last</a></code>.</p>
 <p>Then I could permanently modify my <em>fastverse</em> as follows<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sebkrantz.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fastverse.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span>
 <span class="co"># -- Attaching packages --------------------------------------- fastverse 0.2.4 --</span>
 <span class="co"># v data.table  1.14.2     v collapse    1.8.1 </span>
 <span class="co"># v magrittr    2.0.2      v matrixStats 0.61.0</span>
@@ -235,7 +235,7 @@ While placing a clear emphasis on high-quality, high-performance and low-depende
 <code class="sourceCode R"><span class="co"># detach all packages and clear all options</span>
 <span class="fu"><a href="../reference/fastverse_detach.html">fastverse_detach</a></span><span class="op">(</span>session <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sebkrantz.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span> 
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fastverse.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span> 
 <span class="co"># -- Attaching packages --------------------------------------- fastverse 0.2.4 --</span>
 <span class="co"># v magrittr   2.0.2       v zoo        1.8.9  </span>
 <span class="co"># v kit        0.0.11      v roll       1.1.6  </span>
@@ -270,8 +270,8 @@ While placing a clear emphasis on high-quality, high-performance and low-depende
 <div class="section level2">
 <h2 id="custom-fastverse-configurations-for-projects">Custom <em>fastverse</em> Configurations for Projects<a class="anchor" aria-label="anchor" href="#custom-fastverse-configurations-for-projects"></a>
 </h2>
-<p>You can put together a custom collection of packages for a project, and load / manage them with <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code>.</p>
-<p>For this you need to include a configuration file named <code>.fastverse</code> (no file extension) inside a project directory, and place inside that file the names of packages to be loaded when calling <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>. Note that <strong>all</strong> packages to be loaded as core <em>fastverse</em> for your project need to be included in that file, in the order they should be attached.</p>
+<p>You can put together a custom collection of packages for a project, and load / manage them with <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code>.</p>
+<p>For this you need to include a configuration file named <code>.fastverse</code> (no file extension) inside a project directory, and place inside that file the names of packages to be loaded when calling <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>. Note that <strong>all</strong> packages to be loaded as core <em>fastverse</em> for your project need to be included in that file, in the order they should be attached.</p>
 <p>In addition, you can set global options and environment variables, either before or after the list of packages. Options must be prefixed with <code>_opt_</code> and environment variables with <code>_env_</code>, and either must be placed on separate lines. For example, including a <code>.fastverse</code> script like this:</p>
 <pre><code>_opt_collapse_mask = c("manip", "helper)
 _opt_fastverse.install = TRUE
@@ -282,12 +282,12 @@ ranger, robustbase, decompr
 _opt_max.print = 100
 _opt_kit.nThread = 4
 _env_NCRAN = TRUE</code></pre>
-<p>in a project directory, and placing <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code> at the top of an R script in the project will first set <code>options(collapse_mask = c("manip", "helper), fastverse.install = TRUE)</code><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>, then attach all the packages in the order provided, and then set <code>options(max.print = 100, kit.nThread = 4)</code> and <code>Sys.setenv(NCRAN = TRUE)</code>. Note that packages can be spread across multiple lines, but need to be together i.e. they cannot be separated by options.</p>
+<p>in a project directory, and placing <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code> at the top of an R script in the project will first set <code>options(collapse_mask = c("manip", "helper), fastverse.install = TRUE)</code><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>, then attach all the packages in the order provided, and then set <code>options(max.print = 100, kit.nThread = 4)</code> and <code>Sys.setenv(NCRAN = TRUE)</code>. Note that packages can be spread across multiple lines, but need to be together i.e. they cannot be separated by options.</p>
 <p>Using the <em>fastverse</em> to jointly load important packages and set important options can facilitate package management inside projects and serve as a bridge between loading packages individually and using more rigorous package and namespace management solutions such as <a href="https://github.com/rstudio/renv" class="external-link">renv</a>, <a href="https://github.com/r-lib/conflicted" class="external-link">conflicted</a>, <a href="https://github.com/klmr/box" class="external-link">box</a> or <a href="https://github.com/rticulate/import" class="external-link">import</a>.</p>
 <p>At the most basic level, loading packages with the <em>fastverse</em> displays the package versions and checks namespace conflicts, helping you spot issues that might arise as packages are updated. It also allows you to easily check the dependencies and update status of packages used in your project with <code><a href="../reference/fastverse_sitrep.html">fastverse_sitrep()</a></code>, and update if necessary with <code><a href="../reference/fastverse_update.html">fastverse_update()</a></code>.</p>
 <!-- 
 You additionally have the option to call `fastverse::fastverse_install()` at the beginning of a project file before calling `library(fastverse)`. This will execute a swift check if all packages listed in `.fastverse` are available, and, by default, install any missing packages needed for the project. -->
-<p>Using a config file in a project will ignore any global configuration as discussed in the previous section. You can still extend the <em>fastverse</em> inside a project session using <code>fastverse_extend</code>, or <code>options("fastvers.extend")</code> before <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code><a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>.</p>
+<p>Using a config file in a project will ignore any global configuration as discussed in the previous section. You can still extend the <em>fastverse</em> inside a project session using <code>fastverse_extend</code>, or <code>options("fastvers.extend")</code> before <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code><a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>.</p>
 </div>
 <div class="section level2">
 <h2 id="creating-separate-package-verses">Creating Separate Package-Verses<a class="anchor" aria-label="anchor" href="#creating-separate-package-verses"></a>
@@ -301,7 +301,7 @@ You additionally have the option to call `fastverse::fastverse_install()` at the
   maintainer <span class="op">=</span> <span class="st">'person("GivenName", "FamilyName", role = "cre", email = "your@email.com")'</span>,
   dir <span class="op">=</span> <span class="st">"C:/Users/.../Documents"</span>, 
   theme <span class="op">=</span> <span class="st">"tidyverse"</span><span class="op">)</span></code></pre></div>
-<p>By default (<code>install = TRUE</code>, <code>keep.dir = TRUE</code>) the package is installed and a source directory is created under dir/name, allowing further edits to the package. Such <em>fastverse</em> children inherit 90% of the functionality of the <em>fastverse</em> package: they are not permanently globally extensible and can not bear children themselves, but can be configured for projects<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a> and extended in the session. The function uses a prepared ‘child’ branch of the <a href="https://github.com/SebKrantz/fastverse" class="external-link">GitHub repository</a>, and thus does not require any further packages such as <code>devtools</code>.</p>
+<p>By default (<code>install = TRUE</code>, <code>keep.dir = TRUE</code>) the package is installed and a source directory is created under dir/name, allowing further edits to the package. Such <em>fastverse</em> children inherit 90% of the functionality of the <em>fastverse</em> package: they are not permanently globally extensible and can not bear children themselves, but can be configured for projects<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a> and extended in the session. The function uses a prepared ‘child’ branch of the <a href="https://github.com/fastverse/fastverse" class="external-link">GitHub repository</a>, and thus does not require any further packages such as <code>devtools</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="dependencies-situational-reports-and-updating">Dependencies, Situational Reports and Updating<a class="anchor" aria-label="anchor" href="#dependencies-situational-reports-and-updating"></a>
@@ -370,11 +370,11 @@ You additionally have the option to call `fastverse::fastverse_install()` at the
 <div class="section level2">
 <h2 id="other-fastverse-options">Other <em>fastverse</em> Options<a class="anchor" aria-label="anchor" href="#other-fastverse-options"></a>
 </h2>
-<p>Apart from <code>"fastverse.extend"</code>, the <em>fastverse</em> also has options <code>"fastverse.install"</code>, <code>"fastverse.styling"</code> and <code>"fastverse.quiet"</code><a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>. Setting <code>options(fastverse.install = TRUE)</code> before <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code> will make sure any packages missing on your system will be installed beforehand. This can also be done ex-post using the <code><a href="../reference/fastverse_install.html">fastverse_install()</a></code> function. Setting <code>options(fastverse.styling = FALSE)</code> will disable coloured text printed to the R console (as done for this vignette). <code>options(fastverse.quiet = TRUE)</code> will omit any messages printed from <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code> and <code><a href="../reference/fastverse_extend.html">fastverse_extend()</a></code>:</p>
+<p>Apart from <code>"fastverse.extend"</code>, the <em>fastverse</em> also has options <code>"fastverse.install"</code>, <code>"fastverse.styling"</code> and <code>"fastverse.quiet"</code><a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>. Setting <code>options(fastverse.install = TRUE)</code> before <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code> will make sure any packages missing on your system will be installed beforehand. This can also be done ex-post using the <code><a href="../reference/fastverse_install.html">fastverse_install()</a></code> function. Setting <code>options(fastverse.styling = FALSE)</code> will disable coloured text printed to the R console (as done for this vignette). <code>options(fastverse.quiet = TRUE)</code> will omit any messages printed from <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code> and <code><a href="../reference/fastverse_extend.html">fastverse_extend()</a></code>:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/fastverse_detach.html">fastverse_detach</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>fastverse.quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sebkrantz.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span> <span class="co"># Nothing to see here</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fastverse.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span> <span class="co"># Nothing to see here</span>
 
 <span class="co"># This gives lots of function clashes with data.table, but they are not displayed in quiet mode</span>
 <span class="fu"><a href="../reference/fastverse_extend.html">fastverse_extend</a></span><span class="op">(</span><span class="va">lubridate</span><span class="op">)</span></code></pre></div>
@@ -384,7 +384,7 @@ You additionally have the option to call `fastverse::fastverse_install()` at the
 <h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
 </h2>
 <p>The <em>fastverse</em> was developed principally for 2 reasons: to promote quality high-performance software development for R, and to provide a flexible approach to package loading and management in R, particularly for users wishing to combine various high-performance packages in statistical workflows. To the extent that high-performance software development in R continues to prioritize low-dependency and stable APIs, complex statistical and project workflows can be developed without sophisticated package management solutions.</p>
-<!-- This vignette introduced the key features of the package. Suggested *fastverse* extension packages are introduced in the [README](<https://sebkrantz.github.io/fastverse/#suggested-extensions>) file. -->
+<!-- This vignette introduced the key features of the package. Suggested *fastverse* extension packages are introduced in the [README](<https://fastverse.github.io/fastverse/#suggested-extensions>) file. -->
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Resetting the fastverse to defaults (clearing all permanent extensions and options)</span>
 <span class="fu"><a href="../reference/fastverse_reset.html">fastverse_reset</a></span><span class="op">(</span><span class="op">)</span>
@@ -402,7 +402,7 @@ You additionally have the option to call `fastverse::fastverse_install()` at the
 <li id="fn6"><p>When fetching the names of <em>fastverse</em> packages, <code>fastverse_packages</code> first checks any config file and then checks <code>options("fastverse.extend")</code>.<a href="#fnref6" class="footnote-back">↩︎</a></p></li>
 <li id="fn7"><p>You can place package names in that file any manner you deem suitable: separated using spaces or commas, on one or multiple lines. Note that the file will be read from left to right and from top to bottom. Packages are attached in the order found in the file.<a href="#fnref7" class="footnote-back">↩︎</a></p></li>
 <li id="fn8"><p>Setting <code>options(fastverse.install = TRUE)</code> before loading the packages will make sure any packages missing on your system will be installed beforehand. <code>options(collapse_mask = ...)</code> can be used to make base R and dplyr functions with faster versions provided in the <em>collapse</em> package. See <code>help("collapse-options")</code>.<a href="#fnref8" class="footnote-back">↩︎</a></p></li>
-<li id="fn9"><p>If you populate <code>options("fastvers.extend")</code> before calling <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code>, with <code>_opt_fastverse.install = TRUE</code> set in <code>.fastverse</code>, the availability of these packages will also be guaranteed.<a href="#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>If you populate <code>options("fastvers.extend")</code> before calling <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code>, with <code>_opt_fastverse.install = TRUE</code> set in <code>.fastverse</code>, the availability of these packages will also be guaranteed.<a href="#fnref9" class="footnote-back">↩︎</a></p></li>
 <li id="fn10"><p>Using, in this case, a <code>.tsverse</code> config file.<a href="#fnref10" class="footnote-back">↩︎</a></p></li>
 <li id="fn11"><p>I note that at this point in time it is not possible to permanently set <code>options("fastverse.quiet")</code> or <code>options("fastverse.styling")</code>.<a href="#fnref11" class="footnote-back">↩︎</a></p></li>
 </ol>

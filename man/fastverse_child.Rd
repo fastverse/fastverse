@@ -48,7 +48,7 @@ of the functionality of the \emph{fastverse} package.
 }
 \details{
 This function creates and installs a source package according to the users specification. 
-For that it downloads the 'child' branch of the \href{https://github.com/SebKrantz/fastverse}{GitHub repository}, which 
+For that it downloads the 'child' branch of the \href{https://github.com/fastverse/fastverse}{GitHub repository}, which 
 was specifically set up to produce a new verse, unzips it into a source directory, and substitutes the user inputs into the files. 
 The package is then installed from source, and (optionally) the source directory is removed again. 
 

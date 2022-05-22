@@ -44,7 +44,7 @@ Other functions help to determine joint dependencies, sort out namespace conflic
   <a href="../news/index.html">News</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/SebKrantz/fastverse/" class="external-link">
+  <a href="https://github.com/fastverse/fastverse/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -59,7 +59,7 @@ Other functions help to determine joint dependencies, sort out namespace conflic
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>The fastverse</h1>
-    <small class="dont-index">Source: <a href="https://github.com/SebKrantz/fastverse/blob/HEAD/R/fastverse.R" class="external-link"><code>R/fastverse.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/fastverse/fastverse/blob/HEAD/R/fastverse.R" class="external-link"><code>R/fastverse.R</code></a></small>
     <div class="hidden name"><code>fastverse.Rd</code></div>
     </div>
 
@@ -69,12 +69,12 @@ that jointly contribute to the objectives of:</p><ol><li><p>Speeding up R throug
 <li><p>Enabling more complex statistical and data manipulation operations in R</p></li>
 <li><p>Reducing the number of dependencies required for advanced computing in R</p></li>
 </ol><p>Inspired by the <code>tidyverse</code> package, the <code>fastverse</code> package is a flexible package loader and manager 
-that allows users to put together their own 'verses' of packages and load them with <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code>.</p>
+that allows users to put together their own 'verses' of packages and load them with <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code>.</p>
 <p>The <code>fastverse</code> installs 6 core packages (<code>data.table</code>, <code>collapse</code>, <code>matrixStats</code>, <code>kit</code>, <code>magrittr</code> and <code>fst</code>) that 
 provide native C/C++ code of proven quality, work well together, and enable complex statistical computing and data manipulation - with only <code>Rcpp</code> as an additional dependency. 
 The package also harmonizes functionality among some of these core packages (see below).</p>
 <p>The <code>fastverse</code> further allows users to freely (and permanently) extend or reduce the number of packages in the <em>fastverse</em>. 
-A selection of suggested high-performing packages for various topics is provided in <code><a href="fastverse_extend.html">fastverse_extend</a></code> (and with more details in the <a href="https://sebkrantz.github.io/fastverse/#suggested-extensions" class="external-link">README</a>).
+A selection of suggested high-performing packages for various topics is provided in <code><a href="fastverse_extend.html">fastverse_extend</a></code> (and with more details in the <a href="https://fastverse.github.io/fastverse/#suggested-extensions" class="external-link">README</a>).
 Other functions help to determine joint dependencies, sort out namespace conflicts among attached packages, and update packages.</p>
     </div>
 
@@ -103,7 +103,7 @@ Other functions help to determine joint dependencies, sort out namespace conflic
 <li><p><code>options(fastverse.styling = FALSE)</code> will disable all styling applied to text printed to the console.</p></li>
 <li><p><code>options(fastverse.extend = c(...))</code> can be set before calling <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library(fastvsers)</a></code> to extend the fastverse with some packages for the session. The same can be done with the
 <code><a href="fastverse_extend.html">fastverse_extend</a></code> function after <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library(fastvsers)</a></code>, which will also populate <code>options("fastverse.extend")</code>.</p></li>
-<li><p><code>options(fastverse.install = TRUE)</code> can be set before <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code> to install any missing packages beforehand. See also <code><a href="fastverse_install.html">fastverse_install</a></code>.</p></li>
+<li><p><code>options(fastverse.install = TRUE)</code> can be set before <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code> to install any missing packages beforehand. See also <code><a href="fastverse_install.html">fastverse_install</a></code>.</p></li>
 </ul></div>
     <div id="fastverse-harmonisations">
     <h2><em>fastverse</em> Harmonisations</h2>
@@ -115,7 +115,7 @@ The <em>collapse</em> and <em>matrixStats</em> versions take precedence over the
 The GitHub version of the <code>fastverse</code> alters most of the functions where this is the case, listed in a global variable <code>.matrixStats_replaced</code>, bestowing them with 
 capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). This is done using very efficient R and C code, so that performance does not suffer. 
 When the <code>fastverse</code> is attached, these altered function are replaced in the <em>matrixStats</em> namespace. Since CRAN does not allow namespace modifications in other packages, 
-this feature is only available in the GitHub version, installable using <code>remotes::install_github("SebKrantz/fastverse")</code>. Development of CRAN and GitHub version will
+this feature is only available in the GitHub version, installable using <code>remotes::install_github("fastverse/fastverse")</code>. Development of CRAN and GitHub version will
 continue synchronous until <em>matrixStats</em> has evolved so that consistent attribute handling (<code>useNames = TRUE</code>) becomes the default.</p></li>
 </ul></div>
 

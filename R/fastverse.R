@@ -16,7 +16,7 @@
 #' The package also harmonizes functionality among some of these core packages (see below). 
 #' 
 #' The \code{fastverse} further allows users to freely (and permanently) extend or reduce the number of packages in the \emph{fastverse}. 
-#' A selection of suggested high-performing packages for various topics is provided in \code{\link{fastverse_extend}} (and with more details in the \href{https://sebkrantz.github.io/fastverse/#suggested-extensions}{README}).
+#' A selection of suggested high-performing packages for various topics is provided in \code{\link{fastverse_extend}} (and with more details in the \href{https://fastverse.github.io/fastverse/#suggested-extensions}{README}).
 #' Other functions help to determine joint dependencies, sort out namespace conflicts among attached packages, and update packages.  
 #' 
 #' @details NULL
@@ -65,7 +65,7 @@
 #' The GitHub version of the \code{fastverse} alters most of the functions where this is the case, listed in a global variable \code{.matrixStats_replaced}, bestowing them with 
 #' capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). This is done using very efficient R and C code, so that performance does not suffer. 
 #' When the \code{fastverse} is attached, these altered function are replaced in the \emph{matrixStats} namespace. Since CRAN does not allow namespace modifications in other packages, 
-#' this feature is only available in the GitHub version, installable using \code{remotes::install_github("SebKrantz/fastverse")}. Development of CRAN and GitHub version will
+#' this feature is only available in the GitHub version, installable using \code{remotes::install_github("fastverse/fastverse")}. Development of CRAN and GitHub version will
 #' continue synchronous until \emph{matrixStats} has evolved so that consistent attribute handling (\code{useNames = TRUE}) becomes the default.
 #' }
 #' 
