@@ -143,7 +143,7 @@ topics_selector <- function(x) {
          TS = c("xts", "zoo", "roll"), 
          DT = c("lubridate", "anytime", "fasttime", "nanotime", "clock", "timechange"),
          ST = c("snakecase", "stringr", "stringi", "stringfish", "stringdist"),
-         SC = c("Rfast", "Rfast2", "parallelDist", "coop", "MatrixExtra", "rsparse", "rrapply"), # "fastmatch", "fastmap", (not on topic), "fastDummies" (16 dependencies)
+         SC = c("Rfast", "Rfast2", "parallelDist", "coop", "MatrixExtra", "rsparse", "rrapply", "dqrng"), # "fastmatch", "fastmap", (not on topic), "fastDummies" (16 dependencies)
          SP = c("geos", "stars", "terra", "sf"), # "sp" "rgdal" "raster"
          VI = c("dygraphs", "ggplot2", "scales", "lattice", "grid"), # "latticeExtra", "gridExtra", "gridtext", "plotly", "viridis" (32 dependencies), "RColorBrewer" (main function provided by scales)
          TV = c("tidytable", "tidyfast", "tidyfst", "tidyft", "maditr"), # "dtplyr", "table.express" import dplyr!!
@@ -161,7 +161,7 @@ topics_selector <- function(x) {
 #' \item \code{"TS"}: Time Series. Attaches \emph{xts}, \emph{zoo} and \emph{roll}. 
 #' \item \code{"DT"}: Dates and Times. Attaches \emph{lubridate}, \emph{anytime}, \emph{fasttime}, \emph{nanotime}, \emph{clock}, and \emph{timechange}.
 #' \item \code{"ST"}: Strings. Attaches \emph{stringr}, \emph{stringi}, \emph{snakecase}, \emph{stringfish} and \emph{stringdist}.
-#' \item \code{"SC"}: Statistics and Computing. Attaches \emph{Rfast}, \emph{Rfast2}, \emph{parallelDist}, \emph{coop}, \emph{MatrixExtra}, \emph{rsparse} and \emph{rrapply}. % \emph{fastDummies}, 
+#' \item \code{"SC"}: Statistics and Computing. Attaches \emph{Rfast}, \emph{Rfast2}, \emph{parallelDist}, \emph{coop}, \emph{MatrixExtra}, \emph{rsparse}, \emph{rrapply} and \emph{dqrng}. % \emph{fastDummies}, 
 #' \item \code{"SP"}: Spatial. Attaches \emph{sf}, \emph{geos}, \emph{stars} and \emph{terra}.
 #' \item \code{"VI"}: Visualization. Attaches \emph{dygraphs}, \emph{ggplot2}, \emph{scales}, \emph{lattice} and \emph{grid}. % \emph{RColorBrewer} and \emph{viridis}.
 #' \item \code{"TV"}: Tidyverse-Like. Attaches \emph{tidytable}, \emph{tidyfast}, \emph{tidyfst}, \emph{tidyft} and \emph{maditr}. % , \emph{table.express} and \emph{dtplyr}, import dplyr
