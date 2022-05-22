@@ -19,9 +19,9 @@ Encoding: UTF-8
 Imports: data.table, collapse, matrixStats, kit, magrittr, fst
 Suggests: xts, roll, fasttime, lubridate, dygraphs, stringi, stringfish, 
           Rfast, Rfast2, coop, rrapply, geos, qs, tidyfast, maditr, knitr, rmarkdown
-URL: https://sebkrantz.github.io/fastverse/, 
-     https://github.com/SebKrantz/fastverse
-BugReports: https://github.com/SebKrantz/fastverse/issues
+URL: https://fastverse.github.io/fastverse/, 
+     https://github.com/fastverse/fastverse
+BugReports: https://github.com/fastverse/fastverse/issues
 RoxygenNote: 7.1.2
 NeedsCompilation: no
 VignetteBuilder: knitr

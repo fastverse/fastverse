@@ -32,7 +32,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/SebKrantz/fastverse/" class="external-link">
+  <a href="https://github.com/fastverse/fastverse/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -47,7 +47,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Extend the fastverse</h1>
-    <small class="dont-index">Source: <a href="https://github.com/SebKrantz/fastverse/blob/HEAD/R/attach.R" class="external-link"><code>R/attach.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/fastverse/fastverse/blob/HEAD/R/attach.R" class="external-link"><code>R/attach.R</code></a></small>
     <div class="hidden name"><code>fastverse_extend.Rd</code></div>
     </div>
 
@@ -82,7 +82,7 @@
 <dt>install</dt>
 <dd><p>logical. Install packages not available?</p></dd>
 <dt>permanent</dt>
-<dd><p>logical. Should packages be saved and included when <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code> is called next time? Implemented via a config file saved to the package directory. The file will be removed if the <em>fastverse</em> is reinstalled, and can be removed without reinstallation using <code><a href="fastverse_reset.html">fastverse_reset</a></code>. Packages can be removed from the config file using <code><a href="fastverse_detach.html">fastverse_detach(..., permanent = TRUE)</a></code>.</p></dd>
+<dd><p>logical. Should packages be saved and included when <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code> is called next time? Implemented via a config file saved to the package directory. The file will be removed if the <em>fastverse</em> is reinstalled, and can be removed without reinstallation using <code><a href="fastverse_reset.html">fastverse_reset</a></code>. Packages can be removed from the config file using <code><a href="fastverse_detach.html">fastverse_detach(..., permanent = TRUE)</a></code>.</p></dd>
 <dt>check.conflicts</dt>
 <dd><p>logical. Should conflicts between extension packages and attached packages be checked?</p></dd>
 </dl></div>
@@ -98,8 +98,8 @@ among the <code>topics</code> groups that are available are considered, others a
 If <code>permanent = FALSE</code>, an <code>options("fastverse.extend")</code> is set which stores these extension packages, regardless of whether they were already attached or not. When calling 
 <code><a href="fastverse_packages.html">fastverse_packages</a></code>, <code><a href="fastverse_deps.html">fastverse_deps</a></code>, <code><a href="fastverse_conflicts.html">fastverse_conflicts</a></code>, <code><a href="fastverse_update.html">fastverse_update</a></code>, <code><a href="fastverse_sitrep.html">fastverse_sitrep</a></code> or <code><a href="fastverse_detach.html">fastverse_detach</a></code>, these packages are included as part of the <em>fastverse</em>. 
 This is also the case if <code>permanent = TRUE</code>, with the only difference that instead of populating the option, a file is saved to the package directory such that the packages are also loaded
-(as part of the core <em>fastverse</em>) when calling <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code> in the next session. To extend the <em>fastverse</em> for the current session when it is not yet loaded, users can also set <code>options(fastverse.extend = c(...))</code>, where <code>c(...)</code>
-is a character vector of package names, before calling <code><a href="https://sebkrantz.github.io/fastverse/" class="external-link">library(fastverse)</a></code>.</p>
+(as part of the core <em>fastverse</em>) when calling <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code> in the next session. To extend the <em>fastverse</em> for the current session when it is not yet loaded, users can also set <code>options(fastverse.extend = c(...))</code>, where <code>c(...)</code>
+is a character vector of package names, before calling <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code>.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
