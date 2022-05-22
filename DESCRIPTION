@@ -11,6 +11,6 @@ Description: Easy installation, loading and management, of a complementary set o
 License: GPL-3
 Encoding: UTF-8
 Imports: lattice
-BugReports: https://github.com/SebKrantz/fastverse/issues
+BugReports: https://github.com/fastverse/fastverse/issues
 RoxygenNote: 7.1.1
 NeedsCompilation: no

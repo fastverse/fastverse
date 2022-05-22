@@ -20,7 +20,7 @@ fastversechild_install(..., only.missing = TRUE, install = TRUE)
 This function (by default) checks if any \emph{fastversechild} package is missing and installs the missing package(s).
 }
 \details{
-This function is useful to call before \code{library(fastversechild)}, especially in a project when a \code{.fastversechild} configuration file is used to load a custom set of packages not natively installed by the \code{fastversechild} package (see \href{https://sebkrantz.github.io/fastverse/articles/fastverse_intro.html}{fastverse vignette}). 
+This function is useful to call before \code{library(fastversechild)}, especially in a project when a \code{.fastversechild} configuration file is used to load a custom set of packages not natively installed by the \code{fastversechild} package (see \href{https://fastverse.github.io/fastverse/articles/fastverse_intro.html}{fastverse vignette}). 
 The idea behind this is that you may customize the \emph{fastversechild} for the project, then revisit the project after a long while, and some packages listed in your config file may be missing. 
 You can guard against missing packages by running \code{fastversechild::fastversechild_install()} before \code{library(fastversechild)}, to ensure that all \emph{fastversechild} packages are available before loading the \emph{fastversechild} and executing any code.
 }

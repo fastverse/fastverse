@@ -1,7 +1,7 @@
 #' The fastversechild
 #' 
 #' @description
-#' The \emph{fastversechild} is an extensible suite of R packages. It is a descendant of the \href{https://sebkrantz.github.io/fastverse/}{fastverse}.
+#' The \emph{fastversechild} is an extensible suite of R packages. It is a descendant of the \href{https://fastverse.github.io/fastverse/}{fastverse}.
 #' 
 #' @details NULL
 #' @section Functions in the \emph{fastversechild} Package:
