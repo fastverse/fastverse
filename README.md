@@ -236,9 +236,13 @@ High-performing packages for different data manipulation and statistical computi
 
 - **[rrapply](https://CRAN.R-project.org/package=rrapply)**: The `rrapply()` function extends base `rapply()` by including a condition or predicate function for the application of functions and diverse options to prune or aggregate the result (0 dependencies).
 
-- **[dqrng](https://github.com/daqana/dqrng)**: Fast uniform, normal or exponential random numbers and random sampling (i.e. faster `runif`, `rnorm`, `rexp`, `sample` and `sample.int` funtions) (3 dependencies).
+- **[dqrng](https://github.com/daqana/dqrng)**: Fast uniform, normal or exponential random numbers and random sampling (i.e. faster `runif`, `rnorm`, `rexp`, `sample` and `sample.int` functions) (3 dependencies).
 
-  *Notes*: *Rfast* has a number of like-named functions to *matrixStats*. These are simpler but typically faster and support multi-threading. Some highly efficient statistical functions can also be found scattered across various other packages, notable to mention here are *Hmisc* (60 dependencies) and *DescTools* (17 dependencies). *fastDummies* (16 dependencies) implements creation of dummy (binary) variables. 
+- **[fastmap](https://github.com/r-lib/fastmap)**: Fast implementation of data structures based on C++, including a key-value store (`fastmap`), stack (`faststack`), and queue (`fastqueque`) (0 dependencies).
+
+- **[fastmatch](https://github.com/s-u/fastmatch)**: A faster `match()` function (drop-in repalcement for `base::match`, and `base::%in%`), that keeps the hash table in memory for much faster repeated lookups (0 dependencies).
+
+  *Notes*: *Rfast* has a number of like-named functions to *matrixStats*. These are simpler but typically faster and support multi-threading. Some highly efficient statistical functions can also be found scattered across various other packages, notable to mention here are *Hmisc* (60 dependencies) and *DescTools* (17 dependencies). Package *vctrs* also provides some quite efficient functions to manipulate vectors and data frames (4 dependencies). <!-- *fastDummies* (16 dependencies) implements creation of dummy (binary) variables. -->
 
 <!-- 
 - **fastmatch**: Fast match function.
