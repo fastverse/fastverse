@@ -109,18 +109,18 @@ rule <- function(left, right = NULL, style.left = identity, style.right = identi
   left <- as.character(left)
   if(length(right)) {
     right <- as.character(right)
-    w <- n - nchar(left) - nchar(right) - 8L
+    width <- n - nchar(left) - nchar(right) - 8L
     if(style.rule) {
-      res <- paste(c(text_col("-- "), style.left(left), " ", text_col(paste(rep("-", w), collapse = "")), " ", style.right(right), text_col(" --")), collapse = "")
+      res <- paste(c(text_col("-- "), style.left(left), " ", text_col(paste(rep("-", width), collapse = "")), " ", style.right(right), text_col(" --")), collapse = "")
     } else {
-      res <- paste(c("-- ", style.left(left), " ", rep("-", w), " ", style.right(right), " --"), collapse = "")
+      res <- paste(c("-- ", style.left(left), " ", rep("-", width), " ", style.right(right), " --"), collapse = "")
     }
   } else {
-    w <- n - nchar(left) - 4L
+    width <- n - nchar(left) - 4L
     if(style.rule) {
-      res <- paste(c(text_col("-- "), style.left(left), " ", text_col(paste(rep("-", w), collapse = ""))), collapse = "")
+      res <- paste(c(text_col("-- "), style.left(left), " ", text_col(paste(rep("-", width), collapse = ""))), collapse = "")
     } else {
-      res <- paste(c("-- ", style.left(left), " ", rep("-", w)), collapse = "") 
+      res <- paste(c("-- ", style.left(left), " ", rep("-", width)), collapse = "") 
     }
   }
   class(res) <- "fastversechild_rule"
