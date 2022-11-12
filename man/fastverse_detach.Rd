@@ -2,7 +2,7 @@
 % Please edit documentation in R/attach.R
 \name{fastverse_detach}
 \alias{fastverse_detach}
-\title{Detach fastverse packages}
+\title{Detach (fastverse) packages}
 \usage{
 fastverse_detach(
   ...,
@@ -31,7 +31,7 @@ This is implemented via a config file saved to the package directory. Core \emph
 \code{fastverse_detach} returns \code{NULL} invisibly.
 }
 \description{
-Detaches \emph{fastverse} packages, removing them from the \code{\link{search}} path.
+Detaches (\emph{fastverse}) packages, removing them from the \code{\link{search}} path.
 }
 \seealso{
 \code{\link{fastverse_extend}}, \code{\link{fastverse}}

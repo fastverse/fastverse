@@ -18,17 +18,18 @@ fastverse_deps(
 \item{recursive}{logical. \code{TRUE} recursively determines all packages required to operate these packages.
 \code{FALSE} will only list the packages and their direct dependencies.}
 
-\item{repos}{the repositories to use to check for updates. Defaults to \code{getOptions("repos")}.}
+\item{repos}{character vector. Base URL(s) of the repositories to use, e.g., the URL of a CRAN mirror such as \code{"https://cloud.r-project.org"}. 
+The macro \code{.fastverse_repos} contains the URL of the \href{https://fastverse.r-universe.dev}{fastverse r-universe server} to check/install the development version of packages.}
 
-\item{include.self}{logical. \code{TRUE} also includes the \emph{fastverse} package and checks against the CRAN version.}
+\item{include.self}{logical. \code{TRUE} also includes the \emph{fastverse} package and checks against the repository version.}
 
 \item{check.deps}{logical. \code{FALSE} will not determine dependencies but only display the update status of packages in \code{pkg}.}
 }
 \value{
-A data frame giving the package names, the CRAN and local version, and a logical variable stating whether the local version is behind the CRAN version.
+A data frame giving the package names, the repository and local version, and a logical variable stating whether the local version is behind the repository version.
 }
 \description{
-Lists all \emph{fastverse} dependencies and the local and CRAN versions of packages and dependencies.
+Lists all \emph{fastverse} dependencies and the local and repository (e.g. CRAN) versions of packages and dependencies.
 }
 \seealso{
 \code{\link{fastverse_sitrep}}, \code{\link{fastverse}}
