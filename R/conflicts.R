@@ -2,7 +2,8 @@
 ls_env <- function(env) {
   x <- ls(pos = env)
   switch(env, 
-         `package:kit` = x[!x %in% c("funique", "count")],
+         `package:data.table` = x[x != "fdroplevels"],
+         `package:kit` = x[x != "funique"], # !x %in% c("funique", "count")
          `package:collapse` = x[x != "D"],
          x)
 }
@@ -38,10 +39,9 @@ confirm_conflict <- function(packages, name) { # packages <- conflicts[[3]]; nam
 #' There are 2 internal conflict in the core \emph{fastverse} which are not displayed by \code{fastverse_conflicts()}:
 #' \itemize{
 #' \item \code{collapse::funique} masks \code{kit::funique}. If both packages are detached, \emph{collapse} is attached after \emph{kit}. In general, the 
-#' \emph{collapse} version is often faster on data frames and supports unique rows on selected columns. An option \code{sort = TRUE} lets \code{collapse::funique} 
-#' return sorted unique values. The \emph{kit} version is often faster for vectors and also supports matrices.    
-#' 
-#' \item \code{matrixStats::count} masks \code{kit::count}. The \emph{matrixStats} version is more flexible, supporting restricted search and missing value removal. The \emph{kit} version is nearly twice as fast. 
+#' \emph{collapse} version is faster and supports unique rows on selected columns, as well as sorted unique values with option \code{sort = TRUE}. The \emph{kit} version is also very fast and additionally supports matrices.    
+#' % \item \code{matrixStats::count} masks \code{kit::count}. The \emph{matrixStats} version is more flexible, supporting restricted search and missing value removal. The \emph{kit} version is nearly twice as fast. 
+#' \item{collapse::fdroplevels} masks \code{data.table::fdroplevels}. The former is faster and supports arbitrary data structures, whereas the latter has options to exclude certain levels from being dropped. 
 #' }
 #' @param pkg character. A vector of packages to check conflicts for. The default is all \emph{fastverse} packages. 
 #' 
