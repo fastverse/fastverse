@@ -18,7 +18,7 @@ License: GPL-3
 Encoding: UTF-8
 Imports: data.table, collapse, kit, magrittr
 Suggests: matrixStats, Rfast, arrow, duckdb, qs, fst, xts, roll, anytime,
-          fasttime, stringi, stringfish, coop, rrapply, geos, knitr, rmarkdown
+          fasttime, stringi, stringfish, coop, rrapply, geos, lubridate, knitr, rmarkdown
 URL: https://fastverse.github.io/fastverse/, 
      https://fastverse.r-universe.dev/,
      https://github.com/fastverse
