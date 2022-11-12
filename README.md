@@ -29,26 +29,23 @@ of these packages. It is an extensible framework that allows users to (permanent
 
 ## Core Packages
 
-The *fastverse* consists of 6 core packages (7 dependencies in total) which provide broad C/C++ based statistical and data manipulation functionality and have carefully managed APIs. These packages are installed and attached along with the `fastverse` package. 
-
+The *fastverse* installs with 4 core packages^[Before v0.3.0 *matrixStats* and *fst* were part of the core fastverse, but were removed following a poll in November 2022 which established that more than 50% of users don't use them actively.] (5 dependencies in total) which provide broad C/C++ based statistical and data manipulation functionality and have carefully managed APIs. 
+ 
+<!-- These packages are installed and attached along with the `fastverse` package. -->
+ 
 - **[data.table](https://github.com/Rdatatable/data.table)**: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, extremely flexible split-apply-combine computing, reshaping, joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as transposition of data. 
 
 - **[collapse](https://github.com/SebKrantz/collapse)**: Fast grouped & weighted statistical computations, time series and panel data transformations, list-processing, data manipulation functions, summary statistics and various utilities such as support for variable labels. Class-agnostic framework designed to work with vectors, matrices, data frames, lists and related classes including *xts*, *data.table*, *tibble*, *pdata.frame*, *sf*.  <!-- *tsibble*, *tibbletime* -->
-
-- **[matrixStats](https://github.com/HenrikBengtsson/matrixStats)**: Efficient row-and column-wise (weighted) statistics on matrices and vectors, including computations on subsets of rows and columns. 
 
 - **[kit](https://github.com/2005m/kit)**: Fast vectorized and nested switches, some parallel (row-wise) statistics, and some utilities such as efficient partial sorting and unique values. 
 
 - **[magrittr](https://github.com/tidyverse/magrittr)**: Efficient pipe operators for enhanced programming and code unnesting.
 
-- **[fst](https://github.com/fstpackage/fst)**: A compressed data file format that is very fast to read and write. Full random access in both rows and columns allows reading subsets from a '.fst' file. 
-
-  *Additional dependency*: Package *Rcpp* is imported by *collapse* and *fst*.
-
 ## Installation
 
+<!-- 
 Currently, there are 2 different versions of the *fastverse* on CRAN and GitHub/R-universe. The GitHub/R-universe version is recommended if you want to have *matrixStats* consistently preserve attributes of your matrices: it modifies functions in the *matrixStats* namespace making them preserve attributes consistently (and by default) whenever the *fastverse* is attached. This version was rejected by CRAN because it requires a call to `unlockBinding`. The CRAN version takes *matrixStats* as it is, which means most functions do not preserve attributes such as dimension names in computations. 
-
+-->
 ``` r
 # Install the CRAN version
 install.packages("fastverse")
@@ -60,9 +57,12 @@ install.packages("fastverse", repos = "https://fastverse.r-universe.dev")
 remotes::install_github("fastverse/fastverse")
 ```
 *Note* that the GitHub/R-universe version is not a development version, development takes place in the 'development' branch. 
+<!--
 *matrixStats* is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies. Until then CRAN and GitHub/R-universe versions of the *fastverse* are released together. 
+-->
 
 ## Extending the *fastverse*
+
 In addition, users have the option (via the `fastverse_entend()` function) to freely attach extension packages offering more specific functionality. The *fastverse* can by extended by any R package, either just for the current session or permanently: 
 
 <details>
@@ -214,6 +214,8 @@ High-performing packages for different data manipulation and statistical computi
 
 #### Strings (ST)
 
+- **[matrixStats](https://github.com/HenrikBengtsson/matrixStats)**: Efficient row-and column-wise (weighted) statistics on matrices and vectors, including computations on subsets of rows and columns (0 dependencies). 
+
 - **[stringi](https://github.com/gagolews/stringi)**: Main R package for fast, correct, consistent, and convenient string/text manipulation (backend to *stringr* and *snakecase*) (0 dependencies).
 
 - **[stringr](https://github.com/tidyverse/stringr)**: Simple, consistent wrappers for common string operations, based on *stringi* (3 dependencies).
@@ -292,15 +294,26 @@ High-performing packages for different data manipulation and statistical computi
 
   *Notes*: One could also mention Rstudio's *dtplyr* and the *table.express* package here, but these packages import *dplyr* and thus have a around 20 dependencies.
   
-
 #### Data Input-Output and Serialization (IO)  
+
+- **[fst](https://github.com/fstpackage/fst)**: A compressed data file format that is very fast to read and write. Full random access in both rows and columns allows reading subsets from a '.fst' file (2 dependencies). 
 
 - **[qs](https://github.com/traversc/qs)** provides a lightning-fast and complete replacement for the `saveRDS` and `readRDS` functions in R. It 
   supports general R objects with attributes and references - at similar speeds to *fst* - but does not provide on-disk random access to data subsets like *fst* (4 dependencies).
   
-- **[arrow](https://github.com/apache/arrow/tree/master/r)** provides both a low-level interface to the Apache Arrow C++ library (a multi-language toolbox for accelerated data interchange and in-memory processing) and some higher-level, R-flavored tools for working with it - including fast reading / writing delimited files and sharing data between R and Python (12 dependencies). 
+- **[arrow](https://github.com/apache/arrow/tree/master/r)** provides both a low-level interface to the Apache Arrow C++ library (a multi-language toolbox for accelerated data interchange and in-memory processing) and some higher-level, R-flavored tools for working with it - including fast reading / writing delimited files, efficient storage of data as `.parquet` or `.feather` files, and sharing data between R and Python. It also provides methods for many *dplyr* functions allowing highly efficient data manipulation on arrow datasets (12 dependencies). 
 
   *Notes*: Package *vroom* offers fast reading and writing of delimited files, but with 24 dependencies is not really a *fastverse* candidate.  
+  
+####  Data Bases (DB)
+
+- **[duckdb](https://github.com/duckdb/duckdb)** DuckDB is a high-performance analytical database system that can be used on in-memory or out-of memory data (including `.parquet` files, arrow tables, and it's own `.duckdb` format), and that provides a rich SQL dialect for data analysis. It can also be used with the *dbplyr* package that translates *dplyr* code to SQL.
+
+[This](https://www.christophenicault.com/post/large_dataframe_arrow_duckdb/) Article by Christophe Nicault (October 2022) and The presentation by 
+
+####  Compiling R (CP)
+
+
   
 ***
   
