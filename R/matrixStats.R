@@ -35,7 +35,7 @@ ms_difficult <- c("colAvgsPerRowSet", "rowAvgsPerColSet", "colCollapse", "rowCol
 # x_OP_y
 # t_tx_OP_y
 
-ms <- getNamespace("matrixStats")
+ms <- if(requireNamespace("matrixStats", quietly = TRUE)) getNamespace("matrixStats") else new.env()
 
 # These should all be vector-based functions..
 # rem <- setdiff(ls(ms), c(ls(), ms_handles_attr, ms_difficult))
