@@ -17,7 +17,7 @@ A character vector of package names.
 \description{
 Core packages are first fetched from a project-level configuration file (if found), else from a global configuration file (if found), 
 otherwise the standard set of core packages is returned. In addition, if \code{extensions = TRUE}, any packages used to extend the \emph{fastverse} for the current 
-session are also returned.
+session (fetched from \code{getOption("fastverse.extend")}) are also returned.
 }
 \examples{
 fastverse_packages()

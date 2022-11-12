@@ -1,7 +1,7 @@
 #' Create a new (descendant) verse of packages
 #' 
 #' Creates and installs a fully customizable descendant verse of packages that is itself extensible and inherits 90\%
-#' of the functionality of the \emph{fastverse} package.  
+#' of the functionality of the \code{fastverse} package.  
 #' 
 #' @param name character. The name of the child-verse e.g. 'myMLverse'. 
 #' @param title character. The title of the child-verse e.g. 'My Machine Learning Verse'. 

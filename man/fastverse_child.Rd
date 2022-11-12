@@ -44,7 +44,7 @@ If you do not intend to substantially modify the code of the resulting source pa
 }
 \description{
 Creates and installs a fully customizable descendant verse of packages that is itself extensible and inherits 90\%
-of the functionality of the \emph{fastverse} package.
+of the functionality of the \code{fastverse} package.
 }
 \details{
 This function creates and installs a source package according to the users specification. 

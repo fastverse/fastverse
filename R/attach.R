@@ -1,4 +1,4 @@
-.core_pkg <- c("data.table", "magrittr", "kit", "collapse", "matrixStats", "fst")
+.core_pkg <- c("data.table", "magrittr", "kit", "collapse") # "matrixStats", "fst"
 # Not needed anymore 
 # core_unloaded <- function() .core_pkg[!paste0("package:", .core_pkg) %in% search()]
 
@@ -89,9 +89,9 @@ fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FAL
 }
 
 
-#' Detach fastverse packages
+#' Detach (fastverse) packages
 #' 
-#' Detaches \emph{fastverse} packages, removing them from the \code{\link{search}} path.
+#' Detaches (\emph{fastverse}) packages, removing them from the \code{\link{search}} path.
 #' 
 #' @param \dots comma-separated package names, quoted or unquoted, or vectors of package names. If left empty, all packages returned by \code{\link{fastverse_packages}} are detached. 
 #' @param unload logical. \code{TRUE} also unloads the packages using \code{\link[=detach]{detach(name, unload = TRUE)}}.

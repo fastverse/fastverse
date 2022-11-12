@@ -1,26 +1,27 @@
 Package: fastverse
 Title: A Suite of High-Performance Packages for Statistics and Data Manipulation
-Version: 0.2.4
+Version: 0.3.0
 Authors@R: c(person("Sebastian", "Krantz", role = c("aut", "cre"), 
                     email = "sebastian.krantz@graduateinstitute.ch"),
              person("Hadley", "Wickham", role = "ctb"))
-Description: Easy installation, loading and management, of a complementary set of 
-             high-performance packages for statistical computing and data manipulation. 
-             The core 'fastverse' consists of 6 packages: 'data.table', 'collapse', 
-             'matrixStats', 'kit', 'magrittr' and 'fst', that jointly only depend on 
-             'Rcpp'. These packages are attached and harmonized through the 'fastverse'. 
-             In addition, the 'fastverse' can be freely and permanently extended with 
-             additional packages, both globally or for individual projects. Entirely 
-             separate package verses can also be created. Selected fast and low-dependency 
-             packages are suggested for various topics such as time series, dates and times, 
-             strings, spatial data, statistics and data serialization (see GitHub / website).  
+Description: Easy installation, loading and management, of high-performance packages 
+             for statistical computing and data manipulation in R. 
+             The core 'fastverse' consists of 4 packages: 'data.table', 'collapse', 
+             'kit' and 'magrittr', that jointly only depend on 'Rcpp'. 
+             The 'fastverse' can be freely and permanently extended with 
+             additional packages, both globally or for individual projects. 
+             Separate package verses can also be created. High-performance packages 
+             for various common tasks such as time series, dates and times, strings, 
+             spatial data, statistics, data serialization, databases, and compilation of 
+             R functions are suggested on the README.md / website.
 License: GPL-3
 Encoding: UTF-8
-Imports: data.table, collapse, matrixStats, kit, magrittr, fst
-Suggests: xts, roll, fasttime, lubridate, dygraphs, stringi, stringfish, 
-          Rfast, Rfast2, coop, rrapply, geos, qs, tidyfast, maditr, knitr, rmarkdown
+Imports: data.table, collapse, kit, magrittr
+Suggests: matrixStats, Rfast, arrow, duckdb, qs, fst, xts, roll, anytime,
+          fasttime, stringi, stringfish, coop, rrapply, geos, lubridate, knitr, rmarkdown
 URL: https://fastverse.github.io/fastverse/, 
-     https://github.com/fastverse/fastverse
+     https://fastverse.r-universe.dev/,
+     https://github.com/fastverse
 BugReports: https://github.com/fastverse/fastverse/issues
 RoxygenNote: 7.1.2
 NeedsCompilation: yes

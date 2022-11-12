@@ -2,14 +2,18 @@
 % Please edit documentation in R/update.R
 \name{fastverse_update}
 \alias{fastverse_update}
+\alias{.fastverse_repos}
 \title{Update fastverse packages}
 \usage{
-fastverse_update(..., install = FALSE)
+fastverse_update(..., install = FALSE, repos = getOption("repos"))
 }
 \arguments{
 \item{\dots}{arguments passed to \code{\link{fastverse_deps}}.}
 
 \item{install}{logical. \code{TRUE} will proceed to install outdated packages, whereas \code{FALSE} (recommended) will print the installation command asking you to run it in a clean R session.}
+
+\item{repos}{character vector. Base URL(s) of the repositories to use, e.g., the URL of a CRAN mirror such as \code{"https://cloud.r-project.org"}. 
+The macro \code{.fastverse_repos} contains the URL of the \href{https://fastverse.r-universe.dev}{fastverse r-universe server} to check/install the development version of packages.}
 }
 \value{
 \code{fastverse_update} returns \code{NULL} invisibly.
@@ -17,6 +21,15 @@ fastverse_update(..., install = FALSE)
 \description{
 This will check all \emph{fastverse} packages (and their
 dependencies) for updates and (optionally) install those updates.
+}
+\examples{
+\dontrun{
+## Update from CRAN
+fastverse_update()
+
+## Update from R-Universe (development versions)
+fastverse_update(repos = .fastverse_repos)
+}
 }
 \seealso{
 \code{\link{fastverse_deps}}, \code{\link{fastverse}}

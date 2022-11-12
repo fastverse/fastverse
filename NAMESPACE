@@ -2,6 +2,7 @@
 
 S3method(print,fastverse_conflicts)
 S3method(print,fastverse_rule)
+export(.fastverse_repos)
 export(.matrixStats_replaced)
 export(fastverse_child)
 export(fastverse_conflicts)

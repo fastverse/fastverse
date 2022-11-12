@@ -11,16 +11,17 @@
 #' Inspired by the \code{tidyverse} package, the \code{fastverse} package is a flexible package loader and manager 
 #' that allows users to put together their own 'verses' of packages and load them with \code{library(fastverse)}. 
 #' 
-#' The \code{fastverse} installs 6 core packages (\code{data.table}, \code{collapse}, \code{matrixStats}, \code{kit}, \code{magrittr} and \code{fst}) that 
-#' provide native C/C++ code of proven quality, work well together, and enable complex statistical computing and data manipulation - with only \code{Rcpp} as an additional dependency. 
-#' The package also harmonizes functionality among some of these core packages (see below). 
+#' \code{fastverse} installs 4 core packages (\code{data.table}, \code{collapse}, \code{kit} and \code{magrittr}) that 
+#' provide native C/C++ code of proven quality, work well together, and enable complex statistical computing and data manipulation - with only \code{Rcpp} as an additional dependency. % (before v0.3.0 \code{matrixStats} and \code{fst} were also part of the core suite, but were removed following a poll in November 2022). 
+#' % The package also harmonizes functionality among some of these core packages (see below). 
 #' 
-#' The \code{fastverse} further allows users to freely (and permanently) extend or reduce the number of packages in the \emph{fastverse}. 
-#' A selection of suggested high-performing packages for various topics is provided in \code{\link{fastverse_extend}} (and with more details in the \href{https://fastverse.github.io/fastverse/#suggested-extensions}{README}).
-#' Other functions help to determine joint dependencies, sort out namespace conflicts among attached packages, and update packages.  
+#' \code{fastverse} also allows users to freely (and permanently) extend or reduce the number of packages in the \emph{fastverse}. 
+#' A selection of suggested high-performing packages for various topics is provided in \code{\link{fastverse_extend}} (and with more details in the \href{https://fastverse.github.io/fastverse/#suggested-extensions}{README}). 
+#' An overview of the package and the different ways to extend the \emph{fastverse} is provided in the \href{https://fastverse.github.io/fastverse/articles/fastverse_intro.html}{vignette}. 
+#' % Further functions help to determine joint dependencies, sort out namespace conflicts among attached packages, and update packages.  
 #' 
 #' @details NULL
-#' @section Functions in the \emph{fastverse} Package:
+#' @section Functions in the \code{fastverse} Package:
 #' 
 #' Functions to extend or reduce the number of packages in the \emph{fastverse} - either for the session or permanently - and to restore defaults. 
 #'
@@ -37,13 +38,13 @@
 #' \code{\link[=fastverse_update]{fastverse_update()}}\cr
 #' \code{\link[=fastverse_install]{fastverse_install()}}
 #'
-#' Utilities to retrieve the names of \emph{fastverse} packages (and dependencies), their update status and produce a situation report.
+#' Utilities to retrieve the names of \emph{fastverse} packages (and dependencies), their update status, and produce a situation report
 #' 
 #' \code{\link[=fastverse_packages]{fastverse_packages()}}\cr
 #' \code{\link[=fastverse_deps]{fastverse_deps()}}\cr
 #' \code{\link[=fastverse_sitrep]{fastverse_sitrep()}}
 #' 
-#' Function to create a new extensible verse of packages like the \emph{fastverse}
+#' Function to create a fully separate extensible metapackage/verse like \code{fastverse}
 #' 
 #' \code{\link[=fastverse_child]{fastverse_child()}}
 #'
@@ -57,17 +58,17 @@
 #' }
 #'
 #' @section \emph{fastverse} Harmonisations:
-#' \itemize{
-#' \item There are 2 internal clashes between \code{collapse::funique} and \code{kit::funique}, and between \code{matrixStats::count} and \code{kit::count}.
-#' The \emph{collapse} and \emph{matrixStats} versions take precedence over the \emph{kit} versions. For a comparison of functionality see the details section of \code{\link{fastverse_conflicts}}.
+#' % \itemize{
+#' There are 2 internal clashes between \code{collapse::funique} and \code{kit::funique}, and \code{collapse::fdroplevels} and \code{data.table::fdroplevels}. % between \code{matrixStats::count} and \code{kit::count}.
+#' The \emph{collapse} versions take precedence in both cases as they provide greater performance. % over the \emph{kit} versions. For a comparison of functionality see the details section of \code{\link{fastverse_conflicts}}.
 
-#' \item Quite a number of functions in the \emph{matrixStats} package do not (by default) preserve the attributes of objects passed to them, resulting in inconsistent behavior of different functions. 
-#' The GitHub version of the \code{fastverse} alters most of the functions where this is the case, listed in a global variable \code{.matrixStats_replaced}, bestowing them with 
-#' capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). This is done using very efficient R and C code, so that performance does not suffer. 
-#' When the \code{fastverse} is attached, these altered function are replaced in the \emph{matrixStats} namespace. Since CRAN does not allow namespace modifications in other packages, 
-#' this feature is only available in the GitHub version, installable using \code{remotes::install_github("fastverse/fastverse")}. Development of CRAN and GitHub version will
-#' continue synchronous until \emph{matrixStats} has evolved so that consistent attribute handling (\code{useNames = TRUE}) becomes the default.
-#' }
+#' % \item Quite a number of functions in the \emph{matrixStats} package do not (by default) preserve the attributes of objects passed to them, resulting in inconsistent behavior of different functions. 
+#' % The GitHub version of the \code{fastverse} alters most of the functions where this is the case, listed in a global variable \code{.matrixStats_replaced}, bestowing them with 
+#' % capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). This is done using very efficient R and C code, so that performance does not suffer. 
+#' % When the \code{fastverse} is attached, these altered function are replaced in the \emph{matrixStats} namespace. Since CRAN does not allow namespace modifications in other packages, 
+#' % this feature is only available in the GitHub version, installable using \code{remotes::install_github("fastverse/fastverse")}. Development of CRAN and GitHub version will
+#' % continue synchronous until \emph{matrixStats} has evolved so that consistent attribute handling (\code{useNames = TRUE}) becomes the default.
+#' % }
 #' 
 #' 
 #' @docType package
