@@ -70,7 +70,7 @@ project_options <- function() {
 #' 
 #' Core packages are first fetched from a project-level configuration file (if found), else from a global configuration file (if found), 
 #' otherwise the standard set of core packages is returned. In addition, if \code{extensions = TRUE}, any packages used to extend the \emph{fastverse} for the current 
-#' session are also returned. 
+#' session (fetched from \code{getOption("fastverse.extend")}) are also returned. 
 #' 
 #' @param extensions logical. \code{TRUE} appends the set of core packages with all packages found in \code{options("fastverse.extend")}. 
 #' @param include.self logical. Include the \emph{fastverse} package in the list?
