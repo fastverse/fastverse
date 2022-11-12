@@ -16,7 +16,7 @@ Description: Easy installation, loading and management, of high-performance pack
              R functions are suggested on the README.md / website.
 License: GPL-3
 Encoding: UTF-8
-Imports: data.table, collapse, kit, magrittr, fst
+Imports: data.table, collapse, kit, magrittr
 Suggests: matrixStats, Rfast, arrow, duckdb, qs, fst, xts, roll, anytime,
           fasttime, stringi, stringfish, coop, rrapply, geos, knitr, rmarkdown
 URL: https://fastverse.github.io/fastverse/, 
