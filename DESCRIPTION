@@ -13,7 +13,8 @@ Description: Easy installation, loading and management, of high-performance pack
              Separate package verses can also be created. Fast packages 
              for many common tasks such as time series, dates and times, strings, 
              spatial data, statistics, data serialization, larger-than-memory 
-             processing, and compilation of R code are suggested in the README file.
+             processing, and compilation of R code are listed in the README file: 
+             <https://github.com/fastverse/fastverse#suggested-extensions>.
 License: GPL-3
 Encoding: UTF-8
 Imports: data.table, collapse, kit, magrittr
