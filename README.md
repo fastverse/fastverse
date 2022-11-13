@@ -23,9 +23,9 @@ The *fastverse* is a suite of complementary high-performance packages for statis
 - Reducing the number of dependencies required for advanced computing in R
 
 The `fastverse` package is a meta-package providing utilities for easy installation, loading and management 
-of these packages. It is an extensible framework that allows users to (permanently) add or remove packages to create a 'verse' of packages suiting their general needs, or create separate 'verses' of their own. 
+of these packages. It is an extensible framework that allows users to (permanently) add or remove packages to create a 'verse' of packages suiting their general needs, or even create separate 'verses' of their own. 
 
-*fastverse* packages are jointly attached with `library(fastverse)`, and several functions starting with `fastverse_` help manage dependencies, detect namespace conflicts, add/remove packages from the *fastverse* and update packages. The [**vignette**](https://fastverse.github.io/fastverse/articles/fastverse_intro.html) provides a concise overview fo the package. 
+*fastverse* packages are jointly attached with `library(fastverse)`, and several functions starting with `fastverse_` help manage dependencies, detect namespace conflicts, add/remove packages from the *fastverse* and update packages. The [**vignette**](https://fastverse.github.io/fastverse/articles/fastverse_intro.html) provides a concise overview of the package. 
 
 ## Core Packages
 
@@ -56,7 +56,7 @@ install.packages("fastverse", repos = "https://fastverse.r-universe.dev")
 # Install from GitHub (requires compilation)
 remotes::install_github("fastverse/fastverse")
 ```
-*Note* that the GitHub/R-universe version is not a development version, development takes place in the 'development' branch. 
+*Note* that the GitHub/r-universe version is not a development version, development takes place in the 'development' branch. 
 <!--
 *matrixStats* is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies. Until then CRAN and GitHub/R-universe versions of the *fastverse* are released together. 
 -->
@@ -181,11 +181,12 @@ In addition to a global customization, separate *fastverse*'s can be created for
 
 ### Suggested Extensions
 
-High-performing packages for different data manipulation and statistical computing topics are suggested below. Each topic has a 2-character topic-id, which can be used to quickly attach all available packages with `fastvere_extend(topcis = c(..id's..))`, and to install missing packages by adding argument `install = TRUE`. The total (recursive) dependency count is indicated for each package. 
+High-performing packages for different data manipulation and statistical computing topics are suggested below. <!-- Each topic has a 2-character topic-id, which can be used to quickly attach all available packages with `fastvere_extend(topcis = c(..id's..))`, and to install missing packages by adding argument `install = TRUE`. --> 
+The total (recursive) dependency count is indicated for each package. 
 
 ***
 
-#### Time Series (TS)
+#### Time Series
 
 - **[xts](https://github.com/joshuaulrich/xts)** and **[zoo](https://github.com/cran/zoo)**: Fast and reliable matrix-based time series classes providing fully identified ordered observations and various utilities for plotting and computations (1 dependency).
 
@@ -195,7 +196,7 @@ High-performing packages for different data manipulation and statistical computi
   
 <!-- Passing the `xts::index()` coerced to integer to the `t` argument of *collapse*'s `flag`, `fdiff` and `fgrowth` further allows exact time-based computations on irregularly spaced time series, which is not supported by *xts*'s built-in functions. -->  
 
-#### Dates and Times (DT)
+#### Dates and Times
 
 - **[lubridate](https://github.com/tidyverse/lubridate)**: Facilitates 'POSIX-' and 'Date' based computations (2 dependencies).
 
@@ -214,7 +215,7 @@ High-performing packages for different data manipulation and statistical computi
   
   <!-- - **nanotime**: (7 dependencies). -->
 
-#### Strings (ST)
+#### Strings
 
 - **[stringi](https://github.com/gagolews/stringi)**: Main R package for fast, correct, consistent, and convenient string/text manipulation (backend to *stringr* and *snakecase*) (0 dependencies).
 
@@ -226,7 +227,7 @@ High-performing packages for different data manipulation and statistical computi
 
 - **[stringdist](https://github.com/markvanderloo/stringdist)**: Fast computation of string distance metrics, matrices, and fuzzy matching (0 dependencies).
 
-#### Statistics and Computing (SC)
+#### Statistics and Computing
 
 - **[matrixStats](https://github.com/HenrikBengtsson/matrixStats)**: Efficient row-and column-wise (weighted) statistics on matrices and vectors, including computations on subsets of rows and columns (0 dependencies). 
 
@@ -262,7 +263,7 @@ High-performing packages for different data manipulation and statistical computi
 - **fastDummies**: Fast Creation of Dummy (Binary) Columns and Rows from Categorical Variables. (16 dependencies)
 -->  
 
-#### Spatial (SP)
+#### Spatial
 
 - **[sf](https://github.com/r-spatial/sf/)**: Leading framework for geospatial computing and manipulation in R, offering a simple and flexible spatial data frame and supporting functionality (12 dependencies). 
 
@@ -275,7 +276,7 @@ High-performing packages for different data manipulation and statistical computi
   *Notes*: *collapse* can be used for efficient manipulation and computations on *sf* data frames. *sf* also offers tight integration with *dplyr*.
 
 
-#### Visualization (VI)
+#### Visualization
 
 - **[dygraphs](https://github.com/rstudio/dygraphs)**: Interface to 'Dygraphs' interactive time series charting library (12 dependencies). 
 
@@ -290,7 +291,7 @@ High-performing packages for different data manipulation and statistical computi
   *Notes:* *latticeExtra* provides extra graphical utilities base on *lattice*. *gridExtra* provides miscellaneous functions for *grid* graphics (and consequently for *ggplot2* which is based on *grid*). *gridtext* provides improved text rendering support for *grid* graphics. Many packages offer *ggplot2* extensions, (typically starting with 'gg') such as *ggExtra*, *ggalt*, *ggforce*, *ggmap*, *ggtext*, *ggthemes*, *ggrepel*, *ggridges*, *ggfortify*, *ggstatsplot*, *ggeffects*, *ggsignif*, *GGally*, *ggcorrplot*, *ggdendro*, etc.. Users in desperate need for greater performance may also find the (unmaintained) [lwplot](https://github.com/eddelbuettel/lwplot) package useful that provides a faster and lighter version of *ggplot2* with *data.table* backend.
 
 
-#### Tidyverse-like data manipulation built on *data.table* (TV)
+#### Tidyverse-like data manipulation built on *data.table*
 
 - **[tidytable](https://github.com/markfairbanks/tidytable)**: A tidy interface to *data.table* that is *rlang* compatible. Quite comprehensive implementation of *dplyr*, *tidyr* and *purr* functions. Package uses a class *tidytable* that inherits from *data.table*. The `dt()` function makes *data.table* syntax pipeable (12 total dependencies). 
 
@@ -304,8 +305,8 @@ High-performing packages for different data manipulation and statistical computi
 
 - **[maditr](https://github.com/gdemin/maditr)**: Fast data aggregation, modification, and filtering with pipes and *data.table*. Minimal implementation with functions `let()` and `take()` for most common data manipulation tasks. Also provides Excel-like lookup functions (2 dependencies). 
 
-  *Notes*: *table.express* package here, but these packages import *dplyr* and thus have a around 20 dependencies.
-  
+- **[table.express](https://github.com/asardaes/table.express)** also o builds *data.table* expressions from *dplyr* verbs, without executing them eagerly. Similar to *dtplyr* but less mature (17 dependencies). 
+
 #### Data Input-Output, Serialization, and Larger-Than-Memory Processing (IO)  
 
 - **[fst](https://github.com/fstpackage/fst)**: A compressed data file format that is very fast to read and write. Full random access in both rows and columns allows reading subsets from a '.fst' file (2 dependencies). 
@@ -321,7 +322,7 @@ High-performing packages for different data manipulation and statistical computi
 
   *Notes*: *data.table* provides `fread` and `fwrite` for fast reading of delimited files. 
   
-####  Compiling R (CP)
+####  Compiling R
 
 - **[nCompiler](https://github.com/nimble-dev/nCompiler)**: Compiles R functions to C++, and covers basic math, distributions, vectorized math and linear algebra, as well as basic control flow. R and Compiled C++ functions can also be jointly utilized in the a class 'nClass' that inherits from R6. An in-progres [user-manual](https://htmlpreview.github.io/?https://raw.githubusercontent.com/nimble-dev/nCompiler/master/UserManual/_site/index.html) provides an overview of the package. 
 
@@ -341,7 +342,7 @@ High-performing packages for different data manipulation and statistical computi
   *Notes*: Many of these projects are experimental and not available as CRAN packages. 
 
 
-####  R Bindings to Faster Languages (FL)
+####  R Bindings to Faster Languages
 
 - **[R's C API](http://adv-r.had.co.nz/C-interface.html)** is the most natural way to extend R and does not require additional packages. It is further documented in the [Writing R Extensions Manual](https://cran.r-project.org/doc/manuals/R-exts.html#System-and-foreign-language-interfaces), the [R Internals Manual](https://cran.r-project.org/doc/manuals/r-release/R-ints.html), the **[r-internals](https://github.com/hadley/r-internals)** repository and sometimes referred to in the [R Blog](https://developer.r-project.org/Blog/public/) (and some other Blogs on the web). Users willing to extend R in this way should familiarize themselves with R's garbage collection and [PROTECT Errors](https://github.com/kalibera/cran-checks/blob/master/rchk/PROTECT.md).
 
@@ -362,7 +363,7 @@ High-performing packages for different data manipulation and statistical computi
 
 #### Parallelization, High-Performance Computing and Out-Of-Memory Data
 
-- See the [High-Performance and Parallel Computing](https://cran.r-project.org/web/views/HighPerformanceComputing.html) CRAN Task View and the [futureverse](https://www.futureverse.org/). 
+- See the [High-Performance and Parallel Computing](https://cran.r-project.org/web/views/HighPerformanceComputing.html) Task View and the [futureverse](https://www.futureverse.org/). 
 
 ***
   
