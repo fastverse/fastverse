@@ -18,7 +18,7 @@ It can also be used to check conflicts for any other attached packages."><meta p
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastverse</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -65,18 +65,21 @@ It can also be used to check conflicts for any other attached packages.</p>
     <h2>Arguments</h2>
     <dl><dt>pkg</dt>
 <dd><p>character. A vector of packages to check conflicts for. The default is all <em>fastverse</em> packages.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An object of class 'fastverse_conflicts': A named list of character vectors where the names are the conflicted objects, and the 
+    
+
+<p>An object of class 'fastverse_conflicts': A named list of character vectors where the names are the conflicted objects, and the 
 content are the names of the package namespaces containing the object, in the order they appear on the <code><a href="https://rdrr.io/r/base/search.html" class="external-link">search</a></code> path.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
     <p>There are 2 internal conflict in the core <em>fastverse</em> which are not displayed by <code>fastverse_conflicts()</code>:</p><ul><li><p><code><a href="https://sebkrantz.github.io/collapse/reference/funique.html" class="external-link">collapse::funique</a></code> masks <code><a href="https://rdrr.io/pkg/kit/man/funique.html" class="external-link">kit::funique</a></code>. If both packages are detached, <em>collapse</em> is attached after <em>kit</em>. In general, the 
-<em>collapse</em> version is often faster on data frames and supports unique rows on selected columns. An option <code>sort = TRUE</code> lets <code><a href="https://sebkrantz.github.io/collapse/reference/funique.html" class="external-link">collapse::funique</a></code> 
-return sorted unique values. The <em>kit</em> version is often faster for vectors and also supports matrices.</p></li>
-<li><p><code><a href="https://rdrr.io/pkg/matrixStats/man/rowCounts.html" class="external-link">matrixStats::count</a></code> masks <code><a href="https://rdrr.io/pkg/kit/man/count.html" class="external-link">kit::count</a></code>. The <em>matrixStats</em> version is more flexible, supporting restricted search and missing value removal. The <em>kit</em> version is nearly twice as fast.</p></li>
+<em>collapse</em> version is faster and supports unique rows on selected columns, as well as sorted unique values with option <code>sort = TRUE</code>. The <em>kit</em> version is also very fast and additionally supports matrices.    
+<!-- % \item \code{matrixStats::count} masks \code{kit::count}. The \emph{matrixStats} version is more flexible, supporting restricted search and missing value removal. The \emph{kit} version is nearly twice as fast.  --></p></li>
+<li><p>collapse::fdroplevels masks <code><a href="https://Rdatatable.gitlab.io/data.table/reference/fdroplevels.html" class="external-link">data.table::fdroplevels</a></code>. The former is faster and supports arbitrary data structures, whereas the latter has options to exclude certain levels from being dropped.</p></li>
 </ul></div>
     <div id="see-also">
     <h2>See also</h2>
@@ -107,7 +110,7 @@ return sorted unique values. The <em>kit</em> version is often faster for vector
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

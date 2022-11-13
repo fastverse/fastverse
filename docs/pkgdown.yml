@@ -1,7 +1,7 @@
-pandoc: 2.14.0.3
-pkgdown: 2.0.2
+pandoc: 2.17.1.1
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   fastverse_intro: fastverse_intro.html
-last_built: 2022-05-13T22:16Z
+last_built: 2022-11-13T23:39Z
 
