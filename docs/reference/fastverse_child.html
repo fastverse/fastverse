@@ -18,7 +18,7 @@ of the functionality of the fastverse package."><meta property="og:image" conten
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastverse</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -54,7 +54,7 @@ of the functionality of the fastverse package."><meta property="og:image" conten
 
     <div class="ref-description">
     <p>Creates and installs a fully customizable descendant verse of packages that is itself extensible and inherits 90%
-of the functionality of the <em>fastverse</em> package.</p>
+of the functionality of the <code>fastverse</code> package.</p>
     </div>
 
     <div id="ref-usage">
@@ -76,29 +76,50 @@ of the functionality of the <em>fastverse</em> package.</p>
     <h2>Arguments</h2>
     <dl><dt>name</dt>
 <dd><p>character. The name of the child-verse e.g. 'myMLverse'.</p></dd>
+
+
 <dt>title</dt>
 <dd><p>character. The title of the child-verse e.g. 'My Machine Learning Verse'.</p></dd>
+
+
 <dt>pkg</dt>
 <dd><p>character. A vector of core packages for the new verse.</p></dd>
+
+
 <dt>maintainer</dt>
 <dd><p>character. A quoted <code><a href="https://rdrr.io/r/utils/person.html" class="external-link">person</a></code> statement giving the package maintainer. 
 If you do not intend to substantially modify the code of the resulting source package, <code>role = "cre"</code> is appropriate. See Examples.</p></dd>
+
+
 <dt>version</dt>
 <dd><p>character. A quoted version number for the new package.</p></dd>
+
+
 <dt>dir</dt>
 <dd><p>character. The directory in which a source directory dir/name for the package will be created.</p></dd>
+
+
 <dt>theme</dt>
 <dd><p>character. Set the colour-theme for text printed to the console. The options are <code>"fastverse"</code> or <code>"tidyverse"</code>.</p></dd>
+
+
 <dt>install</dt>
 <dd><p>logical. <code>TRUE</code> installs the package using <code>install.packages(dir/name, repos = NULL, type = "source", ...)</code>.</p></dd>
+
+
 <dt>keep.dir</dt>
 <dd><p>logical. <code>FALSE</code> will remove the source directory (dir/name) again after installation.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>further arguments to <code><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>fastverse_child</code> returns <code>NULL</code> invisibly.</p>
+    
+
+<p><code>fastverse_child</code> returns <code>NULL</code> invisibly.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -141,7 +162,7 @@ Use of this function requires an internet connection but no additional R package
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
