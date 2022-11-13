@@ -10,10 +10,10 @@ Description: Easy installation, loading and management, of high-performance pack
              'kit' and 'magrittr', that jointly only depend on 'Rcpp'. 
              The 'fastverse' can be freely and permanently extended with 
              additional packages, both globally or for individual projects. 
-             Separate package verses can also be created. High-performance packages 
-             for various common tasks such as time series, dates and times, strings, 
-             spatial data, statistics, data serialization, databases, and compilation of 
-             R functions are suggested on the README.md / website.
+             Separate package verses can also be created. Fast packages 
+             for many common tasks such as time series, dates and times, strings, 
+             spatial data, statistics, data serialization, larger-than-memory 
+             processing, and compilation of R code are suggested in the README.
 License: GPL-3
 Encoding: UTF-8
 Imports: data.table, collapse, kit, magrittr
