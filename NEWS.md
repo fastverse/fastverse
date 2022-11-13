@@ -8,6 +8,8 @@
 
 * Function `fastvverse_install()` prints a message `"All fastverse packages installed"` if all *fastverse* packages are installed, unless `options(fastverse.quiet = TRUE)` is set. There is also the option to set `_opt_fastverse.install = TRUE` in a `.fastverse` configuration file, or `options(fastverse.install = TRUE)` in an `.Rprofile` file, such that calling `library(fastverse)` will install any missing packages by calling `fastvverse_install()` before attempting to load packages. This however also displayed the message `"All fastverse packages installed"`, which is undesirable. So whenever `options(fastverse.install = TRUE)` is set, a call to `fastvverse_install()` will not print anything if all packages are available. 
 
+* New packages and 2 new topics: 'Compiling R' and 'R Bindings to Faster Languages' were added to [Suggested Extensions](https://github.com/fastverse/fastverse#suggested-extensions) list. In lieu of this the `topics` argument to `fastverse_extend()` was depreciated, as hard coding many suggested packages in the package source code itself is impractical. Please feel free to suggest further packages for the list, so that it becomes a valuable resource for everyone interested in high-performance in R. 
+
 
 # fastverse 0.2.4
 
