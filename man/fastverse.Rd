@@ -20,7 +20,7 @@ provide native C/C++ code of proven quality, work well together, and enable comp
 % The package also harmonizes functionality among some of these core packages (see below). 
 
 \code{fastverse} also allows users to freely (and permanently) extend or reduce the number of packages in the \emph{fastverse}. 
-A selection of suggested high-performing packages for various topics is provided in \code{\link{fastverse_extend}} (and with more details in the \href{https://fastverse.github.io/fastverse/#suggested-extensions}{README}). 
+An overview of high-performing packages for various common tasks is provided in the \href{https://github.com/fastverse/fastverse#suggested-extensions}{README} file. 
 An overview of the package and the different ways to extend the \emph{fastverse} is provided in the \href{https://fastverse.github.io/fastverse/articles/fastverse_intro.html}{vignette}. 
 % Further functions help to determine joint dependencies, sort out namespace conflicts among attached packages, and update packages.
 }

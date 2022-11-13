@@ -6,32 +6,22 @@
 \usage{
 fastverse_extend(
   ...,
-  topics = NULL,
   install = FALSE,
   permanent = FALSE,
-  check.conflicts = !isTRUE(getOption("fastverse.quiet"))
+  check.conflicts = !isTRUE(getOption("fastverse.quiet")),
+  topics = NULL
 )
 }
 \arguments{
 \item{\dots}{comma-separated package names, quoted or unquoted, or vectors of package names.}
-
-\item{topics}{integer or character. Short-keys to attach groups of related and packages suggested as extensions to the \emph{fastverse} (not case sensitive if character). Unavailable packages are skipped unless \code{install = TRUE}.
-\enumerate{
-\item \code{"TS"}: Time Series. Attaches \emph{xts}, \emph{zoo} and \emph{roll}. 
-\item \code{"DT"}: Dates and Times. Attaches \emph{lubridate}, \emph{anytime}, \emph{fasttime}, \emph{nanotime}, \emph{clock}, and \emph{timechange}.
-\item \code{"ST"}: Strings. Attaches \emph{stringr}, \emph{stringi}, \emph{snakecase}, \emph{stringfish} and \emph{stringdist}.
-\item \code{"SC"}: Statistics and Computing. Attaches \emph{Rfast}, \emph{Rfast2}, \emph{parallelDist}, \emph{coop}, \emph{MatrixExtra}, \emph{rsparse}, \emph{rrapply}, \emph{dqrng}, \emph{fastmap} and \emph{fastmatch}. % \emph{fastDummies}, 
-\item \code{"SP"}: Spatial. Attaches \emph{sf}, \emph{geos}, \emph{stars} and \emph{terra}.
-\item \code{"VI"}: Visualization. Attaches \emph{dygraphs}, \emph{ggplot2}, \emph{scales}, \emph{lattice} and \emph{grid}. % \emph{RColorBrewer} and \emph{viridis}.
-\item \code{"TV"}: Tidyverse-Like. Attaches \emph{tidytable}, \emph{tidyfast}, \emph{tidyfst}, \emph{tidyft} and \emph{maditr}. % , \emph{table.express} and \emph{dtplyr}, import dplyr
-\item \code{"IO"}: Input-Output. Attaches \emph{qs} and \emph{arrow}.
-}}
 
 \item{install}{logical. Install packages not available?}
 
 \item{permanent}{logical. Should packages be saved and included when \code{library(fastverse)} is called next time? Implemented via a config file saved to the package directory. The file will be removed if the \emph{fastverse} is reinstalled, and can be removed without reinstallation using \code{\link{fastverse_reset}}. Packages can be removed from the config file using \code{\link[=fastverse_detach]{fastverse_detach(..., permanent = TRUE)}}.}
 
 \item{check.conflicts}{logical. Should conflicts between extension packages and attached packages be checked?}
+
+\item{topics}{depreciated argument used to bulk-attach or install suggested extension packages prior to v0.3.0.}
 }
 \value{
 \code{fastverse_extend} returns \code{NULL} invisibly.
@@ -40,8 +30,8 @@ fastverse_extend(
 Loads additional packages as part of the \emph{fastverse}. By default only for the session, but extensions can be saved up to reinstallation/updating of the \emph{fastverse} package.
 }
 \details{
-The \emph{fastverse} can be extended using a free choice of packages, packages listed under \code{topics}, or a combination of both. If \code{install = FALSE}, only packages 
-among the \code{topics} groups that are available are considered, others are disregarded. 
+The \emph{fastverse} can be extended using a free choice of packages. An overview of high-performing packages for various tasks is provided in the \href{https://github.com/fastverse/fastverse#suggested-extensions}{README} file.  %, packages listed under \code{topics}, or a combination of both. If \code{install = FALSE}, only packages 
+% among the \code{topics} groups that are available are considered, others are disregarded. 
 
 When the \emph{fastverse} is extended calling \code{fastverse_extend(...)}, the packages that are not attached are attached, but conflicts are checked for all specified packages. 
 If \code{permanent = FALSE}, an \code{options("fastverse.extend")} is set which stores these extension packages, regardless of whether they were already attached or not. When calling 
@@ -53,8 +43,7 @@ is a character vector of package names, before calling \code{library(fastverse)}
 \examples{
 \donttest{
 ex <- getOption("fastverse.extend")
-fastverse_extend(xts, stringi)
-fastverse_extend(fasttime, topics = "VI")
+fastverse_extend(xts, stringi, fasttime)
 
 # Undoing this again
 fastverse_detach(setdiff(getOption("fastverse.extend"), ex), session = TRUE)
