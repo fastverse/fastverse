@@ -25,5 +25,5 @@ URL: https://fastverse.github.io/fastverse/,
      https://github.com/fastverse
 BugReports: https://github.com/fastverse/fastverse/issues
 RoxygenNote: 7.1.2
-NeedsCompilation: no
+NeedsCompilation: yes
 VignetteBuilder: knitr

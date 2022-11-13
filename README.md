@@ -1,6 +1,7 @@
 # fastverse <img src='logo.png' width="350px" align="right" />
 
 <!-- badges: start -->
+[![:total status badge](https://fastverse.r-universe.dev/badges/:total)](https://fastverse.r-universe.dev)
 [![R build status](https://github.com/fastverse/fastverse/workflows/R-CMD-check/badge.svg)](https://github.com/fastverse/fastverse/actions)
 [![fastverse status badge](https://fastverse.r-universe.dev/badges/fastverse)](https://fastverse.r-universe.dev)
 [![CRAN status](https://www.r-pkg.org/badges/version/fastverse)](https://cran.r-project.org/package=fastverse) 
