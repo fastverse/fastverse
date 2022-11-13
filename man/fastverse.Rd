@@ -48,7 +48,7 @@ Utilities to retrieve the names of \emph{fastverse} packages (and dependencies),
 \code{\link[=fastverse_deps]{fastverse_deps()}}\cr
 \code{\link[=fastverse_sitrep]{fastverse_sitrep()}}
 
-Function to create a fully separate extensible metapackage/verse like \code{fastverse}
+Function to create a fully separate extensible meta-package/verse like \code{fastverse}
 
 \code{\link[=fastverse_child]{fastverse_child()}}
 }
@@ -64,7 +64,7 @@ Function to create a fully separate extensible metapackage/verse like \code{fast
 }
 }
 
-\section{\emph{fastverse} Harmonisations}{
+\section{\emph{fastverse} Harmonizations}{
 
 % \itemize{
 There are 2 internal clashes between \code{collapse::funique} and \code{kit::funique}, and \code{collapse::fdroplevels} and \code{data.table::fdroplevels}. % between \code{matrixStats::count} and \code{kit::count}.

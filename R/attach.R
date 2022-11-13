@@ -155,6 +155,7 @@ topics_selector <- function(x) {
 #' 
 #' Loads additional packages as part of the \emph{fastverse}. By default only for the session, but extensions can be saved up to reinstallation/updating of the \emph{fastverse} package. 
 #' 
+#' @inheritParams fastverse_update
 #' @param \dots comma-separated package names, quoted or unquoted, or vectors of package names. 
 #' @param install logical. Install packages not available?
 #' @param permanent logical. Should packages be saved and included when \code{library(fastverse)} is called next time? Implemented via a config file saved to the package directory. The file will be removed if the \emph{fastverse} is reinstalled, and can be removed without reinstallation using \code{\link{fastverse_reset}}. Packages can be removed from the config file using \code{\link[=fastverse_detach]{fastverse_detach(..., permanent = TRUE)}}.
@@ -184,7 +185,8 @@ topics_selector <- function(x) {
 #' rm(ex)
 #' }
 fastverse_extend <- function(..., install = FALSE, permanent = FALSE, 
-                             check.conflicts = !isTRUE(getOption("fastverse.quiet")), topics = NULL) { 
+                             check.conflicts = !isTRUE(getOption("fastverse.quiet")), 
+                             topics = NULL, repos = getOption("repos")) { 
   
   if(!missing(...)) {
     epkg <- tryCatch(c(...), error = function(e) c_(...))
@@ -222,7 +224,7 @@ fastverse_extend <- function(..., install = FALSE, permanent = FALSE,
   if(install) {
     inst <- needed[!is_installed(needed)]
     if(length(inst)) {
-      install.packages(inst)
+      install.packages(inst, repos = repos)
       cat("\n")
     }
   } 

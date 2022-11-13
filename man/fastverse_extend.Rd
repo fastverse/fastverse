@@ -9,7 +9,8 @@ fastverse_extend(
   install = FALSE,
   permanent = FALSE,
   check.conflicts = !isTRUE(getOption("fastverse.quiet")),
-  topics = NULL
+  topics = NULL,
+  repos = getOption("repos")
 )
 }
 \arguments{
@@ -22,6 +23,9 @@ fastverse_extend(
 \item{check.conflicts}{logical. Should conflicts between extension packages and attached packages be checked?}
 
 \item{topics}{depreciated argument used to bulk-attach or install suggested extension packages prior to v0.3.0.}
+
+\item{repos}{character vector. Base URL(s) of the repositories to use, e.g., the URL of a CRAN mirror such as \code{"https://cloud.r-project.org"}. 
+The macro \code{.fastverse_repos} contains the URL of the \href{https://fastverse.r-universe.dev}{fastverse r-universe server} to check/install the development version of packages.}
 }
 \value{
 \code{fastverse_extend} returns \code{NULL} invisibly.

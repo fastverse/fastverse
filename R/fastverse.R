@@ -44,7 +44,7 @@
 #' \code{\link[=fastverse_deps]{fastverse_deps()}}\cr
 #' \code{\link[=fastverse_sitrep]{fastverse_sitrep()}}
 #' 
-#' Function to create a fully separate extensible metapackage/verse like \code{fastverse}
+#' Function to create a fully separate extensible meta-package/verse like \code{fastverse}
 #' 
 #' \code{\link[=fastverse_child]{fastverse_child()}}
 #'
@@ -57,7 +57,7 @@
 #' \item \code{options(fastverse.install = TRUE)} can be set before \code{library(fastverse)} to install any missing packages beforehand. See also \code{\link{fastverse_install}}.
 #' }
 #'
-#' @section \emph{fastverse} Harmonisations:
+#' @section \emph{fastverse} Harmonizations:
 #' % \itemize{
 #' There are 2 internal clashes between \code{collapse::funique} and \code{kit::funique}, and \code{collapse::fdroplevels} and \code{data.table::fdroplevels}. % between \code{matrixStats::count} and \code{kit::count}.
 #' The \emph{collapse} versions take precedence in both cases as they provide greater performance. % over the \emph{kit} versions. For a comparison of functionality see the details section of \code{\link{fastverse_conflicts}}.
