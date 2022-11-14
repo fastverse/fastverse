@@ -352,7 +352,7 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[tidyCpp](https://github.com/eddelbuettel/tidycpp)** provides a tidy C++ wrapping of the C API of R - to make the C API more amenable to C++ programmers (0 dependencies). 
 
-- **[JuliaCall](https://github.com/Non-Contradiction/JuliaCall)** Provides an R interface to the Julia programming language (11 dependencies). Other interfaces are provided by [XRJulia](https://github.com/johnmchambers/XRJulia) (2 dependencies) and [JuliaConnectoR]( https://CRAN.R-project.org/package=JuliaConnectoR) (0 dependencies).
+- **[JuliaCall](https://github.com/Non-Contradiction/JuliaCall)** Provides an R interface to the Julia programming language (11 dependencies). Other interfaces are provided by [XRJulia](https://github.com/johnmchambers/XRJulia) (2 dependencies) and [JuliaConnectoR](https://github.com/stefan-m-lenz/JuliaConnectoR) (0 dependencies).
 
 - **[rextendr](https://github.com/extendr/rextendr)** provides an R interface to the Rust programming language (29 dependencies). 
 
