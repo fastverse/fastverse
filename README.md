@@ -363,7 +363,7 @@ The total (recursive) dependency count is indicated for each package.
 
 #### Parallelization, High-Performance Computing and Out-Of-Memory Data
 
-- See the [High-Performance and Parallel Computing](https://cran.r-project.org/web/views/HighPerformanceComputing.html) Task View and the [futureverse](https://www.futureverse.org/). 
+- See the [High-Performance and Parallel Computing](https://CRAN.R-project.org/view=HighPerformanceComputing) Task View and the [futureverse](https://www.futureverse.org/). 
 
 ***
   

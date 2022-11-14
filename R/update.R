@@ -115,7 +115,7 @@ fastverse_update <- function(..., install = FALSE, repos = getOption("repos")) {
 
 #' Install (missing) fastverse packages
 #'
-#' This function (by default) checks if any \emph{fastverse} package is missing and installs the missing package(s). The development versions of \emph{fastverse} packages can also be installed from \href{"https://fastverse.r-universe.dev"}{r-universe}. The link to the repository is contained in the \code{.fastverse_repos} macro. 
+#' This function (by default) checks if any \emph{fastverse} package is missing and installs the missing package(s). The development versions of \emph{fastverse} packages can also be installed from \href{https://fastverse.r-universe.dev}{r-universe}. The link to the repository is contained in the \code{.fastverse_repos} macro. 
 #' 
 #' @inheritParams fastverse_update
 #' @param \dots comma-separated package names, quoted or unquoted, or vectors of package names. If left empty, all packages returned by \code{\link{fastverse_packages}} are checked. 

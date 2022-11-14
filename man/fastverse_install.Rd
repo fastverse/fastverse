@@ -25,7 +25,7 @@ The macro \code{.fastverse_repos} contains the URL of the \href{https://fastvers
 \code{fastverse_install} returns \code{NULL} invisibly.
 }
 \description{
-This function (by default) checks if any \emph{fastverse} package is missing and installs the missing package(s). The development versions of \emph{fastverse} packages can also be installed from \href{"https://fastverse.r-universe.dev"}{r-universe}. The link to the repository is contained in the \code{.fastverse_repos} macro.
+This function (by default) checks if any \emph{fastverse} package is missing and installs the missing package(s). The development versions of \emph{fastverse} packages can also be installed from \href{https://fastverse.r-universe.dev}{r-universe}. The link to the repository is contained in the \code{.fastverse_repos} macro.
 }
 \note{
 There is also the possibility to set \code{options(fastverse.install = TRUE)} before \code{library(fastverse)}, which will call \code{fastverse_install()} before loading any packages to make sure all packages are available.
