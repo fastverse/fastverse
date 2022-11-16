@@ -356,7 +356,7 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[rextendr](https://github.com/extendr/rextendr)** provides an R interface to the Rust programming language (29 dependencies). 
 
-- **[rJava](https://github.com/s-u/rJava)** provides an R interface to Java (11 dependencies). 
+- **[rJava](https://github.com/s-u/rJava)** provides an R interface to Java (0 dependencies). 
 
   *Notes*: There are many Rcpp extension packages binding R to powerful C++ libraries, such as linear algebra through *RcppArmadillo* and *RcppEigen*, thread-safe parallelism through *RcppParallel* etc. 
   
