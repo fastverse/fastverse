@@ -267,7 +267,11 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[sf](https://github.com/r-spatial/sf/)**: Leading framework for geospatial computing and manipulation in R, offering a simple and flexible spatial data frame and supporting functionality (12 dependencies). 
 
-- **[geos](https://github.com/paleolimbot/geos/)**: Provides an R API to the [Open Source Geometry Engine (GEOS)](<https://trac.osgeo.org/geos/>) C-library and a vector format with which to efficiently store 'GEOS' geometries,  functions to extract information from, calculate relationships between, and transform geometries, and facilities to import/export geometry vectors to other spatial formats (2 dependencies).
+- **[s2](https://github.com/r-spatial/s2)**: Provides R bindings for [Google's s2 C++ library](https://s2geometry.io/) for high-performance geometric calculations on
+    the sphere (3D, geographic/geodetic CRS). Used as a backend to *sf* for calculations on geometries with geographic/geodetic CRS, but using *s2* directly can provide substantial performance gains (2 dependencies). 
+
+- **[geos](https://github.com/paleolimbot/geos/)**: Provides an R API to the [Open Source Geometry Engine (GEOS)](<https://trac.osgeo.org/geos/>) C-library, which can be used to very efficiently manipulate planar (2D/flat/projected CRS) geometries, and a vector format with which to efficiently store 'GEOS' geometries. 
+<!-- It includes functions to extract information from, calculate relationships between, and transform geometries, and facilities to import/export geometry vectors to other spatial formats. --> Used as a backend to *sf* for calculations on geometries with projected CRS, but using *geos* directly can provide substantial performance gains (2 dependencies).
 
 - **[stars](https://github.com/r-spatial/stars)**: Spatiotemporal data (raster and vector) in the form of dense arrays, with space and time being array dimensions (16 dependencies). 
 
