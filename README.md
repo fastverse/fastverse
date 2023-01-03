@@ -5,7 +5,7 @@
 [![R build status](https://github.com/fastverse/fastverse/workflows/R-CMD-check/badge.svg)](https://github.com/fastverse/fastverse/actions)
 [![fastverse status badge](https://fastverse.r-universe.dev/badges/fastverse)](https://fastverse.r-universe.dev)
 [![CRAN status](https://www.r-pkg.org/badges/version/fastverse)](https://cran.r-project.org/package=fastverse) 
-[![cran checks](https://cranchecks.info/badges/worst/fastverse)](https://cran.r-project.org/web/checks/check_results_fastverse.html)
+[![cran checks](https://badges.cranchecks.info/worst/fastverse.svg)](https://cran.r-project.org/web/checks/check_results_fastverse.html)
 ![downloads per month](http://cranlogs.r-pkg.org/badges/fastverse?color=blue)
 ![downloads](http://cranlogs.r-pkg.org/badges/grand-total/fastverse?color=blue)
  [![Conda Version](https://img.shields.io/conda/vn/conda-forge/r-fastverse.svg)](https://anaconda.org/conda-forge/r-fastverse)
