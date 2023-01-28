@@ -18,10 +18,10 @@ This function lists all the conflicts among \emph{fastverse} packages and betwee
 It can also be used to check conflicts for any other attached packages.
 }
 \details{
-There are 2 internal conflict in the core \emph{fastverse} which are not displayed by \code{fastverse_conflicts()}:
+There are 3 internal conflicts in the core \emph{fastverse} which are not displayed by \code{fastverse_conflicts()}:
 \itemize{
-\item \code{collapse::funique} masks \code{kit::funique}. If both packages are detached, \emph{collapse} is attached after \emph{kit}. In general, the 
-\emph{collapse} version is faster and supports unique rows on selected columns, as well as sorted unique values with option \code{sort = TRUE}. The \emph{kit} version is also very fast and additionally supports matrices.    
+\item \code{collapse::funique} and \code{collapse::fdupliacted} mask \code{kit::funique} and \code{kit::fduplicated}. If both packages are detached, \emph{collapse} is attached after \emph{kit}. In general, the 
+\emph{collapse} versions are faster and a bit more versatile. The \emph{kit} versions are also very fast and additionally supports matrices!    
 % \item \code{matrixStats::count} masks \code{kit::count}. The \emph{matrixStats} version is more flexible, supporting restricted search and missing value removal. The \emph{kit} version is nearly twice as fast. 
 \item{collapse::fdroplevels} masks \code{data.table::fdroplevels}. The former is faster and supports arbitrary data structures, whereas the latter has options to exclude certain levels from being dropped. 
 }

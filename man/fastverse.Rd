@@ -67,8 +67,8 @@ Function to create a fully separate extensible meta-package/verse like \code{fas
 \section{\emph{fastverse} Harmonizations}{
 
 % \itemize{
-There are 2 internal clashes between \code{collapse::funique} and \code{kit::funique}, and \code{collapse::fdroplevels} and \code{data.table::fdroplevels}. % between \code{matrixStats::count} and \code{kit::count}.
-The \emph{collapse} versions take precedence in both cases as they provide greater performance. % over the \emph{kit} versions. For a comparison of functionality see the details section of \code{\link{fastverse_conflicts}}.
+There are 3 internal clashes between \code{collapse::funique} and \code{kit::funique}, \code{collapse::fduplicated} and \code{kit::fduplicated}, and \code{collapse::fdroplevels} and \code{data.table::fdroplevels}.
+The \emph{collapse} versions take precedence in all cases as they provide greater performance. % over the \emph{kit} versions. For a comparison of functionality see the details section of \code{\link{fastverse_conflicts}}.
 % \item Quite a number of functions in the \emph{matrixStats} package do not (by default) preserve the attributes of objects passed to them, resulting in inconsistent behavior of different functions. 
 % The GitHub version of the \code{fastverse} alters most of the functions where this is the case, listed in a global variable \code{.matrixStats_replaced}, bestowing them with 
 % capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). This is done using very efficient R and C code, so that performance does not suffer. 
