@@ -58,7 +58,7 @@ Users are also encouraged to make of use the features described in the remainder
 <!-- These extensions can then be loaded and managed by the *fastverse* package, just like the core packages. -->
 
 ## Extending the *fastverse* for the Session
-After the core packages have been attached with `library(fastverse)`, it is possible to extend the *fastverse* for the current session by adding any number of additional packages with `fastverse_extend()`. This will attach the packages and, by default, check for namespace clashes with attached packages, as well as among the added packages. 
+After the core packages have been attached with `library(fastverse)`, it is possible to extend the *fastverse* for the current session by adding any number of additional packages with `fastverse_extend()`. This will attach the packages, displaying the package versions (useful for replicability), and (by default) check for namespace clashes with attached packages, as well as among the added packages. 
 
 ```{r}
 # Extend the fastverse for the session
@@ -272,6 +272,13 @@ fastverse_detach()
 # Detaching 
 fastverse_detach()
 ```
+
+## Appendix: A note on OpenMP Multithreading
+
+*data.table*, *collapse* and *kit* support OpenMP multithreading on all platforms. Global defaults can be set using `data.table::setDTthreads()`, `collapse::set_collapse(nthreads = ...)` and `options(kit.nThread = ...)`. Users should be careful with running multithreaded *collapse* and *kit* functions inside *data.table*. I have created a small [video tutorial](https://www.youtube.com/watch?v=ne4Es2_9r5A) for *collapse* where I talk more about this amongst other things. 
+
+Note also that on macOS, OpenMP is disabled in binaries installed from CRAN. To enable OpenMP on macOS, users first need to install OpenMP and do some configuration. See [here](https://mac.r-project.org/openmp/) for instructions and the latest OpenMP releases. I have also compactly written the terminal commands you need to run in the description of the [tutorial](https://www.youtube.com/watch?v=ne4Es2_9r5A). After installing OpenMP and configuring your R-session, install the packages from source or use r-universe binaries. An easy way would be to run `fastverse_install(data.table, collapse, kit, only.missing = FALSE, repos = .fastverse_repos)`. 
+
 
 
 

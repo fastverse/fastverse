@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastverse</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -84,7 +84,7 @@ and Data Manipulation in R</h3>
                         <h4 data-toc-skip class="author">Sebastian
 Krantz</h4>
             
-            <h4 data-toc-skip class="date">2022-11-14</h4>
+            <h4 data-toc-skip class="date">2023-01-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/fastverse/fastverse/blob/HEAD/vignettes/fastverse_intro.Rmd" class="external-link"><code>vignettes/fastverse_intro.Rmd</code></a></small>
       <div class="hidden name"><code>fastverse_intro.Rmd</code></div>
@@ -113,9 +113,9 @@ jointly depend only on base R and <em>Rcpp</em>, and work remarkably
 well together.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fastverse.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span>
-<span class="co"># -- Attaching packages --------------------------------------- fastverse 0.3.0 --</span>
-<span class="co"># v data.table 1.14.5         v kit        0.0.13    </span>
-<span class="co"># v magrittr   2.0.3.9000     v collapse   1.9.0.9000</span></code></pre></div>
+<span class="co"># -- Attaching packages --------------------------------------- fastverse 0.3.1 --</span>
+<span class="co"># v data.table 1.14.7         v kit        0.0.13    </span>
+<span class="co"># v magrittr   2.0.3.9000     v collapse   1.9.3</span></code></pre></div>
 <p>The <em>fastverse</em> package then provides functionality familiar
 from the <em>tidyverse</em> package, such as checking and reporting
 namespace clashes, and utilities for updating packages, listing
@@ -141,12 +141,13 @@ packages</a> is provided on the website<a href="#fn2" class="footnote-ref" id="f
 <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code>, it is possible to extend the
 <em>fastverse</em> for the current session by adding any number of
 additional packages with <code><a href="../reference/fastverse_extend.html">fastverse_extend()</a></code>. This will
-attach the packages and, by default, check for namespace clashes with
+attach the packages, displaying the package versions (useful for
+replicability), and (by default) check for namespace clashes with
 attached packages, as well as among the added packages.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Extend the fastverse for the session</span>
 <span class="fu"><a href="../reference/fastverse_extend.html">fastverse_extend</a></span><span class="op">(</span><span class="va">xts</span>, <span class="va">roll</span>, <span class="va">fasttime</span><span class="op">)</span>
-<span class="co"># -- Attaching extension packages ----------------------------- fastverse 0.3.0 --</span>
+<span class="co"># -- Attaching extension packages ----------------------------- fastverse 0.3.1 --</span>
 <span class="co"># v xts      0.12.1     v fasttime 1.0.2 </span>
 <span class="co"># v roll     1.1.6</span>
 <span class="co"># -- Conflicts ------------------------------------------ fastverse_conflicts() --</span>
@@ -181,11 +182,11 @@ set for the session are kept.</p>
 
 <span class="co"># Thus attaching the fastverse again will include them</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fastverse.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span>
-<span class="co"># -- Attaching packages --------------------------------------- fastverse 0.3.0 --</span>
-<span class="co"># v data.table 1.14.5         v xts        0.12.1    </span>
+<span class="co"># -- Attaching packages --------------------------------------- fastverse 0.3.1 --</span>
+<span class="co"># v data.table 1.14.7         v xts        0.12.1    </span>
 <span class="co"># v magrittr   2.0.3.9000     v roll       1.1.6     </span>
 <span class="co"># v kit        0.0.13         v fasttime   1.0.2     </span>
-<span class="co"># v collapse   1.9.0.9000</span>
+<span class="co"># v collapse   1.9.3</span>
 <span class="co"># -- Conflicts ------------------------------------------ fastverse_conflicts() --</span>
 <span class="co"># x xts::first()          masks data.table::first()</span>
 <span class="co"># x xts::last()           masks data.table::last()</span>
@@ -214,8 +215,8 @@ e.g. </p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>fastverse.extend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"qs"</span>, <span class="st">"fst"</span><span class="op">)</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fastverse.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span>
-<span class="co"># -- Attaching packages --------------------------------------- fastverse 0.3.0 --</span>
-<span class="co"># v data.table 1.14.5         v collapse   1.9.0.9000</span>
+<span class="co"># -- Attaching packages --------------------------------------- fastverse 0.3.1 --</span>
+<span class="co"># v data.table 1.14.7         v collapse   1.9.3     </span>
 <span class="co"># v magrittr   2.0.3.9000     v qs         0.25.1.1  </span>
 <span class="co"># v kit        0.0.13         v fst        0.9.8</span>
 <span class="co"># -- Conflicts ------------------------------------------ fastverse_conflicts() --</span>
@@ -242,16 +243,16 @@ package and I am completely happy with the base pipe so I don’t need
 <p>Then I could permanently modify my <em>fastverse</em> as follows<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fastverse.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span>
-<span class="co"># -- Attaching packages --------------------------------------- fastverse 0.3.0 --</span>
-<span class="co"># v data.table 1.14.5         v kit        0.0.13    </span>
-<span class="co"># v magrittr   2.0.3.9000     v collapse   1.9.0.9000</span>
+<span class="co"># -- Attaching packages --------------------------------------- fastverse 0.3.1 --</span>
+<span class="co"># v data.table 1.14.7         v kit        0.0.13    </span>
+<span class="co"># v magrittr   2.0.3.9000     v collapse   1.9.3</span>
 <span class="co"># -- Conflicts ------------------------------------------ fastverse_conflicts() --</span>
 <span class="co"># x data.table::yearmon() masks zoo::yearmon()</span>
 <span class="co"># x data.table::yearqtr() masks zoo::yearqtr()</span>
 
 <span class="co"># Adding extensions</span>
 <span class="fu"><a href="../reference/fastverse_extend.html">fastverse_extend</a></span><span class="op">(</span><span class="va">xts</span>, <span class="va">zoo</span>, <span class="va">roll</span>, <span class="va">anytime</span>, permanent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co"># -- Attaching extension packages ----------------------------- fastverse 0.3.0 --</span>
+<span class="co"># -- Attaching extension packages ----------------------------- fastverse 0.3.1 --</span>
 <span class="co"># v xts     0.12.1     v anytime 0.3.9 </span>
 <span class="co"># v roll    1.1.6</span>
 <span class="co"># -- Conflicts ------------------------------------------ fastverse_conflicts() --</span>
@@ -267,8 +268,8 @@ package and I am completely happy with the base pipe so I don’t need
 
 <span class="co"># Adding data.table again, so it is attached last</span>
 <span class="fu"><a href="../reference/fastverse_extend.html">fastverse_extend</a></span><span class="op">(</span><span class="va">data.table</span>, permanent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co"># -- Attaching extension packages ----------------------------- fastverse 0.3.0 --</span>
-<span class="co"># v data.table 1.14.5</span>
+<span class="co"># -- Attaching extension packages ----------------------------- fastverse 0.3.1 --</span>
+<span class="co"># v data.table 1.14.7</span>
 <span class="co"># -- Conflicts ------------------------------------------ fastverse_conflicts() --</span>
 <span class="co"># x data.table::first()   masks xts::first()</span>
 <span class="co"># x data.table::last()    masks xts::last()</span>
@@ -299,10 +300,10 @@ permanent modification worked:</p>
 <span class="fu"><a href="../reference/fastverse_detach.html">fastverse_detach</a></span><span class="op">(</span>session <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fastverse.github.io/fastverse/" class="external-link">fastverse</a></span><span class="op">)</span> 
-<span class="co"># -- Attaching packages --------------------------------------- fastverse 0.3.0 --</span>
-<span class="co"># v collapse   1.9.0.9000     v roll       1.1.6     </span>
-<span class="co"># v xts        0.12.1         v anytime    0.3.9     </span>
-<span class="co"># v zoo        1.8.10         v data.table 1.14.5</span>
+<span class="co"># -- Attaching packages --------------------------------------- fastverse 0.3.1 --</span>
+<span class="co"># v collapse   1.9.3      v roll       1.1.6 </span>
+<span class="co"># v xts        0.12.1     v anytime    0.3.9 </span>
+<span class="co"># v zoo        1.8.10     v data.table 1.14.7</span>
 <span class="co"># -- Conflicts ------------------------------------------ fastverse_conflicts() --</span>
 <span class="co"># x zoo::as.Date()         masks base::as.Date()</span>
 <span class="co"># x zoo::as.Date.numeric() masks base::as.Date.numeric()</span>
@@ -315,7 +316,7 @@ be extend for the session:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Extension for the session</span>
 <span class="fu"><a href="../reference/fastverse_extend.html">fastverse_extend</a></span><span class="op">(</span><span class="va">Rfast</span>, <span class="va">coop</span><span class="op">)</span>
-<span class="co"># -- Attaching extension packages ----------------------------- fastverse 0.3.0 --</span>
+<span class="co"># -- Attaching extension packages ----------------------------- fastverse 0.3.1 --</span>
 <span class="co"># v Rfast 2.0.4     v coop  0.6.3</span>
 <span class="co"># -- Conflicts ------------------------------------------ fastverse_conflicts() --</span>
 <span class="co"># x Rfast::group()     masks collapse::group()</span>
@@ -437,20 +438,20 @@ versions against CRAN versions.</p>
 <code class="sourceCode R"><span class="co"># Recursively determine the joint dependencies of the current fastverse configuration</span>
 <span class="fu"><a href="../reference/fastverse_deps.html">fastverse_deps</a></span><span class="op">(</span>recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># Returns a data frame</span>
 <span class="co">#          package      repos      local behind</span>
-<span class="co"># 1       collapse      1.8.9 1.9.0.9000  FALSE</span>
+<span class="co"># 1       collapse      1.9.2      1.9.3  FALSE</span>
 <span class="co"># 2            xts     0.12.2     0.12.1   TRUE</span>
 <span class="co"># 3            zoo     1.8.11     1.8.10   TRUE</span>
 <span class="co"># 4           roll      1.1.6      1.1.6  FALSE</span>
 <span class="co"># 5        anytime      0.3.9      0.3.9  FALSE</span>
-<span class="co"># 6     data.table     1.14.4     1.14.5  FALSE</span>
+<span class="co"># 6     data.table     1.14.6     1.14.7  FALSE</span>
 <span class="co"># 7          Rfast      2.0.6      2.0.4   TRUE</span>
 <span class="co"># 8           coop      0.6.3      0.6.3  FALSE</span>
-<span class="co"># 9             BH   1.78.0.0   1.78.0.0  FALSE</span>
+<span class="co"># 9             BH   1.81.0.1   1.78.0.0   TRUE</span>
 <span class="co"># 10       lattice    0.20.45    0.20.44   TRUE</span>
-<span class="co"># 11          Rcpp      1.0.9      1.0.9  FALSE</span>
-<span class="co"># 12 RcppArmadillo 0.11.4.2.1 0.11.1.1.0   TRUE</span>
-<span class="co"># 13       RcppGSL     0.3.12     0.3.10   TRUE</span>
-<span class="co"># 14  RcppParallel      5.1.5      5.1.4   TRUE</span>
+<span class="co"># 11          Rcpp     1.0.10     1.0.10  FALSE</span>
+<span class="co"># 12 RcppArmadillo 0.11.4.3.1 0.11.1.1.0   TRUE</span>
+<span class="co"># 13       RcppGSL     0.3.13     0.3.10   TRUE</span>
+<span class="co"># 14  RcppParallel      5.1.6      5.1.4   TRUE</span>
 <span class="co"># 15  RcppZiggurat      0.1.6      0.1.6  FALSE</span></code></pre></div>
 <p>Additional flexibility is offered by the <code>pkg</code> argument
 allowing dependency and update status checks for any other packages.
@@ -461,25 +462,25 @@ or project-level configuration files - as discussed in previous sections
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Check versions and update status of packages and dependencies</span>
 <span class="fu"><a href="../reference/fastverse_sitrep.html">fastverse_sitrep</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># default is recursive = FALSE</span>
-<span class="co"># -- fastverse 0.3.0: Situation Report -------------------------------- R 4.1.1 --</span>
+<span class="co"># -- fastverse 0.3.1: Situation Report -------------------------------- R 4.1.1 --</span>
 <span class="co">#  * Global config file: TRUE</span>
 <span class="co">#  * Project config file: FALSE</span>
 <span class="co"># -- Core packages --------------------------------------------------------------- </span>
-<span class="co">#  * collapse      (1.9.0.9000)</span>
+<span class="co">#  * collapse      (1.9.3)</span>
 <span class="co">#  * xts           (0.12.1 &lt; 0.12.2)</span>
 <span class="co">#  * zoo           (1.8.10 &lt; 1.8.11)</span>
 <span class="co">#  * roll          (1.1.6)</span>
 <span class="co">#  * anytime       (0.3.9)</span>
-<span class="co">#  * data.table    (1.14.5)</span>
+<span class="co">#  * data.table    (1.14.7)</span>
 <span class="co"># -- Extension packages ---------------------------------------------------------- </span>
 <span class="co">#  * Rfast         (2.0.4 &lt; 2.0.6)</span>
 <span class="co">#  * coop          (0.6.3)</span>
 <span class="co"># -- Dependencies ---------------------------------------------------------------- </span>
-<span class="co">#  * BH            (1.78.0.0)</span>
+<span class="co">#  * BH            (1.78.0.0 &lt; 1.81.0.1)</span>
 <span class="co">#  * lattice       (0.20.44 &lt; 0.20.45)</span>
-<span class="co">#  * Rcpp          (1.0.9)</span>
-<span class="co">#  * RcppArmadillo (0.11.1.1.0 &lt; 0.11.4.2.1)</span>
-<span class="co">#  * RcppParallel  (5.1.4 &lt; 5.1.5)</span>
+<span class="co">#  * Rcpp          (1.0.10)</span>
+<span class="co">#  * RcppArmadillo (0.11.1.1.0 &lt; 0.11.4.3.1)</span>
+<span class="co">#  * RcppParallel  (5.1.4 &lt; 5.1.6)</span>
 <span class="co">#  * RcppZiggurat  (0.1.6)</span></code></pre></div>
 <p><code><a href="../reference/fastverse_update.html">fastverse_update()</a></code> can be used to (default) print an
 <code><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages()</a></code> statement to update <em>fastverse</em>
@@ -511,14 +512,16 @@ r-universe.</p>
 <span class="co">#  * xts           (0.12.1 -&gt; 0.12.9900)</span>
 <span class="co">#  * zoo           (1.8.10 -&gt; 1.8.11)</span>
 <span class="co">#  * anytime       (0.3.9 -&gt; 0.3.9.3)</span>
-<span class="co">#  * Rfast         (2.0.4 -&gt; 2.0.6)</span>
+<span class="co">#  * Rfast         (2.0.4 -&gt; 2.0.7)</span>
+<span class="co">#  * BH            (1.78.0.0 -&gt; 1.81.0.1)</span>
 <span class="co">#  * lattice       (0.20.44 -&gt; 0.20.45)</span>
-<span class="co">#  * RcppArmadillo (0.11.1.1.0 -&gt; 0.11.4.2.1)</span>
-<span class="co">#  * RcppParallel  (5.1.4 -&gt; 5.1.5)</span>
+<span class="co">#  * Rcpp          (1.0.10 -&gt; 1.0.10.1)</span>
+<span class="co">#  * RcppArmadillo (0.11.1.1.0 -&gt; 0.11.4.3.1)</span>
+<span class="co">#  * RcppParallel  (5.1.4 -&gt; 5.1.6)</span>
 <span class="co"># </span>
 <span class="co"># Start a clean R session then run:</span>
-<span class="co"># install.packages(c("xts", "zoo", "anytime", "Rfast", "lattice", "RcppArmadillo", </span>
-<span class="co"># "RcppParallel"), repos = c(fastverse = "https://fastverse.r-universe.dev", CRAN = "https://cloud.r-project.org"))</span></code></pre></div>
+<span class="co"># install.packages(c("xts", "zoo", "anytime", "Rfast", "BH", "lattice", "Rcpp", </span>
+<span class="co"># "RcppArmadillo", "RcppParallel"), repos = c(fastverse = "https://fastverse.r-universe.dev", CRAN = "https://cloud.r-project.org"))</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="other-fastverse-options">Other <em>fastverse</em> Options<a class="anchor" aria-label="anchor" href="#other-fastverse-options"></a>
@@ -563,6 +566,27 @@ without sophisticated package management solutions.</p>
 <span class="fu"><a href="../reference/fastverse_reset.html">fastverse_reset</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co"># Detaching </span>
 <span class="fu"><a href="../reference/fastverse_detach.html">fastverse_detach</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="appendix-a-note-on-openmp-multithreading">Appendix: A note on OpenMP Multithreading<a class="anchor" aria-label="anchor" href="#appendix-a-note-on-openmp-multithreading"></a>
+</h2>
+<p><em>data.table</em>, <em>collapse</em> and <em>kit</em> support
+OpenMP multithreading on all platforms. Global defaults can be set using
+<code><a href="https://Rdatatable.gitlab.io/data.table/reference/openmp-utils.html" class="external-link">data.table::setDTthreads()</a></code>,
+<code>collapse::set_collapse(nthreads = ...)</code> and
+<code>options(kit.nThread = ...)</code>. Users should be careful with
+running multithreaded <em>collapse</em> and <em>kit</em> functions
+inside <em>data.table</em>. I have created a small <a href="https://www.youtube.com/watch?v=ne4Es2_9r5A" class="external-link">video tutorial</a>
+for <em>collapse</em> where I talk more about this amongst other
+things.</p>
+<p>Note also that on macOS, OpenMP is disabled in binaries installed
+from CRAN. To enable OpenMP on macOS, users first need to install OpenMP
+and do some configuration. See <a href="https://mac.r-project.org/openmp/" class="external-link">here</a> for instructions and
+the latest OpenMP releases. I have also compactly written the terminal
+commands you need to run in the description of the <a href="https://www.youtube.com/watch?v=ne4Es2_9r5A" class="external-link">tutorial</a>. After
+installing OpenMP and configuring your R-session, install the packages
+from source or use r-universe binaries. An easy way would be to run
+<code>fastverse_install(data.table, collapse, kit, only.missing = FALSE, repos = .fastverse_repos)</code>.</p>
 </div>
 <div class="footnotes footnotes-end-of-document">
 <hr>

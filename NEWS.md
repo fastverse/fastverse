@@ -1,3 +1,7 @@
+# fastverse 0.3.1
+
+* Hides another core *fastverse* conflict between a new function `collapse::fduplicated()` and `kit::fduplicated()`. The conflict is solved in favor of the new *collapse* version, which is faster and can also indicate all occurrences of duplicated values. `kit::fduplicated()` on the other hand can determine duplicates starting from the last value, and also supports matrices.
+
 # fastverse 0.3.0
 
 * Packages *matrixStats* and *fst* are removed from the core set of packages following a poll on Twitter in which more than 50% of respondents voted in favor. This makes the *fastverse* package lighter and focused on core data manipulation tasks. Users have many options to keep the original extent of the fastverse, such as (1) calling `fastverse_extend(matrixStats, fst, permanent = TRUE)` once following the update, (2) calling `fastverse_extend(matrixStats, fst)` right after `library(fastverse)`, (3) placing a `.fastverse` configuration file with `matrixStats, fst` in the project directory, or (4) setting `options(fastverse.extend = c("matrixStats", "fst"))` in an `.Rprofile` file. See the [vignette](https://fastverse.github.io/fastverse/articles/fastverse_intro.html) for details. The GitHub and R-universe versions of *fastverse* retain their capability to correct some functions in *matrixStats* to make them preserve dimension names by default, whenever *matrixStats* is added as an extension. The CRAN version does not allow this feature. 

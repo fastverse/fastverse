@@ -18,7 +18,7 @@ It can also be used to check conflicts for any other attached packages."><meta p
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastverse</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -76,8 +76,8 @@ content are the names of the package namespaces containing the object, in the or
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>There are 2 internal conflict in the core <em>fastverse</em> which are not displayed by <code>fastverse_conflicts()</code>:</p><ul><li><p><code><a href="https://sebkrantz.github.io/collapse/reference/funique.html" class="external-link">collapse::funique</a></code> masks <code><a href="https://rdrr.io/pkg/kit/man/funique.html" class="external-link">kit::funique</a></code>. If both packages are detached, <em>collapse</em> is attached after <em>kit</em>. In general, the 
-<em>collapse</em> version is faster and supports unique rows on selected columns, as well as sorted unique values with option <code>sort = TRUE</code>. The <em>kit</em> version is also very fast and additionally supports matrices.    
+    <p>There are 3 internal conflicts in the core <em>fastverse</em> which are not displayed by <code>fastverse_conflicts()</code>:</p><ul><li><p><code><a href="https://sebkrantz.github.io/collapse/reference/funique.html" class="external-link">collapse::funique</a></code> and <code>collapse::fdupliacted</code> mask <code><a href="https://rdrr.io/pkg/kit/man/funique.html" class="external-link">kit::funique</a></code> and <code><a href="https://rdrr.io/pkg/kit/man/funique.html" class="external-link">kit::fduplicated</a></code>. If both packages are detached, <em>collapse</em> is attached after <em>kit</em>. In general, the 
+<em>collapse</em> versions are faster and a bit more versatile. The <em>kit</em> versions are also very fast and additionally supports matrices!    
 <!-- % \item \code{matrixStats::count} masks \code{kit::count}. The \emph{matrixStats} version is more flexible, supporting restricted search and missing value removal. The \emph{kit} version is nearly twice as fast.  --></p></li>
 <li><p>collapse::fdroplevels masks <code><a href="https://Rdatatable.gitlab.io/data.table/reference/fdroplevels.html" class="external-link">data.table::fdroplevels</a></code>. The former is faster and supports arbitrary data structures, whereas the latter has options to exclude certain levels from being dropped.</p></li>
 </ul></div>
