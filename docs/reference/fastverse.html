@@ -30,7 +30,7 @@ An overview of the package and the different ways to extend the fastverse is pro
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fastverse</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -112,8 +112,8 @@ An overview of the package and the different ways to extend the <em>fastverse</e
     
 
 <p><!-- % \itemize{ -->
-There are 2 internal clashes between <code><a href="https://sebkrantz.github.io/collapse/reference/funique.html" class="external-link">collapse::funique</a></code> and <code><a href="https://rdrr.io/pkg/kit/man/funique.html" class="external-link">kit::funique</a></code>, and <code><a href="https://sebkrantz.github.io/collapse/reference/fdroplevels.html" class="external-link">collapse::fdroplevels</a></code> and <code><a href="https://Rdatatable.gitlab.io/data.table/reference/fdroplevels.html" class="external-link">data.table::fdroplevels</a></code>. <!-- % between \code{matrixStats::count} and \code{kit::count}. -->
-The <em>collapse</em> versions take precedence in both cases as they provide greater performance. <!-- % over the \emph{kit} versions. For a comparison of functionality see the details section of \code{\link{fastverse_conflicts}}. -->
+There are 3 internal clashes between <code><a href="https://sebkrantz.github.io/collapse/reference/funique.html" class="external-link">collapse::funique</a></code> and <code><a href="https://rdrr.io/pkg/kit/man/funique.html" class="external-link">kit::funique</a></code>, <code><a href="https://sebkrantz.github.io/collapse/reference/funique.html" class="external-link">collapse::fduplicated</a></code> and <code><a href="https://rdrr.io/pkg/kit/man/funique.html" class="external-link">kit::fduplicated</a></code>, and <code><a href="https://sebkrantz.github.io/collapse/reference/fdroplevels.html" class="external-link">collapse::fdroplevels</a></code> and <code><a href="https://Rdatatable.gitlab.io/data.table/reference/fdroplevels.html" class="external-link">data.table::fdroplevels</a></code>.
+The <em>collapse</em> versions take precedence in all cases as they provide greater performance. <!-- % over the \emph{kit} versions. For a comparison of functionality see the details section of \code{\link{fastverse_conflicts}}. -->
 <!-- % \item Quite a number of functions in the \emph{matrixStats} package do not (by default) preserve the attributes of objects passed to them, resulting in inconsistent behavior of different functions.  -->
 <!-- % The GitHub version of the \code{fastverse} alters most of the functions where this is the case, listed in a global variable \code{.matrixStats_replaced}, bestowing them with  -->
 <!-- % capabilities to preserve matrix dimension names and other attributes (for functions returning a matrix). This is done using very efficient R and C code, so that performance does not suffer.  -->
