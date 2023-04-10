@@ -295,7 +295,7 @@ The total (recursive) dependency count is indicated for each package.
   *Notes:* *latticeExtra* provides extra graphical utilities base on *lattice*. *gridExtra* provides miscellaneous functions for *grid* graphics (and consequently for *ggplot2* which is based on *grid*). *gridtext* provides improved text rendering support for *grid* graphics. Many packages offer *ggplot2* extensions, (typically starting with 'gg') such as *ggExtra*, *ggalt*, *ggforce*, *ggmap*, *ggtext*, *ggthemes*, *ggrepel*, *ggridges*, *ggfortify*, *ggstatsplot*, *ggeffects*, *ggsignif*, *GGally*, *ggcorrplot*, *ggdendro*, etc.. Users in desperate need for greater performance may also find the (unmaintained) [lwplot](https://github.com/eddelbuettel/lwplot) package useful that provides a faster and lighter version of *ggplot2* with *data.table* backend.
 
 
-#### Tidyverse-like data manipulation built on *data.table*
+#### Tidyverse-like Data Manipulation built on *data.table*
 
 - **[tidytable](https://github.com/markfairbanks/tidytable)**: A tidy interface to *data.table* that is *rlang* compatible. Quite comprehensive implementation of *dplyr*, *tidyr* and *purr* functions. Package uses a class *tidytable* that inherits from *data.table*. The `dt()` function makes *data.table* syntax pipeable (12 total dependencies). 
 
@@ -310,6 +310,14 @@ The total (recursive) dependency count is indicated for each package.
 - **[maditr](https://github.com/gdemin/maditr)**: Fast data aggregation, modification, and filtering with pipes and *data.table*. Minimal implementation with functions `let()` and `take()` for most common data manipulation tasks. Also provides Excel-like lookup functions (2 dependencies). 
 
 - **[table.express](https://github.com/asardaes/table.express)** also o builds *data.table* expressions from *dplyr* verbs, without executing them eagerly. Similar to *dtplyr* but less mature (17 dependencies). 
+
+#### Data Manipulation in R Based on Other Languages
+
+- **[r-polars](https://github.com/pola-rs/r-polars)** provides an R-port to the impressively fast [polars DataFrame's library](https://github.com/pola-rs/polars/) written in Rust (1 dependencies). 
+
+#### R-like Data Manipulation in Other Languages
+
+- **[Tidier.jl](https://github.com/TidierOrg/Tidier.jl)** provides a Julia implementation of the tidyverse mini-language in Julia. Powered by the [DataFrames.jl](https://github.com/JuliaData/DataFrames.jl) library.
 
 #### Data Input-Output, Serialization, and Larger-Than-Memory Processing (IO)  
 
