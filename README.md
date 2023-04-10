@@ -311,11 +311,13 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[table.express](https://github.com/asardaes/table.express)** also o builds *data.table* expressions from *dplyr* verbs, without executing them eagerly. Similar to *dtplyr* but less mature (17 dependencies). 
 
-#### Data Manipulation in R Based on Other Languages
+#### Data Manipulation in R Based on Faster Languages
 
 - **[r-polars](https://github.com/pola-rs/r-polars)** provides an R-port to the impressively fast [polars DataFrame's library](https://github.com/pola-rs/polars/) written in Rust (1 dependencies). 
 
-#### R-like Data Manipulation in Other Languages
+#### R-like Data Manipulation in Faster Languages
+
+- **[tidypolars](https://github.com/markfairbanks/tidypolars)** is a python libaray built on top of [polars](https://github.com/pola-rs/polars/) that gives access to methods and functions familiar to R tidyverse users.
 
 - **[Tidier.jl](https://github.com/TidierOrg/Tidier.jl)** provides a Julia implementation of the tidyverse mini-language in Julia. Powered by the [DataFrames.jl](https://github.com/JuliaData/DataFrames.jl) library.
 
