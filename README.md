@@ -277,6 +277,8 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[terra](https://github.com/rspatial/terra)**: Methods for spatial data analysis with raster and vector data. Processing of very large (out of memory) files is supported (1 dependency).
 
+- **[dggridR](https://github.com/r-barnes/dggridR)**: Provides discrete global grids for R: allowing accurate partitioning of the earths surface into **equally sized** grid cells of different shapes and sizes (37 dependencies). 
+
   *Notes*: *collapse* can be used for efficient manipulation and computations on *sf* data frames. *sf* also offers tight integration with *dplyr*.
 
 
