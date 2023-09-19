@@ -72,7 +72,8 @@
 #' 
 #' 
 #' @docType package
-#' @name fastverse
+#' @name fastverse-package
+#' @aliases fastverse
 #' 
 #' 
 #'

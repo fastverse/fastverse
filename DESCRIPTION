@@ -1,6 +1,6 @@
 Package: fastverse
 Title: A Suite of High-Performance Packages for Statistics and Data Manipulation
-Version: 0.3.1
+Version: 0.3.2
 Authors@R: c(person("Sebastian", "Krantz", role = c("aut", "cre"), 
                     email = "sebastian.krantz@graduateinstitute.ch"),
              person("Hadley", "Wickham", role = "ctb"))
@@ -24,6 +24,6 @@ URL: https://fastverse.github.io/fastverse/,
      https://fastverse.r-universe.dev/,
      https://github.com/fastverse
 BugReports: https://github.com/fastverse/fastverse/issues
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 NeedsCompilation: no
 VignetteBuilder: knitr
