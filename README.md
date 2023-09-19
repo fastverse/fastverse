@@ -1,7 +1,7 @@
 # fastverse <img src='logo.png' width="350px" align="right" />
 
 <!-- badges: start -->
-[![R build status](https://github.com/fastverse/fastverse/workflows/R-CMD-check/badge.svg)](https://github.com/fastverse/fastverse/actions)
+[![R-CMD-check](https://github.com/fastverse/fastverse/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/fastverse/fastverse/actions/workflows/R-CMD-check.yaml)
 [![fastverse status badge](https://fastverse.r-universe.dev/badges/fastverse)](https://fastverse.r-universe.dev)
 [![CRAN status](https://www.r-pkg.org/badges/version/fastverse)](https://cran.r-project.org/package=fastverse) 
 [![cran checks](https://badges.cranchecks.info/worst/fastverse.svg)](https://cran.r-project.org/web/checks/check_results_fastverse.html)
