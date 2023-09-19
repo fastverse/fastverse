@@ -1,6 +1,7 @@
 # fastverse 0.3.2
 
 * following CRAN suggestion, the `fastverse.Rd` page is renamed to `fastverse-package.Rd`, with a `'fastverse'` alias. 
+
 * `fastverse_deps()` (and `fastverse_update()`, `fastverse_sitrep()`) ignore dependencies not available on CRAN (issuing a warning).
 
 # fastverse 0.3.1
