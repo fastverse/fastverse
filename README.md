@@ -1,7 +1,6 @@
 # fastverse <img src='logo.png' width="350px" align="right" />
 
 <!-- badges: start -->
-[![:total status badge](https://fastverse.r-universe.dev/badges/:total)](https://fastverse.r-universe.dev)
 [![R build status](https://github.com/fastverse/fastverse/workflows/R-CMD-check/badge.svg)](https://github.com/fastverse/fastverse/actions)
 [![fastverse status badge](https://fastverse.r-universe.dev/badges/fastverse)](https://fastverse.r-universe.dev)
 [![CRAN status](https://www.r-pkg.org/badges/version/fastverse)](https://cran.r-project.org/package=fastverse) 
@@ -289,7 +288,9 @@ The total (recursive) dependency count is indicated for each package.
 - **[lattice](https://github.com/deepayan/lattice)**: Trellis graphics for R (0 dependencies). 
 
 - **[grid](https://github.com/cran/grid)**: The grid graphics package (0 dependencies). 
-
+<!-- 
+ - **[vegabrite](https://github.com/vegawidget/vegabrite)** provides an interface to the [vega-lite](https://vega.github.io/vega-lite/) high-level grammar of interactive graphics. 
+-->
 - **[ggplot2](https://github.com/tidyverse/ggplot2)**: Create elegant data visualizations using the Grammar of Graphics (27 dependencies). 
 
 - **[scales](https://github.com/r-lib/scales)**: Scale functions for visualizations (11 dependencies). 
@@ -319,7 +320,7 @@ The total (recursive) dependency count is indicated for each package.
 
 #### R-like Data Manipulation in Faster Languages
 
-- **[tidypolars](https://github.com/markfairbanks/tidypolars)** is a python libaray built on top of [polars](https://github.com/pola-rs/polars/) that gives access to methods and functions familiar to R tidyverse users.
+- **[tidypolars](https://github.com/markfairbanks/tidypolars)** is a python library built on top of [polars](https://github.com/pola-rs/polars/) that gives access to methods and functions familiar to R tidyverse users.
 
 - **[Tidier.jl](https://github.com/TidierOrg/Tidier.jl)** provides a Julia implementation of the tidyverse mini-language in Julia. Powered by the [DataFrames.jl](https://github.com/JuliaData/DataFrames.jl) library.
 

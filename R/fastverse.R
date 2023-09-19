@@ -72,8 +72,8 @@
 #' 
 #' 
 #' @docType package
-#' @name fastverse
-#' @aliases .matrixStats_replaced
+#' @name fastverse-package
+#' @aliases fastverse
 #' 
 #' 
 #'

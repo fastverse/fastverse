@@ -42,21 +42,8 @@ fastverse_attach <- function(to_load, txt = "Attaching packages", onattach = FAL
   col1 <- seq_len(length(packages) / 2L)
   info <- paste0(packages[col1], "     ", packages[-col1])
   
-  oldopts <- options(warn = -1L)
-  on.exit(options(oldopts))
-  
   suppressPackageStartupMessages({
-    if(any(to_load == "matrixStats")) {
-      lapply(to_load[to_load != "matrixStats"], same_library)
-      replace_matrixStats()
-    } else {
       lapply(to_load, same_library)
-      # Special case: matrixStats was loaded before the fastverse
-      if(onattach && any(fastverse_packages(include.self = FALSE) == "matrixStats") && is_attached("matrixStats")) {
-        detach("package:matrixStats") # , unload = TRUE
-        replace_matrixStats()
-      }
-    }
   })
   
   msg(paste(info, collapse = "\n"), startup = onattach) # cat(paste(info, collapse = "\n"))
