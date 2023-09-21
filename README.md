@@ -63,7 +63,7 @@ remotes::install_github("fastverse/fastverse")
 
 ## Extending the *fastverse*
 
-Users can, via the `fastverse_entend()` function, freely attach extension packages. Setting `permanent = TRUE` adds these packages to the core *fastverse*. Another option is adding a `.fastverse` config file with packages to the project directory. Separate verses can be created with `fastverse_child()`. See the [**vignette**](https://fastverse.github.io/fastverse/articles/fastverse_intro.html) for details.  
+Users can, via the `fastverse_extend()` function, freely attach extension packages. Setting `permanent = TRUE` adds these packages to the core *fastverse*. Another option is adding a `.fastverse` config file with packages to the project directory. Separate verses can be created with `fastverse_child()`. See the [**vignette**](https://fastverse.github.io/fastverse/articles/fastverse_intro.html) for details.  
 
 <!--
 <details>
