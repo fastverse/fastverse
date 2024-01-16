@@ -230,7 +230,7 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[Rfast](https://github.com/RfastOfficial/Rfast)** and **[Rfast2](https://github.com/RfastOfficial/Rfast2)**: Heterogeneous sets of fast functions for statistics, estimation and data manipulation operating on vectors and matrices (4-5 dependencies).
 
-- **[vctrs](https://github.com/r-lib/vctrs/)**: Computational backend of the [*tidyverse*](https://github.com/tidyverse) that provides basic many basic programming functions for R vectors (including lists and data frames) implemented in C (such as sorting, matching, replicating, unique values, concatenating, splitting etc. of vectors). These are often significantly faster than base R equivalents, but generally not as aggressively optimized as some equivalents found in *collapse* or *data.table* (4 dependencies). 
+- **[vctrs](https://github.com/r-lib/vctrs/)**: Computational backend of the [*tidyverse*](https://github.com/tidyverse) that provides many basic programming functions for R vectors (including lists and data frames) implemented in C (such as sorting, matching, replicating, unique values, concatenating, splitting etc. of vectors). These are often significantly faster than base R equivalents, but generally not as aggressively optimized as some equivalents found in *collapse* or *data.table* (4 dependencies). 
 
 - **[parallelDist](https://github.com/alexeckert/parallelDist)**: Multi-threaded distance matrix computation (3 dependencies).
 
