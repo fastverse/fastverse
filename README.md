@@ -198,8 +198,6 @@ The total (recursive) dependency count is indicated for each package.
 
 #### Dates and Times
 
-- **[lubridate](https://github.com/tidyverse/lubridate)**: Facilitates 'POSIX-' and 'Date' based computations (2 dependencies).
-
 - **[anytime](https://github.com/eddelbuettel/anytime)**: Anything to 'POSIXct' or 'Date' converter (2 dependencies).
 
 - **[fasttime](https://github.com/s-u/fasttime)**: Fast parsing of strings to 'POSIXct' (0 dependencies).
@@ -211,7 +209,8 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[timechange](https://github.com/vspinu/timechange)**: Efficient manipulation of date-times accounting for time zones and daylight saving times (1 dependency).
 
-  *Notes*: Date and time variables are preserved in many *data.table* and *collapse* operations. *data.table* additionally offers an efficient integer based date class 'IDate' with some supporting functionality. *xts* and *zoo* also provide various functions to transform dates, and *zoo* provides classes 'yearmon' and 'yearqtr' for convenient computation with monthly and quarterly data. Package *mondate* also provides a class 'mondate' for monthly data. 
+  *Notes*: Date and time variables are preserved in many *data.table* and *collapse* operations. *data.table* additionally offers an efficient integer based date class 'IDate' with some supporting functionality. *xts* and *zoo* also provide various functions to transform dates, and *zoo* provides classes 'yearmon' and 'yearqtr' for convenient computation with monthly and quarterly data. Package *mondate* also provides a class 'mondate' for monthly data. Many users also find **[lubridate](https://github.com/tidyverse/lubridate)** convenient for 'POSIX-' and 'Date' based computations.
+
   
   <!-- - **nanotime**: (7 dependencies). -->
 
@@ -219,21 +218,19 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[stringi](https://github.com/gagolews/stringi)**: Main R package for fast, correct, consistent, and convenient string/text manipulation (backend to *stringr* and *snakecase*) (0 dependencies).
 
-- **[stringr](https://github.com/tidyverse/stringr)**: Simple, consistent wrappers for common string operations, based on *stringi* (3 dependencies).
-
-- **[snakecase](https://github.com/Tazinho/snakecase)**: Convert strings into any case, based on *stringi* and *stringr* (4 dependencies).
-
 - **[stringfish](https://github.com/traversc/stringfish)**: Fast computation of common (base R) string operations using the ALTREP system (2 dependencies).
 
 - **[stringdist](https://github.com/markvanderloo/stringdist)**: Fast computation of string distance metrics, matrices, and fuzzy matching (0 dependencies).
+
+  *Notes*: At least two packages offer convenient wrappers around the rather rich *stringi* API: **[stringr](https://github.com/tidyverse/stringr)** provides simple, consistent wrappers for common string operations, based on *stringi* (3 dependencies), and **[snakecase](https://github.com/Tazinho/snakecase)** converts strings into any case, based on *stringi* and *stringr* (4 dependencies).
 
 #### Statistics and Computing
 
 - **[matrixStats](https://github.com/HenrikBengtsson/matrixStats)**: Efficient row-and column-wise (weighted) statistics on matrices and vectors, including computations on subsets of rows and columns (0 dependencies). 
 
-- **[Rfast](https://github.com/RfastOfficial/Rfast)** and **[Rfast2](https://github.com/RfastOfficial/Rfast2)**: Heterogeneous sets of fast functions for statistics, estimation and data manipulation operating on vectors and matrices. Missing values and object attributes are not (consistently) supported (4-5 dependencies).
+- **[Rfast](https://github.com/RfastOfficial/Rfast)** and **[Rfast2](https://github.com/RfastOfficial/Rfast2)**: Heterogeneous sets of fast functions for statistics, estimation and data manipulation operating on vectors and matrices (4-5 dependencies).
 
-- **[vctrs](https://github.com/r-lib/vctrs/)** provides basic many basic programming functions for R vectors (including lists and data frames) implemented in C (such as sorting, matching, replicating, unique values, concatenating, splitting etc. of vectors). These are often significantly faster than base R equivalents, but generally not as aggressively optimized as equivalent functions found in *collapse*, *kit*, *Rfast* or *data.table* (4 dependencies). 
+- **[vctrs](https://github.com/r-lib/vctrs/)**: Computational backend of the [*tidyverse*](https://github.com/tidyverse) that provides many basic programming functions for R vectors (including lists and data frames) implemented in C (such as sorting, matching, replicating, unique values, concatenating, splitting etc. of vectors). These are often significantly faster than base R equivalents, but generally not as aggressively optimized as some equivalents found in *collapse* or *data.table* (4 dependencies). 
 
 - **[parallelDist](https://github.com/alexeckert/parallelDist)**: Multi-threaded distance matrix computation (3 dependencies).
 
@@ -276,7 +273,7 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[terra](https://github.com/rspatial/terra)**: Methods for spatial data analysis with raster and vector data. Processing of very large (out of memory) files is supported (1 dependency).
 
-- **[dggridR](https://github.com/r-barnes/dggridR)**: Provides discrete global grids for R: allowing accurate partitioning of the earths surface into **equally sized** grid cells of different shapes and sizes (37 dependencies). 
+- **[dggridR](https://github.com/r-barnes/dggridR)**: Provides discrete global grids for R: allowing accurate partitioning of the earths surface into **equally sized** grid cells of different shapes and sizes (37 dependencies). The source project is not well maintained, and users are strongly encouraged to install [this fork](https://github.com/SebKrantz/dggridR) (version 3.1+) which fixes a major bug on Mac and introduces a *collapse* backend for faster grid materialization. 
 
   *Notes*: *collapse* can be used for efficient manipulation and computations on *sf* data frames. *sf* also offers tight integration with *dplyr*.
 
@@ -295,34 +292,13 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[scales](https://github.com/r-lib/scales)**: Scale functions for visualizations (11 dependencies). 
 
-  *Notes:* *latticeExtra* provides extra graphical utilities base on *lattice*. *gridExtra* provides miscellaneous functions for *grid* graphics (and consequently for *ggplot2* which is based on *grid*). *gridtext* provides improved text rendering support for *grid* graphics. Many packages offer *ggplot2* extensions, (typically starting with 'gg') such as *ggExtra*, *ggalt*, *ggforce*, *ggmap*, *ggtext*, *ggthemes*, *ggrepel*, *ggridges*, *ggfortify*, *ggstatsplot*, *ggeffects*, *ggsignif*, *GGally*, *ggcorrplot*, *ggdendro*, etc.. Users in desperate need for greater performance may also find the (unmaintained) [lwplot](https://github.com/eddelbuettel/lwplot) package useful that provides a faster and lighter version of *ggplot2* with *data.table* backend.
-
-
-#### Tidyverse-like Data Manipulation built on *data.table*
-
-- **[tidytable](https://github.com/markfairbanks/tidytable)**: A tidy interface to *data.table* that is *rlang* compatible. Quite comprehensive implementation of *dplyr*, *tidyr* and *purr* functions. Package uses a class *tidytable* that inherits from *data.table*. The `dt()` function makes *data.table* syntax pipeable (12 total dependencies). 
-
-- **[dtplyr](https://github.com/tidyverse/dtplyr)**: A tidy interface to *data.table* built around lazy evaluation i.e. users need to call `as.data.table()`, `as.data.frame()` or `as_tibble()` to access the results. Lazy evaluation holds the potential of generating more performant *data.table* code (20 dependencies). 
-
-- **[tidyfst](https://github.com/hope-data-science/tidyfst)**: Tidy verbs for fast data manipulation. Covers *dplyr* and some *tidyr* functionality. Functions have `_dt` suffix and preserve *data.table* object. A [cheatsheet](<https://raw.githubusercontent.com/hope-data-science/tidyfst/master/docs/tidyfst_cheatsheet.pdf>) is provided (7 dependencies). 
-
-- **[tidyft](https://github.com/hope-data-science/tidyft)**: Tidy verbs for fast data operations by reference. Best for big data manipulation on out of memory data using facilities provided by *fst* (7 dependencies).
-
-- **[tidyfast](https://github.com/TysonStanley/tidyfast)**: Fast tidying of data. Covers *tidyr* functionality, `dt_` prefix, preserves *data.table* object (2 dependencies). 
-
-- **[maditr](https://github.com/gdemin/maditr)**: Fast data aggregation, modification, and filtering with pipes and *data.table*. Minimal implementation with functions `let()` and `take()` for most common data manipulation tasks. Also provides Excel-like lookup functions (2 dependencies). 
-
-- **[table.express](https://github.com/asardaes/table.express)** also o builds *data.table* expressions from *dplyr* verbs, without executing them eagerly. Similar to *dtplyr* but less mature (17 dependencies). 
+  *Notes:* *latticeExtra* provides extra graphical utilities base on *lattice*. *gridExtra* provides miscellaneous functions for *grid* graphics (and consequently for *ggplot2* which is based on *grid*). *gridtext* provides improved text rendering support for *grid* graphics. Many packages offer *ggplot2* extensions, (typically starting with 'gg') such as *ggExtra*, *ggalt*, *ggforce*, *ggh4x*, *ggmap*, *ggtext*, *ggthemes*, *ggrepel*, *ggridges*, *ggfortify*, *ggstatsplot*, *ggeffects*, *ggsignif*, *GGally*, *ggcorrplot*, *ggdendro*, etc.. Users in desperate need for greater performance may also find the (unmaintained) [lwplot](https://github.com/eddelbuettel/lwplot) package useful that provides a faster and lighter version of *ggplot2* with *data.table* backend.
 
 #### Data Manipulation in R Based on Faster Languages
 
 - **[r-polars](https://github.com/pola-rs/r-polars)** provides an R-port to the impressively fast [polars DataFrame's library](https://github.com/pola-rs/polars/) written in Rust (1 dependencies). 
 
-#### R-like Data Manipulation in Faster Languages
-
-- **[tidypolars](https://github.com/markfairbanks/tidypolars)** is a python library built on top of [polars](https://github.com/pola-rs/polars/) that gives access to methods and functions familiar to R tidyverse users.
-
-- **[Tidier.jl](https://github.com/TidierOrg/Tidier.jl)** provides a Julia implementation of the tidyverse mini-language in Julia. Powered by the [DataFrames.jl](https://github.com/JuliaData/DataFrames.jl) library.
+  *Notes*: Package **[tidypolars](https://github.com/etiennebacher/tidypolars)** provides a *tidyverse*-style wrapper around *r-polars*. 
 
 #### Data Input-Output, Serialization, and Larger-Than-Memory Processing (IO)  
 
@@ -358,6 +334,11 @@ The total (recursive) dependency count is indicated for each package.
 
   *Notes*: Many of these projects are experimental and not available as CRAN packages. 
 
+#### R-like Data Manipulation in Faster Languages
+
+- **[tidypolars](https://github.com/markfairbanks/tidypolars)** is a python library built on top of [polars](https://github.com/pola-rs/polars/) that gives access to methods and functions familiar to R tidyverse users.
+
+- **[Tidier.jl](https://github.com/TidierOrg/Tidier.jl)** provides a Julia implementation of the tidyverse mini-language in Julia. Powered by the [DataFrames.jl](https://github.com/JuliaData/DataFrames.jl) library.
 
 ####  R Bindings to Faster Languages
 
@@ -376,6 +357,24 @@ The total (recursive) dependency count is indicated for each package.
 - **[rJava](https://github.com/s-u/rJava)** provides an R interface to Java (0 dependencies). 
 
   *Notes*: There are many Rcpp extension packages binding R to powerful C++ libraries, such as linear algebra through *RcppArmadillo* and *RcppEigen*, thread-safe parallelism through *RcppParallel* etc. 
+  
+#### Tidyverse-like Data Manipulation built on *data.table*
+
+- **[tidytable](https://github.com/markfairbanks/tidytable)**: A tidy interface to *data.table* that is *rlang* compatible. Quite comprehensive implementation of *dplyr*, *tidyr* and *purr* functions. Package uses a class *tidytable* that inherits from *data.table*. The `dt()` function makes *data.table* syntax pipeable (12 total dependencies). 
+
+- **[dtplyr](https://github.com/tidyverse/dtplyr)**: A tidy interface to *data.table* built around lazy evaluation i.e. users need to call `as.data.table()`, `as.data.frame()` or `as_tibble()` to access the results. Lazy evaluation holds the potential of generating more performant *data.table* code (20 dependencies). 
+
+- **[tidyfst](https://github.com/hope-data-science/tidyfst)**: Tidy verbs for fast data manipulation. Covers *dplyr* and some *tidyr* functionality. Functions have `_dt` suffix and preserve *data.table* object. A [cheatsheet](<https://raw.githubusercontent.com/hope-data-science/tidyfst/master/docs/tidyfst_cheatsheet.pdf>) is provided (7 dependencies). 
+
+- **[tidyft](https://github.com/hope-data-science/tidyft)**: Tidy verbs for fast data operations by reference. Best for big data manipulation on out of memory data using facilities provided by *fst* (7 dependencies).
+
+- **[tidyfast](https://github.com/TysonStanley/tidyfast)**: Fast tidying of data. Covers *tidyr* functionality, `dt_` prefix, preserves *data.table* object (2 dependencies). 
+
+- **[maditr](https://github.com/gdemin/maditr)**: Fast data aggregation, modification, and filtering with pipes and *data.table*. Minimal implementation with functions `let()` and `take()` for most common data manipulation tasks. Also provides Excel-like lookup functions (2 dependencies). 
+
+- **[table.express](https://github.com/asardaes/table.express)** also o builds *data.table* expressions from *dplyr* verbs, without executing them eagerly. Similar to *dtplyr* but less mature (17 dependencies). 
+
+  *Notes*: These packages are wrappers around *data.table* and do not introduce own compiled code. 
   
 
 #### Parallelization, High-Performance Computing and Out-Of-Memory Data
