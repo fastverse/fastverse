@@ -3,29 +3,46 @@ destination: docs
 home:
   title: An Extensible Suite of High-Performance and Low-Dependency Packages for Statistical Computing and Data Manipulation in R
 
-development:
-  mode: auto
-  
 template:
   bootstrap: 5
-  bootswatch: sandstone # Also good: flatly, yeti, simplex, superhero, zephyr
-  theme: ayu-dark # Or: ayu-mirage
+  bootswatch: sandstone 
+  theme: ayu-dark 
   bslib:
-    primary: "#1e2124" # "#202224" # "#242424" # "#003254"
-    code-color: "#004573" # "#9c0027" # "#004d80" # b3002d
+    primary: "#1e2124" 
+    code-color: "#004573" 
     gray-dark: "#3f464d"
+
+development:
+  mode: auto
     
 navbar:
-  title: "fastverse"
-  left:
-    - text: "Documentation"
+  title: fastverse
+  structure:
+    left:
+    - reference
+    - articles
+    - news
+    - blog
+    right:
+    - search
+    - github
+  components:
+    reference:
+      text: Documentation
       href: reference/index.html
-    - text: "Vignettes"
+    articles:
+      text: Vignettes
       href: articles/index.html
-    - text: "News"
+    news:
+      text: News
       href: news/index.html
-    - text: "Blog"
-      href: href: https://sebkrantz.github.io/Rblog/
+    blog:
+      text: Blog
+      href: https://sebkrantz.github.io/Rblog/
+    github:
+      icon: fa-github
+      href: https://github.com/fastverse
+      aria-label: GitHub
 
 articles:
 - title: Introduction to the fastverse
