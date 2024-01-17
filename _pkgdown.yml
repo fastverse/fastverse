@@ -8,16 +8,24 @@ development:
   
 template:
   bootstrap: 5
-
+  bootswatch: sandstone # Also good: flatly, yeti, simplex, superhero, zephyr
+  theme: ayu-dark # Or: ayu-mirage
+  bslib:
+    primary: "#1e2124" # "#202224" # "#242424" # "#003254"
+    code-color: "#004573" # "#9c0027" # "#004d80" # b3002d
+    gray-dark: "#3f464d"
+    
 navbar:
   title: "fastverse"
   left:
-    - text: "Reference"
+    - text: "Documentation"
       href: reference/index.html
-    - text: "Articles"
+    - text: "Vignettes"
       href: articles/index.html
     - text: "News"
       href: news/index.html
+    - text: "Blog"
+      href: href: https://sebkrantz.github.io/Rblog/
 
 articles:
 - title: Introduction to the fastverse
