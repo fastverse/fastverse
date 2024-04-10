@@ -277,7 +277,7 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[geodist](https://github.com/hypertidy/geodist)**: Provides very fast calculation of geodesic distances (0 dependencies).
 
-- **[dggridR](https://github.com/r-barnes/dggridR)**: Provides discrete global grids for R: allowing accurate partitioning of the earths surface into equally sized grid cells of different shapes and sizes (37 dependencies). The source project is not well maintained, and users are strongly encouraged to install [this fork](https://github.com/SebKrantz/dggridR) (version 3.1+) which fixes a major bug on Mac and introduces a *collapse* backend for faster grid materialization. 
+- **[dggridR](https://github.com/r-barnes/dggridR)**: Provides discrete global grids for R: allowing accurate partitioning of the earths surface into equally sized grid cells of different shapes and sizes (30 dependencies). The source project is not well maintained, and users are strongly encouraged to install [this fork](https://github.com/SebKrantz/dggridR) (version 3.1+) which fixes a major bug on Mac and introduces a *collapse* backend for faster grid materialization (14 dependencies). 
 
 - **[cppRouting](https://github.com/vlarmet/cppRouting)**: Algorithms for routing and solving the traffic assignment problem, including calculation of distances, shortest paths and isochrones on weighted graphs using several (optimized) variants of Dijkstra's algorithm (4 dependencies).
 
