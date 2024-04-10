@@ -273,9 +273,15 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[terra](https://github.com/rspatial/terra)**: Methods for spatial data analysis with raster and vector data. Processing of very large (out of memory) files is supported (1 dependency).
 
-- **[dggridR](https://github.com/r-barnes/dggridR)**: Provides discrete global grids for R: allowing accurate partitioning of the earths surface into **equally sized** grid cells of different shapes and sizes (37 dependencies). The source project is not well maintained, and users are strongly encouraged to install [this fork](https://github.com/SebKrantz/dggridR) (version 3.1+) which fixes a major bug on Mac and introduces a *collapse* backend for faster grid materialization. 
+- **[geodist](https://github.com/hypertidy/geodist)**: Provides very fast calculation of geodesic distances (0 dependencies).
 
-  *Notes*: *collapse* can be used for efficient manipulation and computations on *sf* data frames. *sf* also offers tight integration with *dplyr*.
+- **[dggridR](https://github.com/r-barnes/dggridR)**: Provides discrete global grids for R: allowing accurate partitioning of the earths surface into equally sized grid cells of different shapes and sizes (37 dependencies). The source project is not well maintained, and users are strongly encouraged to install [this fork](https://github.com/SebKrantz/dggridR) (version 3.1+) which fixes a major bug on Mac and introduces a *collapse* backend for faster grid materialization. 
+
+- **[cppRouting](https://github.com/vlarmet/cppRouting)**: Algorithms for routing and solving the traffic assignment problem, including calculation of distances, shortest paths and isochrones on weighted graphs using several (optimized) variants of Dijkstra's algorithm (4 dependencies).
+
+- **[igraph](https://github.com/igraph)**: Provides and R port to the *igraph* C library for complex network analysis and graph theory (11 dependencies).
+
+  *Notes*: *collapse* can be used for efficient manipulation and computations on *sf* data frames. *sf* also offers tight integration with *dplyr*. Another efficient routing package is [*dodgr*](https://github.com/UrbanAnalyst/dodgr) (45 dependencies). [*sfnetworks*](https://github.com/luukvdmeer/sfnetworks) allows network analysis combining *sf* and *igraph* (42 dependencies) and functions for network cleaning (partly taken from [tidygraph](https://github.com/thomasp85/tidygraph) which also wraps *igraph*). [*stplanr*](https://github.com/ropensci/stplanr) facilitates sustainable transport planning with R, including very useful helpers such as `overline()` to turn a set of linestrings (routes) into a network (45 dependencies). 
 
 
 #### Visualization
@@ -288,6 +294,8 @@ The total (recursive) dependency count is indicated for each package.
 <!-- 
  - **[vegabrite](https://github.com/vegawidget/vegabrite)** provides an interface to the [vega-lite](https://vega.github.io/vega-lite/) high-level grammar of interactive graphics. 
 -->
+- **[tinyplot](https://github.com/grantmcdermott/tinyplot)** provides a lightweight extension of the base R graphics system, with support for automatic grouping, legends, facets, and various other enhancements (0 dependencies). 
+
 - **[ggplot2](https://github.com/tidyverse/ggplot2)**: Create elegant data visualizations using the Grammar of Graphics (27 dependencies). 
 
 - **[scales](https://github.com/r-lib/scales)**: Scale functions for visualizations (11 dependencies). 
