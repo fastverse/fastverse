@@ -294,6 +294,8 @@ The total (recursive) dependency count is indicated for each package.
 <!-- 
  - **[vegabrite](https://github.com/vegawidget/vegabrite)** provides an interface to the [vega-lite](https://vega.github.io/vega-lite/) high-level grammar of interactive graphics. 
 -->
+- **[tinyplot](https://github.com/grantmcdermott/tinyplot)** provides a lightweight extension of the base R graphics system, with support for automatic grouping, legends, facets, and various other enhancements (0 dependencies). 
+
 - **[ggplot2](https://github.com/tidyverse/ggplot2)**: Create elegant data visualizations using the Grammar of Graphics (27 dependencies). 
 
 - **[scales](https://github.com/r-lib/scales)**: Scale functions for visualizations (11 dependencies). 
