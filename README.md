@@ -273,6 +273,8 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[terra](https://github.com/rspatial/terra)**: Methods for spatial data analysis with raster and vector data. Processing of very large (out of memory) files is supported (1 dependency).
 
+- **[exactextractr](https://github.com/isciences/exactextractr)**: Provides fast extraction from raster datasets using polygons. Notably, it is much faster than *terra* for computing summary statistics of raster layers within polygons (17 dependencies). 
+
 - **[geodist](https://github.com/hypertidy/geodist)**: Provides very fast calculation of geodesic distances (0 dependencies).
 
 - **[dggridR](https://github.com/r-barnes/dggridR)**: Provides discrete global grids for R: allowing accurate partitioning of the earths surface into equally sized grid cells of different shapes and sizes (37 dependencies). The source project is not well maintained, and users are strongly encouraged to install [this fork](https://github.com/SebKrantz/dggridR) (version 3.1+) which fixes a major bug on Mac and introduces a *collapse* backend for faster grid materialization. 
