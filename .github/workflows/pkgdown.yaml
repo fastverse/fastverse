@@ -32,7 +32,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: github::r-lib/withr, cran::pkgdown, local::.
+          extra-packages: github::r-lib/withr, github::SebKrantz/pkgdown, local::.
           needs: website
 
       - name: Build site
