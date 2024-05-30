@@ -2,7 +2,7 @@
 title: "Introduction to the *fastverse*"
 subtitle: "An Extensible Suite of High-Performance and Low Dependency Packages for Statistical Computing and Data Manipulation in R"
 author: "Sebastian Krantz"
-date: "2024-05-30"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 
 vignette: >
@@ -11,7 +11,25 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#" # comment = "#>" # tidy = FALSE #, out.width = '100%' #,  cache = FALSE
+)
+# https://github.com/r-lib/crayon/issues/24
+options(repos = c(CRAN = "https://cran.rstudio.com/")) # crayon.enabled = TRUE
 
+# Hooks needs to be set to deal with outputs
+# thanks to fansi logic
+# old_hooks <- fansi::set_knit_hooks(knitr::knit_hooks, 
+#                                    which = c("output", "message", "error"))
+
+.fv_styling <- FALSE # identical(Sys.getenv("PKGDOWN"), "TRUE")
+
+options(fastverse.styling = .fv_styling)
+
+NCRAN <- identical(Sys.getenv("NCRAN"), "TRUE")
+```
 
 The *fastverse* is an extensible suite of R packages, developed independently by various people, that contribute to the objectives of:
 
@@ -21,22 +39,15 @@ The *fastverse* is an extensible suite of R packages, developed independently by
 
 The *fastverse* installs 4 core packages (*data.table*, *collapse*, *kit* and *magrittr*)^[Before v0.3.0 *matrixStats* and *fst* were past of the core *fastverse*, but were removed following a poll on Twitter in November 2022 where more than 50% voted in favor of removing them from the core *fastverse*.] that are (by default) attached with `library(fastverse)`. These packages were selected because they provide high quality compiled code for most common statistical and data manipulation tasks, have carefully managed APIs, jointly depend only on base R and *Rcpp*, and work remarkably well together. 
 
-
-```r
+```{r}
 library(fastverse)
-# -- Attaching packages ------------------------------------------------------------------------------- fastverse 0.3.2 --
-# Warning: package 'data.table' was built under R version 4.3.1
-# v data.table 1.15.4     v kit        0.0.17
-# v magrittr   2.0.3      v collapse   2.0.15
 ```
 
 The *fastverse* package then provides functionality familiar from the *tidyverse* package, such as checking and reporting namespace clashes, and utilities for updating packages, listing dependencies etc...
 
-
-```r
+```{r}
 # Checking for any updates
 fastverse_update()
-# All fastverse packages up-to-date
 ```
 
 A key feature of the *fastverse* is that it can be extended with other packages that can easily be loaded into the current session and then managed using the tools this package provides. 
@@ -49,62 +60,36 @@ Users are also encouraged to make of use the features described in the remainder
 ## Extending the *fastverse* for the Session
 After the core packages have been attached with `library(fastverse)`, it is possible to extend the *fastverse* for the current session by adding any number of additional packages with `fastverse_extend()`. This will attach the packages, displaying the package versions (useful for replicability), and (by default) check for namespace clashes with attached packages, as well as among the added packages. 
 
-
-```r
+```{r}
 # Extend the fastverse for the session
 fastverse_extend(xts, roll, fasttime)
-# -- Attaching extension packages --------------------------------------------------------------------- fastverse 0.3.2 --
-# v xts      0.13.1     v fasttime 1.1.0 
-# v roll     1.1.6
-# -- Conflicts ---------------------------------------------------------------------------------- fastverse_conflicts() --
-# x xts::first() masks data.table::first()
-# x xts::last()  masks data.table::last()
 
 # See that these are now part of the fastverse
 fastverse_packages()
-# [1] "data.table" "magrittr"   "kit"        "collapse"   "xts"        "roll"       "fasttime"   "fastverse"
 
 # They are also saved in a like-named option 
 options("fastverse.extend")
-# $fastverse.extend
-# [1] "xts"      "roll"     "fasttime"
 ```
 
 All *fastverse* packages (or particular packages) can be detached using `fastverse_detach`.
 
-
-```r
+```{r}
 # Detaches all packages (including the fastverse) but does not (default) unload them
 fastverse_detach()
 ```
 
 For programming purposes it is also possible to pass vectors of packages to both `fastverse_extend` and `fastverse_detach`^[In particular, the `...` expression is first captured using `substitute(c(...))`, and then evaluated inside `tryCatch`. If this evaluation fails or did not result in a character vector, the expression is coerced to character.]. The defaults of `fastverse_detach` are set such that detaching is very 'light'. Packages are not unloaded and all *fastverse* options set for the session are kept.
 
-
-```r
+```{r}
 # Extensions are still here ...
 options("fastverse.extend")
-# $fastverse.extend
-# [1] "xts"      "roll"     "fasttime"
 
 # Thus attaching the fastverse again will include them
 library(fastverse)
-# -- Attaching packages ------------------------------------------------------------------------------- fastverse 0.3.2 --
-# Warning: package 'data.table' was built under R version 4.3.1
-# v data.table 1.15.4     v xts        0.13.1
-# v magrittr   2.0.3      v roll       1.1.6 
-# v kit        0.0.17     v fasttime   1.1.0 
-# v collapse   2.0.15
-# -- Conflicts ---------------------------------------------------------------------------------- fastverse_conflicts() --
-# x xts::first()          masks data.table::first()
-# x xts::last()           masks data.table::last()
-# x data.table::yearmon() masks zoo::yearmon()
-# x data.table::yearqtr() masks zoo::yearqtr()
 ```
 
 'Harder' modes of detaching can be achieved using arguments `unload = TRUE` (and `force = TRUE`) to (forcefully) detach and unload *fastverse* packages, and/or `session = TRUE` which will clear all *fastverse* options set^[`options("fastverse.quiet")` and `options("fastverse.styling")` will only be cleared if all packages are detached. If selected packages are detached, they are removed from `options("fastverse.extend")`.]. 
-
-```r
+```{r}
 # Detaching and unloading all packages and clearing options
 fastverse_detach(session = TRUE, unload = TRUE)
 ```
@@ -112,23 +97,18 @@ fastverse_detach(session = TRUE, unload = TRUE)
 `fastverse_detach` can also be used to detach any other attached packages not part of the *fastverse*. It is recommended to load all packages used in the current session through `fastverse_extend()`, to display any conflicts when they are loaded and be able to keep track of the search path with `fastverse_conflicts()`.
 
 Since `options("fastverse.extend")` keeps track of which packages were added to the *fastverse* for the current session, it is also possible to set it before loading the *fastverse* e.g. 
-
-
-```r
+```{r, include=FALSE}
+options(fastverse.styling = .fv_styling)
+```
+```{r}
 options(fastverse.extend = c("qs", "fst"))
 library(fastverse)
-# -- Attaching packages ------------------------------------------------------------------------------- fastverse 0.3.2 --
-# Warning: package 'data.table' was built under R version 4.3.1
-# v data.table 1.15.4     v collapse   2.0.15
-# v magrittr   2.0.3      v qs         0.25.5
-# v kit        0.0.17     v fst        0.9.8
-# -- Conflicts ---------------------------------------------------------------------------------- fastverse_conflicts() --
-# x data.table::yearmon() masks zoo::yearmon()
-# x data.table::yearqtr() masks zoo::yearqtr()
 
 fastverse_detach(session = TRUE)
 ```
-
+```{r, include=FALSE}
+options(fastverse.styling = .fv_styling)
+```
 
 ## Permanent Extensions
 
@@ -138,110 +118,53 @@ For example, suppose most of my work involves time series analysis, and I would 
 
 Then I could permanently modify my *fastverse* as follows^[I note that namespace conflicts can also be detected and handled with the [conflicted](<https://cran.r-project.org/package=conflicted>) package on CRAN.]: 
 
-
-```r
+```{r, eval=NCRAN}
 library(fastverse)
-# -- Attaching packages ------------------------------------------------------------------------------- fastverse 0.3.2 --
-# Warning: package 'data.table' was built under R version 4.3.1
-# v data.table 1.15.4     v kit        0.0.17
-# v magrittr   2.0.3      v collapse   2.0.15
-# -- Conflicts ---------------------------------------------------------------------------------- fastverse_conflicts() --
-# x data.table::yearmon() masks zoo::yearmon()
-# x data.table::yearqtr() masks zoo::yearqtr()
 
 # Adding extensions
 fastverse_extend(xts, zoo, roll, anytime, permanent = TRUE)
-# -- Attaching extension packages --------------------------------------------------------------------- fastverse 0.3.2 --
-# v xts     0.13.1     v anytime 0.3.9 
-# v roll    1.1.6
-# -- Conflicts ---------------------------------------------------------------------------------- fastverse_conflicts() --
-# x zoo::as.Date()         masks base::as.Date()
-# x zoo::as.Date.numeric() masks base::as.Date.numeric()
-# x xts::first()           masks data.table::first()
-# x xts::last()            masks data.table::last()
-# x data.table::yearmon()  masks zoo::yearmon()
-# x data.table::yearqtr()  masks zoo::yearqtr()
 
 # Removing some core packages
 fastverse_detach(data.table, kit, magrittr, permanent = TRUE)
 
 # Adding data.table again, so it is attached last
 fastverse_extend(data.table, permanent = TRUE)
-# -- Attaching extension packages --------------------------------------------------------------------- fastverse 0.3.2 --
-# Warning: package 'data.table' was built under R version 4.3.1
-# v data.table 1.15.4
-# -- Conflicts ---------------------------------------------------------------------------------- fastverse_conflicts() --
-# x data.table::first()   masks xts::first()
-# x data.table::last()    masks xts::last()
-# x data.table::yearmon() masks zoo::yearmon()
-# x data.table::yearqtr() masks zoo::yearqtr()
 ```
 
 To verify our modification, we can see the order in which the packages are attached, and do a conflict check:
 
-
-```r
+```{r, eval=NCRAN}
 # This will be the order in which packages are attached
 fastverse_packages(include.self = FALSE)
-# [1] "collapse"   "xts"        "zoo"        "roll"       "anytime"    "data.table"
 
 # Check conflicts to make sure data.table functions take precedence
 fastverse_conflicts()
-# -- Conflicts ---------------------------------------------------------------------------------- fastverse_conflicts() --
-# x zoo::as.Date()         masks base::as.Date()
-# x zoo::as.Date.numeric() masks base::as.Date.numeric()
-# x data.table::first()    masks xts::first()
-# x data.table::last()     masks xts::last()
-# x data.table::yearmon()  masks zoo::yearmon()
-# x data.table::yearqtr()  masks zoo::yearqtr()
 ```
 
 Note that `options("fastverse.extend")` is still empty, because we have written those changes to a config file^[When fetching the names of *fastverse* packages, `fastverse_packages` first checks any config file and then checks `options("fastverse.extend")`.]. Now lets see if our permanent modification worked: 
 
-
-```r
+```{r, eval=NCRAN}
 # Detach all packages and clear all options
 fastverse_detach(session = TRUE)
 ```
-
-
-```r
+```{r, include=FALSE}
+options(fastverse.styling = .fv_styling)
+```
+```{r}
 library(fastverse) 
-# -- Attaching packages ------------------------------------------------------------------------------- fastverse 0.3.2 --
-# Warning: package 'data.table' was built under R version 4.3.1
-# v collapse   2.0.15     v roll       1.1.6 
-# v xts        0.13.1     v anytime    0.3.9 
-# v zoo        1.8.12     v data.table 1.15.4
-# -- Conflicts ---------------------------------------------------------------------------------- fastverse_conflicts() --
-# x zoo::as.Date()         masks base::as.Date()
-# x zoo::as.Date.numeric() masks base::as.Date.numeric()
-# x data.table::first()    masks xts::first()
-# x data.table::last()     masks xts::last()
-# x data.table::yearmon()  masks zoo::yearmon()
-# x data.table::yearqtr()  masks zoo::yearqtr()
 ```
 
 After this permanent modification, the *fastverse* can still be extend for the session:
 
-
-```r
+```{r}
 # Extension for the session
 fastverse_extend(Rfast, coop)
-# -- Attaching extension packages --------------------------------------------------------------------- fastverse 0.3.2 --
-# Warning: package 'Rcpp' was built under R version 4.3.1
-# v Rfast 2.1.0     v coop  0.6.3
-# -- Conflicts ---------------------------------------------------------------------------------- fastverse_conflicts() --
-# x Rfast::group()     masks collapse::group()
-# x Rfast::transpose() masks data.table::transpose()
 
 # These packages go here
 options("fastverse.extend")
-# $fastverse.extend
-# [1] "Rfast" "coop"
 
 # This fetches packages from both the file and the option
 fastverse_packages()
-# [1] "collapse"   "xts"        "zoo"        "roll"       "anytime"    "data.table" "Rfast"      "coop"       "fastverse"
 ```
 
 As long as the current installation of the *fastverse* is kept, these modifications will persist across R sessions. Needless to say this is not ideal as reinstallation of the *fastverse* will remove the config file. Therefore, the *fastverse* also offers a persistent and more flexible mechanism to configure it inside projects.
@@ -280,8 +203,7 @@ Using a config file in a project will ignore any global configuration as discuss
 
 At last, you can also create wholly separate and fully customizable verses - with the `fastverse_child()` function. Let's say I would like to create a verse for time series analysis that I want to keep separate from the *fastverse*. This is easily done using e.g.
 
-
-```r
+```{r, eval=FALSE}
 fastverse_child(
   name = "tsverse", 
   title = "Time Series Package Verse", 
@@ -297,94 +219,38 @@ By default (`install = TRUE`, `keep.dir = TRUE`) the package is installed and a 
 
 Just like it's *tidyverse* equivalent, `fastverse_deps()` (recursively) determines the joint dependencies of *fastverse* packages and also checks local versions against CRAN versions.
 
-
-```r
+```{r, message=FALSE, warning=FALSE}
 # Recursively determine the joint dependencies of the current fastverse configuration
 fastverse_deps(recursive = TRUE) # Returns a data frame
-#          package      repos      local behind
-# 1       collapse     2.0.14     2.0.15  FALSE
-# 2            xts     0.13.2     0.13.1   TRUE
-# 3            zoo     1.8.12     1.8.12  FALSE
-# 4           roll      1.1.7      1.1.6   TRUE
-# 5        anytime      0.3.9      0.3.9  FALSE
-# 6     data.table     1.15.4     1.15.4  FALSE
-# 7          Rfast      2.1.0      2.1.0  FALSE
-# 8           coop      0.6.3      0.6.3  FALSE
-# 9             BH   1.84.0.0   1.81.0.1   TRUE
-# 10       lattice     0.22.6     0.21.8   TRUE
-# 11          Rcpp     1.0.12     1.0.12  FALSE
-# 12 RcppArmadillo 0.12.8.3.0 0.12.8.1.0   TRUE
-# 13       RcppGSL     0.3.13     0.3.13  FALSE
-# 14  RcppParallel      5.1.7      5.1.7  FALSE
-# 15  RcppZiggurat      0.1.6      0.1.6  FALSE
 ```
 
 Additional flexibility is offered by the `pkg` argument allowing dependency and update status checks for any other packages. `fastverse_sitrep()` displays the same information in a more elegant printout, also showing the version of R, and whether any global or project-level configuration files - as discussed in previous sections - are used. 
 
-
-```r
+```{r}
 # Check versions and update status of packages and dependencies
 fastverse_sitrep() # default is recursive = FALSE
-# -- fastverse 0.3.2: Situation Report ------------------------------------------------------------------------ R 4.3.0 --
-#  * Global config file: TRUE
-#  * Project config file: FALSE
-# -- Core packages ------------------------------------------------------------------------------------------------------- 
-#  * collapse      (2.0.15)
-#  * xts           (0.13.1 < 0.13.2)
-#  * zoo           (1.8.12)
-#  * roll          (1.1.6 < 1.1.7)
-#  * anytime       (0.3.9)
-#  * data.table    (1.15.4)
-# -- Extension packages -------------------------------------------------------------------------------------------------- 
-#  * Rfast         (2.1.0)
-#  * coop          (0.6.3)
-# -- Dependencies -------------------------------------------------------------------------------------------------------- 
-#  * BH            (1.81.0.1 < 1.84.0.0)
-#  * lattice       (0.21.8 < 0.22.6)
-#  * Rcpp          (1.0.12)
-#  * RcppArmadillo (0.12.8.1.0 < 0.12.8.3.0)
-#  * RcppParallel  (5.1.7)
-#  * RcppZiggurat  (0.1.6)
 ```
 
 `fastverse_update()` can be used to (default) print an `install.packages()` statement to update *fastverse* packages and dependencies, or to install updates straight away (`install = TRUE`). In all three functions, `check.deps = FALSE` can be specified to exclude dependencies of *fastverse* packages, `recursive = TRUE` can be used to check all dependencies, and `include.self = TRUE` can be used to also check for updates of the `fastverse` package itself.
 
 The development versions of all core and suggested *fastverse* packages are also collected on an [r-universe server](<https://fastverse.r-universe.dev>) at https://fastverse.r-universe.dev. Mac/Windows binaries are built on this server within 24h after a change to the main branch of the GitHub repository. Since v0.3.0 the package exports a global macro `.fastverse_repos` which contains the URL of this repository alongside the CRAN repository URL (needed for non-*fastverse* dependencies). Functions `fastverse_deps()`, `fastverse_update()`, `fastverse_install()` and `fastverse_siteep()` have a `repos` argument which defaults to `getOption("repos")` (CRAN), but users can set `repos = .fastverse_repos` to check against / update / install development versions of *fastverse* packages from r-universe. 
 
-
-```r
+```{r}
 # Check development versions on GitHub / r-universe, and install them if desired. 
 fastverse_update(repos = .fastverse_repos) 
-# The following packages are out of date:
-# 
-#  * xts           (0.13.1 -> 0.13.2.2)
-#  * roll          (1.1.6 -> 1.1.8)
-#  * anytime       (0.3.9 -> 0.3.9.5)
-#  * data.table    (1.15.4 -> 1.15.99)
-#  * BH            (1.81.0.1 -> 1.84.0.0)
-#  * lattice       (0.21.8 -> 0.22.6)
-#  * Rcpp          (1.0.12 -> 1.0.12.3)
-#  * RcppArmadillo (0.12.8.1.0 -> 0.12.8.3.0)
-# 
-# Start a clean R session then run:
-# install.packages(c("xts", "roll", "anytime", "data.table", "BH", "lattice", "Rcpp", 
-# "RcppArmadillo"), repos = c(fastverse = "https://fastverse.r-universe.dev", CRAN = "https://cloud.r-project.org"))
 ```
 
 ## Other *fastverse* Options
 
 Apart from `"fastverse.extend"`, the *fastverse* also has options `"fastverse.install"`, `"fastverse.styling"` and `"fastverse.quiet"`. Setting `options(fastverse.install = TRUE)` before `library(fastverse)` will make sure any packages missing on your system will be installed beforehand. This can also be done ex-post using the `fastverse_install()` function. Setting `options(fastverse.styling = FALSE)` will disable coloured text printed to the R console (as done for this vignette). `options(fastverse.quiet = TRUE)` will omit any messages printed from `library(fastverse)` and `fastverse_extend()` or `fastverse_install()`:
 
-
-```r
+```{r}
 fastverse_detach()
 options(fastverse.quiet = TRUE)
 library(fastverse) # Nothing to see here
-# Warning: package 'data.table' was built under R version 4.3.1
 
 # This gives lots of function clashes with data.table, but they are not displayed in quiet mode
 fastverse_extend(lubridate)
-# Warning: package 'lubridate' was built under R version 4.3.1
 ```
 
 If you only want to omit a function clash check when calling `fastverse_extend`, you can also use `fastverse_extend(..., check.conflicts = FALSE)`. 
@@ -395,15 +261,17 @@ The *fastverse* was developed principally for 2 reasons: to promote quality high
 
 <!-- This vignette introduced the key features of the package. Suggested *fastverse* extension packages are introduced in the [README](<https://fastverse.github.io/fastverse/#suggested-extensions>) file. -->
 
-
-```r
+```{r, eval=NCRAN}
 # Resetting the fastverse to defaults (clearing all permanent extensions and options)
 fastverse_reset()
 # Detaching 
 fastverse_detach()
 ```
 
-
+```{r, eval=!NCRAN, include=FALSE}
+# Detaching 
+fastverse_detach()
+```
 
 ## Appendix: A note on OpenMP Multithreading
 
