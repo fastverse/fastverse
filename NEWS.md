@@ -1,3 +1,7 @@
+# fastverse 0.3.3
+
+* All unnecessary suggested packages are removed to avoid unneeded installations on servers. 
+
 # fastverse 0.3.2
 
 * following CRAN suggestion, the `fastverse.Rd` page is renamed to `fastverse-package.Rd`, with a `'fastverse'` alias. 
