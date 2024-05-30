@@ -176,14 +176,8 @@ topics_selector <- function(x) {
 #' @returns \code{fastverse_extend} returns \code{NULL} invisibly. 
 #' @seealso \code{\link{fastverse_detach}}, \code{\link{fastverse}}
 #' @export
-#' @examples \donttest{
-#' ex <- getOption("fastverse.extend")
-#' fastverse_extend(xts, stringi, fasttime)
-#' 
-#' # Undoing this again
-#' fastverse_detach(setdiff(getOption("fastverse.extend"), ex), session = TRUE)
-#' rm(ex)
-#' }
+#' @examples 
+#' # fastverse_extend(xts, stringi, fasttime)
 fastverse_extend <- function(..., install = FALSE, permanent = FALSE, 
                              check.conflicts = !isTRUE(getOption("fastverse.quiet")), 
                              topics = NULL, repos = getOption("repos")) { 
@@ -239,4 +233,12 @@ fastverse_extend <- function(..., install = FALSE, permanent = FALSE,
   invisible()
 }
 
-
+# Previous Example
+# @examples \donttest{
+# ex <- getOption("fastverse.extend")
+# fastverse_extend(xts, stringi, fasttime)
+# 
+# # Undoing this again
+# fastverse_detach(setdiff(getOption("fastverse.extend"), ex), session = TRUE)
+# rm(ex)
+# }

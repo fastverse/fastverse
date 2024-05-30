@@ -45,14 +45,7 @@ This is also the case if \code{permanent = TRUE}, with the only difference that 
 is a character vector of package names, before calling \code{library(fastverse)}.
 }
 \examples{
-\donttest{
-ex <- getOption("fastverse.extend")
-fastverse_extend(xts, stringi, fasttime)
-
-# Undoing this again
-fastverse_detach(setdiff(getOption("fastverse.extend"), ex), session = TRUE)
-rm(ex)
-}
+# fastverse_extend(xts, stringi, fasttime)
 }
 \seealso{
 \code{\link{fastverse_detach}}, \code{\link{fastverse}}
