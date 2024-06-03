@@ -190,7 +190,7 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[xts](https://github.com/joshuaulrich/xts)** and **[zoo](https://github.com/cran/zoo)**: Fast and reliable matrix-based time series classes providing fully identified ordered observations and various utilities for plotting and computations (1 dependency).
 
-- **[roll](https://github.com/jjf234/roll)**: Fast rolling and expanding window functions for vectors and matrices (3 dependencies).
+- **[roll](https://github.com/jasonjfoster/roll)**: Fast rolling and expanding window functions for vectors and matrices (3 dependencies).
 
   *Notes*: *xts*/*zoo* objects are preserved by *roll* functions and by *collapse*'s time series and data transformation functions^[*collapse* functions can also handle irregular time series.]. As *xts*/*zoo* objects are matrices, all *matrixStats* functions apply to them as well. *xts* objects can also easily be converted to and from *data.table*, which also has some fast rolling functions like `frollmean` and `frollapply`. 
   

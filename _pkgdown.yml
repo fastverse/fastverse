@@ -22,6 +22,7 @@ navbar:
     - reference
     - articles
     - news
+    - runiverse
     - blog
     right:
     - search
@@ -36,6 +37,9 @@ navbar:
     news:
       text: News
       href: news/index.html
+    runiverse:
+      text: R-universe
+      href: https://fastverse.r-universe.dev/
     blog:
       text: Blog
       href: https://sebkrantz.github.io/Rblog/
