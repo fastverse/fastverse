@@ -5,7 +5,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Easy installation, loading and management, of high-performance packages for statistical computing and data manipulation in R. The core fastverse consists of 4 packages: data.table, collapse, kit and magrittr, that jointly only depend on Rcpp. The fastverse can be freely and permanently extended with additional packages, both globally or for individual projects. Separate package verses can also be created. Fast packages for many common tasks such as time series, dates and times, strings, spatial data, statistics, data serialization, larger-than-memory processing, and compilation of R code are listed in the README file: &lt;https://github.com/fastverse/fastverse#suggested-extensions&gt;.">
 <title>An Extensible Suite of High-Performance and Low-Dependency Packages for Statistical Computing and Data Manipulation in R • fastverse</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -15,65 +14,46 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="An Extensible Suite of High-Performance and Low-Dependency Packages for Statistical Computing and Data Manipulation in R">
+<meta name="description" content="Easy installation, loading and management, of high-performance packages for statistical computing and data manipulation in R. The core fastverse consists of 4 packages: data.table, collapse, kit and magrittr, that jointly only depend on Rcpp. The fastverse can be freely and permanently extended with additional packages, both globally or for individual projects. Separate package verses can also be created. Fast packages for many common tasks such as time series, dates and times, strings, spatial data, statistics, data serialization, larger-than-memory processing, and compilation of R code are listed in the README file: &lt;https://github.com/fastverse/fastverse#suggested-extensions&gt;.">
 <meta property="og:description" content="Easy installation, loading and management, of high-performance packages for statistical computing and data manipulation in R. The core fastverse consists of 4 packages: data.table, collapse, kit and magrittr, that jointly only depend on Rcpp. The fastverse can be freely and permanently extended with additional packages, both globally or for individual projects. Separate package verses can also be created. Fast packages for many common tasks such as time series, dates and times, strings, spatial data, statistics, data serialization, larger-than-memory processing, and compilation of R code are listed in the README file: &lt;https://github.com/fastverse/fastverse#suggested-extensions&gt;.">
 <meta property="og:image" content="/logo.png">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="index.html">fastverse</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.3</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="reference/index.html">Documentation</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="articles/index.html">Vignettes</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="news/index.html">News</a>
-</li>
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://fastverse.r-universe.dev/">R-universe</a>
-</li>
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://sebkrantz.github.io/Rblog/">Blog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="reference/index.html">Documentation</a></li>
+<li class="nav-item"><a class="nav-link" href="articles/index.html">Vignettes</a></li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">News</a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://fastverse.r-universe.dev/">R-universe</a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://sebkrantz.github.io/Rblog/">Blog</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav">
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/fastverse" aria-label="GitHub">
-    <span class="fa fa-github"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/fastverse" aria-label="GitHub"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-home">
 <div class="row">
@@ -107,8 +87,8 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<!-- 
-Currently, there are 2 different versions of the *fastverse* on CRAN and GitHub/R-universe. The GitHub/R-universe version is recommended if you want to have *matrixStats* consistently preserve attributes of your matrices: it modifies functions in the *matrixStats* namespace making them preserve attributes consistently (and by default) whenever the *fastverse* is attached. This version was rejected by CRAN because it requires a call to `unlockBinding`. The CRAN version takes *matrixStats* as it is, which means most functions do not preserve attributes such as dimension names in computations. 
+<!--
+Currently, there are 2 different versions of the *fastverse* on CRAN and GitHub/R-universe. The GitHub/R-universe version is recommended if you want to have *matrixStats* consistently preserve attributes of your matrices: it modifies functions in the *matrixStats* namespace making them preserve attributes consistently (and by default) whenever the *fastverse* is attached. This version was rejected by CRAN because it requires a call to `unlockBinding`. The CRAN version takes *matrixStats* as it is, which means most functions do not preserve attributes such as dimension names in computations.
 -->
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install the CRAN version</span></span>
@@ -120,7 +100,7 @@ Currently, there are 2 different versions of the *fastverse* on CRAN and GitHub/
 <span><span class="co"># Install from GitHub (requires compilation)</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"fastverse/fastverse"</span><span class="op">)</span></span></code></pre></div>
 <p><em>Note</em> that the GitHub/r-universe version is not a development version, development takes place in the ‘development’ branch. <!--
-*matrixStats* is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies. Until then CRAN and GitHub/R-universe versions of the *fastverse* are released together. 
+*matrixStats* is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies. Until then CRAN and GitHub/R-universe versions of the *fastverse* are released together.
 --></p>
 </div>
 <div class="section level2">
@@ -135,7 +115,7 @@ Currently, there are 2 different versions of the *fastverse* on CRAN and GitHub/
 <PRE class="fansi fansi-message"><code class="r"># Loads and attaches the core fastverse packages
 library(fastverse)</code>
 <CODE># -- <span style="font-weight: bold;">Attaching packages</span><span> --------------------------------------- </span><span style="color: #0087FF;">fastverse</span><span> 0.1.5 --
-</span></CODE><CODE># <span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">data.table </span><span> 1.14.0     </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">collapse   </span><span> 1.6.5 
+</span></CODE><CODE># <span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">data.table </span><span> 1.14.0     </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">collapse   </span><span> 1.6.5
 # </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">magrittr   </span><span> 2.0.1      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">matrixStats</span><span> 0.59.0
 # </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">kit        </span><span> 0.0.7      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">fst        </span><span> 0.9.4
 </span></CODE>
@@ -148,13 +128,13 @@ fastverse_extend(xts, roll, dygraphs, permanent = TRUE)</code>
 # </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">xts</span><span>::</span><span style="color: #00BB00;">first()</span><span> masks </span><span style="color: #0000BB;">data.table</span><span>::first()
 # </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">xts</span><span>::</span><span style="color: #00BB00;">last()</span><span>  masks </span><span style="color: #0000BB;">data.table</span><span>::last()
 </span></CODE>
-<code class="r"># If the fastverse is now loaded in a new session, these packages are added 
+<code class="r"># If the fastverse is now loaded in a new session, these packages are added
 fastverse_detach(session = TRUE)
 library(fastverse)
 </code><CODE># -- <span style="font-weight: bold;">Attaching packages</span><span> --------------------------------------- </span><span style="color: #0087FF;">fastverse</span><span> 0.1.5 --
-</span></CODE><CODE># <span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">data.table </span><span> 1.14.0      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">fst        </span><span> 0.9.4  
-# </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">magrittr   </span><span> 2.0.1       </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">xts        </span><span> 0.12.1 
-# </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">kit        </span><span> 0.0.7       </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">roll       </span><span> 1.1.6  
+</span></CODE><CODE># <span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">data.table </span><span> 1.14.0      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">fst        </span><span> 0.9.4
+# </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">magrittr   </span><span> 2.0.1       </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">xts        </span><span> 0.12.1
+# </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">kit        </span><span> 0.0.7       </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">roll       </span><span> 1.1.6
 # </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">collapse   </span><span> 1.6.5       </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">dygraphs   </span><span> 1.1.1.6
 # </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">matrixStats</span><span> 0.59.0
 </span></CODE><CODE># -- <span style="font-weight: bold;">Conflicts</span><span> ------------------------------------------ fastverse_conflicts() --
@@ -166,7 +146,7 @@ library(fastverse)
 # and any installed suggested packages for date-time manipulation (see following README section)
 fastverse_extend(Rfast2, topics = &quot;DT&quot;) </code>
 <CODE># -- <span style="font-weight: bold;">Attaching extension packages</span><span> ----------------------------- </span><span style="color: #0087FF;">fastverse</span><span> 0.1.5 --
-</span></CODE><CODE># <span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">Rfast2   </span><span> 0.0.9      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">clock    </span><span> 0.3.1 
+</span></CODE><CODE># <span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">Rfast2   </span><span> 0.0.9      </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">clock    </span><span> 0.3.1
 # </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">lubridate</span><span> 1.7.10     </span><span style="color: #0087FF;">v</span><span> </span><span style="color: #FF0087;">fasttime </span><span> 1.0.2
 </span></CODE><CODE># -- <span style="font-weight: bold;">Conflicts</span><span> ------------------------------------------ fastverse_conflicts() --
 # </span><span style="color: #BB0000;">x</span><span> </span><span style="color: #0000BB;">lubridate</span><span>::</span><span style="color: #00BB00;">as.difftime()</span><span> masks </span><span style="color: #0000BB;">base</span><span>::as.difftime()
@@ -193,7 +173,7 @@ fastverse_sitrep(recursive = TRUE)</code>
 <CODE># -- <span style="color: #0087FF;">fastverse</span><span> 0.1.5: </span><span style="font-weight: bold;">Situation Report</span><span> -------------------------------- R 4.1.0 --
 #  * Global config file: TRUE
 #  * Project config file: FALSE
-# -- Core packages --------------------------------------------------------------- 
+# -- Core packages ---------------------------------------------------------------
 #  * <span style="color: #FF0087;">data.table   </span><span> (1.14.0)
 #  * </span><span style="color: #FF0087;">magrittr     </span><span> (2.0.1)
 #  * </span><span style="color: #FF0087;">kit          </span><span> (0.0.7)
@@ -203,12 +183,12 @@ fastverse_sitrep(recursive = TRUE)</code>
 #  * </span><span style="color: #FF0087;">xts          </span><span> (0.12.1)
 #  * </span><span style="color: #FF0087;">roll         </span><span> (1.1.6)
 #  * </span><span style="color: #FF0087;">dygraphs     </span><span> (1.1.1.6)
-# -- Extension packages ---------------------------------------------------------- 
+# -- Extension packages ----------------------------------------------------------
 #  * </span><span style="color: #FF0087;">Rfast2       </span><span> (0.0.9)
 #  * </span><span style="color: #FF0087;">lubridate    </span><span> (1.7.10)
 #  * </span><span style="color: #FFAF00;">clock        </span><span> (0.3.1 &lt; 0.4.0)
 #  * </span><span style="color: #FF0087;">fasttime     </span><span> (1.0.2)
-# -- Dependencies ---------------------------------------------------------------- 
+# -- Dependencies ----------------------------------------------------------------
 #  * </span><span style="color: #FF0087;">base64enc    </span><span> (0.1.3)
 #  * </span><span style="color: #FF0087;">cpp11        </span><span> (0.3.1)
 #  * </span><span style="color: #FF0087;">digest       </span><span> (0.6.27)
@@ -239,7 +219,7 @@ fastverse_reset()</code>
 </details>
 <p> </p>
 
-In addition to a global customization, separate *fastverse*'s can be created for projects by adding a `.fastverse` config file in the project directory and listing packages there. Only these packages will then be loaded and managed with `library(fastverse)` in the project. 
+In addition to a global customization, separate *fastverse*'s can be created for projects by adding a `.fastverse` config file in the project directory and listing packages there. Only these packages will then be loaded and managed with `library(fastverse)` in the project.
 -->
 <div class="section level3">
 <h3 id="suggested-extensions">Suggested Extensions<a class="anchor" aria-label="anchor" href="#suggested-extensions"></a>
@@ -307,7 +287,7 @@ based on the ‘integer64’ class (7 dependencies).</p></li>
 <p><em>Notes</em>: <em>Rfast</em> has a number of like-named functions to <em>matrixStats</em>. These are simpler but typically faster and support multi-threading. Some highly efficient statistical functions can also be found scattered across various other packages, notable to mention here are <em>Hmisc</em> (60 dependencies) and <em>DescTools</em> (17 dependencies). <!-- *fastDummies* (16 dependencies) implements creation of dummy (binary) variables. --></p>
 </li>
 </ul>
-<!-- 
+<!--
 - **fastmatch**: Fast match function.
 - **fastmap**: Fast Implementation of a Key-Value Store.
 - **fastDummies**: Fast Creation of Dummy (Binary) Columns and Rows from Categorical Variables. (16 dependencies)
@@ -338,8 +318,8 @@ based on the ‘integer64’ class (7 dependencies).</p></li>
 <ul>
 <li><p><strong><a href="https://github.com/rstudio/dygraphs" class="external-link">dygraphs</a></strong>: Interface to ‘Dygraphs’ interactive time series charting library (12 dependencies).</p></li>
 <li><p><strong><a href="https://github.com/deepayan/lattice" class="external-link">lattice</a></strong>: Trellis graphics for R (0 dependencies).</p></li>
-<li><p><strong><a href="https://github.com/cran/grid" class="external-link">grid</a></strong>: The grid graphics package (0 dependencies). <!-- 
- - **[vegabrite](https://github.com/vegawidget/vegabrite)** provides an interface to the [vega-lite](https://vega.github.io/vega-lite/) high-level grammar of interactive graphics. 
+<li><p><strong><a href="https://github.com/cran/grid" class="external-link">grid</a></strong>: The grid graphics package (0 dependencies). <!--
+ - **[vegabrite](https://github.com/vegawidget/vegabrite)** provides an interface to the [vega-lite](https://vega.github.io/vega-lite/) high-level grammar of interactive graphics.
 --></p></li>
 <li><p><strong><a href="https://github.com/grantmcdermott/tinyplot" class="external-link">tinyplot</a></strong> provides a lightweight extension of the base R graphics system, with support for automatic grouping, legends, facets, and various other enhancements (0 dependencies).</p></li>
 <li><p><strong><a href="https://github.com/tidyverse/ggplot2" class="external-link">ggplot2</a></strong>: Create elegant data visualizations using the Grammar of Graphics (27 dependencies).</p></li>
@@ -434,7 +414,8 @@ based on the ‘integer64’ class (7 dependencies).</p></li>
 <h4 id="parallelization-high-performance-computing-and-out-of-memory-data">Parallelization, High-Performance Computing and Out-Of-Memory Data<a class="anchor" aria-label="anchor" href="#parallelization-high-performance-computing-and-out-of-memory-data"></a>
 </h4>
 <ul>
-<li>See the <a href="https://CRAN.R-project.org/view=HighPerformanceComputing" class="external-link">High-Performance and Parallel Computing</a> Task View and the <a href="https://www.futureverse.org/" class="external-link">futureverse</a>.</li>
+<li><p><strong><a href="https://github.com/shikokuchuo/mirai" class="external-link">mirai</a></strong>: Minimalist async evaluation framework for R: a ‘mirai’ evaluates an expression in a parallel process, on the local machine or over the network, returning the result automatically upon completion. Also provides a parallel map function (1 dependency).</p></li>
+<li><p>See also the <a href="https://CRAN.R-project.org/view=HighPerformanceComputing" class="external-link">High-Performance and Parallel Computing</a> Task View and the <a href="https://www.futureverse.org/" class="external-link">futureverse</a>.</p></li>
 </ul>
 <hr>
 </div>
@@ -491,15 +472,15 @@ based on the ‘integer64’ class (7 dependencies).</p></li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>

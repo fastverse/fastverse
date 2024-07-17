@@ -1,63 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>/articles/fastverse_intro.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/fastverse-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/fastverse_child.html</loc>
-  </url>
-  <url>
-    <loc>/reference/fastverse_conflicts.html</loc>
-  </url>
-  <url>
-    <loc>/reference/fastverse_deps.html</loc>
-  </url>
-  <url>
-    <loc>/reference/fastverse_detach.html</loc>
-  </url>
-  <url>
-    <loc>/reference/fastverse_extend.html</loc>
-  </url>
-  <url>
-    <loc>/reference/fastverse_install.html</loc>
-  </url>
-  <url>
-    <loc>/reference/fastverse_packages.html</loc>
-  </url>
-  <url>
-    <loc>/reference/fastverse_reset.html</loc>
-  </url>
-  <url>
-    <loc>/reference/fastverse_sitrep.html</loc>
-  </url>
-  <url>
-    <loc>/reference/fastverse_update.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/is_attached.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/articles/fastverse_intro.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/fastverse-package.html</loc></url>
+<url><loc>/reference/fastverse_child.html</loc></url>
+<url><loc>/reference/fastverse_conflicts.html</loc></url>
+<url><loc>/reference/fastverse_deps.html</loc></url>
+<url><loc>/reference/fastverse_detach.html</loc></url>
+<url><loc>/reference/fastverse_extend.html</loc></url>
+<url><loc>/reference/fastverse_install.html</loc></url>
+<url><loc>/reference/fastverse_packages.html</loc></url>
+<url><loc>/reference/fastverse_reset.html</loc></url>
+<url><loc>/reference/fastverse_sitrep.html</loc></url>
+<url><loc>/reference/fastverse_update.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/is_attached.html</loc></url>
 </urlset>
+
