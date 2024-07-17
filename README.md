@@ -389,7 +389,9 @@ The total (recursive) dependency count is indicated for each package.
 
 #### Parallelization, High-Performance Computing and Out-Of-Memory Data
 
-- See the [High-Performance and Parallel Computing](https://CRAN.R-project.org/view=HighPerformanceComputing) Task View and the [futureverse](https://www.futureverse.org/). 
+- **[mirai](https://github.com/shikokuchuo/mirai)**: Minimalist async evaluation framework for R: a ‘mirai’ evaluates an expression in a parallel process, on the local machine or over the network, returning the result automatically upon completion. Also provides a parallel map function (1 dependency). 
+
+- See also the [High-Performance and Parallel Computing](https://CRAN.R-project.org/view=HighPerformanceComputing) Task View and the [futureverse](https://www.futureverse.org/). 
 
 ***
   
