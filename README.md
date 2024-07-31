@@ -63,7 +63,7 @@ remotes::install_github("fastverse/fastverse")
 
 ## Extending the *fastverse*
 
-Users can, via the `fastverse_entend()` function, freely attach extension packages. Setting `permanent = TRUE` adds these packages to the core *fastverse*. Another option is adding a `.fastverse` config file with packages to the project directory. Separate verses can be created with `fastverse_child()`. See the [**vignette**](https://fastverse.github.io/fastverse/articles/fastverse_intro.html) for details.  
+Users can, via the `fastverse_extend()` function, freely attach extension packages. Setting `permanent = TRUE` adds these packages to the core *fastverse*. Another option is adding a `.fastverse` config file with packages to the project directory. Separate verses can be created with `fastverse_child()`. See the [**vignette**](https://fastverse.github.io/fastverse/articles/fastverse_intro.html) for details.  
 
 <!--
 <details>
@@ -389,7 +389,9 @@ The total (recursive) dependency count is indicated for each package.
 
 #### Parallelization, High-Performance Computing and Out-Of-Memory Data
 
-- See the [High-Performance and Parallel Computing](https://CRAN.R-project.org/view=HighPerformanceComputing) Task View and the [futureverse](https://www.futureverse.org/). 
+- **[mirai](https://github.com/shikokuchuo/mirai)**: Minimalist async evaluation framework for R: a ‘mirai’ evaluates an expression in a parallel process, on the local machine or over the network, returning the result automatically upon completion. Also provides a parallel map function (1 dependency). 
+
+- See also the [High-Performance and Parallel Computing](https://CRAN.R-project.org/view=HighPerformanceComputing) Task View and the [futureverse](https://www.futureverse.org/). 
 
 ***
   
