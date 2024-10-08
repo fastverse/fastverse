@@ -1,6 +1,6 @@
 # fastverse 0.3.4
 
-* Fixed `"width"` issue during print of `getOption("width")` is too narrow. Thanks @realzhang (#115).
+* Fixed `"width"` issue during print if `getOption("width")` is too narrow. Thanks @realzhang (#115).
 
 # fastverse 0.3.3
 
