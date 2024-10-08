@@ -150,11 +150,12 @@ text_col <- function(x) {
 }
 
 rule <- function(left, right = NULL, style.left = identity, style.right = identity, style.rule = FALSE) {
-  n <- .Options$width
+  n <- getOption("width")
   left <- as.character(left)
   if(length(right)) {
     right <- as.character(right)
     width <- n - nchar(left) - nchar(right) - 8L
+    if(!is.finite(width) || width <= 2L) width <- 2L
     if(style.rule) {
       res <- paste(c(text_col("-- "), style.left(left), " ", text_col(paste(rep("-", width), collapse = "")), " ", style.right(right), text_col(" --")), collapse = "")
     } else {
@@ -162,6 +163,7 @@ rule <- function(left, right = NULL, style.left = identity, style.right = identi
     }
   } else {
     width <- n - nchar(left) - 4L
+    if(!is.finite(width) || width <= 2L) width <- 2L
     if(style.rule) {
       res <- paste(c(text_col("-- "), style.left(left), " ", text_col(paste(rep("-", width), collapse = ""))), collapse = "")
     } else {
