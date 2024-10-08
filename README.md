@@ -264,7 +264,7 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[sf](https://github.com/r-spatial/sf/)**: Leading framework for geospatial computing and manipulation in R, offering a simple and flexible spatial data frame and supporting functionality (12 dependencies). 
 
-- **[s2](https://github.com/r-spatial/s2)**: Provides R bindings for [Google's s2 C++ library](https://s2geometry.io/) for high-performance geometric calculations on
+- **[s2](https://github.com/r-spatial/s2)**: Provides R bindings for [Google's s2 C++ library](https://github.com/google/s2geometry) for high-performance geometric calculations on
     the sphere (3D, geographic/geodetic CRS). Used as a backend to *sf* for calculations on geometries with geographic/geodetic CRS, but using *s2* directly can provide substantial performance gains (2 dependencies). 
 
 - **[geos](https://github.com/paleolimbot/geos/)**: Provides an R API to the [Open Source Geometry Engine (GEOS)](<https://trac.osgeo.org/geos/>) C-library, which can be used to very efficiently manipulate planar (2D/flat/projected CRS) geometries, and a vector format with which to efficiently store 'GEOS' geometries. Used as a backend to *sf* for calculations on geometries with projected CRS, but using *geos* directly can provide substantial performance gains (2 dependencies).
@@ -314,7 +314,7 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[fst](https://github.com/fstpackage/fst)**: A compressed data file format that is very fast to read and write. Full random access in both rows and columns allows reading subsets from a '.fst' file (2 dependencies). 
 
-- **[qs](https://github.com/traversc/qs)** provides a lightning-fast and complete replacement for the `saveRDS` and `readRDS` functions in R. It 
+- **[qs](https://github.com/qsbase/qs)** provides a lightning-fast and complete replacement for the `saveRDS` and `readRDS` functions in R. It 
   supports general R objects with attributes and references - at similar speeds to *fst* - but does not provide on-disk random access to data subsets like *fst* (4 dependencies).
   
 - **[arrow](https://github.com/apache/arrow/tree/master/r)** provides both a low-level interface to the Apache Arrow C++ library (a multi-language toolbox for accelerated data interchange and in-memory processing) including fast reading / writing delimited files, efficient storage of data as `.parquet` or `.feather` files, efficient (lazy) queries and computations, and sharing data between R and Python (14 dependencies). It provides methods for several *dplyr* functions allowing highly efficient data manipulation on arrow datasets. Check out the [useR2022 workshop](https://arrow-user2022.netlify.app/) on working with larger than memory data with apache arrow in R, and the [apache arrow R cookbook](<https://arrow.apache.org/cookbook/r/index.html>) as well as the [awesome-arrow-r](https://github.com/thisisnic/awesome-arrow-r) repository.  
