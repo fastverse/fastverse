@@ -1,3 +1,7 @@
+# fastverse 0.3.4
+
+* Fixed `"width"` issue during print of `getOption("width")` is too narrow. Thanks @realzhang (#115).
+
 # fastverse 0.3.3
 
 * All unnecessary suggested packages are removed to avoid unneeded installations on servers. 
