@@ -34,6 +34,12 @@ fastversechild_deps <- function(pkg = fastversechild_packages(), recursive = FAL
     pkg_deps <- if(include.self) c(pkg, fv) else pkg
   }
   
+  if(!all(pnmiss <- pkg_deps %in% rownames(pkgs))) {
+    warning(paste("Ignoring package(s)",  paste(pkg_deps[!pnmiss], collapse = ", "), "not available on CRAN"))
+    pkg_deps <- pkg_deps[pnmiss]
+    if(!length(pkg_deps)) return()
+  }
+  
   cran_version <- lapply(pkgs[pkg_deps, "Version"], base::package_version)
   local_version <- lapply(pkg_deps, packageVersion2)
   
