@@ -238,6 +238,8 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[rsparse](https://CRAN.R-project.org/package=rsparse)**: Implements many algorithms for statistical learning on sparse matrices - matrix factorizations, matrix completion, elastic net regressions, factorization machines (8 dependencies). See also package **[MatrixExtra](https://CRAN.R-project.org/package=MatrixExtra)**.
 
+- **[SLmetrics](https://github.com/serkor1/SLmetrics)**: Fast and memory-efficient evaluation of statistical learning algorithms, categorical, cross-sectional and time series data (3 dependencies). 
+
 - **[fastmatrix](https://github.com/faosorios/fastmatrix)** provides a small set of functions written in C or Fortran providing fast computation of some matrices and operations useful in statistics (0 dependencies).
 
 - **[matrixTests](https://github.com/karoliskoncevicius/matrixTests)** efficient execution of multiple statistical hypothesis tests on rows and columns of matrices (1 dependency).
