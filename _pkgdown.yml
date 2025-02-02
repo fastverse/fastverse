@@ -40,6 +40,9 @@ navbar:
     runiverse:
       text: R-universe
       href: https://fastverse.r-universe.dev/
+    benchmarks:
+      text: Benchmarks
+      href: https://github.com/fastverse/fastverse/wiki/Benchmarks     
     blog:
       text: Blog
       href: https://sebkrantz.github.io/Rblog/
