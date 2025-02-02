@@ -23,6 +23,7 @@ navbar:
     - articles
     - news
     - runiverse
+    - benchmarks
     - blog
     right:
     - search
