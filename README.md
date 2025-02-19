@@ -18,7 +18,7 @@
 
 The *fastverse* is a suite of complementary high-performance packages for statistical computing and data manipulation in R. Developed independently by various people, *fastverse* packages jointly contribute to the objectives of:
 
-- Speeding up R through heavy use of compiled code (C, C++, Fortran)
+- Speeding up R through heavy use of compiled code (mostly C/C++)
 - Enabling more complex statistical and data manipulation operations in R
 - Reducing the number of dependencies required for advanced computing in R
 
