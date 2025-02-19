@@ -70,16 +70,16 @@
 <li>Enabling more complex statistical and data manipulation operations in R</li>
 <li>Reducing the number of dependencies required for advanced computing in R</li>
 </ul>
-<p>The <code>fastverse</code> package is a meta-package providing utilities for easy installation, loading and management of these packages. It is an extensible framework that allows users to (permanently) add or remove packages to create a ‘verse’ of packages suiting their general needs, or even create separate ‘verses’ of their own.</p>
-<p><em>fastverse</em> packages are jointly attached with <code><a href="https://fastverse.github.io/fastverse/" class="external-link">library(fastverse)</a></code>, and several functions starting with <code>fastverse_</code> help manage dependencies, detect namespace conflicts, add/remove packages from the <em>fastverse</em> and update packages. The <a href="https://fastverse.github.io/fastverse/articles/fastverse_intro.html" class="external-link"><strong>vignette</strong></a> provides a concise overview of the package.</p>
+<p>The <code>fastverse</code> package is a meta-package providing utilities for easy installation, loading and management of these packages. It is an extensible framework that allows users to create a ‘verse’ of packages suiting their general needs - see the <a href="https://fastverse.github.io/fastverse/articles/fastverse_intro.html" class="external-link"><strong>vignette</strong></a>.</p>
+<!-- *fastverse* packages are jointly attached with `library(fastverse)`, and several functions starting with `fastverse_` help manage dependencies, detect namespace conflicts, extend the *fastverse* and update packages. The [**vignette**](https://fastverse.github.io/fastverse/articles/fastverse_intro.html) provides a concise overview of the package. -->
 <div class="section level2">
 <h2 id="core-packages">Core Packages<a class="anchor" aria-label="anchor" href="#core-packages"></a>
 </h2>
 <p>The <em>fastverse</em> installs with 4 core packages<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content="&lt;p&gt;Before v0.3.0 &lt;em&gt;matrixStats&lt;/em&gt; and &lt;em&gt;fst&lt;/em&gt; were part of the core fastverse, but were removed following a poll in November 2022 which established that more than 50% of users don’t use them actively.&lt;/p&gt;"><sup>1</sup></a> (5 dependencies in total) which provide broad C/C++ based statistical and data manipulation functionality and have carefully managed APIs.</p>
 <!-- These packages are installed and attached along with the `fastverse` package. -->
 <ul>
-<li><p><strong><a href="https://github.com/Rdatatable/data.table" class="external-link">data.table</a></strong>: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, flexible split-apply-combine computing, reshaping, (rolling) joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as transposition of data.</p></li>
-<li><p><strong><a href="https://github.com/SebKrantz/collapse" class="external-link">collapse</a></strong>: Fast grouped and weighted statistical computations, time series and panel data transformations, list-processing, data manipulation functions, summary statistics and various utilities such as support for variable labels. Class-agnostic framework designed to work with vectors, matrices, data frames, lists and related classes including <em>xts</em>, <em>data.table</em>, <em>tibble</em>, <em>plm</em>, <em>sf</em>. <!-- *tsibble*, *tibbletime* --></p></li>
+<li><p><strong><a href="https://github.com/Rdatatable/data.table" class="external-link">data.table</a></strong>: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, update, reshaping, (rolling) joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as transposition of data.</p></li>
+<li><p><strong><a href="https://github.com/SebKrantz/collapse" class="external-link">collapse</a></strong>: Fast grouped and weighted statistical computations, time series and panel data transformations, list-processing, data manipulation functions (incl. fast joins and pivots), summary statistics, and various utilities for efficient programming. Class-agnostic framework designed to work with vectors, matrices, data frames, lists and related classes including <em>xts</em>, <em>data.table</em>, <em>tibble</em>, and <em>sf</em>. <!-- *tsibble*, *tibbletime* --></p></li>
 <li><p><strong><a href="https://github.com/2005m/kit" class="external-link">kit</a></strong>: Parallel (row-wise) statistical functions, vectorized and nested switches, and some utilities such as efficient partial sorting.</p></li>
 <li><p><strong><a href="https://github.com/tidyverse/magrittr" class="external-link">magrittr</a></strong>: Efficient pipe operators and aliases for enhanced R programming and code un-nesting.</p></li>
 </ul>
@@ -99,9 +99,11 @@ Currently, there are 2 different versions of the *fastverse* on CRAN and GitHub/
 <span></span>
 <span><span class="co"># Install from GitHub (requires compilation)</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"fastverse/fastverse"</span><span class="op">)</span></span></code></pre></div>
-<p><em>Note</em> that the GitHub/r-universe version is not a development version, development takes place in the ‘development’ branch. <!--
+<!--
+*Note* that the GitHub/r-universe version is not a development version, development takes place in the 'development' branch.
+
 *matrixStats* is slowly evolving towards greater consistency, but it might take more than half a year until dimension names are handled consistently by default - due to the large number of reverse dependencies. Until then CRAN and GitHub/R-universe versions of the *fastverse* are released together.
---></p>
+-->
 </div>
 <div class="section level2">
 <h2 id="extending-the-fastverse">Extending the <em>fastverse</em>
