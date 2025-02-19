@@ -33,7 +33,7 @@ The *fastverse* installs with 4 core packages (5 dependencies in total) which pr
  
 <!-- These packages are installed and attached along with the `fastverse` package. -->
  
-- **[data.table](https://github.com/Rdatatable/data.table)**: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, update, reshaping, (rolling) joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as data transpositio/split-transpose. 
+- **[data.table](https://github.com/Rdatatable/data.table)**: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, update, reshaping, (rolling) joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as data transposition/stringsplit-transpose. 
 
 - **[collapse](https://github.com/SebKrantz/collapse)**: Fast grouped and weighted statistical computations, time series and panel data transformations, list-processing, data manipulation functions (incl. fast joins and pivots), summary statistics, and various utilities for efficient programming. Class-agnostic framework designed to work with vectors, matrices, data frames, lists and related classes including *xts*, *data.table*, *tibble*, and *sf*.  <!-- *tsibble*, *tibbletime* -->
 
