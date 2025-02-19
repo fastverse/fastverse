@@ -23,17 +23,17 @@ The *fastverse* is a suite of complementary high-performance packages for statis
 - Reducing the number of dependencies required for advanced computing in R
 
 The `fastverse` package is a meta-package providing utilities for easy installation, loading and management 
-of these packages. It is an extensible framework that allows users to create a 'verse' of packages suiting their general needs - see the [**vignette**](https://fastverse.github.io/fastverse/articles/fastverse_intro.html). 
+of these packages. It is an extensible framework that allows users to create a 'verse' of packages suiting their general needs - see the [**vignette**](https://fastverse.github.io/fastverse/articles/fastverse_intro.html) for a concise overview of the package. 
 
 <!-- *fastverse* packages are jointly attached with `library(fastverse)`, and several functions starting with `fastverse_` help manage dependencies, detect namespace conflicts, extend the *fastverse* and update packages. The [**vignette**](https://fastverse.github.io/fastverse/articles/fastverse_intro.html) provides a concise overview of the package. -->
 
 ## Core Packages
 
-The *fastverse* installs with 4 core packages^[Before v0.3.0 *matrixStats* and *fst* were part of the core fastverse, but were removed following a poll in November 2022 which established that more than 50% of users don't use them actively.] (5 dependencies in total) which provide broad C/C++ based statistical and data manipulation functionality and have carefully managed APIs. 
+The *fastverse* installs with 4 core packages (5 dependencies in total) which provide broad C/C++ based statistical and data manipulation functionality and have carefully managed APIs. 
  
 <!-- These packages are installed and attached along with the `fastverse` package. -->
  
-- **[data.table](https://github.com/Rdatatable/data.table)**: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, update, reshaping, (rolling) joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as transposition of data. 
+- **[data.table](https://github.com/Rdatatable/data.table)**: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, update, reshaping, (rolling) joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as data transpositio/split-transpose. 
 
 - **[collapse](https://github.com/SebKrantz/collapse)**: Fast grouped and weighted statistical computations, time series and panel data transformations, list-processing, data manipulation functions (incl. fast joins and pivots), summary statistics, and various utilities for efficient programming. Class-agnostic framework designed to work with vectors, matrices, data frames, lists and related classes including *xts*, *data.table*, *tibble*, and *sf*.  <!-- *tsibble*, *tibbletime* -->
 
