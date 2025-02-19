@@ -18,7 +18,7 @@
 
 The *fastverse* is a suite of complementary high-performance packages for statistical computing and data manipulation in R. Developed independently by various people, *fastverse* packages jointly contribute to the objectives of:
 
-- Speeding up R through heavy use of compiled code (mostly C/C++)
+- Speeding up R through heavy use of compiled code (C/C++)
 - Enabling more complex statistical and data manipulation operations in R
 - Reducing the number of dependencies required for advanced computing in R
 
@@ -64,7 +64,7 @@ remotes::install_github("fastverse/fastverse")
 
 ## Extending the *fastverse*
 
-Users can, via the `fastverse_extend()` function, freely attach extension packages. Setting `permanent = TRUE` adds these packages to the core *fastverse*. Another option is adding a `.fastverse` config file with packages to the project directory. Separate verses can be created with `fastverse_child()`. See the [**vignette**](https://fastverse.github.io/fastverse/articles/fastverse_intro.html) for details.  
+Users can, via the `fastverse_extend()` function, freely add packages. Setting `permanent = TRUE` adds them to the core *fastverse*. Another option is placing a `.fastverse` config file with packages in a project directory. Separate verses can be created with `fastverse_child()`. See the [**vignette**](https://fastverse.github.io/fastverse/articles/fastverse_intro.html) for details.  
 
 <!--
 <details>
