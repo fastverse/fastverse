@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Introduction to the *fastverse* • fastverse</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
 <link rel="icon" sizes="any" href="../favicon.ico">
@@ -231,7 +231,7 @@ need the switches and parallel statistics provided by the <em>kit</em>
 package and I am completely happy with the base pipe so I don’t need
 <em>magrittr</em>. Let’s finally say that I don’t want
 <code>xts::first</code> and <code>xts::last</code> to mask
-<code><a href="https://rdrr.io/pkg/data.table/man/last.html" class="external-link">data.table::first</a></code> and <code><a href="https://rdrr.io/pkg/data.table/man/last.html" class="external-link">data.table::last</a></code>.</p>
+<code><a href="https://rdatatable.gitlab.io/data.table/reference/last.html" class="external-link">data.table::first</a></code> and <code><a href="https://rdatatable.gitlab.io/data.table/reference/last.html" class="external-link">data.table::last</a></code>.</p>
 <p>Then I could permanently modify my <em>fastverse</em> as follows<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;I note that namespace conflicts can also be detected and
 handled with the &lt;a href="https://cran.r-project.org/package=conflicted" class="external-link"&gt;conflicted&lt;/a&gt;
 package on CRAN.&lt;/p&gt;'><sup>6</sup></a>:</p>
@@ -582,7 +582,7 @@ without sophisticated package management solutions.</p>
 </h2>
 <p><em>data.table</em>, <em>collapse</em> and <em>kit</em> support
 OpenMP multithreading on all platforms. Global defaults can be set using
-<code><a href="https://rdrr.io/pkg/data.table/man/openmp-utils.html" class="external-link">data.table::setDTthreads()</a></code>,
+<code><a href="https://rdatatable.gitlab.io/data.table/reference/openmp-utils.html" class="external-link">data.table::setDTthreads()</a></code>,
 <code>collapse::set_collapse(nthreads = ...)</code> and
 <code>options(kit.nThread = ...)</code>. Users should be careful with
 running multithreaded <em>collapse</em> and <em>kit</em> functions
