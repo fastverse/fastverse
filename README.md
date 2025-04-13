@@ -255,6 +255,8 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[hutilscpp](https://github.com/hughparsonage/hutilscpp)** provides C++ implementations of some frequently used utility functions in R (4 dependencies).
 
+- **[broadcast](https://github.com/tony-aw/broadcast)**: provides 'Numpy'-like broadcasted array operations and array binding (1 dependency).
+
   *Notes*: *Rfast* has a number of like-named functions to *matrixStats*. These are simpler but typically faster and support multi-threading. Some highly efficient statistical functions can also be found scattered across various other packages, notable to mention here are *Hmisc* (60 dependencies) and *DescTools* (17 dependencies). <!-- *fastDummies* (16 dependencies) implements creation of dummy (binary) variables. -->
 
 <!-- 
