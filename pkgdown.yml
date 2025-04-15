@@ -1,6 +1,6 @@
 pandoc: 3.1.11
 pkgdown: 2.1.1.9000
-pkgdown_sha: 10643265c4a320f39a04c76d8dbad83ecbecd9c7
+pkgdown_sha: 5c8cf6707905e943c8d9e7a734f3cc82a74fa859
 articles:
   fastverse_intro: fastverse_intro.html
-last_built: 2025-04-13T16:55Z
+last_built: 2025-04-15T09:18Z
