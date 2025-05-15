@@ -18,7 +18,7 @@
 
 The *fastverse* is a suite of complementary high-performance packages for statistical computing and data manipulation in R. Developed independently by various people, *fastverse* packages jointly contribute to the objectives of:
 
-- Speeding up R through heavy use of compiled code (C/C++)
+- Speeding up R through heavy use of compiled (C/C++) code
 - Enabling more complex statistical and data manipulation operations in R
 - Reducing the number of dependencies required for advanced computing in R
 
@@ -235,7 +235,7 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[vctrs](https://github.com/r-lib/vctrs/)**: Computational backend of the [*tidyverse*](https://github.com/tidyverse) that provides many basic programming functions for R vectors (including lists and data frames) implemented in C (such as sorting, matching, replicating, unique values, concatenating, splitting etc. of vectors). These are often significantly faster than base R equivalents, but generally not as aggressively optimized as some equivalents found in *collapse* or *data.table* (4 dependencies). 
 
-- **[parallelDist](https://github.com/alexeckert/parallelDist)**: Multi-threaded distance matrix computation (3 dependencies). (See also [`collapse::fdist()`](https://sebkrantz.github.io/collapse/reference/fdist.html) for multithreaded/SIMD euclidean distances).
+- **[parallelDist](https://github.com/alexeckert/parallelDist)**: Multi-threaded distance matrix computation (3 dependencies). See also [`collapse::fdist()`](https://sebkrantz.github.io/collapse/reference/fdist.html) for multithreaded/SIMD euclidean distances.
 
 - **[coop](https://github.com/wrathematics/coop)**: Fast implementations of the covariance, correlation, and cosine similarity (0 dependencies).
 
