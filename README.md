@@ -354,6 +354,8 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[inline](https://github.com/eddelbuettel/inline)** allows users to write C, C++ or Fortran functions and compile them directly to an R function for use within the R session. [Available on CRAN](https://CRAN.R-project.org/package=inline) (0 dependencies).
 
+- **[quickr](https://github.com/t-kalinowski/quickr)** is an R to Fortran transpiler with data type and shape annotations for high performance. [Available on CRAN](https://CRAN.R-project.org/package=quickr) (3 dependencies).
+
   *Notes*: Many of these projects are experimental and not available as CRAN packages. 
 
 #### R-like Data Manipulation in Faster Languages
