@@ -308,6 +308,10 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[scales](https://github.com/r-lib/scales)**: Scale functions for visualizations (11 dependencies). 
 
+- **[scattermore](https://github.com/exaexa/scattermore)**: Extremely fast scatterplot rasterization for large datasets, enabling visualization of millions of points (25 dependencies).
+
+- **[ggrastr](https://github.com/VPetukhov/ggrastr)**: Rasterizes layers in ggplot2 for faster plotting of large datasets (37 dependencies).
+
   *Notes:* *latticeExtra* provides extra graphical utilities base on *lattice*. *gridExtra* provides miscellaneous functions for *grid* graphics (and consequently for *ggplot2* which is based on *grid*). *gridtext* provides improved text rendering support for *grid* graphics. Many packages offer *ggplot2* extensions, (typically starting with 'gg') such as *ggExtra*, *ggalt*, *ggforce*, *ggh4x*, *ggmap*, *ggtext*, *ggthemes*, *ggrepel*, *ggridges*, *ggfortify*, *ggstatsplot*, *ggeffects*, *ggsignif*, *GGally*, *ggcorrplot*, *ggdendro*, etc.. Users in desperate need for greater performance may also find the (unmaintained) [lwplot](https://github.com/eddelbuettel/lwplot) package useful that provides a faster and lighter version of *ggplot2* with *data.table* backend.
 
 #### Data Manipulation in R Based on Faster Languages
