@@ -318,6 +318,8 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[r-polars](https://github.com/pola-rs/r-polars)** provides an R-port to the impressively fast [polars DataFrame's library](https://github.com/pola-rs/polars/) written in Rust (1 dependencies). 
 
+- **[duckplyr](https://github.com/tidyverse/duckplyr)** provides a drop-in replacement for dplyr verbs using DuckDB as the backend, enabling fast and memory-efficient data manipulation for large datasets (22 dependencies).
+
   *Notes*: Package **[tidypolars](https://github.com/etiennebacher/tidypolars)** provides a *tidyverse*-style wrapper around *r-polars*. 
 
 #### Data Input-Output, Serialization, and Larger-Than-Memory Processing (IO)  
@@ -404,6 +406,13 @@ The total (recursive) dependency count is indicated for each package.
 
   *Notes*: These packages are wrappers around *data.table* and do not introduce own compiled code. 
   
+#### Tidyverse-like Data Manipulation built on collapse
+
+- **[fastplyr](https://github.com/NicChr/fastplyr)**: Implements a set of fast, pipe-friendly data manipulation verbs (such as `mutate`, `summarise`, `arrange`, `filter`, `select`, and `group_by`) built on top of *collapse* for efficient grouped and column-wise operations (22 dependencies).
+
+- **[timeplyr](https://github.com/NicChr/timeplyr)**: Provides fast and flexible time-based data manipulation and aggregation, including rolling, cumulative, and grouped operations, with a focus on efficient time series workflows (41 dependencies).
+
+  *Notes*: These packages are wrappers around *collapse* and do not introduce own compiled code. 
 
 ***
   
