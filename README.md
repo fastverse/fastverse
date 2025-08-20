@@ -254,6 +254,9 @@ The total (recursive) dependency count is indicated for each package.
 - **[fastmap](https://github.com/r-lib/fastmap)**: Fast implementation of data structures based on C++, including a key-value store (`fastmap`), stack (`faststack`), and queue (`fastqueque`) (0 dependencies).
 
 - **[fastmatch](https://github.com/s-u/fastmatch)**: A faster `match()` function (drop-in replacement for `base::match`, and `base::%in%`), that keeps the hash table in memory for much faster repeated lookups (0 dependencies).
+
+- **[cheapr](https://github.com/NicChr/cheapr)**: Provides fast and memory-efficient functions for common data manipulation and transformation tasks, focusing on minimal dependencies and high performance (3 dependencies).
+
 <!--
 - **[hutilscpp](https://github.com/hughparsonage/hutilscpp)** provides C++ implementations of some frequently used utility functions in R (4 dependencies).
 -->
@@ -317,6 +320,8 @@ The total (recursive) dependency count is indicated for each package.
 #### Data Manipulation in R Based on Faster Languages
 
 - **[r-polars](https://github.com/pola-rs/r-polars)** provides an R-port to the impressively fast [polars DataFrame's library](https://github.com/pola-rs/polars/) written in Rust (1 dependencies). 
+
+- **[duckplyr](https://github.com/tidyverse/duckplyr)** provides a drop-in replacement for dplyr verbs using DuckDB as the backend, enabling fast and memory-efficient data manipulation for large datasets (22 dependencies).
 
   *Notes*: Package **[tidypolars](https://github.com/etiennebacher/tidypolars)** provides a *tidyverse*-style wrapper around *r-polars*. 
 
@@ -404,6 +409,13 @@ The total (recursive) dependency count is indicated for each package.
 
   *Notes*: These packages are wrappers around *data.table* and do not introduce own compiled code. 
   
+#### Tidyverse-like Data Manipulation built on collapse
+
+- **[fastplyr](https://github.com/NicChr/fastplyr)**: Implements a set of fast, pipe-friendly data manipulation verbs (such as `mutate`, `summarise`, `arrange`, `filter`, `select`, and `group_by`) built on top of *collapse* for efficient grouped and column-wise operations (22 dependencies).
+
+- **[timeplyr](https://github.com/NicChr/timeplyr)**: Provides fast and flexible time-based data manipulation and aggregation, including rolling, cumulative, and grouped operations, with a focus on efficient time series workflows (41 dependencies).
+
+  *Notes*: These packages are wrappers around *collapse* and do not introduce own compiled code. 
 
 ***
   
