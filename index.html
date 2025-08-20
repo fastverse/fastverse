@@ -285,13 +285,12 @@ based on the ‘integer64’ class (7 dependencies).</p></li>
 <li><p><strong><a href="https://CRAN.R-project.org/package=rrapply" class="external-link">rrapply</a></strong>: The <code>rrapply()</code> function extends base <code><a href="https://rdrr.io/r/base/rapply.html" class="external-link">rapply()</a></code> by including a condition or predicate function for the application of functions and diverse options to prune or aggregate the result (0 dependencies).</p></li>
 <li><p><strong><a href="https://github.com/daqana/dqrng" class="external-link">dqrng</a></strong>: Fast uniform, normal or exponential random numbers and random sampling (i.e. faster <code>runif</code>, <code>rnorm</code>, <code>rexp</code>, <code>sample</code> and <code>sample.int</code> functions) (3 dependencies).</p></li>
 <li><p><strong><a href="https://github.com/r-lib/fastmap" class="external-link">fastmap</a></strong>: Fast implementation of data structures based on C++, including a key-value store (<code>fastmap</code>), stack (<code>faststack</code>), and queue (<code>fastqueque</code>) (0 dependencies).</p></li>
-<li>
-<p><strong><a href="https://github.com/s-u/fastmatch" class="external-link">fastmatch</a></strong>: A faster <code><a href="https://rdrr.io/r/base/match.html" class="external-link">match()</a></code> function (drop-in replacement for <code><a href="https://rdrr.io/r/base/match.html" class="external-link">base::match</a></code>, and <code>base::%in%</code>), that keeps the hash table in memory for much faster repeated lookups (0 dependencies). <!--
-- **[hutilscpp](https://github.com/hughparsonage/hutilscpp)** provides C++ implementations of some frequently used utility functions in R (4 dependencies).
---></p>
-<p><em>Notes</em>: <em>Rfast</em> has a number of like-named functions to <em>matrixStats</em>. These are simpler but typically faster and support multi-threading. Some highly efficient statistical functions can also be found scattered across various other packages, notable to mention here are <em>Hmisc</em> (60 dependencies) and <em>DescTools</em> (17 dependencies). <!-- *fastDummies* (16 dependencies) implements creation of dummy (binary) variables. --></p>
-</li>
+<li><p><strong><a href="https://github.com/s-u/fastmatch" class="external-link">fastmatch</a></strong>: A faster <code><a href="https://rdrr.io/r/base/match.html" class="external-link">match()</a></code> function (drop-in replacement for <code><a href="https://rdrr.io/r/base/match.html" class="external-link">base::match</a></code>, and <code>base::%in%</code>), that keeps the hash table in memory for much faster repeated lookups (0 dependencies).</p></li>
+<li><p><strong><a href="https://github.com/NicChr/cheapr" class="external-link">cheapr</a></strong>: Provides fast and memory-efficient functions for common data manipulation and transformation tasks, focusing on minimal dependencies and high performance (3 dependencies).</p></li>
 </ul>
+<!--
+- **[hutilscpp](https://github.com/hughparsonage/hutilscpp)** provides C++ implementations of some frequently used utility functions in R (4 dependencies).
+--><p><em>Notes</em>: <em>Rfast</em> has a number of like-named functions to <em>matrixStats</em>. These are simpler but typically faster and support multi-threading. Some highly efficient statistical functions can also be found scattered across various other packages, notable to mention here are <em>Hmisc</em> (60 dependencies) and <em>DescTools</em> (17 dependencies). <!-- *fastDummies* (16 dependencies) implements creation of dummy (binary) variables. --></p>
 <!--
 - **fastmatch**: Fast match function.
 - **fastmap**: Fast Implementation of a Key-Value Store.
@@ -340,8 +339,9 @@ based on the ‘integer64’ class (7 dependencies).</p></li>
 <h4 id="data-manipulation-in-r-based-on-faster-languages">Data Manipulation in R Based on Faster Languages<a class="anchor" aria-label="anchor" href="#data-manipulation-in-r-based-on-faster-languages"></a>
 </h4>
 <ul>
+<li><p><strong><a href="https://github.com/pola-rs/r-polars" class="external-link">r-polars</a></strong> provides an R-port to the impressively fast <a href="https://github.com/pola-rs/polars/" class="external-link">polars DataFrame’s library</a> written in Rust (1 dependencies).</p></li>
 <li>
-<p><strong><a href="https://github.com/pola-rs/r-polars" class="external-link">r-polars</a></strong> provides an R-port to the impressively fast <a href="https://github.com/pola-rs/polars/" class="external-link">polars DataFrame’s library</a> written in Rust (1 dependencies).</p>
+<p><strong><a href="https://github.com/tidyverse/duckplyr" class="external-link">duckplyr</a></strong> provides a drop-in replacement for dplyr verbs using DuckDB as the backend, enabling fast and memory-efficient data manipulation for large datasets (22 dependencies).</p>
 <p><em>Notes</em>: Package <strong><a href="https://github.com/etiennebacher/tidypolars" class="external-link">tidypolars</a></strong> provides a <em>tidyverse</em>-style wrapper around <em>r-polars</em>.</p>
 </li>
 </ul>
@@ -423,6 +423,17 @@ based on the ‘integer64’ class (7 dependencies).</p></li>
 <li>
 <p><strong><a href="https://github.com/asardaes/table.express" class="external-link">table.express</a></strong> also o builds <em>data.table</em> expressions from <em>dplyr</em> verbs, without executing them eagerly. Similar to <em>dtplyr</em> but less mature (17 dependencies).</p>
 <p><em>Notes</em>: These packages are wrappers around <em>data.table</em> and do not introduce own compiled code.</p>
+</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="tidyverse-like-data-manipulation-built-on-collapse">Tidyverse-like Data Manipulation built on collapse<a class="anchor" aria-label="anchor" href="#tidyverse-like-data-manipulation-built-on-collapse"></a>
+</h4>
+<ul>
+<li><p><strong><a href="https://github.com/NicChr/fastplyr" class="external-link">fastplyr</a></strong>: Implements a set of fast, pipe-friendly data manipulation verbs (such as <code>mutate</code>, <code>summarise</code>, <code>arrange</code>, <code>filter</code>, <code>select</code>, and <code>group_by</code>) built on top of <em>collapse</em> for efficient grouped and column-wise operations (22 dependencies).</p></li>
+<li>
+<p><strong><a href="https://github.com/NicChr/timeplyr" class="external-link">timeplyr</a></strong>: Provides fast and flexible time-based data manipulation and aggregation, including rolling, cumulative, and grouped operations, with a focus on efficient time series workflows (41 dependencies).</p>
+<p><em>Notes</em>: These packages are wrappers around <em>collapse</em> and do not introduce own compiled code.</p>
 </li>
 </ul>
 <hr>
