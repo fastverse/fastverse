@@ -254,6 +254,9 @@ The total (recursive) dependency count is indicated for each package.
 - **[fastmap](https://github.com/r-lib/fastmap)**: Fast implementation of data structures based on C++, including a key-value store (`fastmap`), stack (`faststack`), and queue (`fastqueque`) (0 dependencies).
 
 - **[fastmatch](https://github.com/s-u/fastmatch)**: A faster `match()` function (drop-in replacement for `base::match`, and `base::%in%`), that keeps the hash table in memory for much faster repeated lookups (0 dependencies).
+
+- **[cheapr](https://github.com/NicChr/cheapr)**: Provides fast and memory-efficient functions for common data manipulation and transformation tasks, focusing on minimal dependencies and high performance (3 dependencies).
+
 <!--
 - **[hutilscpp](https://github.com/hughparsonage/hutilscpp)** provides C++ implementations of some frequently used utility functions in R (4 dependencies).
 -->
