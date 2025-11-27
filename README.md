@@ -227,9 +227,9 @@ The total (recursive) dependency count is indicated for each package.
 
 #### Statistics and Computing
 
-- **[matrixStats](https://github.com/HenrikBengtsson/matrixStats)**: Efficient row-and column-wise (weighted) statistics on matrices and vectors, including computations on subsets of rows and columns (0 dependencies). 
+- **[matrixStats](https://github.com/HenrikBengtsson/matrixStats)**: Efficient row-and column-wise (weighted) statistics on matrices and vectors, including computations on subsets of rows and columns (0 dependencies). **[matrixTests](https://github.com/karoliskoncevicius/matrixTests)** uses *matrixStats* for efficient hypothesis tests on matrix/data.frame rows/columns (1 dependency).
 
-- **[Rfast](https://github.com/RfastOfficial/Rfast)** and **[Rfast2](https://github.com/RfastOfficial/Rfast2)**: Heterogeneous sets of fast functions for statistics, estimation and data manipulation operating on vectors and matrices (4-5 dependencies).
+- **[Rfast](https://github.com/RfastOfficial/Rfast)** and **[Rfast2](https://github.com/RfastOfficial/Rfast2)**: Heterogeneous sets of fast functions for statistics, data manipulation, estimation, and hypothesis testing operating on vectors, matrix row/columns, and sometimes supporting data frame columns (4-5 dependencies).
 
 - **[broadcast](https://github.com/tony-aw/broadcast)**: provides 'Numpy'-like broadcasted array operations and array binding (1 dependency).
 
@@ -244,8 +244,6 @@ The total (recursive) dependency count is indicated for each package.
 - **[SLmetrics](https://github.com/serkor1/SLmetrics)**: Fast and memory-efficient evaluation of statistical learning algorithms, categorical, cross-sectional and time series data (3 dependencies). 
 
 - **[fastmatrix](https://github.com/faosorios/fastmatrix)** provides a small set of functions written in C or Fortran providing fast computation of some matrices and operations useful in statistics (0 dependencies).
-
-- **[matrixTests](https://github.com/karoliskoncevicius/matrixTests)** efficient execution of multiple statistical hypothesis tests on rows and columns of matrices (1 dependency).
 
 - **[rrapply](https://CRAN.R-project.org/package=rrapply)**: The `rrapply()` function extends base `rapply()` by including a condition or predicate function for the application of functions and diverse options to prune or aggregate the result (0 dependencies).
 
