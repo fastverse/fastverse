@@ -257,6 +257,8 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[collections](https://github.com/randy3k/collections)**: High-performance container data types (queues, stacks, deques, ordered dictionaries) backed by C++ for efficient algorithmic programming (0 dependencies).
 
+- **[stdvectors](https://github.com/digEmAll/stdvectors)**: Allows the creation and manipulation of C++ `std::vector`'s in R. Unlike R vectors, `std::vector`'s are dynamically allocated (growable) arrays (1 dependency).
+
 - **[cheapr](https://github.com/NicChr/cheapr)**: Provides fast and memory-efficient functions for common data manipulation and transformation tasks, focusing on minimal dependencies and high performance (3 dependencies).
 
 - **[hutilscpp](https://github.com/hughparsonage/hutilscpp)** provides C++ implementations of some frequently used utility functions in R (4 dependencies).
