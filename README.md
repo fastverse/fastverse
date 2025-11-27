@@ -227,13 +227,13 @@ The total (recursive) dependency count is indicated for each package.
 
 #### Statistics and Computing
 
-- **[matrixStats](https://github.com/HenrikBengtsson/matrixStats)**: Efficient row-and column-wise (weighted) statistics on matrices and vectors, including computations on subsets of rows and columns (0 dependencies). **[matrixTests](https://github.com/karoliskoncevicius/matrixTests)** uses *matrixStats* for efficient hypothesis tests on matrix/data.frame rows/columns (1 dependency).
+- **[matrixStats](https://github.com/HenrikBengtsson/matrixStats)**: Efficient row-and column-wise (weighted) statistics on matrices and vectors, including computations on subsets of rows and columns (0 dependencies). **[matrixTests](https://github.com/karoliskoncevicius/matrixTests)** uses *matrixStats* for efficient multiple hypothesis testing on matrix/data.frame rows/columns (1 dependency).
 
-- **[Rfast](https://github.com/RfastOfficial/Rfast)** and **[Rfast2](https://github.com/RfastOfficial/Rfast2)**: Heterogeneous sets of fast functions for statistics, data manipulation, estimation, and hypothesis testing operating on vectors, matrix row/columns, and sometimes supporting data frame columns (4-5 dependencies).
+- **[Rfast](https://github.com/RfastOfficial/Rfast)** and **[Rfast2](https://github.com/RfastOfficial/Rfast2)**: Heterogeneous sets of fast functions for statistics, data manipulation, estimation, and hypothesis testing on vectors, matrix row/columns, and sometimes data frame columns (4-5 dependencies).
 
 - **[broadcast](https://github.com/tony-aw/broadcast)**: provides 'Numpy'-like broadcasted array operations and array binding (1 dependency).
 
-- **[vctrs](https://github.com/r-lib/vctrs/)**: Computational backend of the [*tidyverse*](https://github.com/tidyverse) that provides many basic programming functions for R vectors (including lists and data frames) implemented in C (such as sorting, matching, replicating, unique values, concatenating, splitting etc. of vectors). These are often significantly faster than base R equivalents, but generally not as aggressively optimized as some equivalents found in *collapse* or *data.table* (4 dependencies). 
+- **[vctrs](https://github.com/r-lib/vctrs/)**: Computational backend of the [*tidyverse*](https://github.com/tidyverse) that provides many basic programming functions for R vectors (including lists and data frames) implemented in C (such as sorting, matching, replicating, unique values, concatenating, splitting etc. of vectors). These are often significantly faster than base R equivalents, but not as aggressively optimized as some equivalents in *collapse* or *data.table* (4 dependencies). 
 
 - **[parallelDist](https://github.com/alexeckert/parallelDist)**: Multi-threaded distance matrix computation (3 dependencies). See also [`collapse::fdist()`](https://sebkrantz.github.io/collapse/reference/fdist.html) for multithreaded/SIMD euclidean distances.
 
@@ -329,6 +329,8 @@ The total (recursive) dependency count is indicated for each package.
 
 #### Data Input-Output, Serialization, and Larger-Than-Memory Processing (IO)  
 
+* **[iotools](https://cran.r-project.org/package=iotools)**: High-performance I/O tools for streaming data, including ultra-fast chunk-wise processing and string splitting operations (0 dependencies).
+
 - **[fst](https://github.com/fstpackage/fst)**: A compressed data file format that is very fast to read and write. Full random access in both rows and columns allows reading subsets from a '.fst' file (2 dependencies). 
 
 - **[qs](https://github.com/qsbase/qs)** provides a lightning-fast and complete replacement for the `saveRDS` and `readRDS` functions in R. It 
@@ -339,8 +341,6 @@ The total (recursive) dependency count is indicated for each package.
 - **[duckdb](https://github.com/duckdb/duckdb)**: DuckDB is a high-performance analytical database system that can be used on in-memory or out-of memory data (including csv, `.parquet` files, arrow datasets, and it's own `.duckdb` format), and that provides a rich SQL dialect and optimized query execution for data analysis (1 dependency). It can also be used with the *dbplyr* package that translates *dplyr* code to SQL. [This](https://www.christophenicault.com/post/large_dataframe_arrow_duckdb/) Article by Christophe Nicault (October 2022) demonstrates the integration of *duckdb* with R and *arrow*. Also see the [official docs](<https://duckdb.org/docs/api/r.html>). 
 
 - **[vroom](https://github.com/tidyverse/vroom)** provides fast reading of delimited files (23 dependencies).
-
-* **[iotools](https://cran.r-project.org/package=iotools)**: High-performance I/O tools for streaming data, including ultra-fast chunk-wise processing and string splitting operations (0 dependencies).
 
   *Notes*: *data.table* provides `fread` and `fwrite` for fast reading of delimited files. 
   
