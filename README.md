@@ -227,9 +227,9 @@ The total (recursive) dependency count is indicated for each package.
 
 #### Statistics and Computing
 
-- **[matrixStats](https://github.com/HenrikBengtsson/matrixStats)**: Efficient row-and column-wise (weighted) statistics on matrices and vectors, including computations on subsets of rows and columns (0 dependencies). 
+- **[matrixStats](https://github.com/HenrikBengtsson/matrixStats)**: Efficient row-and column-wise (weighted) statistics on matrices and vectors, including computations on subsets of rows and columns (0 dependencies). **[matrixTests](https://github.com/karoliskoncevicius/matrixTests)** uses *matrixStats* for efficient hypothesis tests on matrix/data.frame rows/columns (1 dependency).
 
-- **[Rfast](https://github.com/RfastOfficial/Rfast)** and **[Rfast2](https://github.com/RfastOfficial/Rfast2)**: Heterogeneous sets of fast functions for statistics, estimation and data manipulation operating on vectors and matrices (4-5 dependencies).
+- **[Rfast](https://github.com/RfastOfficial/Rfast)** and **[Rfast2](https://github.com/RfastOfficial/Rfast2)**: Heterogeneous sets of fast functions for statistics, data manipulation, estimation, and hypothesis testing operating on vectors, matrix row/columns, and sometimes supporting data frame columns (4-5 dependencies).
 
 - **[broadcast](https://github.com/tony-aw/broadcast)**: provides 'Numpy'-like broadcasted array operations and array binding (1 dependency).
 
@@ -245,8 +245,6 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[fastmatrix](https://github.com/faosorios/fastmatrix)** provides a small set of functions written in C or Fortran providing fast computation of some matrices and operations useful in statistics (0 dependencies).
 
-- **[matrixTests](https://github.com/karoliskoncevicius/matrixTests)** efficient execution of multiple statistical hypothesis tests on rows and columns of matrices (1 dependency).
-
 - **[rrapply](https://CRAN.R-project.org/package=rrapply)**: The `rrapply()` function extends base `rapply()` by including a condition or predicate function for the application of functions and diverse options to prune or aggregate the result (0 dependencies).
 
 - **[dqrng](https://github.com/daqana/dqrng)**: Fast uniform, normal or exponential random numbers and random sampling (i.e. faster `runif`, `rnorm`, `rexp`, `sample` and `sample.int` functions) (3 dependencies).
@@ -258,6 +256,8 @@ The total (recursive) dependency count is indicated for each package.
 - **[fastmatch](https://github.com/s-u/fastmatch)**: A faster `match()` function (drop-in replacement for `base::match`, and `base::%in%`), that keeps the hash table in memory for much faster repeated lookups (0 dependencies).
 
 - **[collections](https://github.com/randy3k/collections)**: High-performance container data types (queues, stacks, deques, ordered dictionaries) backed by C++ for efficient algorithmic programming (0 dependencies).
+
+- **[stdvectors](https://github.com/digEmAll/stdvectors)**: Allows the creation and manipulation of C++ `std::vector`'s in R. Unlike R vectors, `std::vector`'s are dynamically allocated (growable) arrays (1 dependency).
 
 - **[cheapr](https://github.com/NicChr/cheapr)**: Provides fast and memory-efficient functions for common data manipulation and transformation tasks, focusing on minimal dependencies and high performance (3 dependencies).
 
