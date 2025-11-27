@@ -299,8 +299,6 @@ The total (recursive) dependency count is indicated for each package.
 
 #### Visualization
 
-- **[dygraphs](https://github.com/rstudio/dygraphs)**: Interface to 'Dygraphs' interactive time series charting library (12 dependencies). 
-
 - **[lattice](https://github.com/deepayan/lattice)**: Trellis graphics for R (0 dependencies). 
 
 - **[grid](https://github.com/cran/grid)**: The grid graphics package (0 dependencies). 
@@ -309,11 +307,13 @@ The total (recursive) dependency count is indicated for each package.
 -->
 - **[tinyplot](https://github.com/grantmcdermott/tinyplot)** provides a lightweight extension of the base R graphics system, with support for automatic grouping, legends, facets, and various other enhancements (0 dependencies). 
 
-- **[ggplot2](https://github.com/tidyverse/ggplot2)**: Create elegant data visualizations using the Grammar of Graphics (27 dependencies). 
+<!-- - **[dygraphs](https://github.com/rstudio/dygraphs)**: Interface to 'Dygraphs' interactive time series charting library (12 dependencies). -->
 
-- **[scales](https://github.com/r-lib/scales)**: Scale functions for visualizations (11 dependencies). 
+- **[ggplot2](https://github.com/tidyverse/ggplot2)**: Create elegant data visualizations using the Grammar of Graphics (15 dependencies). 
 
-- **[scattermore](https://github.com/exaexa/scattermore)**: Extremely fast scatterplot rasterization for large datasets, enabling visualization of millions of points (25 dependencies).
+- **[scales](https://github.com/r-lib/scales)**: Scale functions for visualizations (10 dependencies). 
+
+- **[scattermore](https://github.com/exaexa/scattermore)**: Extremely fast scatterplot rasterization for large datasets, enabling visualization of millions of points (16 dependencies).
 
 - **[ggrastr](https://github.com/VPetukhov/ggrastr)**: Rasterizes layers in ggplot2 for faster plotting of large datasets (37 dependencies).
 
