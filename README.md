@@ -251,15 +251,17 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[dqrng](https://github.com/daqana/dqrng)**: Fast uniform, normal or exponential random numbers and random sampling (i.e. faster `runif`, `rnorm`, `rexp`, `sample` and `sample.int` functions) (3 dependencies).
 
+- **[RcppAlgos](https://github.com/jwood000/RcppAlgos)**: Optimized functions and flexible iterators for combinatorics (permutations, combinations, partitions, etc.) and computational mathematics (prime sieving, factorization). Features multi-threading and a low memory footprint (2 dependencies).
+
 - **[fastmap](https://github.com/r-lib/fastmap)**: Fast implementation of data structures based on C++, including a key-value store (`fastmap`), stack (`faststack`), and queue (`fastqueque`) (0 dependencies).
 
 - **[fastmatch](https://github.com/s-u/fastmatch)**: A faster `match()` function (drop-in replacement for `base::match`, and `base::%in%`), that keeps the hash table in memory for much faster repeated lookups (0 dependencies).
 
+- **[collections](https://github.com/randy3k/collections)**: High-performance container data types (queues, stacks, deques, ordered dictionaries) backed by C++ for efficient algorithmic programming (0 dependencies).
+
 - **[cheapr](https://github.com/NicChr/cheapr)**: Provides fast and memory-efficient functions for common data manipulation and transformation tasks, focusing on minimal dependencies and high performance (3 dependencies).
 
-<!--
 - **[hutilscpp](https://github.com/hughparsonage/hutilscpp)** provides C++ implementations of some frequently used utility functions in R (4 dependencies).
--->
 
   *Notes*: *Rfast* has a number of like-named functions to *matrixStats*. These are simpler but typically faster and support multi-threading. Some highly efficient statistical functions can also be found scattered across various other packages, notable to mention here are *Hmisc* (60 dependencies) and *DescTools* (17 dependencies). <!-- *fastDummies* (16 dependencies) implements creation of dummy (binary) variables. -->
 
@@ -297,8 +299,6 @@ The total (recursive) dependency count is indicated for each package.
 
 #### Visualization
 
-- **[dygraphs](https://github.com/rstudio/dygraphs)**: Interface to 'Dygraphs' interactive time series charting library (12 dependencies). 
-
 - **[lattice](https://github.com/deepayan/lattice)**: Trellis graphics for R (0 dependencies). 
 
 - **[grid](https://github.com/cran/grid)**: The grid graphics package (0 dependencies). 
@@ -307,11 +307,13 @@ The total (recursive) dependency count is indicated for each package.
 -->
 - **[tinyplot](https://github.com/grantmcdermott/tinyplot)** provides a lightweight extension of the base R graphics system, with support for automatic grouping, legends, facets, and various other enhancements (0 dependencies). 
 
-- **[ggplot2](https://github.com/tidyverse/ggplot2)**: Create elegant data visualizations using the Grammar of Graphics (27 dependencies). 
+<!-- - **[dygraphs](https://github.com/rstudio/dygraphs)**: Interface to 'Dygraphs' interactive time series charting library (12 dependencies). -->
 
-- **[scales](https://github.com/r-lib/scales)**: Scale functions for visualizations (11 dependencies). 
+- **[ggplot2](https://github.com/tidyverse/ggplot2)**: Create elegant data visualizations using the Grammar of Graphics (15 dependencies). 
 
-- **[scattermore](https://github.com/exaexa/scattermore)**: Extremely fast scatterplot rasterization for large datasets, enabling visualization of millions of points (25 dependencies).
+- **[scales](https://github.com/r-lib/scales)**: Scale functions for visualizations (10 dependencies). 
+
+- **[scattermore](https://github.com/exaexa/scattermore)**: Extremely fast scatterplot rasterization for large datasets, enabling visualization of millions of points (16 dependencies).
 
 - **[ggrastr](https://github.com/VPetukhov/ggrastr)**: Rasterizes layers in ggplot2 for faster plotting of large datasets (37 dependencies).
 
@@ -337,6 +339,8 @@ The total (recursive) dependency count is indicated for each package.
 - **[duckdb](https://github.com/duckdb/duckdb)**: DuckDB is a high-performance analytical database system that can be used on in-memory or out-of memory data (including csv, `.parquet` files, arrow datasets, and it's own `.duckdb` format), and that provides a rich SQL dialect and optimized query execution for data analysis (1 dependency). It can also be used with the *dbplyr* package that translates *dplyr* code to SQL. [This](https://www.christophenicault.com/post/large_dataframe_arrow_duckdb/) Article by Christophe Nicault (October 2022) demonstrates the integration of *duckdb* with R and *arrow*. Also see the [official docs](<https://duckdb.org/docs/api/r.html>). 
 
 - **[vroom](https://github.com/tidyverse/vroom)** provides fast reading of delimited files (23 dependencies).
+
+* **[iotools](https://cran.r-project.org/package=iotools)**: High-performance I/O tools for streaming data, including ultra-fast chunk-wise processing and string splitting operations (0 dependencies).
 
   *Notes*: *data.table* provides `fread` and `fwrite` for fast reading of delimited files. 
   
@@ -380,6 +384,7 @@ The total (recursive) dependency count is indicated for each package.
 - **[Rcpp](https://github.com/RcppCore/Rcpp)** provides seamless R and C++ integration, and is widely used to extend R with C++. Compared to the C API compile time is slower and object files are larger, but users don't need to worry about garbage collection and can use modern C++ as well as a rich set of R-flavored functions and classes (0 dependencies). 
 
 - **[cpp11](https://github.com/r-lib/cpp11)** provides a simpler, header-only R binding to C++ that allows faster compile times and [several other enhancements](https://cpp11.r-lib.org/articles/motivations.html) (0 dependencies). 
+<!-- - **[cpp4r](https://github.com/pachadotdev/cpp4r)** is a fork of *cpp11* providing several enhancements such as converting 'C++' maps to 'R' lists, better handling of matrix attributes, and performance improvements (15 dependencies).-->
 
 - **[tidyCpp](https://github.com/eddelbuettel/tidycpp)** provides a tidy C++ wrapping of the C API of R - to make the C API more amenable to C++ programmers (0 dependencies). 
 
