@@ -33,13 +33,13 @@ The *fastverse* installs with 4 core packages (5 dependencies in total) which pr
  
 <!-- These packages are installed and attached along with the `fastverse` package. -->
  
-- **[data.table](https://github.com/Rdatatable/data.table)**: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, update, reshaping, (rolling) joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as data transposition/stringsplit-transpose. 
+- **[data.table](https://r-datatable.com)**: Enhanced data frame class with concise data manipulation framework offering powerful aggregation, update, reshaping, (rolling) joins, rolling statistics, set operations on tables, fast csv read/write, and various utilities such as data transposition/stringsplit-transpose. 
 
-- **[collapse](https://github.com/SebKrantz/collapse)**: Fast grouped and weighted statistical computations, time series and panel data transformations, list-processing, data manipulation functions (incl. fast joins and pivots), summary statistics, and various utilities for efficient programming. Class-agnostic framework designed to work with vectors, matrices, data frames, lists and related classes including *xts*, *data.table*, *tibble*, and *sf*.  <!-- *tsibble*, *tibbletime* -->
+- **[collapse](https://fastverse.org/collapse)**: Fast grouped and weighted statistical computations, time series and panel data transformations, list-processing, data manipulation functions (incl. fast joins and pivots), summary statistics, and various utilities for efficient programming. Class-agnostic framework designed to work with vectors, matrices, data frames, lists and related classes including *xts*, *data.table*, *tibble*, and *sf*.  <!-- *tsibble*, *tibbletime* -->
 
-- **[kit](https://github.com/2005m/kit)**: Parallel (row-wise) statistical functions, vectorized and nested switches, and some utilities such as efficient partial sorting. 
+- **[kit](https://fastverse.org/kit)**: Parallel (row-wise) statistical functions, vectorized and nested switches, and some utilities such as efficient partial sorting. 
 
-- **[magrittr](https://github.com/tidyverse/magrittr)**: Efficient pipe operators and aliases for enhanced R programming and code un-nesting.
+- **[magrittr](https://magrittr.tidyverse.org)**: Efficient pipe operators and aliases for enhanced R programming and code un-nesting.
 
 ## Installation
 
@@ -235,7 +235,7 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[vctrs](https://github.com/r-lib/vctrs/)**: Computational backend of the [*tidyverse*](https://github.com/tidyverse) that provides many basic programming functions for R vectors (including lists and data frames) implemented in C (such as sorting, matching, replicating, unique values, concatenating, splitting etc. of vectors). These are often significantly faster than base R equivalents, but not as aggressively optimized as some equivalents in *collapse* or *data.table* (4 dependencies). 
 
-- **[parallelDist](https://github.com/alexeckert/parallelDist)**: Multi-threaded distance matrix computation (3 dependencies). See also [`collapse::fdist()`](https://sebkrantz.github.io/collapse/reference/fdist.html) for multithreaded/SIMD euclidean distances.
+- **[parallelDist](https://github.com/alexeckert/parallelDist)**: Multi-threaded distance matrix computation (3 dependencies). See also [`collapse::fdist()`](https://fastverse.org/collapse/reference/fdist.html) for multithreaded/SIMD euclidean distances.
 
 - **[coop](https://github.com/wrathematics/coop)**: Fast implementations of the covariance, correlation, and cosine similarity (0 dependencies).
 
