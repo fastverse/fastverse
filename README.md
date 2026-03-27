@@ -223,7 +223,7 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[stringdist](https://github.com/markvanderloo/stringdist)**: Fast computation of string distance metrics, matrices, and fuzzy matching (0 dependencies).
 
-- **[fuzzystring](https://github.com/PaulESantos/fuzzystring)**: Fast, flexible fuzzy string joins for data frames using approximate string matching. Built on top of *data.table* and *stringdist* (0 dependencies).
+- **[fuzzystring](https://github.com/PaulESantos/fuzzystring)**: Fast, flexible fuzzy string joins for data frames using approximate string matching. Built on top of *data.table* and *stringdist* (3 dependencies).
 
   *Notes*: At least two packages offer convenient wrappers around the rather rich *stringi* API: **[stringr](https://github.com/tidyverse/stringr)** provides simple, consistent wrappers for common string operations, based on *stringi* (3 dependencies), and **[snakecase](https://github.com/Tazinho/snakecase)** converts strings into any case, based on *stringi* and *stringr* (4 dependencies).
 
