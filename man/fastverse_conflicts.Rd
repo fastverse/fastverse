@@ -31,7 +31,7 @@ There are 3 internal conflicts in the core \emph{fastverse} which are not displa
 fastverse_conflicts()
 
 # Check conflicts among all attached packages
-fastverse_conflicts(rm_stub(search()[-1], "package:"))
+fastverse_conflicts(sub("package:", "", search()[-1], fixed = TRUE))
 }
 \seealso{
 \code{\link{fastverse}}
