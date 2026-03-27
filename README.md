@@ -296,6 +296,10 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[igraph](https://github.com/igraph)**: Provides and R port to the *igraph* C library for complex network analysis and graph theory (11 dependencies).
 
+- **[dbscan](https://github.com/mhahsler/dbscan)**: Fast C++-based implementation of density-based clustering algorithms including DBSCAN, HDBSCAN, OPTICS, and related methods. Also provides k-nearest neighbor search and shared nearest neighbor clustering (4 dependencies).
+
+- **[leaderCluster](https://cran.r-project.org/package=leaderCluster)**: Implements the leader clustering algorithm for efficiently clustering large datasets, particularly suited for geospatial point data (0 dependencies).
+
   *Notes*: *collapse* can be used for efficient manipulation and computations on *sf* data frames. *sf* also offers tight integration with *dplyr*. Another efficient routing package is [*dodgr*](https://github.com/UrbanAnalyst/dodgr) (45 dependencies). [*sfnetworks*](https://github.com/luukvdmeer/sfnetworks) allows network analysis combining *sf* and *igraph* (42 dependencies) and functions for network cleaning (partly taken from [tidygraph](https://github.com/thomasp85/tidygraph) which also wraps *igraph*). [*stplanr*](https://github.com/ropensci/stplanr) facilitates sustainable transport planning with R, including very useful helpers such as `overline()` to turn a set of linestrings (routes) into a network (45 dependencies). 
 
 
