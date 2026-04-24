@@ -10,6 +10,7 @@
  [![Conda Version](https://img.shields.io/conda/vn/conda-forge/r-fastverse.svg)](https://anaconda.org/conda-forge/r-fastverse)
  [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/r-fastverse.svg)](https://anaconda.org/conda-forge/r-fastverse)
  [![dependencies](https://tinyverse.netlify.app/badge/fastverse)](https://CRAN.R-project.org/package=fastverse)
+ [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/fastverse/fastverse)
 <!--
 [![Codecov test coverage](https://codecov.io/gh/fastverse/fastverse/branch/master/graph/badge.svg)](https://codecov.io/gh/fastverse/fastverse?branch=master) 
 [![minimal R version](https://img.shields.io/badge/R%3E%3D-2.10-6666ff.svg)](https://cran.r-project.org/) -->
