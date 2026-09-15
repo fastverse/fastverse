@@ -361,7 +361,7 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[nCompiler](https://github.com/nimble-dev/nCompiler)**: Compiles R functions to C++, and covers basic math, distributions, vectorized math and linear algebra, as well as basic control flow. R and Compiled C++ functions can also be jointly utilized in the a class 'nClass' that inherits from R6. An in-progress [user-manual](https://htmlpreview.github.io/?https://raw.githubusercontent.com/nimble-dev/nCompiler/master/UserManual/_site/index.html) provides an overview of the package. 
 
-- **[ast2ast](https://github.com/Konrad1991/ast2ast)**: Also compiles R functions to C++, and is very straightforward to use (it has a single function `translate()` to compile R functions), but less flexible than [nCompiler](https://github.com/nimble-dev/nCompiler) (e.g. it currently does not support linear algebra). [Available on CRAN](https://CRAN.R-project.org/package=ast2ast) (6 dependencies).
+- **[ast2ast](https://github.com/Konrad1991/ast2ast)**: Also compiles R functions to C++, and is very straightforward to use (it has a single function `translate()` to compile R functions). Supports, linear algebra (matrix product, solve, backsolve/forwardsolve, Cholesky decomposition) and automatic differentiation. [Available on CRAN](https://CRAN.R-project.org/package=ast2ast) (3 dependencies).
 
 - **[odin](https://github.com/mrc-ide/odin)**: Implements R to C translation and compilation, but specialized for differential
   equation solving problems. [Available on CRAN](https://CRAN.R-project.org/package=odin) (8 dependencies). 
