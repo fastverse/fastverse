@@ -332,6 +332,8 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[duckplyr](https://github.com/tidyverse/duckplyr)** provides a drop-in replacement for dplyr verbs using DuckDB as the backend, enabling fast and memory-efficient data manipulation for large datasets (22 dependencies).
 
+- **[dataprep](https://github.com/chunshengliang/dataprep)**: Fast, versatile data preprocessing and reshaping with C++ / OpenMP / SIMD backends. Covers missing-value-based variable and observation deletion, conditional-extremum and percentile outlier removal, short-period interpolation, imputation, transformation, and standardization. Its `melt()` and `dcast()` are benchmarked against every major alternative in R (reshape2, data.table, tidyr, collapse) and Python (pandas, polars, dask, duckdb) on Ubuntu and Windows; `dcast()` leads every tested cell and `melt()` the large majority, with bit-identical output. (4 dependencies).
+
   *Notes*: Package **[tidypolars](https://github.com/etiennebacher/tidypolars)** provides a *tidyverse*-style wrapper around *r-polars*. 
 
 #### Data Input-Output, Serialization, and Larger-Than-Memory Processing (IO)  
