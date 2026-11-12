@@ -308,9 +308,10 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[lattice](https://github.com/deepayan/lattice)**: Trellis graphics for R (0 dependencies). 
 
-- **[grid](https://github.com/cran/grid)**: The grid graphics package (0 dependencies). 
+- **[grid](https://github.com/cran/grid)**: The grid graphics package (0 dependencies).   
+
 <!-- 
- - **[vegabrite](https://github.com/vegawidget/vegabrite)** provides an interface to the [vega-lite](https://vega.github.io/vega-lite/) high-level grammar of interactive graphics. 
+ - **[vegabrite](https://github.com/vegawidget/vegabrite)** provides an interface to the [vega-lite](https://vega.github.io/vega-lite/) high-level grammar of interactive graphics. # ikashnitsky: fixed commenting out
 -->
 - **[tinyplot](https://github.com/grantmcdermott/tinyplot)** provides a lightweight extension of the base R graphics system, with support for automatic grouping, legends, facets, and various other enhancements (0 dependencies). 
 
@@ -330,11 +331,15 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[r-polars](https://github.com/pola-rs/r-polars)** provides an R-port to the impressively fast [polars DataFrame's library](https://github.com/pola-rs/polars/) written in Rust (1 dependencies). 
 
+- **[tidypolars](https://github.com/etiennebacher/tidypolars)** *tidyverse*-style wrapper around *r-polars*.
+
 - **[duckplyr](https://github.com/tidyverse/duckplyr)** provides a drop-in replacement for dplyr verbs using DuckDB as the backend, enabling fast and memory-efficient data manipulation for large datasets (22 dependencies).
 
 - **[dataprep](https://github.com/chunshengliang/dataprep)**: Fast data preprocessing and reshaping with C++ / OpenMP / SIMD backends, covering missing-value handling, outlier removal, imputation, transformation, and standardization. Its `melt()` and `dcast()` are benchmarked as leading solutions (18 dependencies).
 
-  *Notes*: Package **[tidypolars](https://github.com/etiennebacher/tidypolars)** provides a *tidyverse*-style wrapper around *r-polars*. 
+
+<!-- - **[Tidier.jl](https://github.com/TidierOrg/Tidier.jl)** provides a Julia implementation of the tidyverse mini-language in Julia. Powered by the [DataFrames.jl](https://github.com/JuliaData/DataFrames.jl) library. -->
+
 
 #### Data Input-Output, Serialization, and Larger-Than-Memory Processing (IO)  
 
@@ -350,6 +355,10 @@ The total (recursive) dependency count is indicated for each package.
 - **[duckdb](https://github.com/duckdb/duckdb)**: DuckDB is a high-performance analytical database system that can be used on in-memory or out-of memory data (including csv, `.parquet` files, arrow datasets, and it's own `.duckdb` format), and that provides a rich SQL dialect and optimized query execution for data analysis (1 dependency). It can also be used with the *dbplyr* package that translates *dplyr* code to SQL. [This](https://www.christophenicault.com/post/large_dataframe_arrow_duckdb/) Article by Christophe Nicault (October 2022) demonstrates the integration of *duckdb* with R and *arrow*. Also see the [official docs](<https://duckdb.org/docs/api/r.html>). 
 
 - **[vroom](https://github.com/tidyverse/vroom)** provides fast reading of delimited files (23 dependencies).
+
+- **[rcxl](https://github.com/jcfaria/rcxl)** provides fast reading and writing of Excel files via a Rust backend, supporting both `.xlsx` and `.xls` formats (0 dependencies).
+
+- **[rapidxlsx](https://github.com/swc-yx/rapidxlsx)** provides ultra-fast Excel file reading and writing using Rust, with a focus on performance for large datasets (0 dependency).
 
   *Notes*: *data.table* provides `fread` and `fwrite` for fast reading of delimited files. 
   
@@ -380,11 +389,7 @@ The total (recursive) dependency count is indicated for each package.
 
   *Notes*: Many of these projects are experimental and not available as CRAN packages. 
 
-#### R-like Data Manipulation in Faster Languages
 
-- **[tidypolars](https://github.com/markfairbanks/tidypolars)** is a python library built on top of [polars](https://github.com/pola-rs/polars/) that gives access to methods and functions familiar to R tidyverse users.
-
-- **[Tidier.jl](https://github.com/TidierOrg/Tidier.jl)** provides a Julia implementation of the tidyverse mini-language in Julia. Powered by the [DataFrames.jl](https://github.com/JuliaData/DataFrames.jl) library.
 
 ####  R Bindings to Faster Languages
 
