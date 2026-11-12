@@ -360,8 +360,6 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[rapidxlsx](https://github.com/swc-yx/rapidxlsx)** provides ultra-fast Excel file reading and writing using Rust, with a focus on performance for large datasets (0 dependency).
 
-
-
   *Notes*: *data.table* provides `fread` and `fwrite` for fast reading of delimited files. 
   
 #### Parallelization, High-Performance Computing and Out-Of-Memory Data
