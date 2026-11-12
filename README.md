@@ -308,9 +308,10 @@ The total (recursive) dependency count is indicated for each package.
 
 - **[lattice](https://github.com/deepayan/lattice)**: Trellis graphics for R (0 dependencies). 
 
-- **[grid](https://github.com/cran/grid)**: The grid graphics package (0 dependencies). 
+- **[grid](https://github.com/cran/grid)**: The grid graphics package (0 dependencies).   
+
 <!-- 
- - **[vegabrite](https://github.com/vegawidget/vegabrite)** provides an interface to the [vega-lite](https://vega.github.io/vega-lite/) high-level grammar of interactive graphics. 
+ - **[vegabrite](https://github.com/vegawidget/vegabrite)** provides an interface to the [vega-lite](https://vega.github.io/vega-lite/) high-level grammar of interactive graphics. # ikashnitsky: fixed commenting out
 -->
 - **[tinyplot](https://github.com/grantmcdermott/tinyplot)** provides a lightweight extension of the base R graphics system, with support for automatic grouping, legends, facets, and various other enhancements (0 dependencies). 
 
