@@ -1,0 +1,11 @@
+{
+  "permission": {
+    "bash": {
+      "sed *": "allow",
+      "cat *": "allow"
+    },
+    "edit": {
+      "*.md": "allow"
+    }
+  }
+}
